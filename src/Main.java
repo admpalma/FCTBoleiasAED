@@ -1,37 +1,21 @@
 import java.util.Scanner;
 
+import fctBoleias.CantRideHimselfException;
+import fctBoleias.DateOccupiedException;
+import fctBoleias.InvalidDataException;
+import fctBoleias.InvalidDateException;
 import fctBoleias.Manager;
 import fctBoleias.ManagerClass;
+import fctBoleias.NoTripOnDayException;
+import fctBoleias.NotLoggedInException;
+import fctBoleias.TripHasRidesException;
+import fctBoleias.TripNotExistsException;
+import fctBoleias.User;
+import fctBoleias.UserNotExistException;
 
 public class Main {
 
 	private static final String DEFAULT_PROMPT = "> ";
-
-	// Commands
-	private static final String AJUDA = "ajuda";
-	private static final String TERMINA = "termina";
-	private static final String REGISTA = "regista";
-	private static final String ENTRADA = "entrada";
-	private static final String SAI = "sai";
-	private static final String NOVA = "nova";
-	private static final String LISTA = "lista";
-	private static final String BOLEIA = "boleia";
-	private static final String CONSULTA = "consulta";
-	private static final String REMOVE = "remove";
-
-	// Command help messages and interpreter
-	private static final String AJUDA_HELP_MESSAGE = AJUDA + " - Mostra os comandos existentes";
-	private static final String TERMINA_HELP_MESSAGE = TERMINA + " - Termina a execucao do programa";
-	private static final String REGISTA_HELP_MESSAGE = REGISTA + " - Regista um novo utilizador no programa";
-	private static final String ENTRADA_HELP_MESSAGE = ENTRADA
-			+ " - Permite a entrada (\"login\") dum utilizador no programa";
-
-	private static final String SAI_HELP_MESSAGE = SAI + " - Termina a sessao deste utilizador no programa";
-	private static final String NOVA_HELP_MESSAGE = NOVA + " - Regista uma nova deslocacao";
-	private static final String LISTA_HELP_MESSAGE = LISTA + " - Lista todas ou algumas deslocacoes registadas";
-	private static final String BOLEIA_HELP_MESSAGE = BOLEIA + " - Regista uma boleia para uma dada deslocacao";
-	private static final String CONSULTA_HELP_MESSAGE = CONSULTA + " - Lista a informacao de uma dada deslocacao";
-	private static final String REMOVE_HELP_MESSAGE = REMOVE + " - Retira uma dada deslocacao";
 
 	private static final String UNKNOWN_COMMAND = "Comando inexistente.";
 
@@ -53,9 +37,8 @@ public class Main {
 	private static final int MAX_PW_LIMIT = 5; // maximum number of characters in a password
 
 	// Ride related messages
-	private static final String NO_REGISTERED_RIDES = " nao tem deslocacoes registadas.";
+	private static final String NO_REGISTERED_RIDES = "%s nao tem deslocacoes registadas.%n";
 	private static final String NO_REGISTERED_RIDES_IN_DATE = " nao existem deslocacoes registadas para ";
-	private static final String RIDE_ALREADY_EXISTS = " ja tem uma deslocacao registada nesta data.";
 	private static final String RIDE_NOT_REGISTERED = "Deslocacao nao registada.";
 	private static final String RIDE_REGISTERED_THANKS = "Deslocacao registada. Obrigado ";
 	private static final String RIDE_REGISTERED = "Boleia registada.";
@@ -66,7 +49,6 @@ public class Main {
 	private static final String RIDE_DOESNT_EXIST = "Deslocacao nao existe.";
 	private static final String NON_EXISTENT_USER = "Utilizador inexistente.";
 	private static final String INVALID_DATE = "Data invalida.";
-	private static final String RIDE_CAN_NO_LONGER_BE_CANCELED = " ja nao pode eliminar esta deslocacao.";
 	private static final String RIDE_REMOVED = "Deslocacao removida.";
 	private static final String INVALID_DATA = "Dados invalidos."; // Invalid data when registering new boleia
 
@@ -80,8 +62,11 @@ public class Main {
 	 *
 	 */
 	private enum GlobalCommand {
-		TERMINA(TERMINA_HELP_MESSAGE), REGISTA(REGISTA_HELP_MESSAGE), ENTRADA(ENTRADA_HELP_MESSAGE),
-		AJUDA(AJUDA_HELP_MESSAGE), SAI(SAI_HELP_MESSAGE), UNKNOWN("");
+		TERMINA("termina - Termina a execucao do programa"),
+		REGISTA("regista - Regista um novo utilizador no programa"),
+		ENTRADA("entrada - Permite a entrada (\"login\") dum utilizador no programa"),
+		AJUDA("ajuda - Mostra os comandos existentes"), SAI("sai - Termina a sessao deste utilizador no programa"),
+		UNKNOWN("");
 
 		private final String helpMessage; // Associates each command with its help message
 
@@ -96,8 +81,10 @@ public class Main {
 	}
 
 	private enum LoggedInCommand {
-		NOVA(NOVA_HELP_MESSAGE), LISTA(LISTA_HELP_MESSAGE), BOLEIA(BOLEIA_HELP_MESSAGE),
-		CONSULTA(CONSULTA_HELP_MESSAGE), REMOVE(REMOVE_HELP_MESSAGE), AJUDA(AJUDA_HELP_MESSAGE), SAI(SAI_HELP_MESSAGE),
+		NOVA("nova - Regista uma nova deslocacao"), LISTA("lista - Lista todas ou algumas deslocacoes registadas"),
+		BOLEIA("boleia - Regista uma boleia para uma dada deslocacao"),
+		CONSULTA("consulta - Lista a informacao de uma dada deslocacao"), REMOVE("remove - Retira uma dada deslocacao"),
+		AJUDA("ajuda - Mostra os comandos existentes"), SAI("sai - Termina a sessao deste utilizador no programa"),
 		UNKNOWN("");
 
 		private final String helpMessage; // Associates each command with its help message
@@ -122,6 +109,21 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		Manager manager = new ManagerClass();
+
+		GlobalCommand cmd = getGlobalCommand(in);
+		
+		// TODO Fix with enum thing
+		
+		do {
+
+			if (manager.isLoggedIn()) {
+				loggedInCommandInterpreter(manager, in);
+			} else {
+				globalCommandInterpreter(manager, in);
+			}
+
+		} while (manager.isLoggedIn() || !(cmd.equals(GlobalCommand.TERMINA)));
+
 		in.close();
 	}
 
@@ -129,13 +131,11 @@ public class Main {
 
 	/**
 	 * Command interpreter when no user is logged in
-	 *
-	 * @param option  - user's input option
+	 * 
 	 * @param manager - manager object
 	 * @param in      - scanner to get user input
-	 * @pre: !manager.isLoggedIn()
 	 */
-	private static void globalCommandInterpreter(String option, Manager manager, Scanner in) {
+	private static void globalCommandInterpreter(Manager manager, Scanner in) {
 		GlobalCommand cmd = getGlobalCommand(in);
 		switch (cmd) {
 		case AJUDA:
@@ -157,8 +157,11 @@ public class Main {
 	}
 
 	private static void processLogin(Manager manager, Scanner in) {
-		// TODO Auto-generated method stub
-
+		
+		String name = in.nextLine().trim();
+		
+		
+		
 	}
 
 	private static void processRegister(Manager manager, Scanner in) {
@@ -191,7 +194,7 @@ public class Main {
 	private static LoggedInCommand getLoggedInCommand(Scanner in, Manager manager) {
 		try {
 			// TODO
-			//System.out.printf("%s %s", manager.getCurrentUserEmail(), DEFAULT_PROMPT);
+			// System.out.printf("%s %s", manager.getCurrentUserEmail(), DEFAULT_PROMPT);
 			String command = in.nextLine().toUpperCase();
 			return LoggedInCommand.valueOf(command);
 		} catch (IllegalArgumentException e) {
@@ -225,13 +228,13 @@ public class Main {
 
 	/**
 	 * Command interpreter when there's a user logged in
-	 *
-	 * @param option  - user's input option
+	 * 
 	 * @param manager - manager object
 	 * @param in      - scanner to get user input
+	 *
 	 * @pre: manager.isLoggedIn()
 	 */
-	private static void loggedInCommandInterpreter(String option, Manager manager, Scanner in) {
+	private static void loggedInCommandInterpreter(Manager manager, Scanner in) {
 		LoggedInCommand cmd = getLoggedInCommand(in, manager);
 		switch (cmd) {
 		case AJUDA:
@@ -262,8 +265,23 @@ public class Main {
 	}
 
 	private static void processRemove(Manager manager, Scanner in) {
-		// TODO Auto-generated method stub
+		
+		String date = in.nextLine();
+		in.nextLine();
 
+		try {
+			manager.remove(date);
+			System.out.println(RIDE_REMOVED);
+		} catch (NotLoggedInException | NoTripOnDayException | InvalidDateException e) {
+			System.out.println(e.getMessage());
+		} catch (TripHasRidesException e) {
+			try {
+				System.out.printf(e.getMessage(), manager.getCurrentUserName());
+			} catch (NotLoggedInException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 	}
 
 	private static void processConsult(Manager manager, Scanner in) {
@@ -272,8 +290,25 @@ public class Main {
 	}
 
 	private static void processTakeRide(Manager manager, Scanner in) {
-		// TODO Auto-generated method stub
+		String name = in.next();
+		String date = in.next().trim();
 
+		try {
+			manager.addNewRide(name, date);
+			System.out.println(RIDE_REGISTERED);
+		} catch (NotLoggedInException | UserNotExistException
+				| InvalidDateException | TripNotExistsException e) {
+			System.out.println(e.getMessage());
+		} catch (CantRideHimselfException | DateOccupiedException e) {
+			try {
+				System.out.printf(e.getMessage(), manager.getCurrentUserName());
+			} catch (NotLoggedInException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		
+		
 	}
 
 	private static void processList(Manager manager, Scanner in) {
@@ -281,8 +316,33 @@ public class Main {
 
 	}
 
+	/**
+	 * Registers a new trip on current {@link User}
+	 * 
+	 * @param manager - manager class
+	 * @param in      - Scanner
+	 */
 	private static void processNew(Manager manager, Scanner in) {
-		// TODO Auto-generated method stub
+		String origin = in.nextLine();
+		String destiny = in.nextLine();
+		String date = in.next();
+		String hourMinute = in.next();
+		int duration = in.nextInt();
+		int numberSeats = in.nextInt();
+		in.nextLine();
+
+		try {
+			manager.addNewTrip(origin, destiny, date, hourMinute, duration, numberSeats);
+		} catch (NotLoggedInException | InvalidDataException e) {
+			System.out.println(e.getMessage());
+		} catch (DateOccupiedException e) {
+			try {
+				System.out.printf(e.getMessage(), manager.getCurrentUserName());
+			} catch (NotLoggedInException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 
 	}
 

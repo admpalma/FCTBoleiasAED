@@ -1,5 +1,5 @@
 package fctBoleias;
 
-public interface Ride {
+public interface Trip {
 
 }

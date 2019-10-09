@@ -1,5 +1,75 @@
 package fctBoleias;
 
-public class UserClass {
+import dataStructures.List;
 
+public class UserClass implements User {
+	
+		// Instance variables containing the users's details and information
+		private String email;
+		private String name;
+		private String password;
+		//private Map<LocalDateTime, List<Trip>> tripsByDate; // User's trips by date
+		private int nVisits;
+		private List<Trip> rides; // BOLEIAS EM QUE PARTICIPA MAS ¬OWNER
+		private List<Trip> trips; // USER'S (this) TRIPS
+		
+		/**
+		 * User object constructor
+		 * Creates an object holding details and information about a user
+		 * 
+		 * @param email - email of the user
+		 * @param name - name of the user
+		 * @param password - password of the user
+		 */
+		public UserClass(String email, String name, String password) {
+			this.email = email;
+			this.name = name;
+			this.password = password;
+			this.nVisits = 0;
+		}
+
+		/**
+		 * @return the email
+		 */
+		public String getEmail() {
+			return email;
+		}
+
+		/**
+		 * @return the name
+		 */
+		public String getName() {
+			return name;
+		}
+
+		/**
+		 * @return the password
+		 */
+		public String getPassword() {
+			return password;
+		}
+
+		/**
+		 * @return the nVisits
+		 */
+		public int getnVisits() {
+			return nVisits;
+		}
+
+		/**
+		 * @return the rides
+		 */
+		public List<Trip> getRides() {
+			return rides;
+		}
+
+		/**
+		 * @return the trips
+		 */
+		public List<Trip> getTrips() {
+			return trips;
+		}
+		
+		
+	
 }
