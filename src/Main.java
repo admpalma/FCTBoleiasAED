@@ -272,15 +272,8 @@ public class Main {
 		try {
 			manager.remove(date);
 			System.out.println(RIDE_REMOVED);
-		} catch (NotLoggedInException | NoTripOnDayException | InvalidDateException e) {
+		} catch (NotLoggedInException | NoTripOnDayException | InvalidDateException | TripHasRidesException e) {
 			System.out.println(e.getMessage());
-		} catch (TripHasRidesException e) {
-			try {
-				System.out.printf(e.getMessage(), manager.getCurrentUserName());
-			} catch (NotLoggedInException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
 		}
 	}
 
