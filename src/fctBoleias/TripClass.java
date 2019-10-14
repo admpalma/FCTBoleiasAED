@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 import dataStructures.Array;
 import dataStructures.List;
+import dataStructures.Map;
+import dataStructures.Queue;
 
 public class TripClass implements Trip {
 
@@ -12,7 +14,8 @@ public class TripClass implements Trip {
 	private LocalDateTime date;
 	private List<User> usersInRide;
 	private int duration;
-	private User owner; // Owner
+	private User driver; // Driver
+	private Queue<User> usersWaitingRide; // Users waiting for Ride
 
 	/**
 	 * Ride object constructor Creates an object holding details and information
@@ -23,15 +26,15 @@ public class TripClass implements Trip {
 	 * @param date     - date of the ride
 	 * @param capacity - initial number of seats available for other users
 	 * @param duration - duration of ride
-	 * @param owner    - email of who gives the ride
+	 * @param driver   - email of who gives the ride
 	 */
-	public TripClass(String origin, String destiny, LocalDateTime date, int capacity, int duration, User owner) {
+	public TripClass(String origin, String destiny, LocalDateTime date, int capacity, int duration, User driver) {
 		this.origin = origin;
 		this.destiny = destiny;
 		this.date = date;
 		this.duration = duration;
 		this.usersInRide = new Array<User>(capacity);
-		this.owner = owner;
+		this.driver = driver;
 	}
 
 }

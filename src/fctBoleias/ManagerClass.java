@@ -1,15 +1,15 @@
 package fctBoleias;
 
-import java.time.LocalDateTime;
-
-import dataStructures.*;
+import basicDate.BasicDate;
+import dataStructures.List;
+import dataStructures.Map;
+import dataStructures.SortedMap;
 
 public class ManagerClass implements Manager {
 
 	private User currentUser;
 	private Map<String, User> usersByEmail; // Key: user email
-	private Map<LocalDateTime, List<Trip>> ridesByDate; // Rides by date
-	private Map<Trip, Queue<User>> usersWaitingRide; // Users waiting for Ride
+	private SortedMap<BasicDate, SortedMap<String, Trip>> ridesByDate; // Rides by date
 	private List<Trip> allTrips;
 
 	public ManagerClass() {

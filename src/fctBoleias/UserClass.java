@@ -1,6 +1,7 @@
 package fctBoleias;
 
-import dataStructures.List;
+import basicDate.BasicDate;
+import dataStructures.SortedMap;
 
 public class UserClass implements User {
 	
@@ -10,8 +11,8 @@ public class UserClass implements User {
 		private String password;
 		//private Map<LocalDateTime, List<Trip>> tripsByDate; // User's trips by date
 		private int nVisits;
-		private List<Trip> rides; // BOLEIAS EM QUE PARTICIPA MAS ¬OWNER
-		private List<Trip> trips; // USER'S (this) TRIPS
+		private SortedMap<BasicDate, Trip> rides; // BOLEIAS EM QUE PARTICIPA MAS ¬OWNER
+		private SortedMap<BasicDate, Trip> trips; // USER'S (this) TRIPS
 		
 		/**
 		 * User object constructor
@@ -56,20 +57,5 @@ public class UserClass implements User {
 			return nVisits;
 		}
 
-		/**
-		 * @return the rides
-		 */
-		public List<Trip> getRides() {
-			return rides;
-		}
-
-		/**
-		 * @return the trips
-		 */
-		public List<Trip> getTrips() {
-			return trips;
-		}
-		
-		
 	
 }
