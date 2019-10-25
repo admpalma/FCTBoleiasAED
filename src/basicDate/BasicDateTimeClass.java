@@ -1,6 +1,7 @@
 package basicDate;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  * Class that creates objects used to store dates and manipulate dates
@@ -115,21 +116,6 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 		return days;
 	}
 
-	/** If date equal to another i.e. 2017/05/20 == 2017/05/20
-	 * myDate.equal(BasicDate yourDate);
-	 * @param: date - given date to compare
-	 * @return: boolean true if this.date is equal to given date
-	 */
-	public boolean equal(BasicDateTimeClass date) {
-		//TODO .equals() e uma coisa
-		boolean equal = false;
-
-		if (this.getDay() == date.getDay() && this.getMonth() == date.getMonth() && this.getYear() == date.getYear()) {
-			equal = true;
-		}
-		return equal;
-	}
-
 	public short[] getRawDate() {
 		return rawDate;
 	}
@@ -146,6 +132,28 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 		} else {
 			return genericCompare(date);
 		}
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(rawDate);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BasicDateTimeClass other = (BasicDateTimeClass) obj;
+		if (!Arrays.equals(rawDate, other.rawDate))
+			return false;
+		return true;
 	}
 
 	private int genericCompare(BasicDateTime date) {
