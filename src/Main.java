@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 import basicDate.InvalidDateException;
 import fctBoleias.DateOccupiedException;
+import fctBoleias.InvalidPasswordFormatException;
 import fctBoleias.Manager;
 import fctBoleias.ManagerClass;
 import fctBoleias.NoTripOnDayException;
@@ -53,6 +54,11 @@ public class Main {
 	private static final String INVALID_DATA = "Dados invalidos."; // Invalid data when registering new boleia
 
 	private static final String FINAL_MESSAGE = "Obrigado. Ate a proxima.";
+
+	/**
+	 * The number of attempts a user has to choose a password for his registration
+	 */
+	private static final int PASSWORD_ATTEMPTS_LIMIT = 3;
 
 	/**
 	 * {@link Enum} containing all of the possible commands
@@ -238,11 +244,62 @@ public class Main {
 		case ENTRADA:
 			break;
 		case REGISTA:
+			registerUser(manager, in);
 			break;
 		case TERMINA:
 			processEnd(manager);
 			break;
 		}
+	}
+
+	/**
+	 * Registers a new {@link User} in the system ({@link Manager})
+	 * @param manager {@link Manager} where the {@link User} will be registered
+	 * @param in {@link Scanner} holding the new {@link User User's} data
+	 */
+	private static void registerUser(Manager manager, Scanner in) {
+		assert(!manager.isLoggedIn());
+		String email = in.nextLine();
+		if (manager.isUserRegistered(email)) {
+			System.out.println("Utilizador ja existente.");
+		} else {
+			System.out.print("nome (maximo 50 caracteres): ");
+			String name = in.nextLine();
+			try {
+				int registrationNumber = attemptRegistrationLoop(manager, in, email, name);
+				System.out.printf("Registo %d efetuado.%n", registrationNumber);
+			} catch (InvalidPasswordFormatException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+
+	/**
+	 * Asks the user repeatedly for a password for his registration until a valid one
+	 * is picked or the {@link Main#PASSWORD_ATTEMPTS_LIMIT attempts limit} is reached
+	 * @param manager manager {@link Manager} where the {@link User} will be registered
+	 * @param in {@link Scanner} holding the new {@link User User's} <code>password</code>
+	 * @param email new {@link User User's} email
+	 * @param name new {@link User User's} name
+	 * @return the number of this registration
+	 * @throws InvalidPasswordFormatException if the doesn't choose a valid password
+	 * within the {@link Main#PASSWORD_ATTEMPTS_LIMIT attempts limit}
+	 */
+	private static int attemptRegistrationLoop(Manager manager, Scanner in, String email, String name) throws InvalidPasswordFormatException {
+		int attemptNumber = 0;
+		while (attemptNumber < PASSWORD_ATTEMPTS_LIMIT) {
+			try {
+				System.out.println("password (entre 4 e 6 caracteres - digitos e letras): ");
+				String password = in.nextLine();
+				return manager.registerUser(email, name, password);
+			} catch (InvalidPasswordFormatException e) {
+				if (attemptNumber == PASSWORD_ATTEMPTS_LIMIT) {
+					throw e;
+				}
+			}
+			attemptNumber++;
+		}
+		throw new RuntimeException();
 	}
 
 	/**
@@ -267,7 +324,7 @@ public class Main {
 	}
 
 	// LOGGED IN METHODS
-	
+
 	/**
 	 * Attempts to execute the given {@link Commands command} assumimng there is no user logged in,
 	 * and prints a warning in case this attempt fails.

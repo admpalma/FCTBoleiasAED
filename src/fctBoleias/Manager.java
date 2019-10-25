@@ -57,5 +57,23 @@ public interface Manager {
 	 * @throws NonExistentTripException if the trip doesn't exist
 	 */
 	void addNewRide(String name, String date) throws NotLoggedInException, CantRideSelfException, DateOccupiedException, NonExistentUserException, InvalidDateException, NonExistentTripException;
+
+	/**
+	 * Checks if there is a {@link User} registered with the given <code>email</code>
+	 * @param email email to check a {@link User} with
+	 * @return <code>true</code> if there is a {@link User} registered with the given <code>email</code>,
+	 * <code>false</code> otherwise
+	 */
+	boolean isUserRegistered(String email);
+
+	/**
+	 * Registers a new {@link User} in the system using the given information
+	 * @param email new {@link User User's} email
+	 * @param name new {@link User User's} name
+	 * @param password new {@link User User's} password
+	 * @return the number of this registration
+	 * @throws InvalidPasswordFormatException if the password's format is wrong
+	 */
+	int registerUser(String email, String name, String password) throws InvalidPasswordFormatException;
 	
 }
