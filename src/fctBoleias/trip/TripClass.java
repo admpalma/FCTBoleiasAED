@@ -1,4 +1,4 @@
-package fctBoleias;
+package fctBoleias.trip;
 
 import java.time.LocalDateTime;
 
@@ -6,6 +6,7 @@ import dataStructures.Array;
 import dataStructures.List;
 import dataStructures.Map;
 import dataStructures.Queue;
+import fctBoleias.user.User;
 
 public class TripClass implements Trip {
 

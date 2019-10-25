@@ -1,17 +1,17 @@
 package fctBoleias;
 
-public class UserNotExistException extends Exception {
+public class NonExistentUserException extends Exception {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public UserNotExistException() {
+	public NonExistentUserException() {
 		super("Utilizador inexistente.");
 	}
 
-	public UserNotExistException(String message) {
+	public NonExistentUserException(String message) {
 		super(message);
 	}
 

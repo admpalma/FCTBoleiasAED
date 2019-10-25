@@ -1,17 +1,17 @@
 package fctBoleias;
 
-public class TripNotExistsException extends Exception {
+public class NonExistentTripException extends Exception {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public TripNotExistsException() {
+	public NonExistentTripException() {
 		super("Deslocacao nao existe.");
 	}
 
-	public TripNotExistsException(String message) {
+	public NonExistentTripException(String message) {
 		super(message);
 	}
 	

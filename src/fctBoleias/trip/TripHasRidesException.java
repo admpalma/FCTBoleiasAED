@@ -1,5 +1,12 @@
-package fctBoleias;
+package fctBoleias.trip;
 
+import fctBoleias.user.User;
+
+/**
+ * A {@link TripHasRidesException} is thrown when a {@link User}
+ * attempts to cancel a {@link Trip} that already has other {@link User users}
+ * taking it as a ride
+ */
 public class TripHasRidesException extends Exception {
 
 	/**

@@ -1,17 +1,17 @@
 import java.util.Scanner;
 
-import fctBoleias.CantRideHimselfException;
+import basicDate.InvalidDateException;
 import fctBoleias.DateOccupiedException;
-import fctBoleias.InvalidDataException;
-import fctBoleias.InvalidDateException;
 import fctBoleias.Manager;
 import fctBoleias.ManagerClass;
 import fctBoleias.NoTripOnDayException;
 import fctBoleias.NotLoggedInException;
-import fctBoleias.TripHasRidesException;
-import fctBoleias.TripNotExistsException;
-import fctBoleias.User;
-import fctBoleias.UserNotExistException;
+import fctBoleias.trip.CantRideSelfException;
+import fctBoleias.trip.InvalidDataException;
+import fctBoleias.trip.TripHasRidesException;
+import fctBoleias.NonExistentTripException;
+import fctBoleias.NonExistentUserException;
+import fctBoleias.user.User;
 
 public class Main {
 
@@ -354,10 +354,10 @@ public class Main {
 		try {
 			manager.addNewRide(name, date);
 			System.out.println(RIDE_REGISTERED);
-		} catch (NotLoggedInException | UserNotExistException
-				| InvalidDateException | TripNotExistsException e) {
+		} catch (NotLoggedInException | NonExistentUserException
+				| InvalidDateException | NonExistentTripException e) {
 			System.out.println(e.getMessage());
-		} catch (CantRideHimselfException | DateOccupiedException e) {
+		} catch (CantRideSelfException | DateOccupiedException e) {
 			try {
 				System.out.printf(e.getMessage(), manager.getCurrentUserName());
 			} catch (NotLoggedInException e1) {

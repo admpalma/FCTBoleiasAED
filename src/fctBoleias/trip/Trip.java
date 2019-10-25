@@ -1,4 +1,4 @@
-package fctBoleias;
+package fctBoleias.trip;
 
 public interface Trip {
 

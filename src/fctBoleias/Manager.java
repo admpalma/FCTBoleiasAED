@@ -1,5 +1,11 @@
 package fctBoleias;
 
+import basicDate.InvalidDateException;
+import fctBoleias.trip.CantRideSelfException;
+import fctBoleias.trip.InvalidDataException;
+import fctBoleias.trip.TripHasRidesException;
+import fctBoleias.user.User;
+
 public interface Manager {
 
 	/**
@@ -44,12 +50,12 @@ public interface Manager {
 	 * @param name - name of the ride owner
 	 * @param date - date of the ride
 	 * @throws NotLoggedInException if no user is logged in
-	 * @throws CantRideHimselfException if the ride owner is the current User
+	 * @throws CantRideSelfException if the ride owner is the current User
 	 * @throws DateOccupiedException if user already has a ride or a trip on that date
-	 * @throws UserNotExistException if the user doesn't exist
+	 * @throws NonExistentUserException if the user doesn't exist
 	 * @throws InvalidDateException if the given date is invalid
-	 * @throws TripNotExistsException if the trip doesn't exist
+	 * @throws NonExistentTripException if the trip doesn't exist
 	 */
-	void addNewRide(String name, String date) throws NotLoggedInException, CantRideHimselfException, DateOccupiedException, UserNotExistException, InvalidDateException, TripNotExistsException;
+	void addNewRide(String name, String date) throws NotLoggedInException, CantRideSelfException, DateOccupiedException, NonExistentUserException, InvalidDateException, NonExistentTripException;
 	
 }

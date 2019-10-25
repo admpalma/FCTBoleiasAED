@@ -1,7 +1,8 @@
-package fctBoleias;
+package fctBoleias.user;
 
 import basicDate.BasicDate;
 import dataStructures.SortedMap;
+import fctBoleias.trip.Trip;
 
 public class UserClass implements User {
 	

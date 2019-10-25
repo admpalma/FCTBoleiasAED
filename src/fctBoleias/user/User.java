@@ -1,4 +1,4 @@
-package fctBoleias;
+package fctBoleias.user;
 
 public interface User {
 

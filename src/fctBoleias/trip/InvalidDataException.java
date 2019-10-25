@@ -1,5 +1,9 @@
-package fctBoleias;
+package fctBoleias.trip;
 
+/**
+ * An {@link InvalidDataException} is thrown when there is 
+ * an attempt to create a new {@link Trip} using invalid data
+ */
 public class InvalidDataException extends Exception {
 
 	/**
