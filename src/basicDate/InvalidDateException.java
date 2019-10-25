@@ -2,7 +2,7 @@ package basicDate;
 
 /**
  * An {@link InvalidDateException} is thrown when there is
- * an attempt to create a new {@link BasicDate} using impossible
+ * an attempt to create a new {@link BasicDateTime} using impossible
  * specifications (e.g.: 00-01-2010)
  */
 public class InvalidDateException extends Exception {
