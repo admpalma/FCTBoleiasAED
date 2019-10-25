@@ -83,7 +83,6 @@ public class Main {
 
 		/**
 		 * Converts the user's input into a {@link Commands command}
-		 *
 		 * @param in - {@link Scanner} containing the user's input
 		 * @return the matching {@link Command command} to the user's input,
 		 * {@link Commands.UNKNOWN} in case there's no other valid match
@@ -226,11 +225,10 @@ public class Main {
 	// NOT LOGGED IN METHODS
 
 	/**
-	 * Command interpreter when no user is logged in
-	 * TODO
-	 * @param manager - manager object
-	 * @param in      - scanner to get user input
-	 * @param loggedOutCommand
+	 * Command interpreter for "no user logged in" context
+	 * @param manager {@link Manager} containing the most relevant data of the program
+	 * @param in {@link Scanner} that might contain adicional user input
+	 * @param loggedOutCommand the {@link LoggedOutCommands LoggedOutCommand} to be run
 	 */
 	private static void loggedOutCommandInterpreter(Manager manager, Scanner in, LoggedOutCommands loggedOutCommand) {
 		switch (loggedOutCommand) {
@@ -249,7 +247,7 @@ public class Main {
 
 	/**
 	 * Prints the help messages associated with a {@link User} not being logged in
-	 * @param manager TODO
+	 * @param manager {@link Manager} containing the most relevant data of the program
 	 */
 	private static void loggedOutHelp(Manager manager) {
 		assert(!manager.isLoggedIn());
@@ -261,7 +259,7 @@ public class Main {
 	/**
 	 * Prints the ending of program message
 	 * (should only run when there's no {@link User} logged in)
-	 * @param manager TODO
+	 * @param manager {@link Manager} containing the most relevant data of the program
 	 */
 	private static void processEnd(Manager manager) {
 		assert(!manager.isLoggedIn());
@@ -288,12 +286,10 @@ public class Main {
 	}
 
 	/**
-	 * Command interpreter when there's a user logged in
-	 * TODO
-	 * @param manager - manager object
-	 * @param in      - scanner to get user input
-	 * @param loggedInCommand
-	 *
+	 * Command interpreter for "user logged in" context
+	 * @param manager {@link Manager} containing the most relevant data of the program
+	 * @param in {@link Scanner} that might contain adicional user input
+	 * @param loggedInCommand the {@link LoggedInCommands LoggedInCommand} to be run
 	 */
 	private static void loggedInCommandInterpreter(Manager manager, Scanner in, LoggedInCommands loggedInCommand) {
 		switch (loggedInCommand) {
@@ -322,7 +318,7 @@ public class Main {
 
 	/**
 	 * Prints the help messages associated with a {@link User} being logged in
-	 * @param manager TODO
+	 * @param manager {@link Manager} containing the most relevant data of the program
 	 */
 	private static void loggedInHelp(Manager manager) {
 		assert(manager.isLoggedIn());
@@ -333,7 +329,7 @@ public class Main {
 
 	/**
 	 * TODO
-	 * @param manager
+	 * @param manager {@link Manager} containing the most relevant data of the program
 	 * @param in
 	 */
 	private static void remove(Manager manager, Scanner in) {
@@ -349,7 +345,7 @@ public class Main {
 
 	/**
 	 * TODO
-	 * @param manager
+	 * @param manager {@link Manager} containing the most relevant data of the program
 	 * @param in
 	 */
 	private static void takeRide(Manager manager, Scanner in) {
@@ -374,8 +370,8 @@ public class Main {
 	/**
 	 * Registers a new trip on current {@link User}
 	 * TODO
-	 * @param manager - manager class
-	 * @param in      - Scanner
+	 * @param manager {@link Manager} containing the most relevant data of the program
+	 * @param in
 	 */
 	private static void addTrip(Manager manager, Scanner in) {
 		String origin = in.nextLine();
