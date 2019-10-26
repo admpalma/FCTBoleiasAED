@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-import basicDate.InvalidDateException;
+import basicDateTime.InvalidDateException;
 import fctBoleias.DateOccupiedException;
 import fctBoleias.InvalidPasswordFormatException;
 import fctBoleias.Manager;

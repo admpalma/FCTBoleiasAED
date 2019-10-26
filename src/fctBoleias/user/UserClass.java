@@ -1,6 +1,6 @@
 package fctBoleias.user;
 
-import basicDate.BasicDate;
+import basicDateTime.BasicDateTime;
 import dataStructures.SortedMap;
 import fctBoleias.trip.Trip;
 
@@ -12,8 +12,8 @@ public class UserClass implements User {
 		private String password;
 		//private Map<LocalDateTime, List<Trip>> tripsByDate; // User's trips by date
 		private int nVisits;
-		private SortedMap<BasicDate, Trip> rides; // BOLEIAS EM QUE PARTICIPA MAS ¬OWNER
-		private SortedMap<BasicDate, Trip> trips; // USER'S (this) TRIPS
+		private SortedMap<BasicDateTime, Trip> rides; // BOLEIAS EM QUE PARTICIPA MAS ¬OWNER
+		private SortedMap<BasicDateTime, Trip> trips; // USER'S (this) TRIPS
 		
 		/**
 		 * User object constructor

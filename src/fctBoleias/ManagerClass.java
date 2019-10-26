@@ -1,7 +1,7 @@
 package fctBoleias;
 
-import basicDate.BasicDate;
-import basicDate.InvalidDateException;
+import basicDateTime.BasicDateTime;
+import basicDateTime.InvalidDateException;
 import dataStructures.List;
 import dataStructures.Map;
 import dataStructures.SepChainHashTable;
@@ -22,7 +22,7 @@ public class ManagerClass implements Manager {
 	
 	private User currentUser;
 	private Map<String, User> usersByEmail; // Key: user email
-	private SortedMap<BasicDate, SortedMap<String, Trip>> ridesByDate; // Rides by date
+	private SortedMap<BasicDateTime, SortedMap<String, Trip>> ridesByDate; // Rides by date
 	private List<Trip> allTrips;
 
 	public ManagerClass() {
