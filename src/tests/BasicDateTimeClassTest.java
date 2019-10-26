@@ -11,16 +11,32 @@ import basicDateTime.InvalidDateException;
 class BasicDateTimeClassTest {
 
 	private BasicDateTimeClass[] dates;
+	
+	private String[] datesInit = {
+		"01-01-2010 12:00",
+		"01-01-2010 12:02",
+		"01-01-2010 13:00",
+		"02-01-2010 12:00",
+		"01-02-2010 12:00",
+		"01-01-2012 12:00"};
+	
+	private String[] invalidDatesInit = {
+		"01-01-0000 12:00",
+		"01-00-2010 12:00",
+		"01-13-2010 12:00",
+		"00-01-2010 12:00",
+		"30-02-2010 12:00",
+		"31-04-2010 12:00",
+		"32-01-2010 12:00",
+		"01-01-2010 24:00",
+		"01-01-2010 12:60"};
 
 	@BeforeEach
 	void setUp() throws Exception {
 		dates = new BasicDateTimeClass[6];
-		dates[0] = new BasicDateTimeClass("01-01-2010 12:00");
-		dates[1] = new BasicDateTimeClass("01-01-2010 12:02");
-		dates[2] = new BasicDateTimeClass("01-01-2010 13:00");
-		dates[3] = new BasicDateTimeClass("02-01-2010 12:00");
-		dates[4] = new BasicDateTimeClass("01-02-2010 12:00");
-		dates[5] = new BasicDateTimeClass("01-01-2012 12:00");
+		for (int i = 0; i < datesInit.length; i++) {
+			dates[i] = new BasicDateTimeClass(datesInit[i]);
+		}
 	}
 
 	@Test
@@ -30,15 +46,10 @@ class BasicDateTimeClassTest {
 		assertEquals(1, dates[0].getDay());
 		assertEquals(12, dates[0].getHour());
 		assertEquals(0, dates[0].getMinutes());
-		assertThrows(InvalidDateException.class, () -> new BasicDateTimeClass("01-01-0 12:00"));
-		assertThrows(InvalidDateException.class, () -> new BasicDateTimeClass("01-00-2010 12:00"));
-		assertThrows(InvalidDateException.class, () -> new BasicDateTimeClass("01-13-2010 12:00"));
-		assertThrows(InvalidDateException.class, () -> new BasicDateTimeClass("00-01-2010 12:00"));
-		assertThrows(InvalidDateException.class, () -> new BasicDateTimeClass("30-02-2010 12:00"));
-		assertThrows(InvalidDateException.class, () -> new BasicDateTimeClass("31-04-2010 12:00"));
-		assertThrows(InvalidDateException.class, () -> new BasicDateTimeClass("32-01-2010 12:00"));
-		assertThrows(InvalidDateException.class, () -> new BasicDateTimeClass("01-01-2010 24:00"));
-		assertThrows(InvalidDateException.class, () -> new BasicDateTimeClass("01-01-2010 12:60"));
+		for (int i = 0; i < invalidDatesInit.length; i++) {
+			int index = i;
+			assertThrows(InvalidDateException.class, () -> new BasicDateTimeClass(invalidDatesInit[index]));
+		}
 	}
 
 	@Test
@@ -103,7 +114,9 @@ class BasicDateTimeClassTest {
 	
 	@Test
 	void testToString() {
-		fail("Not yet implemented");
+		for (int i = 0; i < dates.length; i++) {
+			assertEquals(datesInit[i], dates[i].toString());
+		}
 	}
 
 }

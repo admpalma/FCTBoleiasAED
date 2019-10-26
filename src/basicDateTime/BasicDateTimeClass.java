@@ -13,6 +13,8 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private static final String DATE_TOSTRING_FORMAT = "%s-%s-%s %s:%s";
+
 	/**
 	 * {@link BasicDateTimeClass#rawDate rawDate's} array length
 	 */
@@ -33,7 +35,7 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 		String[] date = dateAndTime[0].split("-");
 		String[] time = dateAndTime[1].split(":");
 		rawDate = new short[NUM_FIELDS];
-		
+
 		int j = date.length - 1;
 		for (int i = 0; i < date.length; i++) {
 			rawDate[j] = Short.parseShort(date[i].trim());
@@ -84,11 +86,13 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 
 	@Override
 	public int getHour() {
+		assert(isValid());
 		return rawDate[3];
 	}
 
 	@Override
 	public int getMinutes() {
+		assert(isValid());
 		return rawDate[4];
 	}
 
@@ -130,6 +134,7 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 	 * @return this {@link BasicDateTimeClass} {@link BasicDateTimeClass#rawDate rawDate}
 	 */
 	public short[] getRawDate() {
+		assert(isValid());
 		return rawDate;
 	}
 
@@ -146,6 +151,19 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 		} else {
 			return genericCompare(date);
 		}
+	}
+
+	@Override
+	public String toString() {
+		assert(isValid());
+		String[] processedDate = new String[NUM_FIELDS];
+		for (int i = 0; i < processedDate.length; i++) {
+			processedDate[i] = Short.toString(rawDate[i]);
+			if (processedDate[i].length() == 1) {
+				processedDate[i] = "0".concat(processedDate[i]);
+			}
+		}
+		return String.format(DATE_TOSTRING_FORMAT, processedDate[2], processedDate[1], processedDate[0], processedDate[3], processedDate[4]);
 	}
 
 	/**
