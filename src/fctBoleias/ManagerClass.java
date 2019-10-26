@@ -78,7 +78,7 @@ public class ManagerClass implements Manager {
 	}
 
 	@Override
-	public int registerUser(String email, String name, String password) throws InvalidPasswordFormatException {
+	public int registerUser(String email, String name, String password) throws InvalidPasswordFormatException, IllegalArgumentException {
 		if (!password.matches(PASSWORD_FORMAT)) {
 			throw new InvalidPasswordFormatException();
 		}

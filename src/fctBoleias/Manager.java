@@ -73,7 +73,8 @@ public interface Manager {
 	 * @param password new {@link User User's} password
 	 * @return the number of this registration
 	 * @throws InvalidPasswordFormatException if the password's format is wrong
+	 * @throws IllegalArgumentException if there is already a {@link User} registered with the given <code>email</code>
 	 */
-	int registerUser(String email, String name, String password) throws InvalidPasswordFormatException;
+	int registerUser(String email, String name, String password) throws InvalidPasswordFormatException, IllegalArgumentException;
 	
 }
