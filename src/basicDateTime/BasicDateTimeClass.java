@@ -1,11 +1,10 @@
-package basicDate;
+package basicDateTime;
 
 import java.io.Serializable;
 import java.util.Arrays;
 
 /**
- * Class that creates objects used to store dates and manipulate dates
- *
+ * An implementation of {@link BasicDateTime} using a <code>short[]</code>
  */
 public class BasicDateTimeClass implements BasicDateTime, Serializable {
 
@@ -14,17 +13,20 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	// Constant containing the rawDate's array initial length
+	/**
+	 * {@link BasicDateTimeClass#rawDate rawDate's} array length
+	 */
 	private static final int NUM_FIELDS = 5;
 
-	// Array that is going to store the date's elements (day, month and year)
+	/**
+	 * Array storing the date and time's elements <code>(year, month, day, hour and minutes)</code>
+	 */
 	private short[] rawDate;
 
 	/**
-	 * Builds a new raw date object.
-	 * @param date - a string of the form N1-N2-N3,
-	 * where N1,N2,N3 are positive numbers representable as integers.
-	 * @throws InvalidDateException 
+	 * Converts a {@link String} into a {@link BasicDateTimeClass}
+	 * @param date a {@link String} with the format <code>"dd-mm-yyyy hh:mm"</code>
+	 * @throws InvalidDateException if <code>date</code> contains impossible values
 	 */
 	public BasicDateTimeClass(String dateTime) throws InvalidDateException {
 		String[] dateAndTime = dateTime.split(" ");
@@ -38,40 +40,32 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 			j--;
 		}
 		for (int i = 0; i < time.length; i++) {
-			rawDate[i + date.length] = Short.parseShort(date[i].trim());
+			rawDate[i + date.length] = Short.parseShort(time[i].trim());
 		}
-
 		if (!isValid()) {
 			throw new InvalidDateException();
 		}
-
 	}
 
 	/**
 	 * @return: boolean true if the date is valid, false otherwise
 	 * doesn't user getMonth() or getDay() since they have isValid() as @pre
 	 */
-	public boolean isValid() {
-		int year = rawDate[2];
+	private boolean isValid() {
+		int year = rawDate[0];
 		int month = rawDate[1];
-		int day = rawDate[0];
+		int day = rawDate[2];
 		int hour = rawDate[3];
 		int minutes = rawDate[4];
 
-		return  day > 0 && month > 0 && year > 0 &&
-				day <= daysInMonth(month, year) &&
-				month <= 12 && hour > 0 && hour < 24 &&
-				minutes > 0 && minutes < 60;
+		return  year > 0 && month > 0 && month <= 12 &&
+				day > 0 && day <= daysInMonth(month, year) &&
+				hour >= 0 && hour < 24 &&
+				minutes >= 0 && minutes < 60;
 	}
 
 	@Override
 	public int getYear() {
-		assert(isValid());
-		return rawDate[2];
-	}
-
-	@Override
-	public int getDay() {
 		assert(isValid());
 		return rawDate[0];
 	}
@@ -82,12 +76,28 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 		return rawDate[1];
 	}
 
+	@Override
+	public int getDay() {
+		assert(isValid());
+		return rawDate[2];
+	}
+
+	@Override
+	public int getHour() {
+		return rawDate[3];
+	}
+
+	@Override
+	public int getMinutes() {
+		return rawDate[4];
+	}
+
 	/**
 	 * Checks if a year is a leap year (366 days)
 	 * @return boolean true if the year is a leap year and false otherwise
-	 * @pre: year > 0
 	 */
 	private boolean isLeapYear(int year) {
+		assert(year > 0);
 		// if it's not divisible by 4 it's a common year
 		// elif it's not divisible by 100 it's a leap year
 		// elif it's not divisible by 400 it's a common year
@@ -116,22 +126,48 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 		return days;
 	}
 
+	/**
+	 * @return this {@link BasicDateTimeClass} {@link BasicDateTimeClass#rawDate rawDate}
+	 */
 	public short[] getRawDate() {
 		return rawDate;
 	}
 
 	@Override
 	public int compareTo(BasicDateTime date) {
-		int compareResult = 0, i = 0;
 		if (date instanceof BasicDateTimeClass) {
+			int compareResult = 0, testField = 0;
 			short[] rawDate = ((BasicDateTimeClass) date).getRawDate();
-			while (compareResult == 0) {
-				compareResult = Integer.compare(this.rawDate[i], rawDate[i]);
+			while (compareResult == 0 && testField < NUM_FIELDS) {
+				compareResult = Integer.compare(this.rawDate[testField], rawDate[testField]);
+				testField++;
 			}
 			return compareResult;
 		} else {
 			return genericCompare(date);
 		}
+	}
+
+	/**
+	 * Generic version of {@link BasicDateTimeClass#compareTo(BasicDateTime) compareTo(BasicDateTime)}
+	 * @param date the {@link BasicDateTime} to be compared
+	 * @see {@link BasicDateTimeClass#compareTo(BasicDateTime) compareTo(BasicDateTime)}
+	 */
+	private int genericCompare(BasicDateTime date) {
+		int compareResult = Integer.compare(this.getYear(), date.getYear());
+		if (compareResult == 0) {
+			compareResult = Integer.compare(this.getMonth(), date.getMonth());
+		}
+		if (compareResult == 0) {
+			compareResult = Integer.compare(this.getDay(), date.getDay());
+		}
+		if (compareResult == 0) {
+			compareResult = Integer.compare(this.getHour(), date.getHour());
+		}
+		if (compareResult == 0) {
+			compareResult = Integer.compare(this.getMinutes(), date.getMinutes());
+		}
+		return compareResult;
 	}
 
 	@Override
@@ -154,33 +190,6 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 		if (!Arrays.equals(rawDate, other.rawDate))
 			return false;
 		return true;
-	}
-
-	private int genericCompare(BasicDateTime date) {
-		int compareResult = Integer.compare(this.getYear(), date.getYear());
-		if (compareResult == 0) {
-			compareResult = Integer.compare(this.getMonth(), date.getMonth());
-		}
-		if (compareResult == 0) {
-			compareResult = Integer.compare(this.getDay(), date.getDay());
-		}
-		if (compareResult == 0) {
-			compareResult = Integer.compare(this.getHour(), date.getHour());
-		}
-		if (compareResult == 0) {
-			compareResult = Integer.compare(this.getMinutes(), date.getMinutes());
-		}
-		return compareResult;
-	}
-
-	@Override
-	public int getHour() {
-		return rawDate[3];
-	}
-
-	@Override
-	public int getMinutes() {
-		return rawDate[4];
 	}
 
 }

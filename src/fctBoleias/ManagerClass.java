@@ -1,7 +1,7 @@
 package fctBoleias;
 
-import basicDate.BasicDateTime;
-import basicDate.InvalidDateException;
+import basicDateTime.BasicDateTime;
+import basicDateTime.InvalidDateException;
 import dataStructures.List;
 import dataStructures.Map;
 import dataStructures.SepChainHashTable;

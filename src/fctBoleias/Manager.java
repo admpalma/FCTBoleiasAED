@@ -1,6 +1,6 @@
 package fctBoleias;
 
-import basicDate.InvalidDateException;
+import basicDateTime.InvalidDateException;
 import fctBoleias.trip.CantRideSelfException;
 import fctBoleias.trip.InvalidDataException;
 import fctBoleias.trip.TripHasRidesException;

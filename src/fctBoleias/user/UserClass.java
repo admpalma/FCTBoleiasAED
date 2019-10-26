@@ -1,6 +1,6 @@
 package fctBoleias.user;
 
-import basicDate.BasicDateTime;
+import basicDateTime.BasicDateTime;
 import dataStructures.SortedMap;
 import fctBoleias.trip.Trip;
 
