@@ -6,11 +6,6 @@ public class MapWithSinglyLinkedList<K, V> extends SinglyLinkedList<Entry<K, V>>
 		super();
 	}
 
-	/*
-	 * @Override public boolean isEmpty() { return list.isEmpty(); }
-	 * 
-	 * @Override public int size() { return list.size(); }
-	 */
 	@Override
 	public Iterator<K> keys() throws NoElementException {
 		Iterator<Entry<K, V>> iter = this.iterator();
@@ -79,19 +74,24 @@ public class MapWithSinglyLinkedList<K, V> extends SinglyLinkedList<Entry<K, V>>
 	public V remove(K key) {
 
 		SListNode<Entry<K, V>> previous = head;
-		SListNode<Entry<K, V>> e = previous.getNext();
+		SListNode<Entry<K, V>> current;
+		try {
+			current = previous.getNext();
+		} catch(NullPointerException e) {
+			return null;
+		}
 
 		if (previous.getElement().getKey().equals(key)) {
 			return previous.getElement().getValue();
 		}
 
-		while (e != null) {
-			if (e.getElement().getKey().equals(key)) {
-				previous.setNext(e.getNext());
-				return e.getElement().getValue();
+		while (current != null) {
+			if (current.getElement().getKey().equals(key)) {
+				previous.setNext(current.getNext());
+				return current.getElement().getValue();
 			}
-			previous = e;
-			e = e.getNext();
+			previous = current;
+			current = current.getNext();
 		}
 		return null;
 	}
