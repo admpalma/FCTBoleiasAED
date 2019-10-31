@@ -40,13 +40,13 @@ public class MapWithSinglyLinkedList<K, V> extends SinglyLinkedList<Entry<K, V>>
 
 		return l.iterator();
 	}
-	
+
 	@Override
 	public int find(Entry<K, V> element) {
-		// TODO Auto-generated method stub
 		return super.find(element);
 	}
-	
+
+	// @Override
 	public V find(K key) {
 		Iterator<Entry<K, V>> it = list.iterator();
 		while (it.hasNext()) {
