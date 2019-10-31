@@ -2,10 +2,8 @@ package dataStructures;
 
 public class MapWithSinglyLinkedList<K, V> extends SinglyLinkedList<Entry<K, V>> implements Map<K, V> {
 
-	private List<Entry<K, V>> list;
-
 	public MapWithSinglyLinkedList() {
-		this.list = new SinglyLinkedList<Entry<K, V>>();
+		super();
 	}
 
 	/*
@@ -15,7 +13,7 @@ public class MapWithSinglyLinkedList<K, V> extends SinglyLinkedList<Entry<K, V>>
 	 */
 	@Override
 	public Iterator<K> keys() throws NoElementException {
-		Iterator<Entry<K, V>> iter = list.iterator();
+		Iterator<Entry<K, V>> iter = this.iterator();
 
 		List<K> l = new SinglyLinkedList<K>();
 
@@ -29,7 +27,7 @@ public class MapWithSinglyLinkedList<K, V> extends SinglyLinkedList<Entry<K, V>>
 
 	@Override
 	public Iterator<V> values() throws NoElementException {
-		Iterator<Entry<K, V>> iter = list.iterator();
+		Iterator<Entry<K, V>> iter = this.iterator();
 
 		List<V> l = new SinglyLinkedList<V>();
 
@@ -48,7 +46,7 @@ public class MapWithSinglyLinkedList<K, V> extends SinglyLinkedList<Entry<K, V>>
 
 	// @Override
 	public V find(K key) {
-		Iterator<Entry<K, V>> it = list.iterator();
+		Iterator<Entry<K, V>> it = this.iterator();
 		while (it.hasNext()) {
 			Entry<K, V> entry = (Entry<K, V>) it.next();
 			if (entry.getKey().equals(key)) {
@@ -96,11 +94,6 @@ public class MapWithSinglyLinkedList<K, V> extends SinglyLinkedList<Entry<K, V>>
 			e = e.getNext();
 		}
 		return null;
-	}
-
-	@Override
-	public Iterator<Entry<K, V>> iterator() throws NoElementException {
-		return list.iterator();
 	}
 
 }
