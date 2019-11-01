@@ -2,20 +2,13 @@ package dataStructures;
 
 public class MapWithSinglyLinkedList<K, V> extends SinglyLinkedList<Entry<K, V>> implements Map<K, V> {
 
-	private List<Entry<K, V>> list;
-
 	public MapWithSinglyLinkedList() {
-		this.list = new SinglyLinkedList<Entry<K, V>>();
+		super();
 	}
 
-	/*
-	 * @Override public boolean isEmpty() { return list.isEmpty(); }
-	 * 
-	 * @Override public int size() { return list.size(); }
-	 */
 	@Override
 	public Iterator<K> keys() throws NoElementException {
-		Iterator<Entry<K, V>> iter = list.iterator();
+		Iterator<Entry<K, V>> iter = this.iterator();
 
 		List<K> l = new SinglyLinkedList<K>();
 
@@ -29,7 +22,7 @@ public class MapWithSinglyLinkedList<K, V> extends SinglyLinkedList<Entry<K, V>>
 
 	@Override
 	public Iterator<V> values() throws NoElementException {
-		Iterator<Entry<K, V>> iter = list.iterator();
+		Iterator<Entry<K, V>> iter = this.iterator();
 
 		List<V> l = new SinglyLinkedList<V>();
 
@@ -40,15 +33,15 @@ public class MapWithSinglyLinkedList<K, V> extends SinglyLinkedList<Entry<K, V>>
 
 		return l.iterator();
 	}
-	
+
 	@Override
 	public int find(Entry<K, V> element) {
-		// TODO Auto-generated method stub
 		return super.find(element);
 	}
-	
+
+	// @Override
 	public V find(K key) {
-		Iterator<Entry<K, V>> it = list.iterator();
+		Iterator<Entry<K, V>> it = this.iterator();
 		while (it.hasNext()) {
 			Entry<K, V> entry = (Entry<K, V>) it.next();
 			if (entry.getKey().equals(key)) {
@@ -81,26 +74,26 @@ public class MapWithSinglyLinkedList<K, V> extends SinglyLinkedList<Entry<K, V>>
 	public V remove(K key) {
 
 		SListNode<Entry<K, V>> previous = head;
-		SListNode<Entry<K, V>> e = previous.getNext();
+		SListNode<Entry<K, V>> current;
+		try {
+			current = previous.getNext();
+		} catch(NullPointerException e) {
+			return null;
+		}
 
 		if (previous.getElement().getKey().equals(key)) {
 			return previous.getElement().getValue();
 		}
 
-		while (e != null) {
-			if (e.getElement().getKey().equals(key)) {
-				previous.setNext(e.getNext());
-				return e.getElement().getValue();
+		while (current != null) {
+			if (current.getElement().getKey().equals(key)) {
+				previous.setNext(current.getNext());
+				return current.getElement().getValue();
 			}
-			previous = e;
-			e = e.getNext();
+			previous = current;
+			current = current.getNext();
 		}
 		return null;
-	}
-
-	@Override
-	public Iterator<Entry<K, V>> iterator() throws NoElementException {
-		return list.iterator();
 	}
 
 }
