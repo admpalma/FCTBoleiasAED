@@ -32,7 +32,7 @@ public interface Manager {
 	 * Gives the currently logged in {@link User}'s name
 	 * @return {@link User User's} name or <code>null</code> if there's no {@link User} logged in
 	 */
-	String getCurrentUserName() throws NotLoggedInException;
+	String getCurrentUserName();
 
 	/**
 	 * Removes a ride

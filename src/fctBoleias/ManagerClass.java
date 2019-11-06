@@ -45,12 +45,12 @@ public class ManagerClass implements Manager {
 	}
 
 	@Override
-	public String getCurrentUserName() throws NotLoggedInException {
-		if (currentUser == null) {
-			throw new NotLoggedInException();
+	public String getCurrentUserName() {
+		try {
+			return currentUser.getName();
+		} catch (NullPointerException e) {
+			return null;
 		}
-		// TODO
-		return currentUser.getName();
 	}
 
 	@Override
@@ -94,6 +94,15 @@ public class ManagerClass implements Manager {
 		String currentUserName = getCurrentUserName();
 		currentUser = null;
 		return currentUserName;
+	}
+
+	@Override
+	public String getCurrentUserEmail() {
+		try {
+			return currentUser.getEmail();
+		} catch (NullPointerException e) {
+			return null;
+		}
 	}
 
 }

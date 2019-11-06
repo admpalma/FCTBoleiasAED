@@ -427,12 +427,7 @@ public class Main {
 				| InvalidDateException | NonExistentTripException e) {
 			System.out.println(e.getMessage());
 		} catch (CantRideSelfException | DateOccupiedException e) {
-			try {
-				System.out.printf(e.getMessage(), manager.getCurrentUserName());
-			} catch (NotLoggedInException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			System.out.printf(e.getMessage(), manager.getCurrentUserName());
 		}
 	}
 
@@ -455,12 +450,7 @@ public class Main {
 		} catch (NotLoggedInException | InvalidDataException e) {
 			System.out.println(e.getMessage());
 		} catch (DateOccupiedException e) {
-			try {
-				System.out.printf(e.getMessage(), manager.getCurrentUserName());
-			} catch (NotLoggedInException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			System.out.printf(e.getMessage(), manager.getCurrentUserName());
 		}
 	}
 
