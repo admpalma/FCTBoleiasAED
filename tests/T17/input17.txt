@@ -1,0 +1,38 @@
+entrada emailUtC
+passC0
+nova
+lisboa
+madrid
+20-12-2018 10:20 200 1
+sai
+entrada emailUt10
+pass10
+boleia emailUtC 20-12-2018
+lista bOLeias
+sai
+entrada emailUt9
+pass9
+boleia emailUtC 20-12-2018
+lista boleias
+nova
+a
+b
+20-12-2018 10:30 20 4
+lista minhas
+sai
+entrada emailUt10
+pass10
+retira 20-12-2018
+sai
+entrada emailUt9
+pass9
+lista boleias
+lista minhas
+sai
+regista aa
+nome com mais letras
+aed123
+entrada aa
+aed123
+sai
+termina

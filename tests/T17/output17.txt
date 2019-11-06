@@ -1,0 +1,489 @@
+> password: Visita 6 efetuada.
+emailUtC > Deslocacao 1 registada. Obrigado NomeC.
+emailUtC > Ate a proxima NomeC.
+> password: Visita 5 efetuada.
+emailUt10 > Boleia registada.
+emailUt10 > emailUtC
+lisboa-madrid
+20-12-2018 10:20 200
+
+emailUt63
+origem63-destino63
+3-1-2020 10:0 60
+
+emailUt64
+origem64-destino64
+4-1-2020 10:0 60
+
+emailUt65
+origem65-destino65
+5-1-2020 10:0 60
+
+emailUt66
+origem66-destino66
+6-1-2020 10:0 60
+
+emailUt67
+origem67-destino67
+7-1-2020 10:0 60
+
+emailUt10 > Ate a proxima Nome10.
+> password: Visita 5 efetuada.
+emailUt9 > Ficou na fila de espera (posicao 1).
+emailUt9 > emailUt62
+origem62-destino62
+2-1-2020 10:0 60
+
+emailUt63
+origem63-destino63
+3-1-2020 10:0 60
+
+emailUt64
+origem64-destino64
+4-1-2020 10:0 60
+
+emailUt65
+origem65-destino65
+5-1-2020 10:0 60
+
+emailUt66
+origem66-destino66
+6-1-2020 10:0 60
+
+emailUt9 > Deslocacao 29 registada. Obrigado Nome9.
+emailUt9 > emailUt9
+a-b
+20-12-2018 10:30 20
+Lugares vagos: 4
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+2-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+3-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+4-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+5-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+6-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+7-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+8-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+9-1-2019 10:0 60
+Lugares vagos: 0
+Boleias: emailUt51; emailUt52; emailUt53; emailUt54; emailUt55
+Em espera: 2
+
+emailUt9
+origem9-destino9
+10-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+11-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+12-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+13-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+14-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+15-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+16-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+17-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+18-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+19-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+20-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+21-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+22-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+23-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+24-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+25-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+26-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+27-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+28-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+29-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9 > Ate a proxima Nome9.
+> password: Visita 6 efetuada.
+emailUt10 > Nome10 boleia retirada.
+emailUt10 > Ate a proxima Nome10.
+> password: Visita 6 efetuada.
+emailUt9 > emailUt62
+origem62-destino62
+2-1-2020 10:0 60
+
+emailUt63
+origem63-destino63
+3-1-2020 10:0 60
+
+emailUt64
+origem64-destino64
+4-1-2020 10:0 60
+
+emailUt65
+origem65-destino65
+5-1-2020 10:0 60
+
+emailUt66
+origem66-destino66
+6-1-2020 10:0 60
+
+emailUt9 > emailUt9
+a-b
+20-12-2018 10:30 20
+Lugares vagos: 4
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+2-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+3-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+4-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+5-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+6-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+7-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+8-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+9-1-2019 10:0 60
+Lugares vagos: 0
+Boleias: emailUt51; emailUt52; emailUt53; emailUt54; emailUt55
+Em espera: 2
+
+emailUt9
+origem9-destino9
+10-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+11-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+12-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+13-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+14-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+15-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+16-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+17-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+18-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+19-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+20-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+21-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+22-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+23-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+24-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+25-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+26-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+27-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+28-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9
+origem9-destino9
+29-1-2019 10:0 60
+Lugares vagos: 5
+Sem boleias registadas.
+Em espera: 0
+
+emailUt9 > Ate a proxima Nome9.
+> nome (maximo 50 caracteres): password (entre 4 e 6 caracteres - digitos e letras): Registo 105 efetuado.
+> password: Visita 1 efetuada.
+aa > Ate a proxima nome com mais letras.
+> Obrigado. Ate a proxima.

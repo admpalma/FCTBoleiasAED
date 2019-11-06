@@ -1,0 +1,1548 @@
+entrada emailUt77
+pass77
+nova
+origem77
+destino77
+1-1-2020 10:00 60 5
+nova
+origem77
+destino77
+2-1-2020 10:00 60 5
+nova
+origem77
+destino77
+3-1-2020 10:00 60 5
+nova
+origem77
+destino77
+4-1-2020 10:00 60 5
+nova
+origem77
+destino77
+5-1-2020 10:00 60 5
+nova
+origem77
+destino77
+6-1-2020 10:00 60 5
+nova
+origem77
+destino77
+7-1-2020 10:00 60 5
+nova
+origem77
+destino77
+8-1-2020 10:00 60 5
+nova
+origem77
+destino77
+9-1-2020 10:00 60 5
+nova
+origem77
+destino77
+10-1-2020 10:00 60 5
+nova
+origem77
+destino77
+11-1-2020 10:00 60 5
+nova
+origem77
+destino77
+12-1-2020 10:00 60 5
+nova
+origem77
+destino77
+13-1-2020 10:00 60 5
+nova
+origem77
+destino77
+14-1-2020 10:00 60 5
+nova
+origem77
+destino77
+15-1-2020 10:00 60 5
+nova
+origem77
+destino77
+16-1-2020 10:00 60 5
+nova
+origem77
+destino77
+17-1-2020 10:00 60 5
+nova
+origem77
+destino77
+18-1-2020 10:00 60 5
+nova
+origem77
+destino77
+19-1-2020 10:00 60 5
+nova
+origem77
+destino77
+20-1-2020 10:00 60 5
+nova
+origem77
+destino77
+21-1-2020 10:00 60 5
+nova
+origem77
+destino77
+22-1-2020 10:00 60 5
+nova
+origem77
+destino77
+23-1-2020 10:00 60 5
+nova
+origem77
+destino77
+24-1-2020 10:00 60 5
+nova
+origem77
+destino77
+25-1-2020 10:00 60 5
+nova
+origem77
+destino77
+26-1-2020 10:00 60 5
+nova
+origem77
+destino77
+27-1-2020 10:00 60 5
+nova
+origem77
+destino77
+28-1-2020 10:00 60 5
+nova
+origem77
+destino77
+29-1-2020 10:00 60 5
+sai
+entrada emailUt78
+pass78
+nova
+origem78
+destino78
+1-1-2020 10:00 60 5
+nova
+origem78
+destino78
+2-1-2020 10:00 60 5
+nova
+origem78
+destino78
+3-1-2020 10:00 60 5
+nova
+origem78
+destino78
+4-1-2020 10:00 60 5
+nova
+origem78
+destino78
+5-1-2020 10:00 60 5
+nova
+origem78
+destino78
+6-1-2020 10:00 60 5
+nova
+origem78
+destino78
+7-1-2020 10:00 60 5
+nova
+origem78
+destino78
+8-1-2020 10:00 60 5
+nova
+origem78
+destino78
+9-1-2020 10:00 60 5
+nova
+origem78
+destino78
+10-1-2020 10:00 60 5
+nova
+origem78
+destino78
+11-1-2020 10:00 60 5
+nova
+origem78
+destino78
+12-1-2020 10:00 60 5
+nova
+origem78
+destino78
+13-1-2020 10:00 60 5
+nova
+origem78
+destino78
+14-1-2020 10:00 60 5
+nova
+origem78
+destino78
+15-1-2020 10:00 60 5
+nova
+origem78
+destino78
+16-1-2020 10:00 60 5
+nova
+origem78
+destino78
+17-1-2020 10:00 60 5
+nova
+origem78
+destino78
+18-1-2020 10:00 60 5
+nova
+origem78
+destino78
+19-1-2020 10:00 60 5
+nova
+origem78
+destino78
+20-1-2020 10:00 60 5
+nova
+origem78
+destino78
+21-1-2020 10:00 60 5
+nova
+origem78
+destino78
+22-1-2020 10:00 60 5
+nova
+origem78
+destino78
+23-1-2020 10:00 60 5
+nova
+origem78
+destino78
+24-1-2020 10:00 60 5
+nova
+origem78
+destino78
+25-1-2020 10:00 60 5
+nova
+origem78
+destino78
+26-1-2020 10:00 60 5
+nova
+origem78
+destino78
+27-1-2020 10:00 60 5
+nova
+origem78
+destino78
+28-1-2020 10:00 60 5
+nova
+origem78
+destino78
+29-1-2020 10:00 60 5
+sai
+entrada emailUt79
+pass79
+nova
+origem79
+destino79
+1-1-2020 10:00 60 5
+nova
+origem79
+destino79
+2-1-2020 10:00 60 5
+nova
+origem79
+destino79
+3-1-2020 10:00 60 5
+nova
+origem79
+destino79
+4-1-2020 10:00 60 5
+nova
+origem79
+destino79
+5-1-2020 10:00 60 5
+nova
+origem79
+destino79
+6-1-2020 10:00 60 5
+nova
+origem79
+destino79
+7-1-2020 10:00 60 5
+nova
+origem79
+destino79
+8-1-2020 10:00 60 5
+nova
+origem79
+destino79
+9-1-2020 10:00 60 5
+nova
+origem79
+destino79
+10-1-2020 10:00 60 5
+nova
+origem79
+destino79
+11-1-2020 10:00 60 5
+nova
+origem79
+destino79
+12-1-2020 10:00 60 5
+nova
+origem79
+destino79
+13-1-2020 10:00 60 5
+nova
+origem79
+destino79
+14-1-2020 10:00 60 5
+nova
+origem79
+destino79
+15-1-2020 10:00 60 5
+nova
+origem79
+destino79
+16-1-2020 10:00 60 5
+nova
+origem79
+destino79
+17-1-2020 10:00 60 5
+nova
+origem79
+destino79
+18-1-2020 10:00 60 5
+nova
+origem79
+destino79
+19-1-2020 10:00 60 5
+nova
+origem79
+destino79
+20-1-2020 10:00 60 5
+nova
+origem79
+destino79
+21-1-2020 10:00 60 5
+nova
+origem79
+destino79
+22-1-2020 10:00 60 5
+nova
+origem79
+destino79
+23-1-2020 10:00 60 5
+nova
+origem79
+destino79
+24-1-2020 10:00 60 5
+nova
+origem79
+destino79
+25-1-2020 10:00 60 5
+nova
+origem79
+destino79
+26-1-2020 10:00 60 5
+nova
+origem79
+destino79
+27-1-2020 10:00 60 5
+nova
+origem79
+destino79
+28-1-2020 10:00 60 5
+nova
+origem79
+destino79
+29-1-2020 10:00 60 5
+sai
+entrada emailUt80
+pass80
+nova
+origem80
+destino80
+1-1-2020 10:00 60 5
+nova
+origem80
+destino80
+2-1-2020 10:00 60 5
+nova
+origem80
+destino80
+3-1-2020 10:00 60 5
+nova
+origem80
+destino80
+4-1-2020 10:00 60 5
+nova
+origem80
+destino80
+5-1-2020 10:00 60 5
+nova
+origem80
+destino80
+6-1-2020 10:00 60 5
+nova
+origem80
+destino80
+7-1-2020 10:00 60 5
+nova
+origem80
+destino80
+8-1-2020 10:00 60 5
+nova
+origem80
+destino80
+9-1-2020 10:00 60 5
+nova
+origem80
+destino80
+10-1-2020 10:00 60 5
+nova
+origem80
+destino80
+11-1-2020 10:00 60 5
+nova
+origem80
+destino80
+12-1-2020 10:00 60 5
+nova
+origem80
+destino80
+13-1-2020 10:00 60 5
+nova
+origem80
+destino80
+14-1-2020 10:00 60 5
+nova
+origem80
+destino80
+15-1-2020 10:00 60 5
+nova
+origem80
+destino80
+16-1-2020 10:00 60 5
+nova
+origem80
+destino80
+17-1-2020 10:00 60 5
+nova
+origem80
+destino80
+18-1-2020 10:00 60 5
+nova
+origem80
+destino80
+19-1-2020 10:00 60 5
+nova
+origem80
+destino80
+20-1-2020 10:00 60 5
+nova
+origem80
+destino80
+21-1-2020 10:00 60 5
+nova
+origem80
+destino80
+22-1-2020 10:00 60 5
+nova
+origem80
+destino80
+23-1-2020 10:00 60 5
+nova
+origem80
+destino80
+24-1-2020 10:00 60 5
+nova
+origem80
+destino80
+25-1-2020 10:00 60 5
+nova
+origem80
+destino80
+26-1-2020 10:00 60 5
+nova
+origem80
+destino80
+27-1-2020 10:00 60 5
+nova
+origem80
+destino80
+28-1-2020 10:00 60 5
+nova
+origem80
+destino80
+29-1-2020 10:00 60 5
+sai
+entrada emailUt81
+pass81
+nova
+origem81
+destino81
+1-1-2020 10:00 60 5
+nova
+origem81
+destino81
+2-1-2020 10:00 60 5
+nova
+origem81
+destino81
+3-1-2020 10:00 60 5
+nova
+origem81
+destino81
+4-1-2020 10:00 60 5
+nova
+origem81
+destino81
+5-1-2020 10:00 60 5
+nova
+origem81
+destino81
+6-1-2020 10:00 60 5
+nova
+origem81
+destino81
+7-1-2020 10:00 60 5
+nova
+origem81
+destino81
+8-1-2020 10:00 60 5
+nova
+origem81
+destino81
+9-1-2020 10:00 60 5
+nova
+origem81
+destino81
+10-1-2020 10:00 60 5
+nova
+origem81
+destino81
+11-1-2020 10:00 60 5
+nova
+origem81
+destino81
+12-1-2020 10:00 60 5
+nova
+origem81
+destino81
+13-1-2020 10:00 60 5
+nova
+origem81
+destino81
+14-1-2020 10:00 60 5
+nova
+origem81
+destino81
+15-1-2020 10:00 60 5
+nova
+origem81
+destino81
+16-1-2020 10:00 60 5
+nova
+origem81
+destino81
+17-1-2020 10:00 60 5
+nova
+origem81
+destino81
+18-1-2020 10:00 60 5
+nova
+origem81
+destino81
+19-1-2020 10:00 60 5
+nova
+origem81
+destino81
+20-1-2020 10:00 60 5
+nova
+origem81
+destino81
+21-1-2020 10:00 60 5
+nova
+origem81
+destino81
+22-1-2020 10:00 60 5
+nova
+origem81
+destino81
+23-1-2020 10:00 60 5
+nova
+origem81
+destino81
+24-1-2020 10:00 60 5
+nova
+origem81
+destino81
+25-1-2020 10:00 60 5
+nova
+origem81
+destino81
+26-1-2020 10:00 60 5
+nova
+origem81
+destino81
+27-1-2020 10:00 60 5
+nova
+origem81
+destino81
+28-1-2020 10:00 60 5
+nova
+origem81
+destino81
+29-1-2020 10:00 60 5
+sai
+entrada emailUt82
+pass82
+nova
+origem82
+destino82
+1-1-2020 10:00 60 5
+nova
+origem82
+destino82
+2-1-2020 10:00 60 5
+nova
+origem82
+destino82
+3-1-2020 10:00 60 5
+nova
+origem82
+destino82
+4-1-2020 10:00 60 5
+nova
+origem82
+destino82
+5-1-2020 10:00 60 5
+nova
+origem82
+destino82
+6-1-2020 10:00 60 5
+nova
+origem82
+destino82
+7-1-2020 10:00 60 5
+nova
+origem82
+destino82
+8-1-2020 10:00 60 5
+nova
+origem82
+destino82
+9-1-2020 10:00 60 5
+nova
+origem82
+destino82
+10-1-2020 10:00 60 5
+nova
+origem82
+destino82
+11-1-2020 10:00 60 5
+nova
+origem82
+destino82
+12-1-2020 10:00 60 5
+nova
+origem82
+destino82
+13-1-2020 10:00 60 5
+nova
+origem82
+destino82
+14-1-2020 10:00 60 5
+nova
+origem82
+destino82
+15-1-2020 10:00 60 5
+nova
+origem82
+destino82
+16-1-2020 10:00 60 5
+nova
+origem82
+destino82
+17-1-2020 10:00 60 5
+nova
+origem82
+destino82
+18-1-2020 10:00 60 5
+nova
+origem82
+destino82
+19-1-2020 10:00 60 5
+nova
+origem82
+destino82
+20-1-2020 10:00 60 5
+nova
+origem82
+destino82
+21-1-2020 10:00 60 5
+nova
+origem82
+destino82
+22-1-2020 10:00 60 5
+nova
+origem82
+destino82
+23-1-2020 10:00 60 5
+nova
+origem82
+destino82
+24-1-2020 10:00 60 5
+nova
+origem82
+destino82
+25-1-2020 10:00 60 5
+nova
+origem82
+destino82
+26-1-2020 10:00 60 5
+nova
+origem82
+destino82
+27-1-2020 10:00 60 5
+nova
+origem82
+destino82
+28-1-2020 10:00 60 5
+nova
+origem82
+destino82
+29-1-2020 10:00 60 5
+sai
+entrada emailUt83
+pass83
+nova
+origem83
+destino83
+1-1-2020 10:00 60 5
+nova
+origem83
+destino83
+2-1-2020 10:00 60 5
+nova
+origem83
+destino83
+3-1-2020 10:00 60 5
+nova
+origem83
+destino83
+4-1-2020 10:00 60 5
+nova
+origem83
+destino83
+5-1-2020 10:00 60 5
+nova
+origem83
+destino83
+6-1-2020 10:00 60 5
+nova
+origem83
+destino83
+7-1-2020 10:00 60 5
+nova
+origem83
+destino83
+8-1-2020 10:00 60 5
+nova
+origem83
+destino83
+9-1-2020 10:00 60 5
+nova
+origem83
+destino83
+10-1-2020 10:00 60 5
+nova
+origem83
+destino83
+11-1-2020 10:00 60 5
+nova
+origem83
+destino83
+12-1-2020 10:00 60 5
+nova
+origem83
+destino83
+13-1-2020 10:00 60 5
+nova
+origem83
+destino83
+14-1-2020 10:00 60 5
+nova
+origem83
+destino83
+15-1-2020 10:00 60 5
+nova
+origem83
+destino83
+16-1-2020 10:00 60 5
+nova
+origem83
+destino83
+17-1-2020 10:00 60 5
+nova
+origem83
+destino83
+18-1-2020 10:00 60 5
+nova
+origem83
+destino83
+19-1-2020 10:00 60 5
+nova
+origem83
+destino83
+20-1-2020 10:00 60 5
+nova
+origem83
+destino83
+21-1-2020 10:00 60 5
+nova
+origem83
+destino83
+22-1-2020 10:00 60 5
+nova
+origem83
+destino83
+23-1-2020 10:00 60 5
+nova
+origem83
+destino83
+24-1-2020 10:00 60 5
+nova
+origem83
+destino83
+25-1-2020 10:00 60 5
+nova
+origem83
+destino83
+26-1-2020 10:00 60 5
+nova
+origem83
+destino83
+27-1-2020 10:00 60 5
+nova
+origem83
+destino83
+28-1-2020 10:00 60 5
+nova
+origem83
+destino83
+29-1-2020 10:00 60 5
+sai
+entrada emailUt84
+pass84
+nova
+origem84
+destino84
+1-1-2020 10:00 60 5
+nova
+origem84
+destino84
+2-1-2020 10:00 60 5
+nova
+origem84
+destino84
+3-1-2020 10:00 60 5
+nova
+origem84
+destino84
+4-1-2020 10:00 60 5
+nova
+origem84
+destino84
+5-1-2020 10:00 60 5
+nova
+origem84
+destino84
+6-1-2020 10:00 60 5
+nova
+origem84
+destino84
+7-1-2020 10:00 60 5
+nova
+origem84
+destino84
+8-1-2020 10:00 60 5
+nova
+origem84
+destino84
+9-1-2020 10:00 60 5
+nova
+origem84
+destino84
+10-1-2020 10:00 60 5
+nova
+origem84
+destino84
+11-1-2020 10:00 60 5
+nova
+origem84
+destino84
+12-1-2020 10:00 60 5
+nova
+origem84
+destino84
+13-1-2020 10:00 60 5
+nova
+origem84
+destino84
+14-1-2020 10:00 60 5
+nova
+origem84
+destino84
+15-1-2020 10:00 60 5
+nova
+origem84
+destino84
+16-1-2020 10:00 60 5
+nova
+origem84
+destino84
+17-1-2020 10:00 60 5
+nova
+origem84
+destino84
+18-1-2020 10:00 60 5
+nova
+origem84
+destino84
+19-1-2020 10:00 60 5
+nova
+origem84
+destino84
+20-1-2020 10:00 60 5
+nova
+origem84
+destino84
+21-1-2020 10:00 60 5
+nova
+origem84
+destino84
+22-1-2020 10:00 60 5
+nova
+origem84
+destino84
+23-1-2020 10:00 60 5
+nova
+origem84
+destino84
+24-1-2020 10:00 60 5
+nova
+origem84
+destino84
+25-1-2020 10:00 60 5
+nova
+origem84
+destino84
+26-1-2020 10:00 60 5
+nova
+origem84
+destino84
+27-1-2020 10:00 60 5
+nova
+origem84
+destino84
+28-1-2020 10:00 60 5
+nova
+origem84
+destino84
+29-1-2020 10:00 60 5
+sai
+entrada emailUt85
+pass85
+nova
+origem85
+destino85
+1-1-2020 10:00 60 5
+nova
+origem85
+destino85
+2-1-2020 10:00 60 5
+nova
+origem85
+destino85
+3-1-2020 10:00 60 5
+nova
+origem85
+destino85
+4-1-2020 10:00 60 5
+nova
+origem85
+destino85
+5-1-2020 10:00 60 5
+nova
+origem85
+destino85
+6-1-2020 10:00 60 5
+nova
+origem85
+destino85
+7-1-2020 10:00 60 5
+nova
+origem85
+destino85
+8-1-2020 10:00 60 5
+nova
+origem85
+destino85
+9-1-2020 10:00 60 5
+nova
+origem85
+destino85
+10-1-2020 10:00 60 5
+nova
+origem85
+destino85
+11-1-2020 10:00 60 5
+nova
+origem85
+destino85
+12-1-2020 10:00 60 5
+nova
+origem85
+destino85
+13-1-2020 10:00 60 5
+nova
+origem85
+destino85
+14-1-2020 10:00 60 5
+nova
+origem85
+destino85
+15-1-2020 10:00 60 5
+nova
+origem85
+destino85
+16-1-2020 10:00 60 5
+nova
+origem85
+destino85
+17-1-2020 10:00 60 5
+nova
+origem85
+destino85
+18-1-2020 10:00 60 5
+nova
+origem85
+destino85
+19-1-2020 10:00 60 5
+nova
+origem85
+destino85
+20-1-2020 10:00 60 5
+nova
+origem85
+destino85
+21-1-2020 10:00 60 5
+nova
+origem85
+destino85
+22-1-2020 10:00 60 5
+nova
+origem85
+destino85
+23-1-2020 10:00 60 5
+nova
+origem85
+destino85
+24-1-2020 10:00 60 5
+nova
+origem85
+destino85
+25-1-2020 10:00 60 5
+nova
+origem85
+destino85
+26-1-2020 10:00 60 5
+nova
+origem85
+destino85
+27-1-2020 10:00 60 5
+nova
+origem85
+destino85
+28-1-2020 10:00 60 5
+nova
+origem85
+destino85
+29-1-2020 10:00 60 5
+sai
+entrada emailUt86
+pass86
+nova
+origem86
+destino86
+1-1-2020 10:00 60 5
+nova
+origem86
+destino86
+2-1-2020 10:00 60 5
+nova
+origem86
+destino86
+3-1-2020 10:00 60 5
+nova
+origem86
+destino86
+4-1-2020 10:00 60 5
+nova
+origem86
+destino86
+5-1-2020 10:00 60 5
+nova
+origem86
+destino86
+6-1-2020 10:00 60 5
+nova
+origem86
+destino86
+7-1-2020 10:00 60 5
+nova
+origem86
+destino86
+8-1-2020 10:00 60 5
+nova
+origem86
+destino86
+9-1-2020 10:00 60 5
+nova
+origem86
+destino86
+10-1-2020 10:00 60 5
+nova
+origem86
+destino86
+11-1-2020 10:00 60 5
+nova
+origem86
+destino86
+12-1-2020 10:00 60 5
+nova
+origem86
+destino86
+13-1-2020 10:00 60 5
+nova
+origem86
+destino86
+14-1-2020 10:00 60 5
+nova
+origem86
+destino86
+15-1-2020 10:00 60 5
+nova
+origem86
+destino86
+16-1-2020 10:00 60 5
+nova
+origem86
+destino86
+17-1-2020 10:00 60 5
+nova
+origem86
+destino86
+18-1-2020 10:00 60 5
+nova
+origem86
+destino86
+19-1-2020 10:00 60 5
+nova
+origem86
+destino86
+20-1-2020 10:00 60 5
+nova
+origem86
+destino86
+21-1-2020 10:00 60 5
+nova
+origem86
+destino86
+22-1-2020 10:00 60 5
+nova
+origem86
+destino86
+23-1-2020 10:00 60 5
+nova
+origem86
+destino86
+24-1-2020 10:00 60 5
+nova
+origem86
+destino86
+25-1-2020 10:00 60 5
+nova
+origem86
+destino86
+26-1-2020 10:00 60 5
+nova
+origem86
+destino86
+27-1-2020 10:00 60 5
+nova
+origem86
+destino86
+28-1-2020 10:00 60 5
+nova
+origem86
+destino86
+29-1-2020 10:00 60 5
+sai
+entrada emailUt87
+pass87
+nova
+origem87
+destino87
+1-1-2020 10:00 60 5
+nova
+origem87
+destino87
+2-1-2020 10:00 60 5
+nova
+origem87
+destino87
+3-1-2020 10:00 60 5
+nova
+origem87
+destino87
+4-1-2020 10:00 60 5
+nova
+origem87
+destino87
+5-1-2020 10:00 60 5
+nova
+origem87
+destino87
+6-1-2020 10:00 60 5
+nova
+origem87
+destino87
+7-1-2020 10:00 60 5
+nova
+origem87
+destino87
+8-1-2020 10:00 60 5
+nova
+origem87
+destino87
+9-1-2020 10:00 60 5
+nova
+origem87
+destino87
+10-1-2020 10:00 60 5
+nova
+origem87
+destino87
+11-1-2020 10:00 60 5
+nova
+origem87
+destino87
+12-1-2020 10:00 60 5
+nova
+origem87
+destino87
+13-1-2020 10:00 60 5
+nova
+origem87
+destino87
+14-1-2020 10:00 60 5
+nova
+origem87
+destino87
+15-1-2020 10:00 60 5
+nova
+origem87
+destino87
+16-1-2020 10:00 60 5
+nova
+origem87
+destino87
+17-1-2020 10:00 60 5
+nova
+origem87
+destino87
+18-1-2020 10:00 60 5
+nova
+origem87
+destino87
+19-1-2020 10:00 60 5
+nova
+origem87
+destino87
+20-1-2020 10:00 60 5
+nova
+origem87
+destino87
+21-1-2020 10:00 60 5
+nova
+origem87
+destino87
+22-1-2020 10:00 60 5
+nova
+origem87
+destino87
+23-1-2020 10:00 60 5
+nova
+origem87
+destino87
+24-1-2020 10:00 60 5
+nova
+origem87
+destino87
+25-1-2020 10:00 60 5
+nova
+origem87
+destino87
+26-1-2020 10:00 60 5
+nova
+origem87
+destino87
+27-1-2020 10:00 60 5
+nova
+origem87
+destino87
+28-1-2020 10:00 60 5
+nova
+origem87
+destino87
+29-1-2020 10:00 60 5
+sai
+entrada emailUt88
+pass88
+nova
+origem88
+destino88
+1-1-2020 10:00 60 5
+nova
+origem88
+destino88
+2-1-2020 10:00 60 5
+nova
+origem88
+destino88
+3-1-2020 10:00 60 5
+nova
+origem88
+destino88
+4-1-2020 10:00 60 5
+nova
+origem88
+destino88
+5-1-2020 10:00 60 5
+nova
+origem88
+destino88
+6-1-2020 10:00 60 5
+nova
+origem88
+destino88
+7-1-2020 10:00 60 5
+nova
+origem88
+destino88
+8-1-2020 10:00 60 5
+nova
+origem88
+destino88
+9-1-2020 10:00 60 5
+nova
+origem88
+destino88
+10-1-2020 10:00 60 5
+nova
+origem88
+destino88
+11-1-2020 10:00 60 5
+nova
+origem88
+destino88
+12-1-2020 10:00 60 5
+nova
+origem88
+destino88
+13-1-2020 10:00 60 5
+nova
+origem88
+destino88
+14-1-2020 10:00 60 5
+nova
+origem88
+destino88
+15-1-2020 10:00 60 5
+nova
+origem88
+destino88
+16-1-2020 10:00 60 5
+nova
+origem88
+destino88
+17-1-2020 10:00 60 5
+nova
+origem88
+destino88
+18-1-2020 10:00 60 5
+nova
+origem88
+destino88
+19-1-2020 10:00 60 5
+nova
+origem88
+destino88
+20-1-2020 10:00 60 5
+nova
+origem88
+destino88
+21-1-2020 10:00 60 5
+nova
+origem88
+destino88
+22-1-2020 10:00 60 5
+nova
+origem88
+destino88
+23-1-2020 10:00 60 5
+nova
+origem88
+destino88
+24-1-2020 10:00 60 5
+nova
+origem88
+destino88
+25-1-2020 10:00 60 5
+nova
+origem88
+destino88
+26-1-2020 10:00 60 5
+nova
+origem88
+destino88
+27-1-2020 10:00 60 5
+nova
+origem88
+destino88
+28-1-2020 10:00 60 5
+nova
+origem88
+destino88
+29-1-2020 10:00 60 5
+sai
+entrada emailUt89
+pass89
+nova
+origem89
+destino89
+1-1-2020 10:00 60 5
+nova
+origem89
+destino89
+2-1-2020 10:00 60 5
+nova
+origem89
+destino89
+3-1-2020 10:00 60 5
+nova
+origem89
+destino89
+4-1-2020 10:00 60 5
+nova
+origem89
+destino89
+5-1-2020 10:00 60 5
+nova
+origem89
+destino89
+6-1-2020 10:00 60 5
+nova
+origem89
+destino89
+7-1-2020 10:00 60 5
+nova
+origem89
+destino89
+8-1-2020 10:00 60 5
+nova
+origem89
+destino89
+9-1-2020 10:00 60 5
+nova
+origem89
+destino89
+10-1-2020 10:00 60 5
+nova
+origem89
+destino89
+11-1-2020 10:00 60 5
+nova
+origem89
+destino89
+12-1-2020 10:00 60 5
+nova
+origem89
+destino89
+13-1-2020 10:00 60 5
+nova
+origem89
+destino89
+14-1-2020 10:00 60 5
+nova
+origem89
+destino89
+15-1-2020 10:00 60 5
+nova
+origem89
+destino89
+16-1-2020 10:00 60 5
+nova
+origem89
+destino89
+17-1-2020 10:00 60 5
+nova
+origem89
+destino89
+18-1-2020 10:00 60 5
+nova
+origem89
+destino89
+19-1-2020 10:00 60 5
+nova
+origem89
+destino89
+20-1-2020 10:00 60 5
+nova
+origem89
+destino89
+21-1-2020 10:00 60 5
+nova
+origem89
+destino89
+22-1-2020 10:00 60 5
+nova
+origem89
+destino89
+23-1-2020 10:00 60 5
+nova
+origem89
+destino89
+24-1-2020 10:00 60 5
+nova
+origem89
+destino89
+25-1-2020 10:00 60 5
+nova
+origem89
+destino89
+26-1-2020 10:00 60 5
+nova
+origem89
+destino89
+27-1-2020 10:00 60 5
+nova
+origem89
+destino89
+28-1-2020 10:00 60 5
+nova
+origem89
+destino89
+29-1-2020 10:00 60 5
+sai
+termina

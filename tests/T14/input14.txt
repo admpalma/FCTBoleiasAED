@@ -1,0 +1,274 @@
+entrada emailUt77
+pass77
+boleia emailUt29 29-1-2019
+boleia emailUt30 0-1-2019
+boleia emailUt31 1-1-2019
+boleia emailUt32 2-1-2019
+boleia emailUt33 3-1-2019
+boleia emailUt34 4-1-2019
+boleia emailUt35 5-1-2019
+boleia emailUt36 6-1-2019
+sai
+entrada emailUt78
+pass78
+boleia emailUt30 0-1-2019
+boleia emailUt31 1-1-2019
+boleia emailUt32 2-1-2019
+boleia emailUt33 3-1-2019
+boleia emailUt34 4-1-2019
+boleia emailUt35 5-1-2019
+boleia emailUt36 6-1-2019
+boleia emailUt37 7-1-2019
+sai
+entrada emailUt79
+pass79
+boleia emailUt31 1-1-2019
+boleia emailUt32 2-1-2019
+boleia emailUt33 3-1-2019
+boleia emailUt34 4-1-2019
+boleia emailUt35 5-1-2019
+boleia emailUt36 6-1-2019
+boleia emailUt37 7-1-2019
+boleia emailUt38 8-1-2019
+sai
+entrada emailUt80
+pass80
+boleia emailUt32 2-1-2019
+boleia emailUt33 3-1-2019
+boleia emailUt34 4-1-2019
+boleia emailUt35 5-1-2019
+boleia emailUt36 6-1-2019
+boleia emailUt37 7-1-2019
+boleia emailUt38 8-1-2019
+boleia emailUt39 9-1-2019
+sai
+entrada emailUt81
+pass81
+boleia emailUt33 3-1-2019
+boleia emailUt34 4-1-2019
+boleia emailUt35 5-1-2019
+boleia emailUt36 6-1-2019
+boleia emailUt37 7-1-2019
+boleia emailUt38 8-1-2019
+boleia emailUt39 9-1-2019
+boleia emailUt40 10-1-2019
+sai
+entrada emailUt82
+pass82
+boleia emailUt34 4-1-2019
+boleia emailUt35 5-1-2019
+boleia emailUt36 6-1-2019
+boleia emailUt37 7-1-2019
+boleia emailUt38 8-1-2019
+boleia emailUt39 9-1-2019
+boleia emailUt40 10-1-2019
+boleia emailUt41 11-1-2019
+sai
+entrada emailUt83
+pass83
+boleia emailUt35 5-1-2019
+boleia emailUt36 6-1-2019
+boleia emailUt37 7-1-2019
+boleia emailUt38 8-1-2019
+boleia emailUt39 9-1-2019
+boleia emailUt40 10-1-2019
+boleia emailUt41 11-1-2019
+boleia emailUt42 12-1-2019
+sai
+entrada emailUt84
+pass84
+boleia emailUt36 6-1-2019
+boleia emailUt37 7-1-2019
+boleia emailUt38 8-1-2019
+boleia emailUt39 9-1-2019
+boleia emailUt40 10-1-2019
+boleia emailUt41 11-1-2019
+boleia emailUt42 12-1-2019
+boleia emailUt43 13-1-2019
+sai
+entrada emailUt85
+pass85
+boleia emailUt37 7-1-2019
+boleia emailUt38 8-1-2019
+boleia emailUt39 9-1-2019
+boleia emailUt40 10-1-2019
+boleia emailUt41 11-1-2019
+boleia emailUt42 12-1-2019
+boleia emailUt43 13-1-2019
+boleia emailUt44 14-1-2019
+sai
+entrada emailUt86
+pass86
+boleia emailUt38 8-1-2019
+boleia emailUt39 9-1-2019
+boleia emailUt40 10-1-2019
+boleia emailUt41 11-1-2019
+boleia emailUt42 12-1-2019
+boleia emailUt43 13-1-2019
+boleia emailUt44 14-1-2019
+boleia emailUt45 15-1-2019
+sai
+entrada emailUt87
+pass87
+boleia emailUt39 9-1-2019
+boleia emailUt40 10-1-2019
+boleia emailUt41 11-1-2019
+boleia emailUt42 12-1-2019
+boleia emailUt43 13-1-2019
+boleia emailUt44 14-1-2019
+boleia emailUt45 15-1-2019
+boleia emailUt46 16-1-2019
+sai
+entrada emailUt88
+pass88
+boleia emailUt40 10-1-2019
+boleia emailUt41 11-1-2019
+boleia emailUt42 12-1-2019
+boleia emailUt43 13-1-2019
+boleia emailUt44 14-1-2019
+boleia emailUt45 15-1-2019
+boleia emailUt46 16-1-2019
+boleia emailUt47 17-1-2019
+sai
+entrada emailUt89
+pass89
+boleia emailUt41 11-1-2019
+boleia emailUt42 12-1-2019
+boleia emailUt43 13-1-2019
+boleia emailUt44 14-1-2019
+boleia emailUt45 15-1-2019
+boleia emailUt46 16-1-2019
+boleia emailUt47 17-1-2019
+boleia emailUt48 18-1-2019
+sai
+entrada emailUt90
+pass90
+boleia emailUt42 12-1-2019
+boleia emailUt43 13-1-2019
+boleia emailUt44 14-1-2019
+boleia emailUt45 15-1-2019
+boleia emailUt46 16-1-2019
+boleia emailUt47 17-1-2019
+boleia emailUt48 18-1-2019
+boleia emailUt49 19-1-2019
+sai
+entrada emailUt91
+pass91
+boleia emailUt43 13-1-2019
+boleia emailUt44 14-1-2019
+boleia emailUt45 15-1-2019
+boleia emailUt46 16-1-2019
+boleia emailUt47 17-1-2019
+boleia emailUt48 18-1-2019
+boleia emailUt49 19-1-2019
+boleia emailUt50 20-1-2019
+sai
+entrada emailUt92
+pass92
+boleia emailUt44 14-1-2019
+boleia emailUt45 15-1-2019
+boleia emailUt46 16-1-2019
+boleia emailUt47 17-1-2019
+boleia emailUt48 18-1-2019
+boleia emailUt49 19-1-2019
+boleia emailUt50 20-1-2019
+boleia emailUt51 21-1-2019
+sai
+entrada emailUt93
+pass93
+boleia emailUt45 15-1-2019
+boleia emailUt46 16-1-2019
+boleia emailUt47 17-1-2019
+boleia emailUt48 18-1-2019
+boleia emailUt49 19-1-2019
+boleia emailUt50 20-1-2019
+boleia emailUt51 21-1-2019
+boleia emailUt52 22-1-2019
+sai
+entrada emailUt94
+pass94
+boleia emailUt46 16-1-2019
+boleia emailUt47 17-1-2019
+boleia emailUt48 18-1-2019
+boleia emailUt49 19-1-2019
+boleia emailUt50 20-1-2019
+boleia emailUt51 21-1-2019
+boleia emailUt52 22-1-2019
+boleia emailUt53 23-1-2019
+sai
+entrada emailUt95
+pass95
+boleia emailUt47 17-1-2019
+boleia emailUt48 18-1-2019
+boleia emailUt49 19-1-2019
+boleia emailUt50 20-1-2019
+boleia emailUt51 21-1-2019
+boleia emailUt52 22-1-2019
+boleia emailUt53 23-1-2019
+boleia emailUt54 24-1-2019
+sai
+entrada emailUt96
+pass96
+boleia emailUt48 18-1-2019
+boleia emailUt49 19-1-2019
+boleia emailUt50 20-1-2019
+boleia emailUt51 21-1-2019
+boleia emailUt52 22-1-2019
+boleia emailUt53 23-1-2019
+boleia emailUt54 24-1-2019
+boleia emailUt55 25-1-2019
+sai
+entrada emailUt97
+pass97
+boleia emailUt49 19-1-2019
+boleia emailUt50 20-1-2019
+boleia emailUt51 21-1-2019
+boleia emailUt52 22-1-2019
+boleia emailUt53 23-1-2019
+boleia emailUt54 24-1-2019
+boleia emailUt55 25-1-2019
+boleia emailUt56 26-1-2019
+sai
+entrada emailUt98
+pass98
+boleia emailUt50 20-1-2019
+boleia emailUt51 21-1-2019
+boleia emailUt52 22-1-2019
+boleia emailUt53 23-1-2019
+boleia emailUt54 24-1-2019
+boleia emailUt55 25-1-2019
+boleia emailUt56 26-1-2019
+boleia emailUt57 27-1-2019
+sai
+entrada emailUt99
+pass99
+boleia emailUt51 21-1-2019
+boleia emailUt52 22-1-2019
+boleia emailUt53 23-1-2019
+boleia emailUt54 24-1-2019
+boleia emailUt55 25-1-2019
+boleia emailUt56 26-1-2019
+boleia emailUt57 27-1-2019
+boleia emailUt58 28-1-2019
+sai
+entrada emailUt6
+pass6
+remove 1-1-2020
+sai
+entrada emailUt7
+pass7
+remove 1-1-2020
+sai
+entrada emailUt8
+pass8
+remove 1-1-2020
+sai
+entrada emailUt9
+pass9
+remove 1-1-2020
+sai
+entrada emailUt10
+pass10
+remove 1-1-2020
+sai
+termina

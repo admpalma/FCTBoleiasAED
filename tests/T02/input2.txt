@@ -1,0 +1,118 @@
+regista emailUtE
+NomeE
+passE0
+sai
+regista emailUtA
+NomeAa
+passA0
+sai
+ajuda
+entrada emailUtA
+passA0
+ajuda
+sai
+entrada emailUtA
+passA0
+remove 1-1-2019
+remove 2-2-2019
+nova
+origemA4
+destinoA4
+1-1-2019 10:10 10 2
+boleia emailUtA 1-1-2019
+sai
+entrada emailUtC
+passC0
+boleia emailUtA 3-3-2019
+boleia emailUtB 3-3-2019
+boleia emailUtA 1-1-2019
+boleia emailUtA 2-2-2019
+boleia emailUtB 1-1-2019
+boleia emailUtB 2-3-2019
+boleia emailUtB 2-2-2019
+boleia emailUtB 4-4-2019
+boleia emailUtC 1-1-2019
+boleia emailUtFalso 1-1-2020
+boleia emailUtFalso 2-2-2020
+sai
+entrada emailUtA
+passA0
+remove 1-1-2019
+remove 2-2-2019
+remove 4-4-2019
+remove 4-13-2019
+sai
+entrada emailUtB
+passB0
+nova
+origemB
+destinoB
+1-1-2019 10:10 10 2
+nova
+origemB
+destinoB
+2-2-2019 10:10 10 2
+nova
+origemB
+destinoB
+3-3-2019 10:10 10 2
+retira 4-4-2019
+retira 1-1-2019
+retira 2-2-2019
+sai
+entrada emailUtC
+passC0
+retira 2-14-2019
+retira 1-1-2020
+retira 3-3-2019
+sai
+entrada emailUtA
+passA0
+boleia emailUtB 1-1-2019
+boleia emailUtB 2-2-2019
+boleia emailUtC 3-3-2019
+consulta emailUtA 1-1-2019
+consulta emailUtA 1-1-2020
+consulta emailUtA 2-2-2019
+consulta emailUtA 3-3-2019
+consulta emailUtA 4-4-2019
+consulta emailUtFalso 1-1-2020
+consulta emailUtB 1-1-2019
+consulta emailUtB 2-2-2019
+consulta emailUtA 3-3-2019
+consulta emailUtC 1-1-2019
+consulta emailUtC 2-2-2019
+consulta emailUtC 3-3-2019
+consulta emailUtA 4-4-2019
+consulta emailUtA 1-1-2020
+consulta emailUtA 2-2-2020
+lista minhas
+lista boleias
+lista emailUtFalso
+lista emailB
+lista emailC
+lista emailE
+sai
+entrada emailUtB
+passB0
+lista boleias
+sai
+entrada emailUtC
+passC0
+lista mINHas
+lista boleias
+lista 1-1-2019
+lista 2-2-2019
+lista 3-3-2019
+lista 4-4-2019
+lista 1-1-2020
+lista 1-2-2020
+lista 4-13-2019
+sai
+entrada emailUtE
+passE0
+lista minhas
+lista boleias
+lista todas
+sai
+termina

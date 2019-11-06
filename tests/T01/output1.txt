@@ -1,0 +1,22 @@
+> nome (maximo 50 caracteres): password (entre 4 e 6 caracteres - digitos e letras): Registo 1 efetuado.
+> Comando invalido.
+> nome (maximo 50 caracteres): password (entre 4 e 6 caracteres - digitos e letras): Registo 2 efetuado.
+> nome (maximo 50 caracteres): password (entre 4 e 6 caracteres - digitos e letras): Registo 3 efetuado.
+> Utilizador nao existente.
+> Comando invalido.
+> password: password: password: Entrada nao realizada.
+> password: Visita 1 efetuada.
+emailUtA > Deslocacao 1 registada. Obrigado NomeA.
+emailUtA > Deslocacao 2 registada. Obrigado NomeA.
+emailUtA > Deslocacao 3 registada. Obrigado NomeA.
+emailUtA > Ate a proxima NomeA.
+> password: Visita 2 efetuada.
+emailUtA > Comando invalido.
+emailUtA > Ate a proxima NomeA.
+> password: Visita 1 efetuada.
+emailUtB > Comando invalido.
+emailUtB > Deslocacao 1 registada. Obrigado NomeB.
+emailUtB > Deslocacao 2 registada. Obrigado NomeB.
+emailUtB > Deslocacao 3 registada. Obrigado NomeB.
+emailUtB > Ate a proxima NomeB.
+> Obrigado. Ate a proxima.

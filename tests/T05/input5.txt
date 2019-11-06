@@ -1,0 +1,239 @@
+entrada emailUt17
+pass17
+nova
+origem17
+destino17
+1-1-2019 10:00 60 5
+nova
+origem17
+destino17
+2-1-2019 10:00 60 5
+nova
+origem17
+destino17
+3-1-2019 10:00 60 5
+nova
+origem17
+destino17
+4-1-2019 10:00 60 5
+nova
+origem17
+destino17
+5-1-2019 10:00 60 5
+nova
+origem17
+destino17
+6-1-2019 10:00 60 5
+nova
+origem17
+destino17
+7-1-2019 10:00 60 5
+nova
+origem17
+destino17
+8-1-2019 10:00 60 5
+nova
+origem17
+destino17
+9-1-2019 10:00 60 5
+nova
+origem17
+destino17
+10-1-2019 10:00 60 5
+nova
+origem17
+destino17
+11-1-2019 10:00 60 5
+nova
+origem17
+destino17
+12-1-2019 10:00 60 5
+nova
+origem17
+destino17
+13-1-2019 10:00 60 5
+nova
+origem17
+destino17
+14-1-2019 10:00 60 5
+nova
+origem17
+destino17
+15-1-2019 10:00 60 5
+nova
+origem17
+destino17
+16-1-2019 10:00 60 5
+nova
+origem17
+destino17
+17-1-2019 10:00 60 5
+nova
+origem17
+destino17
+18-1-2019 10:00 60 5
+nova
+origem17
+destino17
+19-1-2019 10:00 60 5
+nova
+origem17
+destino17
+20-1-2019 10:00 60 5
+nova
+origem17
+destino17
+21-1-2019 10:00 60 5
+nova
+origem17
+destino17
+22-1-2019 10:00 60 5
+nova
+origem17
+destino17
+23-1-2019 10:00 60 5
+nova
+origem17
+destino17
+24-1-2019 10:00 60 5
+nova
+origem17
+destino17
+25-1-2019 10:00 60 5
+nova
+origem17
+destino17
+26-1-2019 10:00 60 5
+nova
+origem17
+destino17
+27-1-2019 10:00 60 5
+nova
+origem17
+destino17
+28-1-2019 10:00 60 5
+nova
+origem17
+destino17
+29-1-2019 10:00 60 5
+sai
+entrada emailUt18
+pass18
+nova
+origem18
+destino18
+1-1-2019 10:00 60 5
+nova
+origem18
+destino18
+2-1-2019 10:00 60 5
+nova
+origem18
+destino18
+3-1-2019 10:00 60 5
+nova
+origem18
+destino18
+4-1-2019 10:00 60 5
+nova
+origem18
+destino18
+5-1-2019 10:00 60 5
+nova
+origem18
+destino18
+6-1-2019 10:00 60 5
+nova
+origem18
+destino18
+7-1-2019 10:00 60 5
+nova
+origem18
+destino18
+8-1-2019 10:00 60 5
+nova
+origem18
+destino18
+9-1-2019 10:00 60 5
+nova
+origem18
+destino18
+10-1-2019 10:00 60 5
+nova
+origem18
+destino18
+11-1-2019 10:00 60 5
+nova
+origem18
+destino18
+12-1-2019 10:00 60 5
+nova
+origem18
+destino18
+13-1-2019 10:00 60 5
+nova
+origem18
+destino18
+14-1-2019 10:00 60 5
+nova
+origem18
+destino18
+15-1-2019 10:00 60 5
+nova
+origem18
+destino18
+16-1-2019 10:00 60 5
+nova
+origem18
+destino18
+17-1-2019 10:00 60 5
+nova
+origem18
+destino18
+18-1-2019 10:00 60 5
+nova
+origem18
+destino18
+19-1-2019 10:00 60 5
+nova
+origem18
+destino18
+20-1-2019 10:00 60 5
+nova
+origem18
+destino18
+21-1-2019 10:00 60 5
+nova
+origem18
+destino18
+22-1-2019 10:00 60 5
+nova
+origem18
+destino18
+23-1-2019 10:00 60 5
+nova
+origem18
+destino18
+24-1-2019 10:00 60 5
+nova
+origem18
+destino18
+25-1-2019 10:00 60 5
+nova
+origem18
+destino18
+26-1-2019 10:00 60 5
+nova
+origem18
+destino18
+27-1-2019 10:00 60 5
+nova
+origem18
+destino18
+28-1-2019 10:00 60 5
+nova
+origem18
+destino18
+29-1-2019 10:00 60 5
+sai
+terMina

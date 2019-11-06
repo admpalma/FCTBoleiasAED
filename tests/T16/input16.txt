@@ -1,0 +1,13 @@
+entrada emailUtC
+passC0
+lista 11-1-2020
+lista 9-1-2020
+lista 12-1-2020
+lista 13-1-2020
+lista 26-1-2020
+lista 27-1-2020
+lista 28-1-2020
+lista emailUt100
+lista TOdas
+sai
+termina

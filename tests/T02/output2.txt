@@ -1,0 +1,168 @@
+> nome (maximo 50 caracteres): password (entre 4 e 6 caracteres - digitos e letras): Registo 4 efetuado.
+> Comando invalido.
+> Utilizador ja existente.
+> Comando invalido.
+> Comando invalido.
+> Comando invalido.
+> ajuda - Mostra os comandos existentes
+termina - Termina a execucao do programa
+regista - Regista um novo utilizador no programa
+entrada - Permite a entrada ("login") dum utilizador no programa
+> password: Visita 3 efetuada.
+emailUtA > ajuda - Mostra os comandos existentes
+sai - Termina a sessao deste utilizador no programa
+nova - Regista uma nova deslocacao
+lista - Lista todas ou algumas deslocacoes registadas
+boleia - Regista uma boleia para uma dada deslocacao
+consulta - Lista a informacao de uma dada deslocacao
+retira - Retira uma dada boleia
+remove - Elimina uma dada deslocacao
+emailUtA > Ate a proxima NomeA.
+> password: Visita 4 efetuada.
+emailUtA > Deslocacao removida.
+emailUtA > Deslocacao removida.
+emailUtA > Deslocacao 2 registada. Obrigado NomeA.
+emailUtA > NomeA nao pode dar boleia a si proprio.
+emailUtA > Ate a proxima NomeA.
+> password: Visita 1 efetuada.
+emailUtC > Boleia registada.
+emailUtC > NomeC ja registou uma boleia ou deslocacao nesta data.
+emailUtC > Boleia registada.
+emailUtC > Deslocacao nao existe.
+emailUtC > NomeC ja registou uma boleia ou deslocacao nesta data.
+emailUtC > Deslocacao nao existe.
+emailUtC > Boleia registada.
+emailUtC > Deslocacao nao existe.
+emailUtC > Deslocacao nao existe.
+emailUtC > Utilizador inexistente.
+emailUtC > Utilizador inexistente.
+emailUtC > Ate a proxima NomeC.
+> password: Visita 5 efetuada.
+emailUtA > NomeA ja nao pode eliminar esta deslocacao.
+emailUtA > NomeA nesta data nao tem registo de deslocacao.
+emailUtA > NomeA nesta data nao tem registo de deslocacao.
+emailUtA > Data invalida.
+emailUtA > Ate a proxima NomeA.
+> password: Visita 2 efetuada.
+emailUtB > NomeB ja tem uma deslocacao ou boleia registada nesta data.
+emailUtB > NomeB ja tem uma deslocacao ou boleia registada nesta data.
+emailUtB > NomeB ja tem uma deslocacao ou boleia registada nesta data.
+emailUtB > NomeB nesta data nao tem registo de boleia.
+emailUtB > NomeB nesta data nao tem registo de boleia.
+emailUtB > NomeB nesta data nao tem registo de boleia.
+emailUtB > Ate a proxima NomeB.
+> password: Visita 2 efetuada.
+emailUtC > Data invalida.
+emailUtC > NomeC nesta data nao tem registo de boleia.
+emailUtC > NomeC boleia retirada.
+emailUtC > Ate a proxima NomeC.
+> password: Visita 6 efetuada.
+emailUtA > NomeA ja registou uma boleia ou deslocacao nesta data.
+emailUtA > Boleia registada.
+emailUtA > Deslocacao nao existe.
+emailUtA > emailUtA
+origemA4-destinoA4
+1-1-2019 10:10 10
+Lugares vagos: 1
+Boleias: emailUtC
+Em espera: 0
+emailUtA > Deslocacao nao existe.
+emailUtA > Deslocacao nao existe.
+emailUtA > emailUtA
+origemA3-destinoA3
+3-3-2019 3:3 3
+Lugares vagos: 4
+Sem boleias registadas.
+Em espera: 0
+emailUtA > Deslocacao nao existe.
+emailUtA > Utilizador inexistente.
+emailUtA > emailUtB
+origemB1-destinoB1
+1-1-2019 1:1 1
+Lugares vagos: 2
+Sem boleias registadas.
+Em espera: 0
+emailUtA > emailUtB
+origemB2-destinoB2
+2-2-2019 2:2 2
+Lugares vagos: 1
+Boleias: emailUtC; emailUtA
+Em espera: 0
+emailUtA > emailUtA
+origemA3-destinoA3
+3-3-2019 3:3 3
+Lugares vagos: 4
+Sem boleias registadas.
+Em espera: 0
+emailUtA > Deslocacao nao existe.
+emailUtA > Deslocacao nao existe.
+emailUtA > Deslocacao nao existe.
+emailUtA > Deslocacao nao existe.
+emailUtA > Deslocacao nao existe.
+emailUtA > Deslocacao nao existe.
+emailUtA > emailUtA
+origemA4-destinoA4
+1-1-2019 10:10 10
+Lugares vagos: 1
+Boleias: emailUtC
+Em espera: 0
+
+emailUtA
+origemA3-destinoA3
+3-3-2019 3:3 3
+Lugares vagos: 4
+Sem boleias registadas.
+Em espera: 0
+
+emailUtA > emailUtB
+origemB2-destinoB2
+2-2-2019 2:2 2
+
+emailUtA > Nao existe o utilizador dado.
+emailUtA > Nao existe o utilizador dado.
+emailUtA > Nao existe o utilizador dado.
+emailUtA > Nao existe o utilizador dado.
+emailUtA > Ate a proxima NomeA.
+> password: Visita 3 efetuada.
+emailUtB > Sem deslocacoes.
+emailUtB > Ate a proxima NomeB.
+> password: Visita 3 efetuada.
+emailUtC > Sem deslocacoes.
+emailUtC > emailUtA
+origemA4-destinoA4
+1-1-2019 10:10 10
+
+emailUtB
+origemB2-destinoB2
+2-2-2019 2:2 2
+
+emailUtC > emailUtA
+
+emailUtB
+
+emailUtC > emailUtB
+
+emailUtC > emailUtA
+
+emailUtB
+
+emailUtC > Sem deslocacoes.
+emailUtC > Sem deslocacoes.
+emailUtC > Sem deslocacoes.
+emailUtC > Data invalida.
+emailUtC > Ate a proxima NomeC.
+> password: Visita 1 efetuada.
+emailUtE > Sem deslocacoes.
+emailUtE > Sem deslocacoes.
+emailUtE > 1-1-2019 emailUtA
+
+1-1-2019 emailUtB
+
+2-2-2019 emailUtB
+
+3-3-2019 emailUtA
+
+3-3-2019 emailUtB
+
+emailUtE > Ate a proxima NomeE.
+> Obrigado. Ate a proxima.

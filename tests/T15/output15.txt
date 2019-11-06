@@ -1,0 +1,6368 @@
+> password: Visita 4 efetuada.
+emailUtC > Sem deslocacoes.
+emailUtC > Sem deslocacoes.
+emailUtC > Sem deslocacoes.
+emailUtC > Sem deslocacoes.
+emailUtC > Sem deslocacoes.
+emailUtC > emailUt6
+origem6-destino6
+2-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+3-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+4-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+5-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+6-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+7-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+8-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+9-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+10-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+11-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+12-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+13-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+14-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+15-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+16-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+17-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+18-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+19-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+20-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+21-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+22-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+23-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+24-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+25-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+26-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+27-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+28-1-2019 10:0 60
+
+emailUt6
+origem6-destino6
+29-1-2019 10:0 60
+
+emailUtC > emailUt7
+origem7-destino7
+2-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+3-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+4-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+5-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+6-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+7-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+8-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+9-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+10-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+11-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+12-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+13-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+14-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+15-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+16-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+17-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+18-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+19-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+20-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+21-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+22-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+23-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+24-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+25-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+26-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+27-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+28-1-2019 10:0 60
+
+emailUt7
+origem7-destino7
+29-1-2019 10:0 60
+
+emailUtC > emailUt8
+origem8-destino8
+2-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+3-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+4-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+5-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+6-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+7-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+8-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+9-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+10-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+11-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+12-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+13-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+14-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+15-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+16-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+17-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+18-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+19-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+20-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+21-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+22-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+23-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+24-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+25-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+26-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+27-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+28-1-2019 10:0 60
+
+emailUt8
+origem8-destino8
+29-1-2019 10:0 60
+
+emailUtC > emailUt9
+origem9-destino9
+2-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+3-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+4-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+5-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+6-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+7-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+8-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+9-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+10-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+11-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+12-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+13-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+14-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+15-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+16-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+17-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+18-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+19-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+20-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+21-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+22-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+23-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+24-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+25-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+26-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+27-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+28-1-2019 10:0 60
+
+emailUt9
+origem9-destino9
+29-1-2019 10:0 60
+
+emailUtC > emailUt10
+origem10-destino10
+2-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+3-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+4-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+5-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+6-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+7-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+8-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+9-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+10-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+11-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+12-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+13-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+14-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+15-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+16-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+17-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+18-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+19-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+20-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+21-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+22-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+23-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+24-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+25-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+26-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+27-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+28-1-2019 10:0 60
+
+emailUt10
+origem10-destino10
+29-1-2019 10:0 60
+
+emailUtC > emailUt11
+origem11-destino11
+1-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+2-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+3-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+4-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+5-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+6-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+7-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+8-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+9-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+10-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+11-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+12-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+13-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+14-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+15-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+16-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+17-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+18-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+19-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+20-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+21-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+22-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+23-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+24-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+25-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+26-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+27-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+28-1-2019 10:0 60
+
+emailUt11
+origem11-destino11
+29-1-2019 10:0 60
+
+emailUtC > emailUt12
+origem12-destino12
+1-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+2-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+3-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+4-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+5-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+6-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+7-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+8-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+9-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+10-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+11-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+12-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+13-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+14-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+15-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+16-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+17-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+18-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+19-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+20-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+21-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+22-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+23-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+24-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+25-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+26-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+27-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+28-1-2019 10:0 60
+
+emailUt12
+origem12-destino12
+29-1-2019 10:0 60
+
+emailUtC > emailUt13
+origem13-destino13
+1-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+2-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+3-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+4-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+5-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+6-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+7-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+8-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+9-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+10-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+11-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+12-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+13-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+14-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+15-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+16-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+17-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+18-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+19-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+20-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+21-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+22-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+23-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+24-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+25-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+26-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+27-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+28-1-2019 10:0 60
+
+emailUt13
+origem13-destino13
+29-1-2019 10:0 60
+
+emailUtC > emailUt14
+origem14-destino14
+1-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+2-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+3-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+4-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+5-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+6-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+7-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+8-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+9-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+10-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+11-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+12-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+13-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+14-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+15-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+16-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+17-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+18-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+19-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+20-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+21-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+22-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+23-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+24-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+25-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+26-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+27-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+28-1-2019 10:0 60
+
+emailUt14
+origem14-destino14
+29-1-2019 10:0 60
+
+emailUtC > emailUt15
+origem15-destino15
+1-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+2-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+3-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+4-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+5-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+6-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+7-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+8-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+9-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+10-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+11-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+12-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+13-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+14-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+15-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+16-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+17-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+18-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+19-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+20-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+21-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+22-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+23-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+24-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+25-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+26-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+27-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+28-1-2019 10:0 60
+
+emailUt15
+origem15-destino15
+29-1-2019 10:0 60
+
+emailUtC > emailUt16
+origem16-destino16
+1-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+2-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+3-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+4-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+5-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+6-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+7-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+8-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+9-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+10-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+11-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+12-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+13-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+14-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+15-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+16-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+17-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+18-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+19-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+20-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+21-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+22-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+23-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+24-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+25-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+26-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+27-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+28-1-2019 10:0 60
+
+emailUt16
+origem16-destino16
+29-1-2019 10:0 60
+
+emailUtC > emailUt17
+origem17-destino17
+1-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+2-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+3-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+4-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+5-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+6-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+7-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+8-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+9-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+10-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+11-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+12-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+13-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+14-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+15-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+16-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+17-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+18-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+19-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+20-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+21-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+22-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+23-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+24-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+25-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+26-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+27-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+28-1-2019 10:0 60
+
+emailUt17
+origem17-destino17
+29-1-2019 10:0 60
+
+emailUtC > emailUt18
+origem18-destino18
+1-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+2-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+3-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+4-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+5-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+6-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+7-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+8-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+9-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+10-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+11-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+12-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+13-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+14-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+15-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+16-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+17-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+18-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+19-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+20-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+21-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+22-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+23-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+24-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+25-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+26-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+27-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+28-1-2019 10:0 60
+
+emailUt18
+origem18-destino18
+29-1-2019 10:0 60
+
+emailUtC > emailUt19
+origem19-destino19
+1-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+2-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+3-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+4-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+5-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+6-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+7-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+8-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+9-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+10-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+11-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+12-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+13-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+14-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+15-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+16-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+17-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+18-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+19-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+20-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+21-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+22-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+23-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+24-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+25-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+26-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+27-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+28-1-2019 10:0 60
+
+emailUt19
+origem19-destino19
+29-1-2019 10:0 60
+
+emailUtC > emailUt20
+origem20-destino20
+1-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+2-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+3-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+4-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+5-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+6-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+7-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+8-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+9-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+10-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+11-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+12-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+13-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+14-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+15-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+16-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+17-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+18-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+19-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+20-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+21-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+22-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+23-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+24-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+25-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+26-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+27-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+28-1-2019 10:0 60
+
+emailUt20
+origem20-destino20
+29-1-2019 10:0 60
+
+emailUtC > emailUt21
+origem21-destino21
+1-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+2-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+3-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+4-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+5-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+6-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+7-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+8-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+9-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+10-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+11-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+12-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+13-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+14-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+15-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+16-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+17-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+18-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+19-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+20-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+21-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+22-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+23-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+24-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+25-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+26-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+27-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+28-1-2019 10:0 60
+
+emailUt21
+origem21-destino21
+29-1-2019 10:0 60
+
+emailUtC > emailUt22
+origem22-destino22
+1-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+2-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+3-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+4-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+5-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+6-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+7-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+8-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+9-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+10-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+11-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+12-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+13-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+14-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+15-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+16-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+17-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+18-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+19-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+20-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+21-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+22-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+23-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+24-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+25-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+26-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+27-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+28-1-2019 10:0 60
+
+emailUt22
+origem22-destino22
+29-1-2019 10:0 60
+
+emailUtC > emailUt23
+origem23-destino23
+1-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+2-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+3-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+4-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+5-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+6-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+7-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+8-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+9-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+10-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+11-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+12-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+13-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+14-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+15-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+16-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+17-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+18-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+19-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+20-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+21-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+22-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+23-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+24-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+25-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+26-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+27-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+28-1-2019 10:0 60
+
+emailUt23
+origem23-destino23
+29-1-2019 10:0 60
+
+emailUtC > emailUt24
+origem24-destino24
+1-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+2-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+3-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+4-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+5-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+6-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+7-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+8-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+9-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+10-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+11-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+12-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+13-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+14-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+15-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+16-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+17-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+18-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+19-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+20-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+21-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+22-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+23-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+24-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+25-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+26-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+27-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+28-1-2019 10:0 60
+
+emailUt24
+origem24-destino24
+29-1-2019 10:0 60
+
+emailUtC > emailUt25
+origem25-destino25
+1-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+2-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+3-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+4-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+5-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+6-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+7-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+8-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+9-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+10-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+11-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+12-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+13-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+14-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+15-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+16-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+17-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+18-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+19-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+20-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+21-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+22-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+23-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+24-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+25-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+26-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+27-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+28-1-2019 10:0 60
+
+emailUt25
+origem25-destino25
+29-1-2019 10:0 60
+
+emailUtC > emailUt26
+origem26-destino26
+1-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+2-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+3-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+4-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+5-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+6-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+7-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+8-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+9-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+10-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+11-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+12-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+13-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+14-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+15-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+16-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+17-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+18-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+19-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+20-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+21-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+22-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+23-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+24-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+25-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+26-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+27-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+28-1-2019 10:0 60
+
+emailUt26
+origem26-destino26
+29-1-2019 10:0 60
+
+emailUtC > emailUt27
+origem27-destino27
+1-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+2-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+3-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+4-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+5-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+6-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+7-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+8-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+9-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+10-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+11-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+12-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+13-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+14-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+15-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+16-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+17-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+18-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+19-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+20-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+21-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+22-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+23-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+24-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+25-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+26-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+27-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+28-1-2019 10:0 60
+
+emailUt27
+origem27-destino27
+29-1-2019 10:0 60
+
+emailUtC > emailUt28
+origem28-destino28
+1-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+2-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+3-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+4-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+5-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+6-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+7-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+8-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+9-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+10-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+11-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+12-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+13-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+14-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+15-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+16-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+17-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+18-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+19-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+20-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+21-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+22-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+23-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+24-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+25-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+26-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+27-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+28-1-2019 10:0 60
+
+emailUt28
+origem28-destino28
+29-1-2019 10:0 60
+
+emailUtC > emailUt29
+origem29-destino29
+1-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+2-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+3-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+4-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+5-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+6-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+7-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+8-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+9-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+10-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+11-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+12-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+13-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+14-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+15-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+16-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+17-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+18-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+19-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+20-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+21-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+22-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+23-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+24-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+25-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+26-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+27-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+28-1-2019 10:0 60
+
+emailUt29
+origem29-destino29
+29-1-2019 10:0 60
+
+emailUtC > emailUt30
+origem30-destino30
+1-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+2-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+3-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+4-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+5-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+6-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+7-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+8-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+9-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+10-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+11-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+12-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+13-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+14-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+15-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+16-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+17-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+18-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+19-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+20-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+21-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+22-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+23-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+24-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+25-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+26-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+27-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+28-1-2019 10:0 60
+
+emailUt30
+origem30-destino30
+29-1-2019 10:0 60
+
+emailUtC > emailUt31
+origem31-destino31
+1-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+2-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+3-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+4-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+5-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+6-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+7-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+8-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+9-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+10-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+11-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+12-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+13-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+14-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+15-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+16-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+17-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+18-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+19-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+20-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+21-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+22-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+23-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+24-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+25-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+26-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+27-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+28-1-2019 10:0 60
+
+emailUt31
+origem31-destino31
+29-1-2019 10:0 60
+
+emailUtC > emailUt32
+origem32-destino32
+1-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+2-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+3-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+4-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+5-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+6-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+7-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+8-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+9-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+10-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+11-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+12-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+13-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+14-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+15-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+16-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+17-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+18-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+19-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+20-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+21-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+22-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+23-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+24-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+25-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+26-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+27-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+28-1-2019 10:0 60
+
+emailUt32
+origem32-destino32
+29-1-2019 10:0 60
+
+emailUtC > emailUt33
+origem33-destino33
+1-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+2-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+3-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+4-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+5-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+6-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+7-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+8-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+9-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+10-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+11-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+12-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+13-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+14-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+15-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+16-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+17-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+18-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+19-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+20-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+21-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+22-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+23-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+24-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+25-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+26-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+27-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+28-1-2019 10:0 60
+
+emailUt33
+origem33-destino33
+29-1-2019 10:0 60
+
+emailUtC > emailUt34
+origem34-destino34
+1-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+2-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+3-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+4-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+5-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+6-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+7-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+8-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+9-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+10-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+11-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+12-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+13-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+14-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+15-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+16-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+17-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+18-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+19-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+20-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+21-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+22-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+23-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+24-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+25-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+26-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+27-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+28-1-2019 10:0 60
+
+emailUt34
+origem34-destino34
+29-1-2019 10:0 60
+
+emailUtC > emailUt35
+origem35-destino35
+1-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+2-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+3-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+4-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+5-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+6-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+7-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+8-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+9-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+10-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+11-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+12-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+13-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+14-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+15-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+16-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+17-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+18-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+19-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+20-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+21-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+22-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+23-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+24-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+25-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+26-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+27-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+28-1-2019 10:0 60
+
+emailUt35
+origem35-destino35
+29-1-2019 10:0 60
+
+emailUtC > emailUt36
+origem36-destino36
+1-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+2-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+3-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+4-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+5-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+6-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+7-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+8-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+9-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+10-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+11-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+12-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+13-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+14-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+15-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+16-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+17-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+18-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+19-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+20-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+21-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+22-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+23-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+24-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+25-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+26-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+27-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+28-1-2019 10:0 60
+
+emailUt36
+origem36-destino36
+29-1-2019 10:0 60
+
+emailUtC > emailUt37
+origem37-destino37
+1-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+2-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+3-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+4-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+5-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+6-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+7-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+8-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+9-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+10-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+11-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+12-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+13-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+14-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+15-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+16-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+17-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+18-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+19-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+20-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+21-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+22-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+23-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+24-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+25-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+26-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+27-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+28-1-2019 10:0 60
+
+emailUt37
+origem37-destino37
+29-1-2019 10:0 60
+
+emailUtC > emailUt38
+origem38-destino38
+1-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+2-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+3-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+4-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+5-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+6-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+7-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+8-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+9-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+10-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+11-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+12-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+13-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+14-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+15-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+16-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+17-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+18-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+19-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+20-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+21-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+22-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+23-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+24-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+25-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+26-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+27-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+28-1-2019 10:0 60
+
+emailUt38
+origem38-destino38
+29-1-2019 10:0 60
+
+emailUtC > emailUt39
+origem39-destino39
+1-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+2-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+3-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+4-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+5-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+6-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+7-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+8-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+9-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+10-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+11-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+12-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+13-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+14-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+15-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+16-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+17-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+18-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+19-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+20-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+21-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+22-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+23-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+24-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+25-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+26-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+27-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+28-1-2019 10:0 60
+
+emailUt39
+origem39-destino39
+29-1-2019 10:0 60
+
+emailUtC > emailUt40
+origem40-destino40
+1-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+2-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+3-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+4-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+5-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+6-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+7-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+8-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+9-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+10-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+11-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+12-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+13-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+14-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+15-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+16-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+17-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+18-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+19-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+20-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+21-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+22-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+23-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+24-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+25-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+26-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+27-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+28-1-2019 10:0 60
+
+emailUt40
+origem40-destino40
+29-1-2019 10:0 60
+
+emailUtC > emailUt41
+origem41-destino41
+1-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+2-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+3-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+4-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+5-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+6-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+7-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+8-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+9-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+10-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+11-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+12-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+13-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+14-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+15-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+16-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+17-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+18-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+19-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+20-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+21-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+22-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+23-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+24-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+25-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+26-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+27-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+28-1-2019 10:0 60
+
+emailUt41
+origem41-destino41
+29-1-2019 10:0 60
+
+emailUtC > emailUt42
+origem42-destino42
+1-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+2-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+3-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+4-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+5-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+6-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+7-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+8-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+9-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+10-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+11-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+12-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+13-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+14-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+15-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+16-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+17-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+18-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+19-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+20-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+21-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+22-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+23-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+24-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+25-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+26-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+27-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+28-1-2019 10:0 60
+
+emailUt42
+origem42-destino42
+29-1-2019 10:0 60
+
+emailUtC > emailUt43
+origem43-destino43
+1-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+2-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+3-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+4-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+5-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+6-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+7-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+8-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+9-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+10-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+11-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+12-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+13-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+14-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+15-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+16-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+17-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+18-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+19-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+20-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+21-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+22-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+23-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+24-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+25-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+26-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+27-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+28-1-2019 10:0 60
+
+emailUt43
+origem43-destino43
+29-1-2019 10:0 60
+
+emailUtC > emailUt44
+origem44-destino44
+1-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+2-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+3-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+4-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+5-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+6-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+7-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+8-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+9-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+10-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+11-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+12-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+13-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+14-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+15-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+16-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+17-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+18-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+19-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+20-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+21-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+22-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+23-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+24-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+25-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+26-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+27-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+28-1-2019 10:0 60
+
+emailUt44
+origem44-destino44
+29-1-2019 10:0 60
+
+emailUtC > emailUt45
+origem45-destino45
+1-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+2-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+3-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+4-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+5-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+6-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+7-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+8-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+9-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+10-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+11-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+12-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+13-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+14-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+15-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+16-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+17-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+18-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+19-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+20-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+21-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+22-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+23-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+24-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+25-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+26-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+27-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+28-1-2019 10:0 60
+
+emailUt45
+origem45-destino45
+29-1-2019 10:0 60
+
+emailUtC > emailUt46
+origem46-destino46
+1-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+2-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+3-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+4-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+5-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+6-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+7-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+8-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+9-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+10-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+11-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+12-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+13-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+14-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+15-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+16-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+17-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+18-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+19-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+20-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+21-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+22-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+23-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+24-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+25-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+26-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+27-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+28-1-2019 10:0 60
+
+emailUt46
+origem46-destino46
+29-1-2019 10:0 60
+
+emailUtC > emailUt47
+origem47-destino47
+1-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+2-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+3-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+4-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+5-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+6-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+7-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+8-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+9-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+10-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+11-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+12-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+13-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+14-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+15-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+16-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+17-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+18-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+19-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+20-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+21-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+22-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+23-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+24-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+25-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+26-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+27-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+28-1-2019 10:0 60
+
+emailUt47
+origem47-destino47
+29-1-2019 10:0 60
+
+emailUtC > emailUt48
+origem48-destino48
+1-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+2-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+3-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+4-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+5-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+6-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+7-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+8-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+9-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+10-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+11-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+12-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+13-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+14-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+15-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+16-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+17-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+18-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+19-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+20-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+21-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+22-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+23-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+24-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+25-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+26-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+27-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+28-1-2019 10:0 60
+
+emailUt48
+origem48-destino48
+29-1-2019 10:0 60
+
+emailUtC > emailUt49
+origem49-destino49
+1-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+2-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+3-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+4-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+5-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+6-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+7-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+8-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+9-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+10-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+11-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+12-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+13-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+14-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+15-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+16-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+17-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+18-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+19-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+20-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+21-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+22-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+23-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+24-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+25-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+26-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+27-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+28-1-2019 10:0 60
+
+emailUt49
+origem49-destino49
+29-1-2019 10:0 60
+
+emailUtC > emailUt50
+origem50-destino50
+1-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+2-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+3-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+4-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+5-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+6-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+7-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+8-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+9-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+10-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+11-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+12-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+13-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+14-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+15-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+16-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+17-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+18-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+19-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+20-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+21-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+22-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+23-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+24-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+25-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+26-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+27-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+28-1-2019 10:0 60
+
+emailUt50
+origem50-destino50
+29-1-2019 10:0 60
+
+emailUtC > emailUt51
+origem51-destino51
+1-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+2-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+3-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+4-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+5-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+6-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+7-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+8-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+9-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+10-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+11-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+12-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+13-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+14-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+15-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+16-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+17-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+18-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+19-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+20-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+21-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+22-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+23-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+24-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+25-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+26-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+27-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+28-1-2020 10:0 60
+
+emailUt51
+origem51-destino51
+29-1-2020 10:0 60
+
+emailUtC > emailUt52
+origem52-destino52
+1-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+2-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+3-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+4-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+5-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+6-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+7-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+8-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+9-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+10-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+11-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+12-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+13-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+14-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+15-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+16-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+17-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+18-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+19-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+20-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+21-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+22-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+23-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+24-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+25-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+26-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+27-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+28-1-2020 10:0 60
+
+emailUt52
+origem52-destino52
+29-1-2020 10:0 60
+
+emailUtC > emailUt53
+origem53-destino53
+1-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+2-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+3-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+4-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+5-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+6-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+7-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+8-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+9-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+10-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+11-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+12-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+13-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+14-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+15-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+16-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+17-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+18-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+19-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+20-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+21-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+22-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+23-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+24-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+25-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+26-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+27-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+28-1-2020 10:0 60
+
+emailUt53
+origem53-destino53
+29-1-2020 10:0 60
+
+emailUtC > emailUt54
+origem54-destino54
+1-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+2-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+3-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+4-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+5-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+6-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+7-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+8-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+9-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+10-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+11-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+12-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+13-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+14-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+15-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+16-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+17-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+18-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+19-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+20-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+21-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+22-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+23-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+24-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+25-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+26-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+27-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+28-1-2020 10:0 60
+
+emailUt54
+origem54-destino54
+29-1-2020 10:0 60
+
+emailUtC > emailUt55
+origem55-destino55
+1-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+2-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+3-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+4-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+5-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+6-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+7-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+8-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+9-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+10-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+11-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+12-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+13-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+14-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+15-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+16-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+17-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+18-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+19-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+20-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+21-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+22-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+23-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+24-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+25-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+26-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+27-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+28-1-2020 10:0 60
+
+emailUt55
+origem55-destino55
+29-1-2020 10:0 60
+
+emailUtC > emailUt56
+origem56-destino56
+1-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+2-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+3-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+4-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+5-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+6-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+7-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+8-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+9-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+10-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+11-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+12-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+13-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+14-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+15-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+16-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+17-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+18-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+19-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+20-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+21-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+22-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+23-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+24-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+25-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+26-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+27-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+28-1-2020 10:0 60
+
+emailUt56
+origem56-destino56
+29-1-2020 10:0 60
+
+emailUtC > emailUt57
+origem57-destino57
+1-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+2-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+3-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+4-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+5-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+6-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+7-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+8-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+9-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+10-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+11-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+12-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+13-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+14-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+15-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+16-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+17-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+18-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+19-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+20-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+21-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+22-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+23-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+24-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+25-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+26-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+27-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+28-1-2020 10:0 60
+
+emailUt57
+origem57-destino57
+29-1-2020 10:0 60
+
+emailUtC > emailUt58
+origem58-destino58
+1-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+2-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+3-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+4-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+5-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+6-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+7-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+8-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+9-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+10-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+11-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+12-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+13-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+14-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+15-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+16-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+17-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+18-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+19-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+20-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+21-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+22-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+23-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+24-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+25-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+26-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+27-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+28-1-2020 10:0 60
+
+emailUt58
+origem58-destino58
+29-1-2020 10:0 60
+
+emailUtC > emailUt59
+origem59-destino59
+1-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+2-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+3-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+4-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+5-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+6-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+7-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+8-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+9-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+10-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+11-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+12-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+13-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+14-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+15-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+16-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+17-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+18-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+19-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+20-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+21-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+22-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+23-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+24-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+25-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+26-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+27-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+28-1-2020 10:0 60
+
+emailUt59
+origem59-destino59
+29-1-2020 10:0 60
+
+emailUtC > emailUt60
+origem60-destino60
+1-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+2-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+3-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+4-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+5-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+6-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+7-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+8-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+9-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+10-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+11-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+12-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+13-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+14-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+15-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+16-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+17-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+18-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+19-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+20-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+21-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+22-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+23-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+24-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+25-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+26-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+27-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+28-1-2020 10:0 60
+
+emailUt60
+origem60-destino60
+29-1-2020 10:0 60
+
+emailUtC > Ate a proxima NomeC.
+> Obrigado. Ate a proxima.

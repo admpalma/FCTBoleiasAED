@@ -1,0 +1,286 @@
+> password: Visita 2 efetuada.
+emailUt6 > Deslocacao removida.
+emailUt6 > Ate a proxima Nome6.
+> password: Visita 2 efetuada.
+emailUt7 > Deslocacao removida.
+emailUt7 > Ate a proxima Nome7.
+> password: Visita 2 efetuada.
+emailUt8 > Deslocacao removida.
+emailUt8 > Ate a proxima Nome8.
+> password: Visita 2 efetuada.
+emailUt9 > Deslocacao removida.
+emailUt9 > Ate a proxima Nome9.
+> password: Visita 2 efetuada.
+emailUt10 > Deslocacao removida.
+emailUt10 > Ate a proxima Nome10.
+> password: Visita 1 efetuada.
+emailUt1 > Boleia registada.
+emailUt1 > Boleia registada.
+emailUt1 > Boleia registada.
+emailUt1 > Boleia registada.
+emailUt1 > Boleia registada.
+emailUt1 > Boleia registada.
+emailUt1 > Boleia registada.
+emailUt1 > Boleia registada.
+emailUt1 > Ate a proxima Nome1.
+> password: Visita 1 efetuada.
+emailUt2 > Boleia registada.
+emailUt2 > Boleia registada.
+emailUt2 > Boleia registada.
+emailUt2 > Boleia registada.
+emailUt2 > Boleia registada.
+emailUt2 > Boleia registada.
+emailUt2 > Boleia registada.
+emailUt2 > Boleia registada.
+emailUt2 > Ate a proxima Nome2.
+> password: Visita 1 efetuada.
+emailUt3 > Boleia registada.
+emailUt3 > Boleia registada.
+emailUt3 > Boleia registada.
+emailUt3 > Boleia registada.
+emailUt3 > Boleia registada.
+emailUt3 > Boleia registada.
+emailUt3 > Boleia registada.
+emailUt3 > Data invalida.
+emailUt3 > Ate a proxima Nome3.
+> password: Visita 1 efetuada.
+emailUt4 > Boleia registada.
+emailUt4 > Boleia registada.
+emailUt4 > Boleia registada.
+emailUt4 > Boleia registada.
+emailUt4 > Boleia registada.
+emailUt4 > Boleia registada.
+emailUt4 > Data invalida.
+emailUt4 > Boleia registada.
+emailUt4 > Ate a proxima Nome4.
+> password: Visita 1 efetuada.
+emailUt5 > Boleia registada.
+emailUt5 > Boleia registada.
+emailUt5 > Boleia registada.
+emailUt5 > Boleia registada.
+emailUt5 > Boleia registada.
+emailUt5 > Data invalida.
+emailUt5 > Boleia registada.
+emailUt5 > Boleia registada.
+emailUt5 > Ate a proxima Nome5.
+> password: Visita 3 efetuada.
+emailUt6 > Ficou na fila de espera (posicao 1).
+emailUt6 > Ficou na fila de espera (posicao 1).
+emailUt6 > Ficou na fila de espera (posicao 1).
+emailUt6 > Boleia registada.
+emailUt6 > Data invalida.
+emailUt6 > Boleia registada.
+emailUt6 > Boleia registada.
+emailUt6 > Boleia registada.
+emailUt6 > Ate a proxima Nome6.
+> password: Visita 3 efetuada.
+emailUt7 > Ficou na fila de espera (posicao 2).
+emailUt7 > Ficou na fila de espera (posicao 2).
+emailUt7 > Ficou na fila de espera (posicao 1).
+emailUt7 > Data invalida.
+emailUt7 > Boleia registada.
+emailUt7 > Boleia registada.
+emailUt7 > Boleia registada.
+emailUt7 > Boleia registada.
+emailUt7 > Ate a proxima Nome7.
+> password: Visita 3 efetuada.
+emailUt8 > Ficou na fila de espera (posicao 3).
+emailUt8 > Ficou na fila de espera (posicao 2).
+emailUt8 > Data invalida.
+emailUt8 > Boleia registada.
+emailUt8 > Boleia registada.
+emailUt8 > Boleia registada.
+emailUt8 > Boleia registada.
+emailUt8 > Boleia registada.
+emailUt8 > Ate a proxima Nome8.
+> password: Visita 3 efetuada.
+emailUt9 > Ficou na fila de espera (posicao 3).
+emailUt9 > Data invalida.
+emailUt9 > Ficou na fila de espera (posicao 1).
+emailUt9 > Boleia registada.
+emailUt9 > Boleia registada.
+emailUt9 > Boleia registada.
+emailUt9 > Boleia registada.
+emailUt9 > Boleia registada.
+emailUt9 > Ate a proxima Nome9.
+> password: Visita 3 efetuada.
+emailUt10 > Data invalida.
+emailUt10 > Ficou na fila de espera (posicao 2).
+emailUt10 > Ficou na fila de espera (posicao 1).
+emailUt10 > Boleia registada.
+emailUt10 > Boleia registada.
+emailUt10 > Boleia registada.
+emailUt10 > Boleia registada.
+emailUt10 > Boleia registada.
+emailUt10 > Ate a proxima Nome10.
+> password: Visita 2 efetuada.
+emailUt11 > Ficou na fila de espera (posicao 3).
+emailUt11 > Ficou na fila de espera (posicao 2).
+emailUt11 > Ficou na fila de espera (posicao 1).
+emailUt11 > Boleia registada.
+emailUt11 > Boleia registada.
+emailUt11 > Boleia registada.
+emailUt11 > Boleia registada.
+emailUt11 > Boleia registada.
+emailUt11 > Ate a proxima Nome11.
+> password: Visita 2 efetuada.
+emailUt12 > Ficou na fila de espera (posicao 3).
+emailUt12 > Ficou na fila de espera (posicao 2).
+emailUt12 > Ficou na fila de espera (posicao 1).
+emailUt12 > Boleia registada.
+emailUt12 > Boleia registada.
+emailUt12 > Boleia registada.
+emailUt12 > Boleia registada.
+emailUt12 > Boleia registada.
+emailUt12 > Ate a proxima Nome12.
+> password: Visita 2 efetuada.
+emailUt13 > Ficou na fila de espera (posicao 3).
+emailUt13 > Ficou na fila de espera (posicao 2).
+emailUt13 > Ficou na fila de espera (posicao 1).
+emailUt13 > Boleia registada.
+emailUt13 > Boleia registada.
+emailUt13 > Boleia registada.
+emailUt13 > Boleia registada.
+emailUt13 > Boleia registada.
+emailUt13 > Ate a proxima Nome13.
+> password: Visita 2 efetuada.
+emailUt14 > Ficou na fila de espera (posicao 3).
+emailUt14 > Ficou na fila de espera (posicao 2).
+emailUt14 > Ficou na fila de espera (posicao 1).
+emailUt14 > Boleia registada.
+emailUt14 > Boleia registada.
+emailUt14 > Boleia registada.
+emailUt14 > Boleia registada.
+emailUt14 > Boleia registada.
+emailUt14 > Ate a proxima Nome14.
+> password: Visita 2 efetuada.
+emailUt15 > Ficou na fila de espera (posicao 3).
+emailUt15 > Ficou na fila de espera (posicao 2).
+emailUt15 > Ficou na fila de espera (posicao 1).
+emailUt15 > Boleia registada.
+emailUt15 > Boleia registada.
+emailUt15 > Boleia registada.
+emailUt15 > Boleia registada.
+emailUt15 > Boleia registada.
+emailUt15 > Ate a proxima Nome15.
+> password: Visita 2 efetuada.
+emailUt16 > Ficou na fila de espera (posicao 3).
+emailUt16 > Ficou na fila de espera (posicao 2).
+emailUt16 > Ficou na fila de espera (posicao 1).
+emailUt16 > Boleia registada.
+emailUt16 > Boleia registada.
+emailUt16 > Boleia registada.
+emailUt16 > Boleia registada.
+emailUt16 > Boleia registada.
+emailUt16 > Ate a proxima Nome16.
+> password: Visita 2 efetuada.
+emailUt17 > Ficou na fila de espera (posicao 3).
+emailUt17 > Ficou na fila de espera (posicao 2).
+emailUt17 > Ficou na fila de espera (posicao 1).
+emailUt17 > Boleia registada.
+emailUt17 > Boleia registada.
+emailUt17 > Boleia registada.
+emailUt17 > Boleia registada.
+emailUt17 > Boleia registada.
+emailUt17 > Ate a proxima Nome17.
+> password: Visita 2 efetuada.
+emailUt18 > Ficou na fila de espera (posicao 3).
+emailUt18 > Ficou na fila de espera (posicao 2).
+emailUt18 > Ficou na fila de espera (posicao 1).
+emailUt18 > Boleia registada.
+emailUt18 > Boleia registada.
+emailUt18 > Boleia registada.
+emailUt18 > Boleia registada.
+emailUt18 > Boleia registada.
+emailUt18 > Ate a proxima Nome18.
+> password: Visita 2 efetuada.
+emailUt19 > Utilizador inexistente.
+emailUt19 > Ficou na fila de espera (posicao 2).
+emailUt19 > Ficou na fila de espera (posicao 1).
+emailUt19 > Boleia registada.
+emailUt19 > Boleia registada.
+emailUt19 > Boleia registada.
+emailUt19 > Boleia registada.
+emailUt19 > Boleia registada.
+emailUt19 > Ate a proxima Nome19.
+> password: Visita 2 efetuada.
+emailUt20 > Ficou na fila de espera (posicao 3).
+emailUt20 > Ficou na fila de espera (posicao 2).
+emailUt20 > Ficou na fila de espera (posicao 1).
+emailUt20 > Boleia registada.
+emailUt20 > Boleia registada.
+emailUt20 > Boleia registada.
+emailUt20 > Boleia registada.
+emailUt20 > Boleia registada.
+emailUt20 > Ate a proxima Nome20.
+> password: Visita 2 efetuada.
+emailUt21 > Ficou na fila de espera (posicao 3).
+emailUt21 > Utilizador inexistente.
+emailUt21 > Utilizador inexistente.
+emailUt21 > Utilizador inexistente.
+emailUt21 > Utilizador inexistente.
+emailUt21 > Utilizador inexistente.
+emailUt21 > Utilizador inexistente.
+emailUt21 > Utilizador inexistente.
+emailUt21 > Ate a proxima Nome21.
+> password: Visita 2 efetuada.
+emailUt22 > Ficou na fila de espera (posicao 2).
+emailUt22 > Ficou na fila de espera (posicao 1).
+emailUt22 > Boleia registada.
+emailUt22 > Boleia registada.
+emailUt22 > Boleia registada.
+emailUt22 > Boleia registada.
+emailUt22 > Boleia registada.
+emailUt22 > Boleia registada.
+emailUt22 > Ate a proxima Nome22.
+> password: Visita 2 efetuada.
+emailUt23 > Ficou na fila de espera (posicao 2).
+emailUt23 > Ficou na fila de espera (posicao 1).
+emailUt23 > Boleia registada.
+emailUt23 > Boleia registada.
+emailUt23 > Boleia registada.
+emailUt23 > Boleia registada.
+emailUt23 > Boleia registada.
+emailUt23 > Boleia registada.
+emailUt23 > Ate a proxima Nome23.
+> password: Visita 2 efetuada.
+emailUt24 > Ficou na fila de espera (posicao 2).
+emailUt24 > Ficou na fila de espera (posicao 1).
+emailUt24 > Boleia registada.
+emailUt24 > Boleia registada.
+emailUt24 > Boleia registada.
+emailUt24 > Boleia registada.
+emailUt24 > Boleia registada.
+emailUt24 > Boleia registada.
+emailUt24 > Ate a proxima Nome24.
+> password: Visita 2 efetuada.
+emailUt25 > Ficou na fila de espera (posicao 2).
+emailUt25 > Ficou na fila de espera (posicao 1).
+emailUt25 > Boleia registada.
+emailUt25 > Boleia registada.
+emailUt25 > Boleia registada.
+emailUt25 > Boleia registada.
+emailUt25 > Boleia registada.
+emailUt25 > Boleia registada.
+emailUt25 > Ate a proxima Nome25.
+> password: Visita 2 efetuada.
+emailUt26 > Ficou na fila de espera (posicao 2).
+emailUt26 > Ficou na fila de espera (posicao 1).
+emailUt26 > Boleia registada.
+emailUt26 > Boleia registada.
+emailUt26 > Boleia registada.
+emailUt26 > Boleia registada.
+emailUt26 > Boleia registada.
+emailUt26 > Boleia registada.
+emailUt26 > Ate a proxima Nome26.
+> password: Visita 2 efetuada.
+emailUt27 > Ficou na fila de espera (posicao 2).
+emailUt27 > Ficou na fila de espera (posicao 1).
+emailUt27 > Ficou na fila de espera (posicao 1).
+emailUt27 > Boleia registada.
+emailUt27 > Boleia registada.
+emailUt27 > Boleia registada.
+emailUt27 > Boleia registada.
+emailUt27 > Boleia registada.
+emailUt27 > Ate a proxima Nome27.
+> Obrigado. Ate a proxima.

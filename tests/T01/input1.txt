@@ -1,0 +1,52 @@
+regista emailUtA
+NomeA
+passA0
+sai
+regista emailUtB
+NomeB
+passB0
+regista emailUtC
+NomeC
+passC0
+entrada emailUtD
+sai
+entrada emailUtB
+pass0
+pass0
+pass0
+entrada emailUtA
+passA0
+nova
+origemA1
+destinoA1
+1-1-2019 1:1 1 2
+nova
+origemA2
+destinoA2
+2-2-2019 2:2 2 3
+nova
+origemA3
+destinoA3
+3-3-2019 3:3 3 4
+sai
+entrada emailUtA
+passA0
+termina
+sai
+entrada emailUtB
+passB0
+entrada emailUtA
+nova
+origemB1
+destinoB1
+1-1-2019 1:1 1 2
+nova
+origemB2
+destinoB2
+2-2-2019 2:2 2 3
+nova
+origemB3
+destinoB3
+3-3-2019 3:3 3 4
+sai
+termina
