@@ -12,6 +12,7 @@ import fctBoleias.trip.InvalidDataException;
 import fctBoleias.trip.TripHasRidesException;
 import fctBoleias.NonExistentTripException;
 import fctBoleias.NonExistentUserException;
+import fctBoleias.user.IncorrectPasswordException;
 import fctBoleias.user.User;
 
 public class Main {
@@ -253,6 +254,7 @@ public class Main {
 			loggedOutHelp(manager);
 			break;
 		case ENTRADA:
+			login(manager, in);
 			break;
 		case REGISTA:
 			registerUser(manager, in);
@@ -261,6 +263,43 @@ public class Main {
 			processEnd(manager);
 			break;
 		}
+	}
+
+	/**
+	 * Logs in a {@link User} in the system ({@link Manager})
+	 * @param manager {@link Manager} where the {@link User} will log in
+	 * @param in {@link Scanner} holding the new {@link User User's} data
+	 */
+	private static void login(Manager manager, Scanner in) {
+		assert(!manager.isLoggedIn());
+		try {
+			String email = in.nextLine();
+			int loginNumber = attemptLoginLoop(manager, in, email);
+			System.out.printf("Visita %d efetuada.", loginNumber);
+		} catch (IncorrectPasswordException e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+
+	private static int attemptLoginLoop(Manager manager, Scanner in, String email)  throws IncorrectPasswordException {
+		int attemptNumber = 0;
+		String password;
+		while (attemptNumber < MAX_PASSWORD_ATTEMPTS) {
+			try {
+				System.out.print(ASK_PW_LOGIN);
+				password = in.nextLine();
+				return manager.userLogin(email, password);
+			} catch (IncorrectPasswordException e) {
+				if (attemptNumber == PASSWORD_ATTEMPTS_LIMIT) {
+					throw e;
+				} else {
+					System.out.println();
+				}
+			}
+			attemptNumber++;
+		}
+		throw new RuntimeException();
 	}
 
 	/**
@@ -274,9 +313,9 @@ public class Main {
 		if (manager.isUserRegistered(email)) {
 			System.out.println("Utilizador ja existente.");
 		} else {
-			System.out.print("nome (maximo 50 caracteres): ");
-			String name = in.nextLine();
 			try {
+				System.out.print("nome (maximo 50 caracteres): ");
+				String name = in.nextLine();
 				int registrationNumber = attemptRegistrationLoop(manager, in, email, name);
 				System.out.printf("Registo %d efetuado.%n", registrationNumber);
 			} catch (InvalidPasswordFormatException e) {
@@ -300,12 +339,14 @@ public class Main {
 		int attemptNumber = 0;
 		while (attemptNumber < PASSWORD_ATTEMPTS_LIMIT) {
 			try {
-				System.out.println("password (entre 4 e 6 caracteres - digitos e letras): ");
+				System.out.print("password (entre 4 e 6 caracteres - digitos e letras): ");
 				String password = in.nextLine();
 				return manager.registerUser(email, name, password);
 			} catch (InvalidPasswordFormatException e) {
 				if (attemptNumber == PASSWORD_ATTEMPTS_LIMIT) {
 					throw e;
+				} else {
+					System.out.println();
 				}
 			}
 			attemptNumber++;
@@ -459,6 +500,7 @@ public class Main {
 	 * @param manager {@link Manager} in which the <code>Current User</code> is logging out
 	 */
 	private static void exit(Manager manager) {
+		assert(manager.isLoggedIn());
 		try {
 			System.out.printf("Ate a proxima %s%n", manager.logoutCurrentUser());
 		} catch (NotLoggedInException e) {

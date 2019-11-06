@@ -4,6 +4,7 @@ import basicDateTime.InvalidDateException;
 import fctBoleias.trip.CantRideSelfException;
 import fctBoleias.trip.InvalidDataException;
 import fctBoleias.trip.TripHasRidesException;
+import fctBoleias.user.IncorrectPasswordException;
 import fctBoleias.user.User;
 
 public interface Manager {
@@ -88,5 +89,14 @@ public interface Manager {
 	 * @return {@link User User's} email or <code>null</code> if there's no {@link User} logged in
 	 */
 	String getCurrentUserEmail();
+
+	/**
+	 * 
+	 * @param email
+	 * @param password
+	 * @return
+	 * @throws IncorrectPasswordException
+	 */
+	int userLogin(String email, String password) throws IncorrectPasswordException;
 	
 }
