@@ -96,7 +96,7 @@ public class Main {
 		private static Commands getCommand(Scanner in) {
 			try {
 				assert(in.hasNextLine());
-				String command = in.nextLine().toUpperCase();
+				String command = in.next().toUpperCase();
 				return Commands.valueOf(command);
 			} catch (IllegalArgumentException e) {
 				return Commands.UNKNOWN;
@@ -199,8 +199,7 @@ public class Main {
 		Manager manager = new ManagerClass();
 		Commands command;
 		do {
-			// TODO prompt shit
-			//System.out.printf("%s %s", manager.getCurrentUserEmail(), DEFAULT_PROMPT);
+			printPrompt(manager);
 			command = Commands.getCommand(in);
 			if (manager.isLoggedIn()) {
 				executeLoggedInCommand(command, manager, in);
@@ -209,6 +208,18 @@ public class Main {
 			}
 		} while (manager.isLoggedIn() || !(command.equals(Commands.TERMINA)));
 		in.close();
+	}
+	
+	/**
+	 * Prints the command prompt (dependent on whether there is a {@link User} logged in or not)
+	 * @param manager {@link Manager} on whitch to verify whether there is a {@link User} logged in or not
+	 */
+	private static void printPrompt(Manager manager) {
+		if (manager.isLoggedIn()) {
+			System.out.printf("%s %s", manager.getCurrentUserEmail(), DEFAULT_PROMPT);
+		} else {
+			System.out.print(DEFAULT_PROMPT);
+		}
 	}
 
 	/**
@@ -369,6 +380,7 @@ public class Main {
 		case RETIRA:
 			break;
 		case SAI:
+			exit(manager);
 			break;
 		}
 	}
@@ -452,6 +464,18 @@ public class Main {
 		}
 	}
 
+	/**
+	 * Performs the logout of the <code>Current User</code>
+	 * @param manager {@link Manager} in which the <code>Current User</code> is logging out
+	 */
+	private static void exit(Manager manager) {
+		try {
+			System.out.printf("Ate a proxima %s%n", manager.logoutCurrentUser());
+		} catch (NotLoggedInException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
 	// GENERAL METHODS
 
 	/**

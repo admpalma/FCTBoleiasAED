@@ -89,4 +89,11 @@ public class ManagerClass implements Manager {
 		return usersByEmail.size();
 	}
 
+	@Override
+	public String logoutCurrentUser() throws NotLoggedInException {
+		String currentUserName = getCurrentUserName();
+		currentUser = null;
+		return currentUserName;
+	}
+
 }

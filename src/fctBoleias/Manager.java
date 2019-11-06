@@ -30,8 +30,7 @@ public interface Manager {
 
 	/**
 	 * Gives the currently logged in {@link User}'s name
-	 * @return String name
-	 * @throws NotLoggedInException if no user is logged in
+	 * @return {@link User User's} name or <code>null</code> if there's no {@link User} logged in
 	 */
 	String getCurrentUserName() throws NotLoggedInException;
 
@@ -76,5 +75,18 @@ public interface Manager {
 	 * @throws IllegalArgumentException if there is already a {@link User} registered with the given <code>email</code>
 	 */
 	int registerUser(String email, String name, String password) throws InvalidPasswordFormatException, IllegalArgumentException;
+
+	/**
+	 * Performs the logout of the <code>Current User</code>
+	 * @return the name of the {@link User} that logged out
+	 * @throws NotLoggedInException if no user is logged in
+	 */
+	String logoutCurrentUser() throws NotLoggedInException;
+
+	/**
+	 * Gives the currently logged in {@link User}'s email
+	 * @return {@link User User's} email or <code>null</code> if there's no {@link User} logged in
+	 */
+	String getCurrentUserEmail();
 	
 }
