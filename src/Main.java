@@ -8,7 +8,8 @@ import fctBoleias.ManagerClass;
 import fctBoleias.NoTripOnDayException;
 import fctBoleias.NotLoggedInException;
 import fctBoleias.trip.CantRideSelfException;
-import fctBoleias.trip.InvalidDataException;
+import fctBoleias.trip.InvalidTripDataException;
+import fctBoleias.trip.Trip;
 import fctBoleias.trip.TripHasRidesException;
 import fctBoleias.NonExistentTripException;
 import fctBoleias.NonExistentUserException;
@@ -498,22 +499,25 @@ public class Main {
 	}
 
 	/**
-	 * Registers a new trip on current {@link User}
-	 * TODO
-	 * @param manager {@link Manager} containing the most relevant data of the program
-	 * @param in
+	 * Registers a new {@link Trip} on {@link User current user} of the given {@link Manager}
+	 * Assumes there's a {@link User} logged in
+	 * @param manager {@link Manager} in which the {@link Trip} is going to be registered
+	 * @param in {@link Scanner} containing the {@link Trip trip to be added} details
 	 */
 	private static void addTrip(Manager manager, Scanner in) {
-		String origin = in.nextLine();
-		String destiny = in.nextLine();
-		String date = in.next();
-		String hourMinute = in.next();
-		int duration = in.nextInt();
-		int numberSeats = in.nextInt();
-		in.nextLine();
 		try {
-			manager.addNewTrip(origin, destiny, date, hourMinute, duration, numberSeats);
-		} catch (InvalidDataException e) {
+			assert(manager.isLoggedIn());
+			in.nextLine();
+			String origin = in.nextLine();
+			String destiny = in.nextLine();
+			String date = in.next();
+			String hourMinute = in.next();
+			int duration = in.nextInt();
+			int numberSeats = in.nextInt();
+			in.nextLine();
+			manager.addTrip(origin, destiny, date, hourMinute, duration, numberSeats);
+			System.out.printf("Deslocacao %d registada. Obrigado %s.%n", manager.getCurrentUserTripNumber(), manager.getCurrentUserName());
+		} catch (InvalidTripDataException e) {
 			System.out.println(e.getMessage());
 		} catch (DateOccupiedException e) {
 			System.out.printf(e.getMessage(), manager.getCurrentUserName());
@@ -527,7 +531,7 @@ public class Main {
 	 */
 	private static void exit(Manager manager) {
 		assert(manager.isLoggedIn());
-		System.out.printf("Ate a proxima %s%n", manager.logoutCurrentUser());
+		System.out.printf("Ate a proxima %s.%n", manager.logoutCurrentUser());
 	}
 	
 	// GENERAL METHODS

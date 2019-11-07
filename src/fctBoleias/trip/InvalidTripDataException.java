@@ -1,21 +1,21 @@
 package fctBoleias.trip;
 
 /**
- * An {@link InvalidDataException} is thrown when there is 
+ * An {@link InvalidTripDataException} is thrown when there is 
  * an attempt to create a new {@link Trip} using invalid data
  */
-public class InvalidDataException extends Exception {
+public class InvalidTripDataException extends Exception {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public InvalidDataException() {
+	public InvalidTripDataException() {
 		super("Dados invalidos.");
 	}
 
-	public InvalidDataException(String message) {
+	public InvalidTripDataException(String message) {
 		super(message);
 	}
 

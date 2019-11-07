@@ -2,71 +2,82 @@ package fctBoleias.user;
 
 import basicDateTime.BasicDateTime;
 import dataStructures.SortedMap;
+import dataStructures.SortedMapWithJavaClass;
 import fctBoleias.trip.Trip;
 
 public class UserClass implements User {
-	
-		// Instance variables containing the users's details and information
-		private String email;
-		private String name;
-		private String password;
-		//private Map<LocalDateTime, List<Trip>> tripsByDate; // User's trips by date
-		private int nLogins;
-		private SortedMap<BasicDateTime, Trip> rides; // BOLEIAS EM QUE PARTICIPA MAS ¬OWNER
-		private SortedMap<BasicDateTime, Trip> trips; // USER'S (this) TRIPS
-		
-		/**
-		 * User object constructor
-		 * Creates an object holding details and information about a user
-		 * 
-		 * @param email - email of the user
-		 * @param name - name of the user
-		 * @param password - password of the user
-		 */
-		public UserClass(String email, String name, String password) {
-			this.email = email;
-			this.name = name;
-			this.password = password;
-			this.nLogins = 0;
-		}
 
-		/**
-		 * @return the email
-		 */
-		public String getEmail() {
-			return email;
-		}
+	// Instance variables containing the users's details and information
+	private String email;
+	private String name;
+	private String password;
+	// private Map<LocalDateTime, List<Trip>> tripsByDate; // User's trips by date
+	private int nLogins;
+	private SortedMap<BasicDateTime, Trip> rides; // BOLEIAS EM QUE PARTICIPA MAS ¬OWNER
+	private SortedMap<BasicDateTime, Trip> trips; // USER'S (this) TRIPS
 
-		/**
-		 * @return the name
-		 */
-		public String getName() {
-			return name;
-		}
+	/**
+	 * User object constructor Creates an object holding details and information
+	 * about a user
+	 * 
+	 * @param email    - email of the user
+	 * @param name     - name of the user
+	 * @param password - password of the user
+	 */
+	public UserClass(String email, String name, String password) {
+		this.email = email;
+		this.name = name;
+		this.password = password;
+		this.nLogins = 0;
+		trips = new SortedMapWithJavaClass<BasicDateTime, Trip>();
+	}
 
-		/**
-		 * @return the password
-		 */
-		public String getPassword() {
-			return password;
-		}
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
 
-		/**
-		 * @return the nVisits
-		 */
-		public int getNumberLogins() {
-			return nLogins;
-		}
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 
-		@Override
-		public boolean checkPassword(String password) {
-			return this.password.matches(password);
-		}
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
 
-		@Override
-		public void addLogin() {
-			nLogins++;
-		}
+	/**
+	 * @return the nVisits
+	 */
+	public int getNumberLogins() {
+		return nLogins;
+	}
 
-	
+	@Override
+	public boolean checkPassword(String password) {
+		return this.password.matches(password);
+	}
+
+	@Override
+	public void addLogin() {
+		nLogins++;
+	}
+
+	@Override
+	public void addTrip(Trip newTrip) {
+		trips.insert(newTrip.getBasicDateTime(), newTrip);
+	}
+
+	@Override
+	public int getNumberTrips() {
+		return trips.size();
+	}
+
 }

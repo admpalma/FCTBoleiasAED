@@ -1,5 +1,7 @@
 package fctBoleias.user;
 
+import fctBoleias.trip.Trip;
+
 public interface User {
 
 	/**
@@ -38,5 +40,16 @@ public interface User {
 	 * Registers a new login in the system by the {@link User}
 	 */
 	public void addLogin();
+
+	/**
+	 * Registers a new trip on this {@link User}
+	 * @param newTrip {@link Trip} to be registered
+	 */
+	public void addTrip(Trip newTrip);
+
+	/**
+	 * @return {@link User User's} number of {@link Trip Trips}
+	 */
+	public int getNumberTrips();
 
 }
