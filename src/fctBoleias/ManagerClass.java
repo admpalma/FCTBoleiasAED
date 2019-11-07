@@ -10,6 +10,7 @@ import fctBoleias.trip.CantRideSelfException;
 import fctBoleias.trip.InvalidDataException;
 import fctBoleias.trip.Trip;
 import fctBoleias.trip.TripHasRidesException;
+import fctBoleias.user.IncorrectPasswordException;
 import fctBoleias.user.User;
 import fctBoleias.user.UserClass;
 
@@ -103,6 +104,20 @@ public class ManagerClass implements Manager {
 		} catch (NullPointerException e) {
 			return null;
 		}
+	}
+
+	@Override
+	public int userLogin(String email, String password) throws NonExistentUserException, IncorrectPasswordException {
+		User user = usersByEmail.find(email);
+		if (user == null) {
+			throw new NonExistentUserException();
+		}
+		if (!user.checkPassword(password)) {
+			throw new IncorrectPasswordException();
+		} else {
+			user.addLogin();
+		}
+		return user.getNumberLogins();
 	}
 
 }
