@@ -267,8 +267,9 @@ public class Main {
 
 	/**
 	 * Logs in a {@link User} in the system ({@link Manager})
+	 * Assumes there's no {@link User} already logged in
 	 * @param manager {@link Manager} where the {@link User} will log in
-	 * @param in {@link Scanner} holding the new {@link User User's} data
+	 * @param in {@link Scanner} holding the {@link User User's} login information
 	 */
 	private static void login(Manager manager, Scanner in) {
 		assert(!manager.isLoggedIn());
@@ -276,13 +277,28 @@ public class Main {
 			String email = in.nextLine();
 			int loginNumber = attemptLoginLoop(manager, in, email);
 			System.out.printf("Visita %d efetuada.", loginNumber);
+			assert(manager.isLoggedIn());
 		} catch (IncorrectPasswordException e) {
+			System.out.println(e.getMessage());
+		} catch (NonExistentUserException e) {
 			System.out.println(e.getMessage());
 		}
 		
 	}
 
-	private static int attemptLoginLoop(Manager manager, Scanner in, String email)  throws IncorrectPasswordException {
+	/**
+	 * Asks the user repeatedly for a password for his login until the correct one
+	 * is supplied or the {@link Main#PASSWORD_ATTEMPTS_LIMIT attempts limit} is reached
+	 * Assumes there's no {@link User} already logged in
+	 * @param manager {@link Manager} where the {@link User} will log in
+	 * @param in {@link Scanner} holding the {@link User User's} login information
+	 * @param email {@link User User's} login email
+	 * @return ordinal number of system-wide login
+	 * @throws NonExistentUserException if there's no {@link User} registered in the {@link Manager system} with the given <code>email</code>
+	 * @throws IncorrectPasswordException if the {@link User} doesn't provide a valid password
+	 * within the {@link Main#PASSWORD_ATTEMPTS_LIMIT attempts limit}
+	 */
+	private static int attemptLoginLoop(Manager manager, Scanner in, String email)  throws NonExistentUserException, IncorrectPasswordException {
 		int attemptNumber = 0;
 		String password;
 		while (attemptNumber < MAX_PASSWORD_ATTEMPTS) {
@@ -332,7 +348,7 @@ public class Main {
 	 * @param email new {@link User User's} email
 	 * @param name new {@link User User's} name
 	 * @return the number of this registration
-	 * @throws InvalidPasswordFormatException if the doesn't choose a valid password
+	 * @throws InvalidPasswordFormatException if the {@link User} doesn't choose a valid password
 	 * within the {@link Main#PASSWORD_ATTEMPTS_LIMIT attempts limit}
 	 */
 	private static int attemptRegistrationLoop(Manager manager, Scanner in, String email, String name) throws InvalidPasswordFormatException {
