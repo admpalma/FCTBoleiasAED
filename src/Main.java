@@ -315,7 +315,7 @@ public class Main {
 			}
 			attemptNumber++;
 		}
-		throw new RuntimeException();
+		throw new AssertionError("Execution should never reach this point!");
 	}
 
 	/**
@@ -367,7 +367,7 @@ public class Main {
 			}
 			attemptNumber++;
 		}
-		throw new RuntimeException();
+		throw new AssertionError("Execution should never reach this point!");
 	}
 
 	/**
