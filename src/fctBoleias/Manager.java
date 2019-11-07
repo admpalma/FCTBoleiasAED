@@ -95,8 +95,9 @@ public interface Manager {
 	 * @param email
 	 * @param password
 	 * @return
+	 * @throws NonExistentUserException
 	 * @throws IncorrectPasswordException
 	 */
-	int userLogin(String email, String password) throws IncorrectPasswordException;
+	int userLogin(String email, String password) throws NonExistentUserException, IncorrectPasswordException;
 	
 }

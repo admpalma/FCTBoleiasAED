@@ -11,7 +11,7 @@ public class UserClass implements User {
 		private String name;
 		private String password;
 		//private Map<LocalDateTime, List<Trip>> tripsByDate; // User's trips by date
-		private int nVisits;
+		private int nLogins;
 		private SortedMap<BasicDateTime, Trip> rides; // BOLEIAS EM QUE PARTICIPA MAS ¬OWNER
 		private SortedMap<BasicDateTime, Trip> trips; // USER'S (this) TRIPS
 		
@@ -27,7 +27,7 @@ public class UserClass implements User {
 			this.email = email;
 			this.name = name;
 			this.password = password;
-			this.nVisits = 0;
+			this.nLogins = 0;
 		}
 
 		/**
@@ -54,8 +54,18 @@ public class UserClass implements User {
 		/**
 		 * @return the nVisits
 		 */
-		public int getnVisits() {
-			return nVisits;
+		public int getNumberLogins() {
+			return nLogins;
+		}
+
+		@Override
+		public boolean checkPassword(String password) {
+			return this.password.matches(password);
+		}
+
+		@Override
+		public void addLogin() {
+			nLogins++;
 		}
 
 	
