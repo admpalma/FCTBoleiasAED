@@ -8,10 +8,12 @@ import fctBoleias.ManagerClass;
 import fctBoleias.NoTripOnDayException;
 import fctBoleias.NotLoggedInException;
 import fctBoleias.trip.CantRideSelfException;
-import fctBoleias.trip.InvalidDataException;
+import fctBoleias.trip.InvalidTripDataException;
+import fctBoleias.trip.Trip;
 import fctBoleias.trip.TripHasRidesException;
 import fctBoleias.NonExistentTripException;
 import fctBoleias.NonExistentUserException;
+import fctBoleias.user.IncorrectPasswordException;
 import fctBoleias.user.User;
 
 public class Main {
@@ -96,7 +98,7 @@ public class Main {
 		private static Commands getCommand(Scanner in) {
 			try {
 				assert(in.hasNextLine());
-				String command = in.nextLine().toUpperCase();
+				String command = in.next().toUpperCase();
 				return Commands.valueOf(command);
 			} catch (IllegalArgumentException e) {
 				return Commands.UNKNOWN;
@@ -199,8 +201,7 @@ public class Main {
 		Manager manager = new ManagerClass();
 		Commands command;
 		do {
-			// TODO prompt shit
-			//System.out.printf("%s %s", manager.getCurrentUserEmail(), DEFAULT_PROMPT);
+			printPrompt(manager);
 			command = Commands.getCommand(in);
 			if (manager.isLoggedIn()) {
 				executeLoggedInCommand(command, manager, in);
@@ -210,9 +211,21 @@ public class Main {
 		} while (manager.isLoggedIn() || !(command.equals(Commands.TERMINA)));
 		in.close();
 	}
+	
+	/**
+	 * Prints the command prompt (dependent on whether there is a {@link User} logged in or not)
+	 * @param manager {@link Manager} on whitch to verify whether there is a {@link User} logged in or not
+	 */
+	private static void printPrompt(Manager manager) {
+		if (manager.isLoggedIn()) {
+			System.out.printf("%s %s", manager.getCurrentUserEmail(), DEFAULT_PROMPT);
+		} else {
+			System.out.print(DEFAULT_PROMPT);
+		}
+	}
 
 	/**
-	 * Attempts to execute the given {@link Commands command} assumimng there is no user logged in,
+	 * Attempts to execute the given {@link Commands command} assumimng there is no {@link User} logged in,
 	 * and prints a warning in case this attempt fails.
 	 * @param command {@link Commands Command} to be executed
 	 * @param manager {@link Manager} containing the most relevant data of the program
@@ -220,7 +233,7 @@ public class Main {
 	 */
 	private static void executeLoggedOutCommand(Commands command, Manager manager, Scanner in) {
 		try {
-			assert(manager.isLoggedIn());
+			assert(!manager.isLoggedIn());
 			LoggedOutCommands loggedOutCommand = LoggedOutCommands.toLoggedOutCommand(command);
 			loggedOutCommandInterpreter(manager, in, loggedOutCommand);
 		} catch (IllegalArgumentException e) {
@@ -232,16 +245,19 @@ public class Main {
 
 	/**
 	 * Command interpreter for "no user logged in" context
+	 * Assumes there's no {@link User} logged in
 	 * @param manager {@link Manager} containing the most relevant data of the program
 	 * @param in {@link Scanner} that might contain adicional user input
 	 * @param loggedOutCommand the {@link LoggedOutCommands LoggedOutCommand} to be run
 	 */
 	private static void loggedOutCommandInterpreter(Manager manager, Scanner in, LoggedOutCommands loggedOutCommand) {
+		assert(!manager.isLoggedIn());
 		switch (loggedOutCommand) {
 		case AJUDA:
 			loggedOutHelp(manager);
 			break;
 		case ENTRADA:
+			login(manager, in);
 			break;
 		case REGISTA:
 			registerUser(manager, in);
@@ -253,19 +269,75 @@ public class Main {
 	}
 
 	/**
+	 * Logs in a {@link User} in the system ({@link Manager})
+	 * Assumes there's no {@link User} already logged in
+	 * @param manager {@link Manager} where the {@link User} will log in
+	 * @param in {@link Scanner} holding the {@link User User's} login information
+	 */
+	private static void login(Manager manager, Scanner in) {
+		assert(!manager.isLoggedIn());
+		try {
+			String email = in.nextLine().trim();
+			if (manager.isUserRegistered(email)) {
+				int loginNumber = attemptLoginLoop(manager, in, email);
+				System.out.printf("Visita %d efetuada.%n", loginNumber);
+				assert(manager.isLoggedIn());
+			} else {
+				System.out.println("Utilizador nao existente.");
+			}
+		} catch (IncorrectPasswordException e) {
+			System.out.println(e.getMessage());
+		} catch (NonExistentUserException e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+
+	/**
+	 * Asks the user repeatedly for a password for his login until the correct one
+	 * is supplied or the {@link Main#PASSWORD_ATTEMPTS_LIMIT attempts limit} is reached
+	 * Assumes there's no {@link User} already logged in
+	 * @param manager {@link Manager} where the {@link User} will log in
+	 * @param in {@link Scanner} holding the {@link User User's} login information
+	 * @param email {@link User User's} login email
+	 * @return ordinal number of this {@link User User's} login
+	 * @throws NonExistentUserException if there's no {@link User} registered in the {@link Manager system} with the given <code>email</code>
+	 * @throws IncorrectPasswordException if the {@link User} doesn't provide a valid password
+	 * within the {@link Main#PASSWORD_ATTEMPTS_LIMIT attempts limit}
+	 */
+	private static int attemptLoginLoop(Manager manager, Scanner in, String email)  throws NonExistentUserException, IncorrectPasswordException {
+		int attemptNumber = 1;
+		String password;
+		while (attemptNumber <= MAX_PASSWORD_ATTEMPTS) {
+			try {
+				System.out.print(ASK_PW_LOGIN);
+				password = in.nextLine();
+				return manager.userLogin(email, password);
+			} catch (IncorrectPasswordException e) {
+				if (attemptNumber == PASSWORD_ATTEMPTS_LIMIT) {
+					throw e;
+				}
+			}
+			attemptNumber++;
+		}
+		throw new AssertionError("Execution should never reach this point!");
+	}
+
+	/**
 	 * Registers a new {@link User} in the system ({@link Manager})
+	 * Assumes there's no {@link User} logged in
 	 * @param manager {@link Manager} where the {@link User} will be registered
 	 * @param in {@link Scanner} holding the new {@link User User's} data
 	 */
 	private static void registerUser(Manager manager, Scanner in) {
 		assert(!manager.isLoggedIn());
-		String email = in.nextLine();
+		String email = in.nextLine().trim();
 		if (manager.isUserRegistered(email)) {
 			System.out.println("Utilizador ja existente.");
 		} else {
-			System.out.print("nome (maximo 50 caracteres): ");
-			String name = in.nextLine();
 			try {
+				System.out.print("nome (maximo 50 caracteres): ");
+				String name = in.nextLine();
 				int registrationNumber = attemptRegistrationLoop(manager, in, email, name);
 				System.out.printf("Registo %d efetuado.%n", registrationNumber);
 			} catch (InvalidPasswordFormatException e) {
@@ -282,28 +354,31 @@ public class Main {
 	 * @param email new {@link User User's} email
 	 * @param name new {@link User User's} name
 	 * @return the number of this registration
-	 * @throws InvalidPasswordFormatException if the doesn't choose a valid password
+	 * @throws InvalidPasswordFormatException if the {@link User} doesn't choose a valid password
 	 * within the {@link Main#PASSWORD_ATTEMPTS_LIMIT attempts limit}
 	 */
 	private static int attemptRegistrationLoop(Manager manager, Scanner in, String email, String name) throws InvalidPasswordFormatException {
-		int attemptNumber = 0;
-		while (attemptNumber < PASSWORD_ATTEMPTS_LIMIT) {
+		int attemptNumber = 1;
+		while (attemptNumber <= PASSWORD_ATTEMPTS_LIMIT) {
 			try {
-				System.out.println("password (entre 4 e 6 caracteres - digitos e letras): ");
+				System.out.print("password (entre 4 e 6 caracteres - digitos e letras): ");
 				String password = in.nextLine();
 				return manager.registerUser(email, name, password);
 			} catch (InvalidPasswordFormatException e) {
 				if (attemptNumber == PASSWORD_ATTEMPTS_LIMIT) {
 					throw e;
+				} else {
+					System.out.println();
 				}
 			}
 			attemptNumber++;
 		}
-		throw new RuntimeException();
+		throw new AssertionError("Execution should never reach this point!");
 	}
 
 	/**
 	 * Prints the help messages associated with a {@link User} not being logged in
+	 * Assumes there's no {@link User} logged in
 	 * @param manager {@link Manager} containing the most relevant data of the program
 	 */
 	private static void loggedOutHelp(Manager manager) {
@@ -315,7 +390,7 @@ public class Main {
 
 	/**
 	 * Prints the ending of program message
-	 * (should only run when there's no {@link User} logged in)
+	 * Assumes there's no {@link User} logged in
 	 * @param manager {@link Manager} containing the most relevant data of the program
 	 */
 	private static void processEnd(Manager manager) {
@@ -326,7 +401,7 @@ public class Main {
 	// LOGGED IN METHODS
 
 	/**
-	 * Attempts to execute the given {@link Commands command} assumimng there is no user logged in,
+	 * Attempts to execute the given {@link Commands command} assuming there's a {@link User} logged in,
 	 * and prints a warning in case this attempt fails.
 	 * @param command {@link Commands Command} to be executed
 	 * @param manager {@link Manager} containing the most relevant data of the program
@@ -344,11 +419,13 @@ public class Main {
 
 	/**
 	 * Command interpreter for "user logged in" context
+	 * Assumes there's a {@link User} logged in
 	 * @param manager {@link Manager} containing the most relevant data of the program
 	 * @param in {@link Scanner} that might contain adicional user input
 	 * @param loggedInCommand the {@link LoggedInCommands LoggedInCommand} to be run
 	 */
 	private static void loggedInCommandInterpreter(Manager manager, Scanner in, LoggedInCommands loggedInCommand) {
+		assert(manager.isLoggedIn());
 		switch (loggedInCommand) {
 		case AJUDA:
 			loggedInHelp(manager);
@@ -369,12 +446,14 @@ public class Main {
 		case RETIRA:
 			break;
 		case SAI:
+			exit(manager);
 			break;
 		}
 	}
 
 	/**
 	 * Prints the help messages associated with a {@link User} being logged in
+	 * Assumes there's a {@link User} logged in
 	 * @param manager {@link Manager} containing the most relevant data of the program
 	 */
 	private static void loggedInHelp(Manager manager) {
@@ -395,7 +474,7 @@ public class Main {
 		try {
 			manager.remove(date);
 			System.out.println(RIDE_REMOVED);
-		} catch (NotLoggedInException | NoTripOnDayException | InvalidDateException | TripHasRidesException e) {
+		} catch (NoTripOnDayException | InvalidDateException | TripHasRidesException e) {
 			System.out.println(e.getMessage());
 		}
 	}
@@ -411,47 +490,50 @@ public class Main {
 		try {
 			manager.addNewRide(name, date);
 			System.out.println(RIDE_REGISTERED);
-		} catch (NotLoggedInException | NonExistentUserException
+		} catch (NonExistentUserException
 				| InvalidDateException | NonExistentTripException e) {
 			System.out.println(e.getMessage());
 		} catch (CantRideSelfException | DateOccupiedException e) {
-			try {
-				System.out.printf(e.getMessage(), manager.getCurrentUserName());
-			} catch (NotLoggedInException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			System.out.printf(e.getMessage(), manager.getCurrentUserName());
 		}
 	}
 
 	/**
-	 * Registers a new trip on current {@link User}
-	 * TODO
-	 * @param manager {@link Manager} containing the most relevant data of the program
-	 * @param in
+	 * Registers a new {@link Trip} on {@link User current user} of the given {@link Manager}
+	 * Assumes there's a {@link User} logged in
+	 * @param manager {@link Manager} in which the {@link Trip} is going to be registered
+	 * @param in {@link Scanner} containing the {@link Trip trip to be added} details
 	 */
 	private static void addTrip(Manager manager, Scanner in) {
-		String origin = in.nextLine();
-		String destiny = in.nextLine();
-		String date = in.next();
-		String hourMinute = in.next();
-		int duration = in.nextInt();
-		int numberSeats = in.nextInt();
-		in.nextLine();
 		try {
-			manager.addNewTrip(origin, destiny, date, hourMinute, duration, numberSeats);
-		} catch (NotLoggedInException | InvalidDataException e) {
+			assert(manager.isLoggedIn());
+			in.nextLine();
+			String origin = in.nextLine();
+			String destiny = in.nextLine();
+			String date = in.next();
+			String hourMinute = in.next();
+			int duration = in.nextInt();
+			int numberSeats = in.nextInt();
+			in.nextLine();
+			manager.addTrip(origin, destiny, date, hourMinute, duration, numberSeats);
+			System.out.printf("Deslocacao %d registada. Obrigado %s.%n", manager.getCurrentUserTripNumber(), manager.getCurrentUserName());
+		} catch (InvalidTripDataException e) {
 			System.out.println(e.getMessage());
 		} catch (DateOccupiedException e) {
-			try {
-				System.out.printf(e.getMessage(), manager.getCurrentUserName());
-			} catch (NotLoggedInException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			System.out.printf(e.getMessage(), manager.getCurrentUserName());
 		}
 	}
 
+	/**
+	 * Performs the logout of the <code>Current User</code>
+	 * Assumes there's a {@link User} logged in
+	 * @param manager {@link Manager} in which the <code>Current User</code> is logging out
+	 */
+	private static void exit(Manager manager) {
+		assert(manager.isLoggedIn());
+		System.out.printf("Ate a proxima %s.%n", manager.logoutCurrentUser());
+	}
+	
 	// GENERAL METHODS
 
 	/**

@@ -68,31 +68,26 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 
 	@Override
 	public int getYear() {
-		assert(isValid());
 		return rawDate[0];
 	}
 
 	@Override
 	public int getMonth() {
-		assert(isValid());
 		return rawDate[1];
 	}
 
 	@Override
 	public int getDay() {
-		assert(isValid());
 		return rawDate[2];
 	}
 
 	@Override
 	public int getHour() {
-		assert(isValid());
 		return rawDate[3];
 	}
 
 	@Override
 	public int getMinutes() {
-		assert(isValid());
 		return rawDate[4];
 	}
 
