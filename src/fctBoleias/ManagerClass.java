@@ -108,6 +108,9 @@ public class ManagerClass implements Manager {
 
 	@Override
 	public int userLogin(String email, String password) throws NonExistentUserException, IncorrectPasswordException {
+		if (isLoggedIn()) {
+			throw new LoggedInException();
+		}
 		User user = usersByEmail.find(email);
 		if (user == null) {
 			throw new NonExistentUserException();

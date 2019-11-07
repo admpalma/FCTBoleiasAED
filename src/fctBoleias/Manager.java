@@ -91,12 +91,14 @@ public interface Manager {
 	String getCurrentUserEmail();
 
 	/**
-	 * 
-	 * @param email
-	 * @param password
-	 * @return
-	 * @throws NonExistentUserException
-	 * @throws IncorrectPasswordException
+	 * Logs in a {@link User} in the system ({@link Manager})
+	 * Assumes there's no {@link User} already logged in
+	 * (throws {@link LoggedInException} in case this assumption is not met)
+	 * @param email {@link User User's} email
+	 * @param password {@link User User's} password
+	 * @return the ordinal number of this {@link User User's} login in the system
+	 * @throws NonExistentUserException if the given <code>email</code> doesn't match any {@link User} in the system
+	 * @throws IncorrectPasswordException if the given <code>password</code> doesn't match the {@link User User's} actual password
 	 */
 	int userLogin(String email, String password) throws NonExistentUserException, IncorrectPasswordException;
 	
