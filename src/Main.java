@@ -224,7 +224,7 @@ public class Main {
 	}
 
 	/**
-	 * Attempts to execute the given {@link Commands command} assumimng there is no user logged in,
+	 * Attempts to execute the given {@link Commands command} assumimng there is no {@link User} logged in,
 	 * and prints a warning in case this attempt fails.
 	 * @param command {@link Commands Command} to be executed
 	 * @param manager {@link Manager} containing the most relevant data of the program
@@ -232,7 +232,7 @@ public class Main {
 	 */
 	private static void executeLoggedOutCommand(Commands command, Manager manager, Scanner in) {
 		try {
-			assert(manager.isLoggedIn());
+			assert(!manager.isLoggedIn());
 			LoggedOutCommands loggedOutCommand = LoggedOutCommands.toLoggedOutCommand(command);
 			loggedOutCommandInterpreter(manager, in, loggedOutCommand);
 		} catch (IllegalArgumentException e) {
@@ -244,11 +244,13 @@ public class Main {
 
 	/**
 	 * Command interpreter for "no user logged in" context
+	 * Assumes there's no {@link User} logged in
 	 * @param manager {@link Manager} containing the most relevant data of the program
 	 * @param in {@link Scanner} that might contain adicional user input
 	 * @param loggedOutCommand the {@link LoggedOutCommands LoggedOutCommand} to be run
 	 */
 	private static void loggedOutCommandInterpreter(Manager manager, Scanner in, LoggedOutCommands loggedOutCommand) {
+		assert(!manager.isLoggedIn());
 		switch (loggedOutCommand) {
 		case AJUDA:
 			loggedOutHelp(manager);
@@ -322,6 +324,7 @@ public class Main {
 
 	/**
 	 * Registers a new {@link User} in the system ({@link Manager})
+	 * Assumes there's no {@link User} logged in
 	 * @param manager {@link Manager} where the {@link User} will be registered
 	 * @param in {@link Scanner} holding the new {@link User User's} data
 	 */
@@ -374,6 +377,7 @@ public class Main {
 
 	/**
 	 * Prints the help messages associated with a {@link User} not being logged in
+	 * Assumes there's no {@link User} logged in
 	 * @param manager {@link Manager} containing the most relevant data of the program
 	 */
 	private static void loggedOutHelp(Manager manager) {
@@ -385,7 +389,7 @@ public class Main {
 
 	/**
 	 * Prints the ending of program message
-	 * (should only run when there's no {@link User} logged in)
+	 * Assumes there's no {@link User} logged in
 	 * @param manager {@link Manager} containing the most relevant data of the program
 	 */
 	private static void processEnd(Manager manager) {
@@ -396,7 +400,7 @@ public class Main {
 	// LOGGED IN METHODS
 
 	/**
-	 * Attempts to execute the given {@link Commands command} assumimng there is no user logged in,
+	 * Attempts to execute the given {@link Commands command} assuming there's a {@link User} logged in,
 	 * and prints a warning in case this attempt fails.
 	 * @param command {@link Commands Command} to be executed
 	 * @param manager {@link Manager} containing the most relevant data of the program
@@ -414,11 +418,13 @@ public class Main {
 
 	/**
 	 * Command interpreter for "user logged in" context
+	 * Assumes there's a {@link User} logged in
 	 * @param manager {@link Manager} containing the most relevant data of the program
 	 * @param in {@link Scanner} that might contain adicional user input
 	 * @param loggedInCommand the {@link LoggedInCommands LoggedInCommand} to be run
 	 */
 	private static void loggedInCommandInterpreter(Manager manager, Scanner in, LoggedInCommands loggedInCommand) {
+		assert(manager.isLoggedIn());
 		switch (loggedInCommand) {
 		case AJUDA:
 			loggedInHelp(manager);
@@ -446,6 +452,7 @@ public class Main {
 
 	/**
 	 * Prints the help messages associated with a {@link User} being logged in
+	 * Assumes there's a {@link User} logged in
 	 * @param manager {@link Manager} containing the most relevant data of the program
 	 */
 	private static void loggedInHelp(Manager manager) {
@@ -466,7 +473,7 @@ public class Main {
 		try {
 			manager.remove(date);
 			System.out.println(RIDE_REMOVED);
-		} catch (NotLoggedInException | NoTripOnDayException | InvalidDateException | TripHasRidesException e) {
+		} catch (NoTripOnDayException | InvalidDateException | TripHasRidesException e) {
 			System.out.println(e.getMessage());
 		}
 	}
@@ -482,7 +489,7 @@ public class Main {
 		try {
 			manager.addNewRide(name, date);
 			System.out.println(RIDE_REGISTERED);
-		} catch (NotLoggedInException | NonExistentUserException
+		} catch (NonExistentUserException
 				| InvalidDateException | NonExistentTripException e) {
 			System.out.println(e.getMessage());
 		} catch (CantRideSelfException | DateOccupiedException e) {
@@ -506,7 +513,7 @@ public class Main {
 		in.nextLine();
 		try {
 			manager.addNewTrip(origin, destiny, date, hourMinute, duration, numberSeats);
-		} catch (NotLoggedInException | InvalidDataException e) {
+		} catch (InvalidDataException e) {
 			System.out.println(e.getMessage());
 		} catch (DateOccupiedException e) {
 			System.out.printf(e.getMessage(), manager.getCurrentUserName());
@@ -515,15 +522,12 @@ public class Main {
 
 	/**
 	 * Performs the logout of the <code>Current User</code>
+	 * Assumes there's a {@link User} logged in
 	 * @param manager {@link Manager} in which the <code>Current User</code> is logging out
 	 */
 	private static void exit(Manager manager) {
 		assert(manager.isLoggedIn());
-		try {
-			System.out.printf("Ate a proxima %s%n", manager.logoutCurrentUser());
-		} catch (NotLoggedInException e) {
-			System.out.println(e.getMessage());
-		}
+		System.out.printf("Ate a proxima %s%n", manager.logoutCurrentUser());
 	}
 	
 	// GENERAL METHODS

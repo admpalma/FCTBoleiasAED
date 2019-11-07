@@ -1,6 +1,6 @@
 package fctBoleias;
 
-public class NotLoggedInException extends Exception {
+public class NotLoggedInException extends IllegalStateException {
 
 	/**
 	 * 
