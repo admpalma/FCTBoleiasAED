@@ -3,7 +3,9 @@ package fctBoleias.user;
 import basicDateTime.BasicDateTime;
 import dataStructures.SortedMap;
 import dataStructures.SortedMapWithJavaClass;
+import fctBoleias.NoTripOnDayException;
 import fctBoleias.trip.Trip;
+import fctBoleias.trip.TripHasRidesException;
 
 public class UserClass implements User {
 
@@ -11,7 +13,7 @@ public class UserClass implements User {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	// Instance variables containing the users's details and information
 	private String email;
 	private String name;
@@ -83,6 +85,17 @@ public class UserClass implements User {
 	@Override
 	public int getNumberTrips() {
 		return trips.size();
+	}
+
+	@Override
+	public void removeTrip(BasicDateTime date) throws NoTripOnDayException, TripHasRidesException {
+		Trip trip = trips.find(date);
+		if (trip == null) { // If we don't find the trip (doesn't exist)
+			throw new NoTripOnDayException(this);
+		} else if (trip.hasRides()) {
+			throw new TripHasRidesException(this);
+		}
+		trips.remove(date);
 	}
 
 }

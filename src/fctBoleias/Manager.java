@@ -2,6 +2,7 @@ package fctBoleias;
 
 import java.io.Serializable;
 
+import basicDateTime.BasicDateTime;
 import basicDateTime.InvalidDateException;
 import fctBoleias.trip.CantRideSelfException;
 import fctBoleias.trip.InvalidTripDataException;
@@ -40,12 +41,13 @@ public interface Manager extends Serializable {
 	String getCurrentUserName();
 
 	/**
-	 * Removes a ride
-	 * @param date - date of the ride
-	 * @throws NotLoggedInException if no user is logged in
+	 * Removes a {@link Trip trip} from the currentUser on the given date
+	 * Assumes there's a {@link User} logged in
+	 * @param date the date of the {@link Trip trip} to be removed
+	 * @throws NotLoggedInException if no {@link User user} is logged in
 	 * @throws InvalidDateException if the given date is invalid
-	 * @throws NoTripOnDayException if there's no trip registered on that day
-	 * @throws TripHasRidesException if the trip already has rides
+	 * @throws NoTripOnDayException if there's no {@link Trip trip} registered on that date
+	 * @throws TripHasRidesException if the {@link Trip trip} already has rides and can't be removed
 	 */
 	void remove(String date) throws NotLoggedInException, InvalidDateException, NoTripOnDayException, TripHasRidesException;
 

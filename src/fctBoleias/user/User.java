@@ -59,11 +59,10 @@ public interface User extends Serializable {
 
 	/**
 	 * Removes a {@link Trip trip} from this {@link User} on the given {@link BasicDateTime date}
-	 * @param date {@link BasicDateTime Date} of the {@link Trip} to be removed 
-	 * @return boolean true if the {@link Trip} was removed, false otherwise
+	 * @param date {@link BasicDateTime Date} of the {@link Trip} to be removed
 	 * @throws NoTripOnDayException if there's no {@link Trip} registers on the given {@link BasicDateTime date}
 	 * @throws TripHasRidesException if the {@link Trip} already has rides and can no longer be removed TODO
 	 */
-	boolean removeTrip(BasicDateTime date) throws NoTripOnDayException, TripHasRidesException;
+	void removeTrip(BasicDateTime date) throws NoTripOnDayException, TripHasRidesException;
 
 }

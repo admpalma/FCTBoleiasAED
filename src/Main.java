@@ -4,8 +4,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.sql.Date;
 import java.util.Scanner;
 
+import basicDateTime.BasicDateTime;
 import basicDateTime.InvalidDateException;
 import fctBoleias.DateOccupiedException;
 import fctBoleias.InvalidPasswordFormatException;
@@ -455,7 +457,7 @@ public class Main {
 	 * and prints a warning in case this attempt fails.
 	 * @param command {@link Commands Command} to be executed
 	 * @param manager {@link Manager} containing the most relevant data of the program
-	 * @param in {@link Scanner} that might contain adicional user input
+	 * @param in {@link Scanner} that might contain additional user input
 	 */
 	private static void executeLoggedInCommand(Commands command, Manager manager, Scanner in) {
 		try {
@@ -471,7 +473,7 @@ public class Main {
 	 * Command interpreter for "user logged in" context
 	 * Assumes there's a {@link User} logged in
 	 * @param manager {@link Manager} containing the most relevant data of the program
-	 * @param in {@link Scanner} that might contain adicional user input
+	 * @param in {@link Scanner} that might contain additional user input
 	 * @param loggedInCommand the {@link LoggedInCommands LoggedInCommand} to be run
 	 */
 	private static void loggedInCommandInterpreter(Manager manager, Scanner in, LoggedInCommands loggedInCommand) {
@@ -517,7 +519,7 @@ public class Main {
 	/**
 	 * TODO
 	 * @param manager {@link Manager} containing the most relevant data of the program
-	 * @param in
+	 * @param in {@link Scanner} containing the {@link BasicDateTime date} of the {@link Trip trip to be removed}
 	 */
 	private static void remove(Manager manager, Scanner in) {
 		String date = in.nextLine();
@@ -533,7 +535,7 @@ public class Main {
 	/**
 	 * TODO
 	 * @param manager {@link Manager} containing the most relevant data of the program
-	 * @param in
+	 * @param in {@link Scanner} containing the {@link Trip trip to be added} details
 	 */
 	private static void takeRide(Manager manager, Scanner in) {
 		String name = in.next();

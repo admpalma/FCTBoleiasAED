@@ -18,7 +18,7 @@ import fctBoleias.user.User;
 import fctBoleias.user.UserClass;
 
 public class ManagerClass implements Manager {
-	
+
 	/**
 	 * 
 	 */
@@ -28,7 +28,7 @@ public class ManagerClass implements Manager {
 	 * Regex format defining a new {@link User User's} valid password
 	 */
 	private static final String PASSWORD_FORMAT = "^[A-Za-z0-9]{4,6}$";
-	
+
 	private User currentUser;
 	private Map<String, User> usersByEmail; // Key: user email
 	private SortedMap<BasicDateTime, SortedMap<String, Trip>> tripsByDate; // Rides by date
@@ -37,7 +37,7 @@ public class ManagerClass implements Manager {
 	public ManagerClass() {
 		this.currentUser = null;
 		usersByEmail = new SepChainHashTable<String, User>();
-		tripsByDate = new SortedMapWithJavaClass<BasicDateTime, SortedMap<String,Trip>>();
+		tripsByDate = new SortedMapWithJavaClass<BasicDateTime, SortedMap<String, Trip>>();
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class ManagerClass implements Manager {
 			throw new InvalidTripDataException();
 		}
 		try {
-			BasicDateTime dateTime = new BasicDateTimeClass(date + " " + hourMinute);
+			BasicDateTime dateTime = new BasicDateTimeClass(date, hourMinute);
 			SortedMap<String, Trip> tripsInDay = tripsByDate.find(dateTime);
 			if (tripsInDay == null) {
 				tripsInDay = new SortedMapWithJavaClass<String, Trip>();
@@ -65,7 +65,6 @@ public class ManagerClass implements Manager {
 		} catch (InvalidDateException e) {
 			throw new InvalidTripDataException();
 		}
-		
 
 	}
 
@@ -79,22 +78,40 @@ public class ManagerClass implements Manager {
 	}
 
 	@Override
-	public void remove(String date) throws NotLoggedInException, NoTripOnDayException, TripHasRidesException {
+	public void remove(String date)
+			throws NotLoggedInException, NoTripOnDayException, TripHasRidesException, InvalidDateException {
 		// TODO Auto-generated method stub
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		}
-		// TODO THROW INVALID DATE EXCEPTION WITH PROPER MESSAGE
+		BasicDateTime newDate = new BasicDateTimeClass(date);
+
+		// Remove from current user and tripByDate
+
+		currentUser.removeTrip(newDate); // If the user has no trip on that day
+											// a NoTripOnDayException will be thrown
+											// and no problem with removing from tripsByDate
+		//SortedMap<String, Trip> tripsInDay = tripsByDate.find(newDate);
+		//tripsInDay.remove(currentUser.getEmail()); // TODO shouldnt throw nullpointer cause
+													// we would throw exception in removeTrip
+
+		
+		// We know it was removed from the user if it gets to here cause no exception
+		tripsByDate.find(newDate).remove(currentUser.getEmail());
+		
+		// TODO The default message for InvalidDateException is "Data invalida." so we
+		// just throw it
+		// TODO THROW INVALID DATE EXCEPTION WITH PROPER MESSAGE - "Data invalida."
 	}
 
 	@Override
-	public void addNewRide(String name, String date) throws NotLoggedInException, CantRideSelfException, DateOccupiedException,
-			NonExistentUserException, InvalidDateException, NonExistentTripException {
+	public void addNewRide(String name, String date) throws NotLoggedInException, CantRideSelfException,
+			DateOccupiedException, NonExistentUserException, InvalidDateException, NonExistentTripException {
 		// TODO Auto-generated method stub
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		}
-		// TODO THROW INVALID DATE EXCEPTION WITH PROPER MESSAGE
+		// TODO THROW INVALID DATE EXCEPTION WITH PROPER MESSAGE - "Data invalida."
 	}
 
 	@Override
@@ -103,11 +120,12 @@ public class ManagerClass implements Manager {
 	}
 
 	@Override
-	public int registerUser(String email, String name, String password) throws InvalidPasswordFormatException, IllegalArgumentException {
+	public int registerUser(String email, String name, String password)
+			throws InvalidPasswordFormatException, IllegalArgumentException {
 		if (!password.matches(PASSWORD_FORMAT)) {
 			throw new InvalidPasswordFormatException();
 		} else if (isUserRegistered(email)) {
-			//TODO
+			// TODO
 			throw new IllegalArgumentException();
 		}
 		usersByEmail.insert(email, new UserClass(email, name, password));
