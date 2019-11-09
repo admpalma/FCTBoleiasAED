@@ -9,6 +9,11 @@ import java.util.Arrays;
 public class BasicDateTimeClass implements BasicDateTime, Serializable {
 
 	/**
+	 * Number of positions in {@link BasicDateTimeClass#rawDate rawDate} reserved for only the date
+	 */
+	private static final int NUM_DATE_ONLY_FIELDS = 3;
+
+	/**
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
@@ -132,14 +137,26 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 		assert(isValid());
 		return rawDate;
 	}
+	
+	/**
+	 * @return <code>short[]</code> containing the date only fields in a raw state
+	 */
+	public short[] getDateOnlyVector() {
+		short[] dateOnlyVector = new short[NUM_DATE_ONLY_FIELDS];
+		for (int i = 0; i < NUM_DATE_ONLY_FIELDS; i++) {
+			dateOnlyVector[i] = rawDate[i];
+		}
+		return dateOnlyVector;
+	}
 
 	@Override
 	public int compareTo(BasicDateTime date) {
 		if (date instanceof BasicDateTimeClass) {
 			int compareResult = 0, testField = 0;
-			short[] rawDate = ((BasicDateTimeClass) date).getRawDate();
-			while (compareResult == 0 && testField < NUM_FIELDS) {
-				compareResult = Integer.compare(this.rawDate[testField], rawDate[testField]);
+			short[] rawDate = ((BasicDateTimeClass) date).getDateOnlyVector();
+			short[] thisRawDate = this.getDateOnlyVector();
+			while (compareResult == 0 && testField < NUM_DATE_ONLY_FIELDS) {
+				compareResult = Integer.compare(thisRawDate[testField], rawDate[testField]);
 				testField++;
 			}
 			return compareResult;
@@ -151,7 +168,7 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 	@Override
 	public String toString() {
 		assert(isValid());
-		String[] processedDate = new String[NUM_FIELDS];
+		String[] processedDate = new String[NUM_DATE_ONLY_FIELDS];
 		for (int i = 0; i < processedDate.length; i++) {
 			processedDate[i] = Short.toString(rawDate[i]);
 			if (processedDate[i].length() == 1) {
@@ -170,15 +187,8 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 		int compareResult = Integer.compare(this.getYear(), date.getYear());
 		if (compareResult == 0) {
 			compareResult = Integer.compare(this.getMonth(), date.getMonth());
-		}
-		if (compareResult == 0) {
+		} else if (compareResult == 0) {
 			compareResult = Integer.compare(this.getDay(), date.getDay());
-		}
-		if (compareResult == 0) {
-			compareResult = Integer.compare(this.getHour(), date.getHour());
-		}
-		if (compareResult == 0) {
-			compareResult = Integer.compare(this.getMinutes(), date.getMinutes());
 		}
 		return compareResult;
 	}
@@ -187,7 +197,7 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Arrays.hashCode(rawDate);
+		result = prime * result + Arrays.hashCode(getDateOnlyVector());
 		return result;
 	}
 
@@ -200,7 +210,7 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		BasicDateTimeClass other = (BasicDateTimeClass) obj;
-		if (!Arrays.equals(rawDate, other.rawDate))
+		if (!Arrays.equals(this.getDateOnlyVector(), other.getDateOnlyVector()))
 			return false;
 		return true;
 	}

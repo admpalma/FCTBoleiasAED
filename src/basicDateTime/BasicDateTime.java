@@ -35,5 +35,21 @@ public interface BasicDateTime extends Comparable<BasicDateTime> {
 	 * @return this {@link BasicDateTime BasicDateTime's} {@link String} version
 	 */
 	String toString();
+	
+	/**
+	 * Compares two date and time objects considering only the date
+	 * @param date {@link BasicDateTime} to be compared with
+	 */
+	@Override
+	int compareTo(BasicDateTime date);
+	
+	/**
+	 * Narrows the equality requirements to only consider the date attributes
+	 * @param obj the reference object with which to compare.
+	 * @return <code>true</code> if this object is the same as the objargument;
+	 * <code>false</code> otherwise.
+	 */
+	@Override
+	boolean equals(Object obj);
 
 }
