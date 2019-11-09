@@ -3,11 +3,13 @@
  */
 package dataStructures;
 
+import java.io.Serializable;
+
 /**
  * @author AED_19_20
  *
  */
-public interface List<E> {
+public interface List<E> extends Serializable {
 	// Returns true iff the list contains no elements.
 	boolean isEmpty( );
 	 

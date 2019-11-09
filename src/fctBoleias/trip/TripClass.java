@@ -8,6 +8,11 @@ import fctBoleias.user.User;
 
 public class TripClass implements Trip {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	// Instance variables containing the ride's details and information
 	private String origin, destiny;
 	private BasicDateTime date;

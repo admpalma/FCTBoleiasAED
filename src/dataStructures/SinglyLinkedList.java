@@ -1,6 +1,11 @@
 package dataStructures;
 
 public class SinglyLinkedList<E> implements List<E> {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// Node at the head of the list.
 	protected SListNode<E> head;
 

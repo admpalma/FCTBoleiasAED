@@ -1,3 +1,9 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 import basicDateTime.InvalidDateException;
@@ -6,7 +12,6 @@ import fctBoleias.InvalidPasswordFormatException;
 import fctBoleias.Manager;
 import fctBoleias.ManagerClass;
 import fctBoleias.NoTripOnDayException;
-import fctBoleias.NotLoggedInException;
 import fctBoleias.trip.CantRideSelfException;
 import fctBoleias.trip.InvalidTripDataException;
 import fctBoleias.trip.Trip;
@@ -17,6 +22,11 @@ import fctBoleias.user.IncorrectPasswordException;
 import fctBoleias.user.User;
 
 public class Main {
+
+	/**
+	 * Location where the serialized {@link Manager} is to be stored at
+	 */
+	private static final String SERIALIZING_LOCATION = "manager.ser";
 
 	private static final String DEFAULT_PROMPT = "> ";
 
@@ -195,23 +205,62 @@ public class Main {
 	 * Starts the execution of the program FCTBoleias,
 	 * resuming its status from the previous execution
 	 * and saves it when the user chooses to exit.
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		Manager manager = new ManagerClass();
-		Commands command;
-		do {
-			printPrompt(manager);
-			command = Commands.getCommand(in);
-			if (manager.isLoggedIn()) {
-				executeLoggedInCommand(command, manager, in);
-			} else {
-				executeLoggedOutCommand(command, manager, in);
-			}
-		} while (manager.isLoggedIn() || !(command.equals(Commands.TERMINA)));
-		in.close();
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
+		Manager manager;
+		try {
+			manager = deserializeManager(SERIALIZING_LOCATION);
+		} catch (FileNotFoundException e) {
+			manager = new ManagerClass();
+		}
+		try (Scanner in = new Scanner(System.in)) {
+			Commands command;
+			do {
+				printPrompt(manager);
+				command = Commands.getCommand(in);
+				if (manager.isLoggedIn()) {
+					executeLoggedInCommand(command, manager, in);
+				} else {
+					executeLoggedOutCommand(command, manager, in);
+				}
+			} while (manager.isLoggedIn() || !(command.equals(Commands.TERMINA)));
+		}
+		serializeManager(manager, SERIALIZING_LOCATION);
+		
 	}
 	
+	/**
+	 * Serializes the {@link Manager} object in a specified file location
+	 * @param manager {@link Manager} to be serialized
+	 * @param location file location of the serialized object
+	 * @throws IOException
+	 */
+	private static void serializeManager(Manager manager, String location) throws IOException {
+		try (FileOutputStream fileOut = new FileOutputStream(location)) {
+			try (ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+				out.writeObject(manager);
+			}
+		}
+	}
+
+	/**
+	 * Deserializes a {@link Manager} object from a specified file location
+	 * @param location file location of the serialized object
+	 * @return deserialized {@link Manager}
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
+	private static Manager deserializeManager(String location) throws ClassNotFoundException, IOException {
+		try (FileInputStream fileIn = new FileInputStream(location)) {
+			try (ObjectInputStream in = new ObjectInputStream(fileIn)) {
+				Manager manager = (Manager) in.readObject();
+				return manager;
+			}
+		}
+	}
+
 	/**
 	 * Prints the command prompt (dependent on whether there is a {@link User} logged in or not)
 	 * @param manager {@link Manager} on whitch to verify whether there is a {@link User} logged in or not

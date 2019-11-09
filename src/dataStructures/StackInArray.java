@@ -2,6 +2,11 @@ package dataStructures;
 
 public class StackInArray<E> implements Stack<E> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// Default capacity of the stack.
 	private static final int DEFAULTCAPACITY = 1000;
 	

@@ -2,6 +2,11 @@ package dataStructures;
 
 public class MapWithSinglyLinkedList<K, V> extends SinglyLinkedList<Entry<K, V>> implements Map<K, V> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public MapWithSinglyLinkedList() {
 		super();
 	}

@@ -1,9 +1,11 @@
 package basicDateTime;
 
+import java.io.Serializable;
+
 /**
  * Stores and represents a date and time
  */
-public interface BasicDateTime extends Comparable<BasicDateTime> {
+public interface BasicDateTime extends Comparable<BasicDateTime>, Serializable {
 
 	/**
 	 * @return the <code>year</code> field of this date

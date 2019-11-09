@@ -1,6 +1,6 @@
 package dataStructures;
 
-public interface SortedMap<K extends Comparable<K>, V> extends Map<K,V>{
+public interface SortedMap<K extends Comparable<K>, V> extends Map<K,V> {
 	
 	// Returns the entry with the smallest key in the SortedMap.
 	// @throws NoElementException if isEmpty()

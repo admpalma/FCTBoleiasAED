@@ -4,6 +4,11 @@ import java.util.TreeMap;
 
 public class SortedMapWithJavaClass<K extends Comparable<K>, V> implements SortedMap<K, V> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private TreeMap<K, V> map;
 
 	public SortedMapWithJavaClass() {
@@ -22,17 +27,20 @@ public class SortedMapWithJavaClass<K extends Comparable<K>, V> implements Sorte
 
 	@Override
 	public Iterator<K> keys() throws NoElementException {
-		return new IteratorKeysValues<K>(map.keySet());
+		//return new IteratorKeysValues<K>(map.keySet());
+		return null;
 	}
 
 	@Override
 	public Iterator<V> values() throws NoElementException {
-		return new IteratorKeysValues<V>(map.values());
+		//return new IteratorKeysValues<V>(map.values());
+		return null;
 	}
 
 	@Override
 	public Iterator<Entry<K, V>> iterator() throws NoElementException {
-		return new IteratorEntries<K, V>(map);
+		//return new IteratorEntries<K, V>(map);
+		return null;
 	}
 
 	@Override

@@ -1,8 +1,10 @@
 package fctBoleias.user;
 
+import java.io.Serializable;
+
 import fctBoleias.trip.Trip;
 
-public interface User {
+public interface User extends Serializable {
 
 	/**
 	 * Gives the {@link User}'s email

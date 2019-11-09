@@ -2,6 +2,10 @@ package dataStructures;
 
 public class QueueInArray<E> implements Queue<E> {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static final int DEFAULTCAPACITY = 1000;
 	// Memory of the queue: a circular array.
 	protected E[] elementos;

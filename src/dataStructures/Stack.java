@@ -3,11 +3,13 @@
  */
 package dataStructures;
 
+import java.io.Serializable;
+
 /**
  * @author AED_19_20
  *
  */
-public interface Stack<E> {
+public interface Stack<E> extends Serializable {
 	// Returns true iff the stack contains no elements.
 	boolean isEmpty( );
 	 

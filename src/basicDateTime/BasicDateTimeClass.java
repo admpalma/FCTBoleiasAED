@@ -1,12 +1,11 @@
 package basicDateTime;
 
-import java.io.Serializable;
 import java.util.Arrays;
 
 /**
  * An implementation of {@link BasicDateTime} using a <code>short[]</code>
  */
-public class BasicDateTimeClass implements BasicDateTime, Serializable {
+public class BasicDateTimeClass implements BasicDateTime {
 
 	/**
 	 * Number of positions in {@link BasicDateTimeClass#rawDate rawDate} reserved for only the date

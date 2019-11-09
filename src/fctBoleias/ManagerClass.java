@@ -1,7 +1,5 @@
 package fctBoleias;
 
-import javax.activity.InvalidActivityException;
-
 import basicDateTime.BasicDateTime;
 import basicDateTime.BasicDateTimeClass;
 import basicDateTime.InvalidDateException;
@@ -21,6 +19,11 @@ import fctBoleias.user.UserClass;
 
 public class ManagerClass implements Manager {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Regex format defining a new {@link User User's} valid password
 	 */

@@ -7,6 +7,11 @@ import fctBoleias.trip.Trip;
 
 public class UserClass implements User {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	// Instance variables containing the users's details and information
 	private String email;
 	private String name;

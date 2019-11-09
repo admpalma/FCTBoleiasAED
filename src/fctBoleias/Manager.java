@@ -1,5 +1,7 @@
 package fctBoleias;
 
+import java.io.Serializable;
+
 import basicDateTime.InvalidDateException;
 import fctBoleias.trip.CantRideSelfException;
 import fctBoleias.trip.InvalidTripDataException;
@@ -8,7 +10,7 @@ import fctBoleias.trip.TripHasRidesException;
 import fctBoleias.user.IncorrectPasswordException;
 import fctBoleias.user.User;
 
-public interface Manager {
+public interface Manager extends Serializable {
 
 	/**
 	 * Returns true if there's a {@link User} logged in

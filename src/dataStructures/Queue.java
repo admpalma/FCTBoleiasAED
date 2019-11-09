@@ -3,11 +3,13 @@
  */
 package dataStructures;
 
+import java.io.Serializable;
+
 /**
  * @author AED_19_20
  *
  */
-public interface Queue<E> {
+public interface Queue<E> extends Serializable {
 	// Returns true iff the queue contains no elements.
 	boolean isEmpty( );
 	 

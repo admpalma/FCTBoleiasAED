@@ -2,6 +2,10 @@ package dataStructures;
 
 public class SepChainHashTable<K, V> extends MapWithHashTable<K, V> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// The array of maps.
 	protected Map<K, V>[] table;
 
