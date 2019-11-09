@@ -20,5 +20,11 @@ public interface Trip extends Serializable {
 	 * @return boolean true if this {@link Trip} has {@link User users} registered for rides, false otherwise
 	 */
 	boolean hasRides();
+
+	/**
+	 * Adds {@link User} to {@link Trip this} as a ride
+	 * @param user {@link User} to add as a ride
+	 */
+	void addUserAsRide(User user);
 	
 }

@@ -2,8 +2,13 @@ package fctBoleias.user;
 
 import java.io.Serializable;
 
+import org.omg.CORBA.UserException;
+
 import basicDateTime.BasicDateTime;
+import basicDateTime.BasicDateTimeClass;
+import fctBoleias.DateOccupiedException;
 import fctBoleias.NoTripOnDayException;
+import fctBoleias.NonExistentTripException;
 import fctBoleias.trip.Trip;
 import fctBoleias.trip.TripHasRidesException;
 
@@ -64,5 +69,20 @@ public interface User extends Serializable {
 	 * @throws TripHasRidesException if the {@link Trip} already has rides and can no longer be removed TODO
 	 */
 	void removeTrip(BasicDateTime date) throws NoTripOnDayException, TripHasRidesException;
+
+	/**
+	 * Checks if this {@link User} has a ride on the given {@link BasicDateTime date}
+	 * @param date {@link BasicDateTime date} to check if the {@link User} has a ride on
+	 * @return true if the user has a ride on the given date, false otherwise
+	 */
+	boolean hasRideOrTripOnDate(BasicDateTime date);
+
+	/**
+	 * Adds a {@link User} as a ride to this {@link User user's} {@link Trip} on the given {@link BasicDateTime date}
+	 * @param user {@link User} to add to add as a ride
+	 * @param date {@link BasicDateTime date} of the ride 
+	 * @throws NonExistentTripException if this {@link User} doesn't have a {@link Trip} on the given {@link BasicDateTime date}
+	 */
+	void addUserToRide(User user, BasicDateTime date) throws NonExistentTripException;
 
 }

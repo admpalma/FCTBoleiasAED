@@ -87,32 +87,33 @@ public class ManagerClass implements Manager {
 		}
 		BasicDateTime newDate = new BasicDateTimeClass(date);
 
-		// Remove from current user and tripByDate
+		currentUser.removeTrip(newDate);
 
-		currentUser.removeTrip(newDate); // If the user has no trip on that day
-											// a NoTripOnDayException will be thrown
-											// and no problem with removing from tripsByDate
-		//SortedMap<String, Trip> tripsInDay = tripsByDate.find(newDate);
-		//tripsInDay.remove(currentUser.getEmail()); // TODO shouldnt throw nullpointer cause
-													// we would throw exception in removeTrip
-
-		
 		// We know it was removed from the user if it gets to here cause no exception
 		tripsByDate.find(newDate).remove(currentUser.getEmail());
-		
-		// TODO The default message for InvalidDateException is "Data invalida." so we
-		// just throw it
-		// TODO THROW INVALID DATE EXCEPTION WITH PROPER MESSAGE - "Data invalida."
+
 	}
 
 	@Override
-	public void addNewRide(String name, String date) throws NotLoggedInException, CantRideSelfException,
+	public void addNewRide(String email, String date) throws NotLoggedInException, CantRideSelfException,
 			DateOccupiedException, NonExistentUserException, InvalidDateException, NonExistentTripException {
 		// TODO Auto-generated method stub
+
+		User tripDriver = usersByEmail.find(email);
+		BasicDateTime newDate = new BasicDateTimeClass(date);
+		
 		if (currentUser == null) {
 			throw new NotLoggedInException();
+		} else if (email.equals(currentUser.getEmail())) {
+			throw new CantRideSelfException(tripDriver);
+		} else if (tripDriver == null) {
+			throw new NonExistentUserException();
+		} else if (currentUser.hasRideOrTripOnDate(newDate)) {
+			throw new DateOccupiedException(currentUser);
 		}
-		// TODO THROW INVALID DATE EXCEPTION WITH PROPER MESSAGE - "Data invalida."
+
+		tripDriver.addUserToRide(currentUser, newDate);
+
 	}
 
 	@Override

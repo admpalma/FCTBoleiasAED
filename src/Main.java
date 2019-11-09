@@ -544,10 +544,8 @@ public class Main {
 			manager.addNewRide(name, date);
 			System.out.println(RIDE_REGISTERED);
 		} catch (NonExistentUserException
-				| InvalidDateException | NonExistentTripException e) {
+				| InvalidDateException | NonExistentTripException | CantRideSelfException | DateOccupiedException e) {
 			System.out.println(e.getMessage());
-		} catch (CantRideSelfException | DateOccupiedException e) {
-			System.out.printf(e.getMessage(), manager.getCurrentUserName());
 		}
 	}
 

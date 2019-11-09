@@ -4,6 +4,7 @@ import basicDateTime.BasicDateTime;
 import dataStructures.Array;
 import dataStructures.List;
 import dataStructures.Queue;
+import dataStructures.QueueInList;
 import fctBoleias.user.User;
 
 public class TripClass implements Trip {
@@ -17,7 +18,7 @@ public class TripClass implements Trip {
 	private String origin, destiny;
 	private BasicDateTime date;
 	private List<User> usersInRide;
-	private int duration;
+	private int duration, capacity;
 	private User driver; // Driver
 	private Queue<User> usersWaitingRide; // Users waiting for Ride
 
@@ -38,7 +39,9 @@ public class TripClass implements Trip {
 		this.date = date;
 		this.duration = duration;
 		this.usersInRide = new Array<User>(capacity);
+		this.usersWaitingRide = new QueueInList<User>();
 		this.driver = driver;
+		this.capacity = capacity;
 	}
 
 	@Override
@@ -49,6 +52,15 @@ public class TripClass implements Trip {
 	@Override
 	public boolean hasRides() {
 		return usersInRide.size() > 0;
+	}
+
+	@Override
+	public void addUserAsRide(User user) {
+		if (usersInRide.size() == capacity) {
+			usersWaitingRide.enqueue(user);
+		} else {
+			usersInRide.addLast(user);
+		}
 	}
 
 }

@@ -3,7 +3,9 @@ package fctBoleias.user;
 import basicDateTime.BasicDateTime;
 import dataStructures.SortedMap;
 import dataStructures.SortedMapWithJavaClass;
+import fctBoleias.DateOccupiedException;
 import fctBoleias.NoTripOnDayException;
+import fctBoleias.NonExistentTripException;
 import fctBoleias.trip.Trip;
 import fctBoleias.trip.TripHasRidesException;
 
@@ -37,6 +39,7 @@ public class UserClass implements User {
 		this.password = password;
 		this.nLogins = 0;
 		trips = new SortedMapWithJavaClass<BasicDateTime, Trip>();
+		rides = new SortedMapWithJavaClass<BasicDateTime, Trip>();
 	}
 
 	/**
@@ -96,6 +99,21 @@ public class UserClass implements User {
 			throw new TripHasRidesException(this);
 		}
 		trips.remove(date);
+	}
+
+	@Override
+	public boolean hasRideOrTripOnDate(BasicDateTime date) {
+		return rides.find(date) != null || trips.find(date) != null;
+	}
+
+	@Override
+	public void addUserToRide(User user, BasicDateTime date) throws NonExistentTripException {
+		// TODO NONEXISTENTTRIPEXCEPTION MAY BE REDUNDANT WITH NOTRIPONDAYEXCEPTION
+		try {
+			trips.find(date).addUserAsRide(user);
+		} catch (NullPointerException e) {
+			throw new NonExistentTripException();
+		}
 	}
 
 }
