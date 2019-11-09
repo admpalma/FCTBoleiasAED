@@ -2,6 +2,7 @@ package fctBoleias.trip;
 
 import basicDateTime.BasicDateTime;
 import dataStructures.Array;
+import dataStructures.Iterator;
 import dataStructures.List;
 import dataStructures.Queue;
 import dataStructures.QueueInList;
@@ -63,4 +64,24 @@ public class TripClass implements Trip {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return String.format("%s%n%s-%s%n%s%nLugares vagos: %d%nBoleias: %s%nEm espera: %d%n", driver.getEmail(), origin, destiny, date.toString(), capacity-usersInRide.size(), getUsersInRideList(), usersWaitingRide.size());
+	}
+
+	private String getUsersInRideList() {
+		Iterator<User> iter = usersInRide.iterator();
+		String result = "";
+		String toAdd = "; ";
+		
+		while (iter.hasNext()) {
+			if (!iter.hasNext()) toAdd = "";
+			result += iter.next().getEmail() + toAdd;
+		}
+		
+		return result;
+	}
+
+	
+	
 }

@@ -27,4 +27,6 @@ public interface Trip extends Serializable {
 	 */
 	void addUserAsRide(User user);
 	
+	
+	
 }
