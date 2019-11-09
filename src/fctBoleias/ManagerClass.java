@@ -64,7 +64,7 @@ public class ManagerClass implements Manager {
 			tripsByDate.insert(dateTime, tripsInDay);
 			currentUser.addTrip(newTrip);
 		} catch (InvalidDateException e) {
-			throw new InvalidTripDataException();
+			throw new InvalidTripDataException(e);
 		}
 
 	}
@@ -74,7 +74,7 @@ public class ManagerClass implements Manager {
 		try {
 			return currentUser.getName();
 		} catch (NullPointerException e) {
-			return null;
+			throw new NotLoggedInException(e);
 		}
 	}
 
@@ -123,12 +123,12 @@ public class ManagerClass implements Manager {
 
 	@Override
 	public int registerUser(String email, String name, String password)
-			throws InvalidPasswordFormatException, IllegalArgumentException {
+			throws InvalidPasswordFormatException, UserAlreadyRegisteredException {
 		if (!password.matches(PASSWORD_FORMAT)) {
 			throw new InvalidPasswordFormatException();
 		} else if (isUserRegistered(email)) {
 			// TODO
-			throw new IllegalArgumentException();
+			throw new UserAlreadyRegisteredException();
 		}
 		usersByEmail.insert(email, new UserClass(email, name, password));
 		return usersByEmail.size();
@@ -146,7 +146,7 @@ public class ManagerClass implements Manager {
 		try {
 			return currentUser.getEmail();
 		} catch (NullPointerException e) {
-			return null;
+			throw new NotLoggedInException(e);
 		}
 	}
 
@@ -169,7 +169,11 @@ public class ManagerClass implements Manager {
 
 	@Override
 	public int getCurrentUserTripNumber() {
-		return currentUser.getNumberTrips();
+		try {
+			return currentUser.getNumberTrips();
+		} catch (NullPointerException e) {
+			throw new NotLoggedInException(e);
+		}
 	}
 
 }

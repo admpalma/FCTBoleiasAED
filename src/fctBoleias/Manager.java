@@ -35,6 +35,7 @@ public interface Manager extends Serializable {
 	void addTrip(String origin, String destiny, String date, String hourMinute, int duration, int numberSeats) throws InvalidTripDataException, DateOccupiedException, NotLoggedInException;
 
 	/**
+	 * TODO
 	 * Gives the currently logged in {@link User}'s name
 	 * @return {@link User User's} name or <code>null</code> if there's no {@link User} logged in
 	 */
@@ -79,9 +80,9 @@ public interface Manager extends Serializable {
 	 * @param password new {@link User User's} password
 	 * @return the number of this registration
 	 * @throws InvalidPasswordFormatException if the password's format is wrong
-	 * @throws IllegalArgumentException if there is already a {@link User} registered with the given <code>email</code>
+	 * @throws UserAlreadyRegisteredException if there is already a {@link User} registered with the given <code>email</code>
 	 */
-	int registerUser(String email, String name, String password) throws InvalidPasswordFormatException, IllegalArgumentException;
+	int registerUser(String email, String name, String password) throws InvalidPasswordFormatException, UserAlreadyRegisteredException;
 
 	/**
 	 * Performs the logout of the <code>Current User</code>
@@ -91,6 +92,7 @@ public interface Manager extends Serializable {
 	String logoutCurrentUser() throws NotLoggedInException;
 
 	/**
+	 * TODO
 	 * Gives the currently logged in {@link User}'s email
 	 * @return {@link User User's} email or <code>null</code> if there's no {@link User} logged in
 	 */
@@ -109,6 +111,7 @@ public interface Manager extends Serializable {
 	int userLogin(String email, String password) throws NonExistentUserException, IncorrectPasswordException, LoggedInException;
 
 	/**
+	 * TODO
 	 * @return {@link User User's} number of {@link Trip Trips} or <code>null</code> if there's no {@link User} logged in
 	 */
 	int getCurrentUserTripNumber();
