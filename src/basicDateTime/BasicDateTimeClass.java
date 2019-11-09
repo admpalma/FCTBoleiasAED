@@ -1,4 +1,4 @@
-package basicDateTime;
+	package basicDateTime;
 
 import java.util.Arrays;
 
@@ -31,31 +31,45 @@ public class BasicDateTimeClass implements BasicDateTime {
 
 	/**
 	 * Converts a {@link String} into a {@link BasicDateTimeClass}
-	 * @param date a {@link String} with the format <code>"dd-mm-yyyy hh:mm"</code>
+	 * This constructor takes a date and a time TODO
+	 * @param date a {@link String} with the format <code>"dd-mm-yyyy"</code>
+	 * @param time a {@link String} with the format <code>"hh:mm"</code>
 	 * @throws InvalidDateException if <code>date</code> contains impossible values
 	 */
-	public BasicDateTimeClass(String dateTime) throws InvalidDateException {
-		String[] dateAndTime = dateTime.split(" ");
-		String[] date = dateAndTime[0].split("-");
-		String[] time = dateAndTime[1].split(":");
+	public BasicDateTimeClass(String date, String time) throws InvalidDateException {
+		//String[] dateAndTime = dateTime.split(" ");
+		//String[] date = dateAndTime[0].split("-");
+		String[] newDate = date.split("-");
+		//String[] time = dateAndTime[1].split(":");
+		String[] newTime = time.split(":");
 		rawDate = new short[NUM_FIELDS];
 
-		int j = date.length - 1;
-		for (int i = 0; i < date.length; i++) {
-			rawDate[j] = Short.parseShort(date[i].trim());
+		int j = newDate.length - 1;
+		for (int i = 0; i < newDate.length; i++) {
+			rawDate[j] = Short.parseShort(newDate[i].trim());
 			j--;
 		}
-		for (int i = 0; i < time.length; i++) {
-			rawDate[i + date.length] = Short.parseShort(time[i].trim());
+		for (int i = 0; i < newTime.length; i++) {
+			rawDate[i + newDate.length] = Short.parseShort(newTime[i].trim());
 		}
 		if (!isValid()) {
 			throw new InvalidDateException();
 		}
 	}
+	
+	/**
+	 * Converts a {@link String} into a {@link BasicDateTimeClass}
+	 * This constructor takes a {@link String date} only (when time parameter not needed) TODO
+	 * @param date a {@link String} with the format <code>"dd-mm-yyyy"</code>
+	 * @throws InvalidDateException if <code>date</code> contains impossible values
+	 */
+	public BasicDateTimeClass(String date) throws InvalidDateException {
+		this(date, "00:00"); // Gives placeholder time
+	}
 
 	/**
 	 * @return: boolean true if the date is valid, false otherwise
-	 * doesn't user getMonth() or getDay() since they have isValid() as @pre
+	 * doesn't use getMonth() or getDay() since they have isValid() as @pre
 	 */
 	private boolean isValid() {
 		int year = rawDate[0];
