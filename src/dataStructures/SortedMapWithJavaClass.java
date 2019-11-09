@@ -27,20 +27,17 @@ public class SortedMapWithJavaClass<K extends Comparable<K>, V> implements Sorte
 
 	@Override
 	public Iterator<K> keys() throws NoElementException {
-		//return new IteratorKeysValues<K>(map.keySet());
-		return null;
+		return new IteratorKeysValues<K>(map.keySet());
 	}
 
 	@Override
 	public Iterator<V> values() throws NoElementException {
-		//return new IteratorKeysValues<V>(map.values());
-		return null;
+		return new IteratorKeysValues<V>(map.values());
 	}
 
 	@Override
 	public Iterator<Entry<K, V>> iterator() throws NoElementException {
-		//return new IteratorEntries<K, V>(map);
-		return null;
+		return new IteratorEntries<K, V>(map);
 	}
 
 	@Override
