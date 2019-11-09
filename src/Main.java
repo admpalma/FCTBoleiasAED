@@ -10,6 +10,7 @@ import java.util.Scanner;
 import basicDateTime.BasicDateTime;
 import basicDateTime.InvalidDateException;
 import fctBoleias.DateOccupiedException;
+import fctBoleias.InexistentUserException;
 import fctBoleias.InvalidPasswordFormatException;
 import fctBoleias.Manager;
 import fctBoleias.ManagerClass;
@@ -544,7 +545,7 @@ public class Main {
 		try {
 			manager.addNewRide(name, date);
 			System.out.println(RIDE_REGISTERED);
-		} catch (NonExistentUserException
+		} catch (InexistentUserException
 				| InvalidDateException | NonExistentTripException | CantRideSelfException | DateOccupiedException e) {
 			System.out.println(e.getMessage());
 		}

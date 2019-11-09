@@ -81,9 +81,17 @@ public interface User extends Serializable {
 	 * Adds a {@link User} as a ride to this {@link User user's} {@link Trip} on the given {@link BasicDateTime date}
 	 * @param user {@link User} to add to add as a ride
 	 * @param date {@link BasicDateTime date} of the ride 
+	 * @return {@link Trip} which the given {@link User} is going to be taking as a ride
 	 * @throws NonExistentTripException if this {@link User} doesn't have a {@link Trip} on the given {@link BasicDateTime date}
 	 */
-	void addUserToRide(User user, BasicDateTime date) throws NonExistentTripException;
+	Trip addUserToTrip(User user, BasicDateTime date) throws NonExistentTripException;
+
+	/**
+	 * Adds a {@link Trip} to the set of {@link Trip Trips} this {@link User} is taking ride on
+	 * @param ride {@link Trip} this {@link User} is going to take ride on
+	 * @throws DateOccupiedException if this {@link User} already has a trip or ride on the given {@link Trip Trip's} date
+	 */
+	void addRide(Trip ride) throws DateOccupiedException;
 
 	/**
 	 * Gets the {@link Trip} from this {@link User} at the given {@link BasicDateTime date}

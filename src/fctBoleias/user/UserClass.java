@@ -107,13 +107,22 @@ public class UserClass implements User {
 	}
 
 	@Override
-	public void addUserToRide(User user, BasicDateTime date) throws NonExistentTripException {
-		// TODO NONEXISTENTTRIPEXCEPTION MAY BE REDUNDANT WITH NOTRIPONDAYEXCEPTION
-		try {
-			trips.find(date).addUserAsRide(user);
-		} catch (NullPointerException e) {
+	public Trip addUserToTrip(User user, BasicDateTime date) throws NonExistentTripException {
+		Trip trip = trips.find(date);
+		if (trip == null) {
 			throw new NonExistentTripException();
 		}
+		trip.addUserAsRide(user);
+		return trip;
+	}
+
+	@Override
+	public void addRide(Trip ride) throws DateOccupiedException {
+		BasicDateTime rideDate = ride.getBasicDateTime();
+		if (rides.find(rideDate) != null) {
+			throw new DateOccupiedException(this);
+		}
+		rides.insert(rideDate, ride);
 	}
 
 	@Override

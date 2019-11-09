@@ -17,7 +17,7 @@ public class NoTripOnDayException extends Exception {
 	private static final long serialVersionUID = 1L;
 
 	public NoTripOnDayException(User user) {
-		super(String.format("%s nesta data nao tem registo de deslocacao.%n", user.getName()));
+		super(String.format("%s nesta data nao tem registo de deslocacao.", user.getName()));
 	}
 
 	public NoTripOnDayException(String message) {

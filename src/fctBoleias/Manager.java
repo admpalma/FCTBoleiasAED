@@ -59,11 +59,11 @@ public interface Manager extends Serializable {
 	 * @throws NotLoggedInException if no {@link User} is logged in
 	 * @throws CantRideSelfException if the {@link Trip} owner is the current {@link User}
 	 * @throws DateOccupiedException if user already has a ride or a trip on that date
-	 * @throws NonExistentUserException if the {@link User} doesn't exist
-	 * @throws InvalidDateException if the given {@link BasicDateTime date} is invalid
-	 * @throws NonExistentTripException if the {@link Trip} doesn't exist
+	 * @throws InexistentUserException if the user doesn't exist
+	 * @throws InvalidDateException if the given date is invalid
+	 * @throws NonExistentTripException if the trip doesn't exist
 	 */
-	void addNewRide(String name, String date) throws NotLoggedInException, CantRideSelfException, DateOccupiedException, NonExistentUserException, InvalidDateException, NonExistentTripException;
+	void addNewRide(String name, String date) throws NotLoggedInException, CantRideSelfException, DateOccupiedException, InexistentUserException, InvalidDateException, NonExistentTripException;
 
 	/**
 	 * Checks if there is a {@link User} registered with the given <code>email</code>
