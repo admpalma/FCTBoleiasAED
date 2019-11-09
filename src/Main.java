@@ -155,10 +155,10 @@ public class Main {
 		SAI("sai - Termina a sessao deste utilizador no programa"),
 		NOVA("nova - Regista uma nova deslocacao"),
 		LISTA("lista - Lista todas ou algumas deslocacoes registadas"),
-		BOLEIA("consulta - Lista a informacao de uma dada deslocacao"),
+		BOLEIA("boleia - Regista uma boleia para uma dada deslocacao"),
 		CONSULTA("consulta - Lista a informacao de uma dada deslocacao"),
 		RETIRA("retira - Retira uma dada boleia"),
-		REMOVE("remove - Retira uma dada deslocacao");
+		REMOVE("remove - Elimina uma dada deslocacao");
 
 		/**
 		 * Stores each {@link LoggedInCommands command's} help message
@@ -385,6 +385,7 @@ public class Main {
 		assert(!manager.isLoggedIn());
 		for (LoggedOutCommands command : LoggedOutCommands.values()) {
 			System.out.printf(command.getHelpMessage());
+			System.out.println();
 		}
 	}
 
@@ -460,6 +461,7 @@ public class Main {
 		assert(manager.isLoggedIn());
 		for (LoggedInCommands command : LoggedInCommands.values()) {
 			System.out.printf(command.getHelpMessage());
+			System.out.println();
 		}
 	}
 
