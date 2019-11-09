@@ -522,9 +522,9 @@ public class Main {
 	 * @param in {@link Scanner} containing the {@link BasicDateTime date} of the {@link Trip trip to be removed}
 	 */
 	private static void remove(Manager manager, Scanner in) {
-		String date = in.nextLine();
-		in.nextLine();
 		try {
+			String date = in.next();
+			in.nextLine();
 			manager.remove(date);
 			System.out.println(RIDE_REMOVED);
 		} catch (NoTripOnDayException | InvalidDateException | TripHasRidesException e) {

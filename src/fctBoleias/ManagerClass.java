@@ -61,6 +61,7 @@ public class ManagerClass implements Manager {
 			}
 			Trip newTrip = new TripClass(origin, destiny, dateTime, numberSeats, duration, currentUser);
 			tripsInDay.insert(currentUser.getEmail(), newTrip);
+			tripsByDate.insert(dateTime, tripsInDay);
 			currentUser.addTrip(newTrip);
 		} catch (InvalidDateException e) {
 			throw new InvalidTripDataException();
