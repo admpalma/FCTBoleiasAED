@@ -181,7 +181,7 @@ public class BasicDateTimeClass implements BasicDateTime {
 	@Override
 	public String toString() {
 		assert(isValid());
-		String[] processedDate = new String[NUM_DATE_ONLY_FIELDS];
+		String[] processedDate = new String[NUM_FIELDS];
 		for (int i = 0; i < processedDate.length; i++) {
 			processedDate[i] = Short.toString(rawDate[i]);
 			if (processedDate[i].length() == 1) {

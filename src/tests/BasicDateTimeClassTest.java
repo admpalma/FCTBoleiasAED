@@ -35,7 +35,8 @@ class BasicDateTimeClassTest {
 	void setUp() throws Exception {
 		dates = new BasicDateTimeClass[6];
 		for (int i = 0; i < datesInit.length; i++) {
-			dates[i] = new BasicDateTimeClass(datesInit[i]);
+			String[] newDate = datesInit[i].split(" "); 
+			dates[i] = new BasicDateTimeClass(newDate[0], newDate[1]);
 		}
 	}
 
@@ -47,8 +48,8 @@ class BasicDateTimeClassTest {
 		assertEquals(12, dates[0].getHour());
 		assertEquals(0, dates[0].getMinutes());
 		for (int i = 0; i < invalidDatesInit.length; i++) {
-			int index = i;
-			assertThrows(InvalidDateException.class, () -> new BasicDateTimeClass(invalidDatesInit[index]));
+			String[] newInvalidDate = invalidDatesInit[i].split(" "); 
+			assertThrows(InvalidDateException.class, () -> new BasicDateTimeClass(newInvalidDate[0], newInvalidDate[1]));
 		}
 	}
 
@@ -102,12 +103,22 @@ class BasicDateTimeClassTest {
 		}
 		for (int i = 0; i < dates.length; i++) {
 			for (int j = 1; j < dates.length && i < j; j++) {
-				assertTrue(dates[i].compareTo(dates[j]) < 0);
+				if ((i == 0 ||i == 1 || i == 2) && (j == 0 || j == 1 || j == 2)) {
+					assertTrue(dates[i].compareTo(dates[j]) == 0);
+				} else {
+					assertTrue(dates[i].compareTo(dates[j]) < 0);
+				}
+				
 			}
 		}
 		for (int i = 1; i < dates.length; i++) {
 			for (int j = 0; j < dates.length && j < i; j++) {
-				assertTrue(dates[i].compareTo(dates[j]) > 0);
+				if ((i == 0 || i == 1 || i == 2) && (j == 0 || j == 1 || j == 2)) {
+					assertTrue(dates[i].compareTo(dates[j]) == 0);
+				} else {
+					assertTrue(dates[i].compareTo(dates[j]) > 0);
+				}
+				
 			}
 		}
 	}
