@@ -176,4 +176,20 @@ public class ManagerClass implements Manager {
 		}
 	}
 
+	@Override
+	public Trip consult(String email, String date)
+			throws NotLoggedInException, NonExistentTripException, NonExistentUserException, InvalidDateException {
+		User tripDriver = usersByEmail.find(email);
+		
+		if (currentUser == null) {
+			throw new NotLoggedInException();
+		} else if (tripDriver == null) {
+			throw new NonExistentUserException();
+		}
+		
+		BasicDateTime newDate = new BasicDateTimeClass(date);
+		
+		return tripDriver.getTrip(newDate);
+	}
+
 }

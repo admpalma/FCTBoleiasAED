@@ -85,4 +85,12 @@ public interface User extends Serializable {
 	 */
 	void addUserToRide(User user, BasicDateTime date) throws NonExistentTripException;
 
+	/**
+	 * Gets the {@link Trip} from this {@link User} at the given {@link BasicDateTime date}
+	 * @param date {@link BasicDateTime date} of the {@link Trip} to get
+	 * @return {@link Trip} registered at given {@link BasicDateTime date}
+	 * @throws NonExistentTripException if no {@link Trip} is registered at given {@link BasicDateTime date}
+	 */
+	Trip getTrip(BasicDateTime date) throws NonExistentTripException;
+
 }

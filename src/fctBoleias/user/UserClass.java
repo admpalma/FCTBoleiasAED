@@ -116,4 +116,13 @@ public class UserClass implements User {
 		}
 	}
 
+	@Override
+	public Trip getTrip(BasicDateTime date) throws NonExistentTripException {
+		Trip trip = trips.find(date);
+		if (trip == null) {
+			throw new NonExistentTripException();
+		}
+		return trip;
+	}
+
 }

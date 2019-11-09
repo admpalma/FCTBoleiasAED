@@ -265,7 +265,7 @@ public class Main {
 
 	/**
 	 * Prints the command prompt (dependent on whether there is a {@link User} logged in or not)
-	 * @param manager {@link Manager} on whitch to verify whether there is a {@link User} logged in or not
+	 * @param manager {@link Manager} on which to verify whether there is a {@link User} logged in or not
 	 */
 	private static void printPrompt(Manager manager) {
 		if (manager.isLoggedIn()) {
@@ -276,11 +276,11 @@ public class Main {
 	}
 
 	/**
-	 * Attempts to execute the given {@link Commands command} assumimng there is no {@link User} logged in,
+	 * Attempts to execute the given {@link Commands command} assuming there is no {@link User} logged in,
 	 * and prints a warning in case this attempt fails.
 	 * @param command {@link Commands Command} to be executed
 	 * @param manager {@link Manager} containing the most relevant data of the program
-	 * @param in {@link Scanner} that might contain adicional user input
+	 * @param in {@link Scanner} that might contain additional user input
 	 */
 	private static void executeLoggedOutCommand(Commands command, Manager manager, Scanner in) {
 		try {
@@ -298,7 +298,7 @@ public class Main {
 	 * Command interpreter for "no user logged in" context
 	 * Assumes there's no {@link User} logged in
 	 * @param manager {@link Manager} containing the most relevant data of the program
-	 * @param in {@link Scanner} that might contain adicional user input
+	 * @param in {@link Scanner} that might contain additional user input
 	 * @param loggedOutCommand the {@link LoggedOutCommands LoggedOutCommand} to be run
 	 */
 	private static void loggedOutCommandInterpreter(Manager manager, Scanner in, LoggedOutCommands loggedOutCommand) {
@@ -486,6 +486,7 @@ public class Main {
 			takeRide(manager, in);
 			break;
 		case CONSULTA:
+			consult(manager, in);
 			break;
 		case LISTA:
 			break;
@@ -572,6 +573,22 @@ public class Main {
 			System.out.println(e.getMessage());
 		} catch (DateOccupiedException e) {
 			System.out.printf(e.getMessage(), manager.getCurrentUserName());
+		}
+	}
+
+	/**
+	 * 
+	 * @param manager {@link Manager} in which the {@link Trip} is going to be registered
+	 * @param in {@link Scanner} containing the {@link Trip trip to be added} details
+	 */
+	private static void consult(Manager manager, Scanner in) {
+		String email = in.next();
+		String date = in.next().trim();
+		in.nextLine();
+		try {
+			System.out.printf("%s", manager.consult(email, date).toString());
+		} catch (NonExistentTripException | NonExistentUserException | InvalidDateException e) {
+			
 		}
 	}
 

@@ -56,12 +56,12 @@ public interface Manager extends Serializable {
 	 * Adds a new ride
 	 * @param name - name of the ride owner
 	 * @param date - date of the ride
-	 * @throws NotLoggedInException if no user is logged in
-	 * @throws CantRideSelfException if the ride owner is the current User
+	 * @throws NotLoggedInException if no {@link User} is logged in
+	 * @throws CantRideSelfException if the {@link Trip} owner is the current {@link User}
 	 * @throws DateOccupiedException if user already has a ride or a trip on that date
-	 * @throws NonExistentUserException if the user doesn't exist
-	 * @throws InvalidDateException if the given date is invalid
-	 * @throws NonExistentTripException if the trip doesn't exist
+	 * @throws NonExistentUserException if the {@link User} doesn't exist
+	 * @throws InvalidDateException if the given {@link BasicDateTime date} is invalid
+	 * @throws NonExistentTripException if the {@link Trip} doesn't exist
 	 */
 	void addNewRide(String name, String date) throws NotLoggedInException, CantRideSelfException, DateOccupiedException, NonExistentUserException, InvalidDateException, NonExistentTripException;
 
@@ -115,5 +115,17 @@ public interface Manager extends Serializable {
 	 * @return {@link User User's} number of {@link Trip Trips} or <code>null</code> if there's no {@link User} logged in
 	 */
 	int getCurrentUserTripNumber();
+
+	/**
+	 * Consults a {@link Trip} from the {@link User} with the given {@link String email} on the given {@link BasicDateTime date}
+	 * @param email {@link String email} of the owner of the {@link Trip} to consult
+	 * @param date {@link BasicDateTime date} of the {@link Trip} to check
+	 * @return TODO
+	 * @throws NotLoggedInException if no {@link User} is logged in
+	 * @throws NonExistentTripException if the {@link Trip} we want to consult doesn't exist
+	 * @throws NonExistentUserException if the {@link User} with the given email doesn't exist
+	 * @throws InvalidDateException if the given {@link BasicDateTime date} is invalid
+	 */
+	Trip consult(String email, String date) throws NotLoggedInException, NonExistentTripException, NonExistentUserException, InvalidDateException;
 	
 }
