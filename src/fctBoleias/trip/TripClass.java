@@ -46,4 +46,9 @@ public class TripClass implements Trip {
 		return date;
 	}
 
+	@Override
+	public boolean hasRides() {
+		return usersInRide.size() > 0;
+	}
+
 }
