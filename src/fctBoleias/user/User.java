@@ -101,4 +101,11 @@ public interface User extends Serializable {
 	 */
 	Trip getTrip(BasicDateTime date) throws NonExistentTripException;
 
+	/**
+	 * 
+	 * @param date {@link BasicDateTime date} to check if the {@link User} has a {@link Trip} on
+	 * @return <code>true</code> if the user has a {@link Trip} on the given date, <code>false</code> otherwise
+	 */
+	boolean hasTripOnDate(BasicDateTime date);
+
 }

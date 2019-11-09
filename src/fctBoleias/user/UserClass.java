@@ -103,7 +103,7 @@ public class UserClass implements User {
 
 	@Override
 	public boolean hasRideOrTripOnDate(BasicDateTime date) {
-		return rides.find(date) != null || trips.find(date) != null;
+		return rides.find(date) != null || hasTripOnDate(date);
 	}
 
 	@Override
@@ -132,6 +132,11 @@ public class UserClass implements User {
 			throw new NonExistentTripException();
 		}
 		return trip;
+	}
+
+	@Override
+	public boolean hasTripOnDate(BasicDateTime date) {
+		return trips.find(date) != null;
 	}
 
 }

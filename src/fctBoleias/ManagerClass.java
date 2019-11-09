@@ -97,17 +97,20 @@ public class ManagerClass implements Manager {
 	@Override
 	public void addNewRide(String email, String date) throws NotLoggedInException, CantRideSelfException,
 			DateOccupiedException, InexistentUserException, InvalidDateException, NonExistentTripException {
-		// TODO Auto-generated method stub
-
 		User tripDriver = usersByEmail.find(email);
-		BasicDateTime newDate = new BasicDateTimeClass(date);
+		BasicDateTime newDate;
 		
 		if (currentUser == null) {
 			throw new NotLoggedInException();
-		} else if (email.equals(currentUser.getEmail())) {
-			throw new CantRideSelfException(tripDriver);
 		} else if (tripDriver == null) {
 			throw new InexistentUserException();
+		} else {
+			newDate = new BasicDateTimeClass(date);
+		}
+		if (!tripDriver.hasTripOnDate(newDate)) {
+			throw new NonExistentTripException();
+		} else if (email.equals(currentUser.getEmail())) {
+			throw new CantRideSelfException(tripDriver);
 		} else if (currentUser.hasRideOrTripOnDate(newDate)) {
 			throw new DateOccupiedException(currentUser);
 		}
