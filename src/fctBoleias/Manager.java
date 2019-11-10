@@ -149,12 +149,12 @@ public interface Manager extends Serializable {
 	int getCurrentUserTripNumber();
 
 	/**
-	 * Consults a {@link Trip} from the {@link User} with the given {@link String
+	 * Consults a {@link Trip} via {@link TripWrapper} from the {@link User} with the given {@link String
 	 * email} on the given {@link BasicDateTime date}
 	 * 
 	 * @param email {@link String email} of the owner of the {@link Trip} to consult
 	 * @param date  {@link BasicDateTime date} of the {@link Trip} to check
-	 * @return TODO
+	 * @return {@link TripWrapper} with wanted {@link Trip} information
 	 * @throws NotLoggedInException     if no {@link User} is logged in
 	 * @throws NonExistentTripException if the {@link Trip} we want to consult
 	 *                                  doesn't exist
@@ -163,7 +163,7 @@ public interface Manager extends Serializable {
 	 * @throws InvalidDateException     if the given {@link BasicDateTime date} is
 	 *                                  invalid
 	 */
-	Trip consult(String email, String date)
+	TripWrapper consult(String email, String date)
 			throws NotLoggedInException, NonExistentTripException, NonExistentUserException, InvalidDateException;
 
 	/**
