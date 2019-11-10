@@ -3,9 +3,11 @@ package fctBoleias;
 import basicDateTime.BasicDateTime;
 import basicDateTime.BasicDateTimeClass;
 import basicDateTime.InvalidDateException;
+import dataStructures.Entry;
 import dataStructures.Iterator;
 import dataStructures.List;
 import dataStructures.Map;
+import dataStructures.NoElementException;
 import dataStructures.SepChainHashTable;
 import dataStructures.SortedMap;
 import dataStructures.SortedMapWithJavaClass;
@@ -216,11 +218,32 @@ public class ManagerClass implements Manager {
 	}
 
 	@Override
-	public Iterator<Trip> getCurrentUserRides() throws NotLoggedInException, NoRegisteredTripsException {
+	public Iterator<Trip> getUserRides(String email) throws NotLoggedInException, NoRegisteredTripsException {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		}
-		return currentUser.getRidesIterator();
+		return usersByEmail.find(email).getRidesIterator();
+	}
+
+	@Override
+	public Iterator<Trip> getTripsOnDate(String date) throws NotLoggedInException, InvalidDateException {
+		if (currentUser == null) {
+			throw new NotLoggedInException();
+		}
+		BasicDateTime newDate = new BasicDateTimeClass(date);
+		try {
+			return tripsByDate.find(newDate).values();
+		} catch (NoElementException e) {
+			throw new InvalidDateException();
+		}
+	}
+
+	@Override
+	public Iterator<SortedMap<String, Trip>> getAllTrips() throws NotLoggedInException {
+		if (currentUser == null) {
+			throw new NotLoggedInException();
+		}
+		return tripsByDate.values();
 	}
 
 }

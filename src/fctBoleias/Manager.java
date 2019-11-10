@@ -5,6 +5,7 @@ import java.io.Serializable;
 import basicDateTime.BasicDateTime;
 import basicDateTime.InvalidDateException;
 import dataStructures.Iterator;
+import dataStructures.SortedMap;
 import fctBoleias.trip.CantRideSelfException;
 import fctBoleias.trip.InvalidTripDataException;
 import fctBoleias.trip.Trip;
@@ -139,7 +140,7 @@ public interface Manager extends Serializable {
 	void cancelCurrentUserRide(String date) throws NotLoggedInException, InvalidDateException, NoRideOnDayException;
 
 	/**
-	 * Gives an {@link Iterator} with the the current {@link User}'s {@link Trip trips}
+	 * Gives an {@link Iterator} with the current {@link User}'s {@link Trip trips}
 	 * @return {@link Iterator} <{@link Trip}>
 	 * @throws NotLoggedInException if no {@link User} is logged in
 	 * @throws NoRegisteredTripsException if there are no registered {@link Trip trips} on the current {@link User}
@@ -147,11 +148,28 @@ public interface Manager extends Serializable {
 	Iterator<Trip> getCurrentUserTrips() throws NotLoggedInException, NoRegisteredTripsException;
 
 	/**
-	 * Gives an {@link Iterator} with the the current {@link User}'s {@link Trip rides}
+	 * Gives an {@link Iterator} with the {@link User} with given email's {@link Trip rides}
+	 * @param email {@link String email} of the {@link User} whose {@link Trip rides} we want
 	 * @return {@link Iterator} <{@link Trip}>
 	 * @throws NotLoggedInException if no {@link User} is logged in
-	 * @throws NoRegisteredTripsException if there are no registered {@link Trip rides} on the current {@link User}
+	 * @throws NoRegisteredTripsException if there are no registered {@link Trip rides} on the {@link User} with the given email
 	 */
-	Iterator<Trip> getCurrentUserRides() throws NotLoggedInException, NoRegisteredTripsException;
+	Iterator<Trip> getUserRides(String email) throws NotLoggedInException, NoRegisteredTripsException;
+
+	/**
+	 * Gives an {@link Iterator} with the {@link Trip trips} on the given date
+	 * @param date {@link String date} of the {@link Trip trips} we want to list
+	 * @return {@link Iterator} <{@link Trip}>
+	 * @throws NotLoggedInException if no {@link User} is logged in
+	 * @throws InvalidDateException if the given date is invalid
+	 */
+	Iterator<Trip> getTripsOnDate(String date) throws NotLoggedInException, InvalidDateException;
+
+	/** TODO
+	 * Gives an {@link Iterator} with all the sorted maps of trips
+	 * @return {@link Iterator} <{@link SortedMap}<{@link String}, {@link Trip}>>
+	 * @throws NotLoggedInException if no {@link User} is logged in
+	 */
+	Iterator<SortedMap<String, Trip>> getAllTrips() throws NotLoggedInException;
 	
 }
