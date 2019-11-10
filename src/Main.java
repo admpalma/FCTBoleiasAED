@@ -21,7 +21,6 @@ import fctBoleias.NoRideOnDayException;
 import fctBoleias.NoTripOnDayException;
 import fctBoleias.NonExistentTripException;
 import fctBoleias.NonExistentUserException;
-import fctBoleias.NotLoggedInException;
 import fctBoleias.trip.CantRideSelfException;
 import fctBoleias.trip.InvalidTripDataException;
 import fctBoleias.trip.Trip;
@@ -32,14 +31,30 @@ import fctBoleias.user.User;
 
 public class Main {
 
+	private static final String EXIT_MESSAGE_USERNAME = "Ate a proxima %s.%n";
+
+	private static final String GIVEN_USER_NOT_EXISTS = "Nao existe o utilizador dado.";
+
+	private static final String DATE_ALLOWED_PATTERN = "^[0-9-]+$";
+
+	private static final String TRIP_N_REGISTERED_THANKS_USERNAME = "Deslocacao %d registada. Obrigado %s.%n";
+
+	private static final String USERNAME_RIDE_REMOVED = "%s boleia retirada.%n";
+
+	private static final String END_MESSAGE = "Obrigado. Ate a proxima.";
+
+	private static final String REGISTO_N_EFETUADO = "Registo %d efetuado.%n";
+
+	private static final String NON_EXISTENT_USER = "Utilizador nao existente.";
+
+	private static final String VISITA_N_EFETUADA = "Visita %d efetuada.%n";
+
 	/**
 	 * Location where the serialized {@link Manager} is to be stored at
 	 */
 	private static final String SERIALIZING_LOCATION = "manager.ser";
 
 	private static final String DEFAULT_PROMPT = "> ";
-
-	private static final String UNKNOWN_COMMAND = "Comando inexistente.";
 
 	// Register messages
 	private static final String REGISTRATION_SUCCESSFUL = "Registo efetuado.";
@@ -51,7 +66,6 @@ public class Main {
 
 	// Login messages
 	private static final String ASK_PW_LOGIN = "password: ";
-	private static final String USER_DOESNT_EXIST = "Utilizador nao existente.";
 
 	// Password requirements
 	private static final int MAX_PASSWORD_ATTEMPTS = 3;
@@ -69,7 +83,6 @@ public class Main {
 	private static final String AVAILABLE_RIDE_CAPACITY = "Lugares vagos: ";
 	private static final String OWN_RIDE_FAIL = " nao pode dar boleia a si propria. Boleia nao registada.";
 	private static final String RIDE_DOESNT_EXIST = "Deslocacao nao existe.";
-	private static final String NON_EXISTENT_USER = "Utilizador inexistente.";
 	private static final String INVALID_DATE = "Data invalida.";
 	private static final String RIDE_REMOVED = "Deslocacao removida.";
 	private static final String INVALID_DATA = "Dados invalidos."; // Invalid data when registering new boleia
@@ -351,10 +364,10 @@ public class Main {
 			String email = in.nextLine().trim();
 			if (manager.isUserRegistered(email)) {
 				int loginNumber = attemptLoginLoop(manager, in, email);
-				System.out.printf("Visita %d efetuada.%n", loginNumber);
+				System.out.printf(VISITA_N_EFETUADA, loginNumber);
 				assert (manager.isLoggedIn());
 			} else {
-				System.out.println("Utilizador nao existente.");
+				System.out.println(NON_EXISTENT_USER);
 			}
 		} catch (IncorrectPasswordException e) {
 			System.out.println(e.getMessage());
@@ -412,13 +425,13 @@ public class Main {
 		assert (!manager.isLoggedIn());
 		String email = in.nextLine().trim();
 		if (manager.isUserRegistered(email)) {
-			System.out.println("Utilizador ja existente.");
+			System.out.println(USER_ALREADY_EXISTS);
 		} else {
 			try {
-				System.out.print("nome (maximo 50 caracteres): ");
+				System.out.print(ASK_NAME_REGISTER);
 				String name = in.nextLine();
 				int registrationNumber = attemptRegistrationLoop(manager, in, email, name);
-				System.out.printf("Registo %d efetuado.%n", registrationNumber);
+				System.out.printf(REGISTO_N_EFETUADO, registrationNumber);
 			} catch (InvalidPasswordFormatException e) {
 				System.out.println(e.getMessage());
 			}
@@ -447,7 +460,7 @@ public class Main {
 		int attemptNumber = 1;
 		while (attemptNumber <= PASSWORD_ATTEMPTS_LIMIT) {
 			try {
-				System.out.print("password (entre 4 e 6 caracteres - digitos e letras): ");
+				System.out.print(ASK_PW_REGISTER);
 				String password = in.nextLine();
 				return manager.registerUser(email, name, password);
 			} catch (InvalidPasswordFormatException e) {
@@ -484,7 +497,7 @@ public class Main {
 	 */
 	private static void processEnd(Manager manager) {
 		assert (!manager.isLoggedIn());
-		System.out.println("Obrigado. Ate a proxima.");
+		System.out.println(END_MESSAGE);
 	}
 
 	// LOGGED IN METHODS
@@ -562,7 +575,7 @@ public class Main {
 			String date = in.next();
 			in.nextLine();
 			manager.cancelCurrentUserRide(date);
-			System.out.printf("%s boleia retirada.%n", manager.getCurrentUserName());
+			System.out.printf(USERNAME_RIDE_REMOVED, manager.getCurrentUserName());
 		} catch (InvalidDateException | NoRideOnDayException e) {
 			System.out.println(e.getMessage());
 		}
@@ -624,7 +637,7 @@ public class Main {
 
 	/**
 	 * Registers a new {@link Trip} on {@link User current user} of the given
-	 * {@link Manager} Assumes there's a {@link User} logged in
+	 * {@link Manager}. Assumes there's a {@link User} logged in
 	 * 
 	 * @param manager {@link Manager} in which the {@link Trip} is going to be
 	 *                registered
@@ -643,7 +656,7 @@ public class Main {
 			int numberSeats = in.nextInt();
 			in.nextLine();
 			manager.addTrip(origin, destiny, date, hourMinute, duration, numberSeats);
-			System.out.printf("Deslocacao %d registada. Obrigado %s.%n", manager.getCurrentUserTripNumber(),
+			System.out.printf(TRIP_N_REGISTERED_THANKS_USERNAME, manager.getCurrentUserTripNumber(),
 					manager.getCurrentUserName());
 		} catch (InvalidTripDataException | BookedDateException e) {
 			System.out.println(e.getMessage());
@@ -651,7 +664,8 @@ public class Main {
 	}
 
 	/**
-	 * TODO
+	 * Consults a {@link Trip trip} on a given date of a given {@link User current
+	 * user} of {@link Manager}. Assume there's a {@link User} logged in
 	 * 
 	 * @param manager {@link Manager} in which the {@link Trip} is going to be
 	 *                consulted
@@ -672,8 +686,8 @@ public class Main {
 	/**
 	 * Lists {@link Trip trips} according to the given listing mode
 	 * 
-	 * @param manager {@link Manager} in which the {@link Trip trips} are going to be
-	 *                fetched and listed from
+	 * @param manager {@link Manager} in which the {@link Trip trips} are going to
+	 *                be fetched and listed from
 	 * @param in      {@link Scanner} which will contain the listing mode
 	 */
 	private static void list(Manager manager, Scanner in) {
@@ -688,7 +702,7 @@ public class Main {
 				listAllTrips(manager);
 			} else {
 
-				if (listingMode.matches("^[0-9-]+$")) {
+				if (listingMode.matches(DATE_ALLOWED_PATTERN)) {
 					listDateTrips(manager, listingMode);
 				} else {
 					listMailOriginDestinyDateTrips(manager.getUserTrips(listingMode));
@@ -698,19 +712,18 @@ public class Main {
 		} catch (NoRegisteredTripsException | InvalidDateException e) {
 			System.out.println(e.getMessage());
 		} catch (NonExistentUserException e) {
-			System.out.println("Nao existe o utilizador dado.");
+			System.out.println(GIVEN_USER_NOT_EXISTS);
 		}
 
 	}
 
 	/**
-	 * Auxiliary method to list all {@link Trip trips} on the system
-	 * |FORMAT:
-	 * <code>
+	 * Auxiliary method to list all {@link Trip trips} on the system |FORMAT: <code>
 	 * dd-mm-yyyy userEmail%n
 	 * </code>|
-	 * @param manager {@link Manager} in which the {@link Trip trips} are going to be
-	 *                fetched and listed from
+	 * 
+	 * @param manager {@link Manager} in which the {@link Trip trips} are going to
+	 *                be fetched and listed from
 	 */
 	private static void listAllTrips(Manager manager) {
 		Iterator<SortedMap<String, Trip>> outerIterator = manager.getAllTrips();
@@ -725,14 +738,14 @@ public class Main {
 	}
 
 	/**
-	 * Auxiliary method to list all {@link Trip trips} on the given date
-	 * |FORMAT:
+	 * Auxiliary method to list all {@link Trip trips} on the given date |FORMAT:
 	 * <code>
 	 * userEmail%n
 	 * </code>|
-	 * @param manager {@link Manager} in which the {@link Trip trips} are going to be
-	 *                fetched and listed from
-	 * @param date {@link String date} of the {@link Trip trips} we want to list
+	 * 
+	 * @param manager {@link Manager} in which the {@link Trip trips} are going to
+	 *                be fetched and listed from
+	 * @param date    {@link String date} of the {@link Trip trips} we want to list
 	 */
 	private static void listDateTrips(Manager manager, String date)
 			throws InvalidDateException, NoRegisteredTripsException {
@@ -757,15 +770,15 @@ public class Main {
 
 	/**
 	 * Auxiliary method to list all {@link Trip trips} given in the {@link Iterator}
-	 * |FORMAT:
-	 * <code>
+	 * |FORMAT: <code>
 	 * userEmail%n
 	 * origin-destiny%n
 	 * dd-mm-yyyy hh:mm duration%n%n
 	 * </code>|
-	 * @param manager {@link Manager} in which the {@link Trip trips} are going to be
-	 *                fetched and listed from
-	 * @param date {@link String date} of the {@link Trip trips} we want to list
+	 * 
+	 * @param manager {@link Manager} in which the {@link Trip trips} are going to
+	 *                be fetched and listed from
+	 * @param date    {@link String date} of the {@link Trip trips} we want to list
 	 */
 	private static void listMailOriginDestinyDateTrips(Iterator<Trip> trips) {
 		while (trips.hasNext()) {
@@ -778,14 +791,14 @@ public class Main {
 
 	/**
 	 * Auxiliary method to list all of the given {@link User}'s {@link Trip trips}
-	 * |FORMAT:
-	 * <code>
+	 * |FORMAT: <code>
 	 * userEmail%n
 	 * origin-destiny%n
 	 * dd-mm-yyyy hh:mm duration%n%n
 	 * </code>|
-	 * @param manager {@link Manager} in which the {@link Trip trips} are going to be
-	 *                fetched and listed from
+	 * 
+	 * @param manager {@link Manager} in which the {@link Trip trips} are going to
+	 *                be fetched and listed from
 	 */
 	private static void listUserTrips(Manager manager) throws NoRegisteredTripsException, NonExistentUserException {
 		Iterator<Trip> trips = manager.getUserTrips(manager.getCurrentUserEmail());
@@ -804,7 +817,7 @@ public class Main {
 	 */
 	private static void exit(Manager manager) {
 		assert (manager.isLoggedIn());
-		System.out.printf("Ate a proxima %s.%n", manager.logoutCurrentUser());
+		System.out.printf(EXIT_MESSAGE_USERNAME, manager.logoutCurrentUser());
 	}
 
 	// GENERAL METHODS
