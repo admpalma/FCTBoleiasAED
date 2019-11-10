@@ -162,7 +162,7 @@ public class Main {
 		}
 
 		/**
-		 * @return this {@link LoggedOutCommands command´s} the help message
+		 * @return this {@link LoggedOutCommands command's} the help message
 		 */
 		public String getHelpMessage() {
 			return helpMessage;
@@ -207,7 +207,7 @@ public class Main {
 		}
 
 		/**
-		 * @return this {@link LoggedInCommands command´s} the help message
+		 * @return this {@link LoggedInCommands command's} the help message
 		 */
 		public String getHelpMessage() {
 			return helpMessage;
