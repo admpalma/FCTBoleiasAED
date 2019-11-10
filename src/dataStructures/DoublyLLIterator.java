@@ -27,7 +27,9 @@ public class DoublyLLIterator<E> implements TwoWayIterator<E> {
 		if (!this.hasNext())
 			throw new NoSuchElementException("No more elements.");
 		E element = nextToReturn.getElement();
-		// TODO
+
+		nextToReturn = nextToReturn.getNext();
+
 		return element;
 	}
 
@@ -47,7 +49,9 @@ public class DoublyLLIterator<E> implements TwoWayIterator<E> {
 		if (!this.hasPrevious())
 			throw new NoSuchElementException("No more elements.");
 		E element = prevToReturn.getElement();
-		// TODO
+
+		prevToReturn = prevToReturn.getPrevious();
+
 		return element;
 	}
 

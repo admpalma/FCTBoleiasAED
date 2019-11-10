@@ -1,11 +1,6 @@
 package dataStructures;
 
 public class DoublyLinkedList<E> implements TwoWayList<E> {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
 	// Node at the head of the list.
 	protected DListNode<E> head;
 
@@ -23,14 +18,12 @@ public class DoublyLinkedList<E> implements TwoWayList<E> {
 
 	@Override
 	public boolean isEmpty() {
-		// TODO
-		return false;
+		return currentSize == 0;
 	}
 
 	@Override
 	public int size() {
-		// TODO
-		return 0;
+		return currentSize;
 	}
 
 	@Override
@@ -43,9 +36,17 @@ public class DoublyLinkedList<E> implements TwoWayList<E> {
 	@Override
 	public int find(E element) {
 		int pos = 0;
-		DListNode<E> auxNo;
-		boolean found = false;
-		// TODO
+		//DListNode<E> auxNode;
+		//boolean found = false;
+		
+		while (pos < currentSize) {
+			if (get(pos).equals(element)) {
+				return pos;
+			} else {
+				pos++;
+			}
+		}
+		
 		return -1;
 	}
 
@@ -72,12 +73,33 @@ public class DoublyLinkedList<E> implements TwoWayList<E> {
 
 	@Override
 	public void addFirst(E element) {
-		// TODO
+
+		DListNode<E> newNode = new DListNode<E>(element, null, head);
+
+		if (currentSize == 0) {
+			head = newNode;
+			tail = newNode;
+		} else {
+			head.setPrevious(newNode);
+			head = newNode;
+		}
+		
+		currentSize++;
+		
 	}
 
 	@Override
 	public void addLast(E element) {
-		// TODO
+
+		if (currentSize == 0) {
+			addFirst(element);
+		} else {
+			DListNode<E> newNode = new DListNode<E>(element, tail, null);
+			tail.setNext(newNode);
+			tail = newNode;
+			currentSize++;
+		}
+
 	}
 
 	@Override
@@ -95,14 +117,31 @@ public class DoublyLinkedList<E> implements TwoWayList<E> {
 	}
 
 	private void addMiddle(int position, E element) {
+
 		DListNode<E> aux = getNode(position);
-		// TODO
+		DListNode<E> previous = aux.getPrevious();
+
+		DListNode<E> newNode = new DListNode<E>(element, previous, aux);
+
+		previous.setNext(newNode);
+		aux.setPrevious(newNode);
+		
+		currentSize++;
+		
 	}
 
 	private E removeMiddle(int position) {
 		DListNode<E> aux = getNode(position);
-		// TODO
-		return null;
+
+		DListNode<E> auxNext = aux.getNext();
+		DListNode<E> auxPrevious = aux.getPrevious();
+
+		auxNext.setPrevious(auxPrevious);
+		auxPrevious.setNext(auxNext);
+		
+		currentSize--;
+		
+		return aux.getElement();
 	}
 
 	private DListNode<E> getNode(int position) {
@@ -116,18 +155,43 @@ public class DoublyLinkedList<E> implements TwoWayList<E> {
 	public E removeFirst() throws NoElementException {
 		if (currentSize == 0)
 			throw new NoElementException("No such element.");
-		// TODO
-		// Cuidado: lista com 1 elemento
-		return null;
+
+		DListNode<E> auxHead = head;
+
+		if (currentSize == 1) {
+			head = null;
+			tail = null; // unchecked
+		} else {
+			DListNode<E> newHead = head.getNext();
+			newHead.setPrevious(null);
+			head = newHead;
+		}
+		
+		currentSize--;
+		
+		return auxHead.getElement();
 	}
 
 	@Override
 	public E removeLast() throws NoElementException {
 		if (currentSize == 0)
 			throw new NoElementException("No such element.");
-		// TODO
-		// Cuidado: lista com 1 elemento
-		return null;
+
+		DListNode<E> auxTail = tail;
+
+		if (currentSize == 1) {
+			head = null; // unchecked
+			tail = null;
+		} else {
+			DListNode<E> newTail = tail.getPrevious();
+			newTail.setNext(null);
+			tail = newTail;
+		}
+		
+		currentSize--;
+		
+		return auxTail.getElement();
+
 	}
 
 	@Override
