@@ -3,11 +3,11 @@ package dataStructures;
 import fctBoleias.Wrappable;
 import fctBoleias.Wrapper;
 
-public class IteratorWrappable<E extends Wrapper, W extends Wrappable<E>> implements Iterator<E> {
+public class IteratorWrappable<E extends Wrapper, T extends Wrappable<E>> implements Iterator<E> {
 
-	private Iterator<W> iterator;
+	private Iterator<T> iterator;
 
-	public IteratorWrappable(Iterator<W> iterator) {
+	public IteratorWrappable(Iterator<T> iterator) {
 		this.iterator = iterator;
 	}
 
