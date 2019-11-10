@@ -16,6 +16,7 @@ import fctBoleias.trip.InvalidTripDataException;
 import fctBoleias.trip.Trip;
 import fctBoleias.trip.TripClass;
 import fctBoleias.trip.TripHasRidesException;
+import fctBoleias.trip.TripIsFullException;
 import fctBoleias.user.IncorrectPasswordException;
 import fctBoleias.user.User;
 import fctBoleias.user.UserClass;
@@ -100,7 +101,7 @@ public class ManagerClass implements Manager {
 
 	@Override
 	public void addNewRide(String email, String date) throws NotLoggedInException, CantRideSelfException,
-			DateOccupiedException, InexistentUserException, InvalidDateException, NonExistentTripException {
+			DateOccupiedException, InexistentUserException, InvalidDateException, NonExistentTripException, TripIsFullException {
 		User tripDriver = usersByEmail.find(email);
 		BasicDateTime newDate;
 		

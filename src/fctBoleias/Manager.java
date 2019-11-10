@@ -10,6 +10,7 @@ import fctBoleias.trip.CantRideSelfException;
 import fctBoleias.trip.InvalidTripDataException;
 import fctBoleias.trip.Trip;
 import fctBoleias.trip.TripHasRidesException;
+import fctBoleias.trip.TripIsFullException;
 import fctBoleias.user.IncorrectPasswordException;
 import fctBoleias.user.User;
 
@@ -64,8 +65,9 @@ public interface Manager extends Serializable {
 	 * @throws InexistentUserException if the user doesn't exist
 	 * @throws InvalidDateException if the given date is invalid
 	 * @throws NonExistentTripException if the trip doesn't exist
+	 * @throws TripIsFullException if the {@link Trip} is full and the {@link User} is left on the waiting queue
 	 */
-	void addNewRide(String name, String date) throws NotLoggedInException, CantRideSelfException, DateOccupiedException, InexistentUserException, InvalidDateException, NonExistentTripException;
+	void addNewRide(String name, String date) throws NotLoggedInException, CantRideSelfException, DateOccupiedException, InexistentUserException, InvalidDateException, NonExistentTripException, TripIsFullException;
 
 	/**
 	 * Checks if there is a {@link User} registered with the given <code>email</code>

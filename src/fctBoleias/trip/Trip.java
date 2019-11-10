@@ -24,8 +24,9 @@ public interface Trip extends Serializable {
 	/**
 	 * Adds {@link User} to {@link Trip this} as a ride
 	 * @param user {@link User} to add as a ride
+	 * @throws TripIsFullException if the {@link Trip} is full and the {@link User} is left on the waiting queue
 	 */
-	void addUserAsRide(User user);
+	void addUserAsRide(User user) throws TripIsFullException;
 
 	/**
 	 * Gives the {@link String email} of the {@link User driver} of this {@link Trip}

@@ -23,8 +23,10 @@ import fctBoleias.trip.CantRideSelfException;
 import fctBoleias.trip.InvalidTripDataException;
 import fctBoleias.trip.Trip;
 import fctBoleias.trip.TripHasRidesException;
+import fctBoleias.trip.TripIsFullException;
 import fctBoleias.NonExistentTripException;
 import fctBoleias.NonExistentUserException;
+import fctBoleias.NotLoggedInException;
 import fctBoleias.user.IncorrectPasswordException;
 import fctBoleias.user.User;
 
@@ -619,7 +621,7 @@ public class Main {
 			manager.addNewRide(name, date);
 			System.out.println(RIDE_REGISTERED);
 		} catch (InexistentUserException | InvalidDateException | NonExistentTripException | CantRideSelfException
-				| DateOccupiedException e) {
+				| DateOccupiedException | TripIsFullException e) {
 			System.out.println(e.getMessage());
 		}
 	}

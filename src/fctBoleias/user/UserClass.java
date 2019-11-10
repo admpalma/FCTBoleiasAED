@@ -13,6 +13,7 @@ import fctBoleias.NoTripOnDayException;
 import fctBoleias.NonExistentTripException;
 import fctBoleias.trip.Trip;
 import fctBoleias.trip.TripHasRidesException;
+import fctBoleias.trip.TripIsFullException;
 
 public class UserClass implements User {
 
@@ -111,7 +112,7 @@ public class UserClass implements User {
 	}
 
 	@Override
-	public Trip addUserToTrip(User user, BasicDateTime date) throws NonExistentTripException {
+	public Trip addUserToTrip(User user, BasicDateTime date) throws NonExistentTripException, TripIsFullException {
 		Trip trip = trips.find(date);
 		if (trip == null) {
 			throw new NonExistentTripException();

@@ -15,6 +15,7 @@ import fctBoleias.NoTripOnDayException;
 import fctBoleias.NonExistentTripException;
 import fctBoleias.trip.Trip;
 import fctBoleias.trip.TripHasRidesException;
+import fctBoleias.trip.TripIsFullException;
 
 public interface User extends Serializable {
 
@@ -81,8 +82,9 @@ public interface User extends Serializable {
 	 * @param date {@link BasicDateTime date} of the ride 
 	 * @return {@link Trip} which the given {@link User} is going to be taking as a ride
 	 * @throws NonExistentTripException if this {@link User} doesn't have a {@link Trip} on the given {@link BasicDateTime date}
+	 * @throws TripIsFullException if the {@link Trip} is full and the {@link User} is left on the waiting queue
 	 */
-	Trip addUserToTrip(User user, BasicDateTime date) throws NonExistentTripException;
+	Trip addUserToTrip(User user, BasicDateTime date) throws NonExistentTripException, TripIsFullException;
 
 	/**
 	 * Adds a {@link Trip} to the set of {@link Trip Trips} this {@link User} is taking ride on

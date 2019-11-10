@@ -75,9 +75,10 @@ public class TripClass implements Trip {
 	}
 
 	@Override
-	public void addUserAsRide(User user) {
+	public void addUserAsRide(User user) throws TripIsFullException {
 		if (usersInRide.size() == capacity) {
 			usersWaitingRide.enqueue(user);
+			throw new TripIsFullException(usersWaitingRide.size());
 		} else {
 			usersInRide.addLast(user);
 		}
@@ -117,7 +118,11 @@ public class TripClass implements Trip {
 	 */
 	private void updateQueue() {
 		if (capacity - usersInRide.size() > 0 && !usersWaitingRide.isEmpty()) {
-			addUserAsRide(usersWaitingRide.dequeue());
+			try {
+				addUserAsRide(usersWaitingRide.dequeue());
+			} catch (TripIsFullException e) {
+				throw new AssertionError("This code should be unreachable!");
+			}
 		}
 	}
 
