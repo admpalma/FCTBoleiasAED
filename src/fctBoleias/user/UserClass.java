@@ -3,6 +3,7 @@ package fctBoleias.user;
 import basicDateTime.BasicDateTime;
 import dataStructures.SortedMap;
 import dataStructures.SortedMapWithJavaClass;
+import fctBoleias.BookedDateException;
 import fctBoleias.DateOccupiedException;
 import fctBoleias.NoTripOnDayException;
 import fctBoleias.NonExistentTripException;
@@ -81,7 +82,10 @@ public class UserClass implements User {
 	}
 
 	@Override
-	public void addTrip(Trip newTrip) {
+	public void addTrip(Trip newTrip) throws BookedDateException {
+		if (hasRideOrTripOnDate(newTrip.getBasicDateTime())) {
+			throw new BookedDateException(this);
+		}
 		trips.insert(newTrip.getBasicDateTime(), newTrip);
 	}
 

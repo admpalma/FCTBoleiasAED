@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import basicDateTime.BasicDateTime;
 import basicDateTime.InvalidDateException;
+import fctBoleias.BookedDateException;
 import fctBoleias.DateOccupiedException;
 import fctBoleias.InexistentUserException;
 import fctBoleias.InvalidPasswordFormatException;
@@ -570,10 +571,8 @@ public class Main {
 			in.nextLine();
 			manager.addTrip(origin, destiny, date, hourMinute, duration, numberSeats);
 			System.out.printf("Deslocacao %d registada. Obrigado %s.%n", manager.getCurrentUserTripNumber(), manager.getCurrentUserName());
-		} catch (InvalidTripDataException e) {
+		} catch (InvalidTripDataException | BookedDateException e) {
 			System.out.println(e.getMessage());
-		} catch (DateOccupiedException e) {
-			System.out.printf(e.getMessage(), manager.getCurrentUserName());
 		}
 	}
 

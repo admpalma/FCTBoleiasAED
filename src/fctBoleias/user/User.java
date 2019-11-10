@@ -6,6 +6,7 @@ import org.omg.CORBA.UserException;
 
 import basicDateTime.BasicDateTime;
 import basicDateTime.BasicDateTimeClass;
+import fctBoleias.BookedDateException;
 import fctBoleias.DateOccupiedException;
 import fctBoleias.NoTripOnDayException;
 import fctBoleias.NonExistentTripException;
@@ -54,8 +55,9 @@ public interface User extends Serializable {
 	/**
 	 * Registers a new trip on this {@link User}
 	 * @param newTrip {@link Trip} to be registered
+	 * @throws BookedDateException if this {@link User} already has a trip or ride on the given {@link Trip Trip's} date
 	 */
-	void addTrip(Trip newTrip);
+	void addTrip(Trip newTrip) throws BookedDateException;
 
 	/**
 	 * @return {@link User User's} number of {@link Trip Trips}

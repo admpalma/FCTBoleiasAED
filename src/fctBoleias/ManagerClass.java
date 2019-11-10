@@ -47,22 +47,22 @@ public class ManagerClass implements Manager {
 
 	@Override
 	public void addTrip(String origin, String destiny, String date, String hourMinute, int duration, int numberSeats)
-			throws NotLoggedInException, InvalidTripDataException, DateOccupiedException {
+			throws NotLoggedInException, InvalidTripDataException, BookedDateException {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
-		} else if (duration <= 0) {
+		} else if (!(duration > 0)) {
 			throw new InvalidTripDataException();
 		}
 		try {
 			BasicDateTime dateTime = new BasicDateTimeClass(date, hourMinute);
+			Trip newTrip = new TripClass(origin, destiny, dateTime, numberSeats, duration, currentUser);
+			currentUser.addTrip(newTrip);
 			SortedMap<String, Trip> tripsInDay = tripsByDate.find(dateTime);
 			if (tripsInDay == null) {
 				tripsInDay = new SortedMapWithJavaClass<String, Trip>();
 			}
-			Trip newTrip = new TripClass(origin, destiny, dateTime, numberSeats, duration, currentUser);
 			tripsInDay.insert(currentUser.getEmail(), newTrip);
 			tripsByDate.insert(dateTime, tripsInDay);
-			currentUser.addTrip(newTrip);
 		} catch (InvalidDateException e) {
 			throw new InvalidTripDataException(e);
 		}

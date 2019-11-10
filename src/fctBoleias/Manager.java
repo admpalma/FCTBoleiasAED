@@ -32,7 +32,7 @@ public interface Manager extends Serializable {
 	 * @throws DateOccupiedException if current user already has a trip or ride on that date
 	 * @throws NotLoggedInException if there's no {@link User} logged in
 	 */
-	void addTrip(String origin, String destiny, String date, String hourMinute, int duration, int numberSeats) throws InvalidTripDataException, DateOccupiedException, NotLoggedInException;
+	void addTrip(String origin, String destiny, String date, String hourMinute, int duration, int numberSeats) throws InvalidTripDataException, BookedDateException, NotLoggedInException;
 
 	/**
 	 * TODO
