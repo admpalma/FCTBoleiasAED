@@ -74,8 +74,6 @@ public class Main {
 	private static final String RIDE_REMOVED = "Deslocacao removida.";
 	private static final String INVALID_DATA = "Dados invalidos."; // Invalid data when registering new boleia
 
-	private static final String FINAL_MESSAGE = "Ate a proxima %s.%n";
-
 	/**
 	 * The number of attempts a user has to choose a password for his registration
 	 */
@@ -486,7 +484,7 @@ public class Main {
 	 */
 	private static void processEnd(Manager manager) {
 		assert (!manager.isLoggedIn());
-		System.out.println(FINAL_MESSAGE);
+		System.out.println("Obrigado. Ate a proxima.");
 	}
 
 	// LOGGED IN METHODS
@@ -739,12 +737,18 @@ public class Main {
 	private static void listDateTrips(Manager manager, String date)
 			throws InvalidDateException, NoRegisteredTripsException {
 		Iterator<Trip> trips = manager.getTripsOnDate(date);
-
+		boolean validTrips = false;
 		if (trips != null) {
 			while (trips.hasNext()) {
 				Trip trip = trips.next();
-				System.out.println(trip.getDriverEmail());
-				System.out.println();
+				if (trip.hasFreeSlots()) {
+					validTrips = true;
+					System.out.println(trip.getDriverEmail());
+					System.out.println();
+				}
+			}
+			if (!validTrips) {
+				throw new NoRegisteredTripsException();
 			}
 		} else {
 			throw new NoRegisteredTripsException();
@@ -800,7 +804,7 @@ public class Main {
 	 */
 	private static void exit(Manager manager) {
 		assert (manager.isLoggedIn());
-		System.out.printf(FINAL_MESSAGE, manager.logoutCurrentUser());
+		System.out.printf("Ate a proxima %s.%n", manager.logoutCurrentUser());
 	}
 
 	// GENERAL METHODS
