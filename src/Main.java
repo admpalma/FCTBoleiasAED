@@ -6,7 +6,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
-import basicDateTime.BasicDateTime;
 import basicDateTime.InvalidDateException;
 import dataStructures.Iterator;
 import dataStructures.SortedMap;
@@ -29,6 +28,9 @@ import fctBoleias.user.User;
 
 public class Main {
 
+	private static final String USERNAME_ALREADY_HAS_REGISTERED_TRIP_RIDE_ON_DATE = "%s ja tem uma deslocacao ou boleia registada nesta data.%n";
+	private static final String USERNAME_ALREADY_REGISTERED_TRIP_RIDE_ON_DATE = "%s ja registou uma boleia ou deslocacao nesta data.%n";
+	private static final String INEXISTENT_USER = "Utilizador inexistente.";
 	private static final String EXIT_MESSAGE_USERNAME = "Ate a proxima %s.%n";
 	private static final String GIVEN_USER_NOT_EXISTS = "Nao existe o utilizador dado.";
 	private static final String DATE_ALLOWED_PATTERN = "^[0-9-]+$";
@@ -47,40 +49,22 @@ public class Main {
 	private static final String DEFAULT_PROMPT = "> ";
 
 	// Register messages
-	private static final String REGISTRATION_SUCCESSFUL = "Registo efetuado.";
-	private static final String REGISTRATION_FAILED = "Registo nao efetuado.";
 	private static final String USER_ALREADY_EXISTS = "Utilizador ja existente.";
 	private static final String ASK_NAME_REGISTER = "nome (maximo 50 caracteres): ";
 	private static final String ASK_PW_REGISTER = "password (entre 4 e 6 caracteres - digitos e letras): ";
-	private static final String INVALID_PASSWORD = "Password incorrecta.";
 
 	// Login messages
 	private static final String ASK_PW_LOGIN = "password: ";
-
-	// Password requirements
-	private static final int MAX_PASSWORD_ATTEMPTS = 3;
-	private static final int MIN_PW_LIMIT = 3; // minimum number of characters in a password
-	private static final int MAX_PW_LIMIT = 5; // maximum number of characters in a password
-
-	// Trip related messages
-	private static final String NO_REGISTERED_RIDES = "%s nao tem deslocacoes registadas.%n";
-	private static final String NO_REGISTERED_RIDES_IN_DATE = " nao existem deslocacoes registadas para ";
-	private static final String RIDE_NOT_REGISTERED = "Deslocacao nao registada.";
-	private static final String RIDE_REGISTERED_THANKS = "Deslocacao registada. Obrigado ";
-	private static final String RIDE_REGISTERED = "Boleia registada.";
-	private static final String REGISTERED_RIDES = "Boleias registadas: ";
-	private static final String FULL_RIDE_CAPACITY = " nao existe lugar. Boleia nao registada.";
-	private static final String AVAILABLE_RIDE_CAPACITY = "Lugares vagos: ";
-	private static final String OWN_RIDE_FAIL = " nao pode dar boleia a si propria. Boleia nao registada.";
-	private static final String RIDE_DOESNT_EXIST = "Deslocacao nao existe.";
-	private static final String INVALID_DATE = "Data invalida.";
-	private static final String TRIP_REMOVED = "Deslocacao removida.";
-	private static final String INVALID_DATA = "Dados invalidos."; // Invalid data when registering new boleia
 
 	/**
 	 * The number of attempts a user has to choose a password for his registration
 	 */
 	private static final int PASSWORD_ATTEMPTS_LIMIT = 3;
+
+	// Trip related messages
+	private static final String RIDE_REGISTERED = "Boleia registada.";
+	private static final String TRIP_REMOVED = "Deslocacao removida.";
+
 
 	/**
 	 * {@link Enum} containing all of the possible commands and warning messages
@@ -389,7 +373,7 @@ public class Main {
 			throws NonExistentUserException, IncorrectPasswordException {
 		int attemptNumber = 1;
 		String password;
-		while (attemptNumber <= MAX_PASSWORD_ATTEMPTS) {
+		while (attemptNumber <= PASSWORD_ATTEMPTS_LIMIT) {
 			try {
 				System.out.print(ASK_PW_LOGIN);
 				password = in.nextLine();
@@ -626,9 +610,9 @@ public class Main {
 				| TripIsFullException e) {
 			System.out.println(e.getMessage());
 		} catch (NonExistentUserException e) {
-			System.out.println("Utilizador inexistente.");
+			System.out.println(INEXISTENT_USER);
 		} catch (DateOccupiedException e) {
-			System.out.printf("%s ja registou uma boleia ou deslocacao nesta data.%n", e.getMessage());
+			System.out.printf(USERNAME_ALREADY_REGISTERED_TRIP_RIDE_ON_DATE, e.getMessage());
 		}
 	}
 
@@ -658,7 +642,7 @@ public class Main {
 		} catch (InvalidTripDataException e) {
 			System.out.println(e.getMessage());
 		} catch (DateOccupiedException e) {
-			System.out.printf("%s ja tem uma deslocacao ou boleia registada nesta data.%n", e.getMessage());
+			System.out.printf(USERNAME_ALREADY_HAS_REGISTERED_TRIP_RIDE_ON_DATE, e.getMessage());
 		}
 	}
 
@@ -680,7 +664,7 @@ public class Main {
 		} catch (NonExistentTripException | InvalidDateException e) {
 			System.out.println(e.getMessage());
 		} catch (NonExistentUserException e) {
-			System.out.println("Utilizador inexistente.");
+			System.out.println(INEXISTENT_USER);
 		}
 	}
 
