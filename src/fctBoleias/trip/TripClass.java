@@ -66,7 +66,7 @@ public class TripClass implements Trip {
 
 	@Override
 	public String toString() {
-		return String.format("%s%n%s-%s%n%s%nLugares vagos: %d%nBoleias: %s%nEm espera: %d%n", driver.getEmail(), origin, destiny, date.toString(), capacity-usersInRide.size(), getUsersInRideList(), usersWaitingRide.size());
+		return String.format("%s%n%s-%s%n%s %d%nLugares vagos: %d%nBoleias: %s%nEm espera: %d%n", driver.getEmail(), origin, destiny, date.toString(), duration, capacity-usersInRide.size(), getUsersInRideList(), usersWaitingRide.size());
 	}
 
 	private String getUsersInRideList() {
