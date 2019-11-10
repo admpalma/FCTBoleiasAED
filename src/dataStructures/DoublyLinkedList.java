@@ -1,6 +1,11 @@
 package dataStructures;
 
 public class DoublyLinkedList<E> implements TwoWayList<E> {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// Node at the head of the list.
 	protected DListNode<E> head;
 

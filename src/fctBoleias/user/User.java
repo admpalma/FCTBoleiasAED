@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import basicDateTime.BasicDateTime;
 import dataStructures.Iterator;
-import fctBoleias.BookedDateException;
 import fctBoleias.DateOccupiedException;
 import fctBoleias.NoRegisteredTripsException;
 import fctBoleias.NoRideOnDayException;
@@ -62,10 +61,10 @@ public interface User extends Serializable {
 	 * Registers a new trip on this {@link User}
 	 * 
 	 * @param newTrip {@link Trip} to be registered
-	 * @throws BookedDateException if this {@link User} already has a trip or ride
+	 * @throws DateOccupiedException if this {@link User} already has a trip or ride
 	 *                             on the given {@link Trip Trip's} date
 	 */
-	void addTrip(Trip newTrip) throws BookedDateException;
+	void addTrip(Trip newTrip) throws DateOccupiedException;
 
 	/**
 	 * Gives the number of registered {@link Trip trips} on {@link User this user}

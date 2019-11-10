@@ -10,9 +10,7 @@ import basicDateTime.BasicDateTime;
 import basicDateTime.InvalidDateException;
 import dataStructures.Iterator;
 import dataStructures.SortedMap;
-import fctBoleias.BookedDateException;
 import fctBoleias.DateOccupiedException;
-import fctBoleias.InexistentUserException;
 import fctBoleias.InvalidPasswordFormatException;
 import fctBoleias.Manager;
 import fctBoleias.ManagerClass;
@@ -53,7 +51,7 @@ public class Main {
 	private static final String REGISTRATION_FAILED = "Registo nao efetuado.";
 	private static final String USER_ALREADY_EXISTS = "Utilizador ja existente.";
 	private static final String ASK_NAME_REGISTER = "nome (maximo 50 caracteres): ";
-	private static final String ASK_PW_REGISTER = "password (entre 3 e 5 caracteres - digitos e letras): ";
+	private static final String ASK_PW_REGISTER = "password (entre 4 e 6 caracteres - digitos e letras): ";
 	private static final String INVALID_PASSWORD = "Password incorrecta.";
 
 	// Login messages
@@ -228,7 +226,7 @@ public class Main {
 			manager = deserializeManager(SERIALIZING_LOCATION);
 		} catch (FileNotFoundException e) {
 			manager = new ManagerClass();
-		}
+		} 
 		try (Scanner in = new Scanner(System.in)) {
 			Commands command;
 			do {
@@ -364,7 +362,7 @@ public class Main {
 		} catch (IncorrectPasswordException e) {
 			System.out.println(e.getMessage());
 		} catch (NonExistentUserException e) {
-			System.out.println(e.getMessage());
+			throw new AssertionError("Execution should never reach this point!");
 		}
 
 	}
@@ -624,9 +622,13 @@ public class Main {
 		try {
 			manager.addNewRide(name, date);
 			System.out.println(RIDE_REGISTERED);
-		} catch (InexistentUserException | InvalidDateException | NonExistentTripException | CantRideSelfException
-				| DateOccupiedException | TripIsFullException e) {
+		} catch (InvalidDateException | NonExistentTripException | CantRideSelfException
+				| TripIsFullException e) {
 			System.out.println(e.getMessage());
+		} catch (NonExistentUserException e) {
+			System.out.println("Utilizador inexistente.");
+		} catch (DateOccupiedException e) {
+			System.out.printf("%s ja registou uma boleia ou deslocacao nesta data.%n", e.getMessage());
 		}
 	}
 
@@ -653,8 +655,10 @@ public class Main {
 			manager.addTrip(origin, destiny, date, hourMinute, duration, numberSeats);
 			System.out.printf(TRIP_N_REGISTERED_THANKS_USERNAME, manager.getCurrentUserTripNumber(),
 					manager.getCurrentUserName());
-		} catch (InvalidTripDataException | BookedDateException e) {
+		} catch (InvalidTripDataException e) {
 			System.out.println(e.getMessage());
+		} catch (DateOccupiedException e) {
+			System.out.printf("%s ja tem uma deslocacao ou boleia registada nesta data.%n", e.getMessage());
 		}
 	}
 
@@ -673,8 +677,10 @@ public class Main {
 		in.nextLine();
 		try {
 			System.out.printf("%s", manager.consult(email, date).toString());
-		} catch (NonExistentTripException | InexistentUserException | InvalidDateException e) {
+		} catch (NonExistentTripException | InvalidDateException e) {
 			System.out.println(e.getMessage());
+		} catch (NonExistentUserException e) {
+			System.out.println("Utilizador inexistente.");
 		}
 	}
 

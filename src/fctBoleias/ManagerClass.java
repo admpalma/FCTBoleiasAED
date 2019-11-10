@@ -49,7 +49,7 @@ public class ManagerClass implements Manager {
 
 	@Override
 	public void addTrip(String origin, String destiny, String date, String hourMinute, int duration, int numberSeats)
-			throws NotLoggedInException, InvalidTripDataException, BookedDateException {
+			throws NotLoggedInException, InvalidTripDataException, DateOccupiedException {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		} else if (!(duration > 0)) {
@@ -97,7 +97,7 @@ public class ManagerClass implements Manager {
 
 	@Override
 	public void addNewRide(String email, String date)
-			throws NotLoggedInException, CantRideSelfException, DateOccupiedException, InexistentUserException,
+			throws NotLoggedInException, CantRideSelfException, DateOccupiedException, NonExistentUserException,
 			InvalidDateException, NonExistentTripException, TripIsFullException {
 		User tripDriver = usersByEmail.find(email);
 		BasicDateTime newDate;
@@ -105,7 +105,7 @@ public class ManagerClass implements Manager {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		} else if (tripDriver == null) {
-			throw new InexistentUserException();
+			throw new NonExistentUserException();
 		} else {
 			newDate = new BasicDateTimeClass(date);
 		}
@@ -182,13 +182,13 @@ public class ManagerClass implements Manager {
 
 	@Override
 	public Trip consult(String email, String date)
-			throws NotLoggedInException, NonExistentTripException, InexistentUserException, InvalidDateException {
+			throws NotLoggedInException, NonExistentTripException, NonExistentUserException, InvalidDateException {
 		User tripDriver = usersByEmail.find(email);
 
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		} else if (tripDriver == null) {
-			throw new InexistentUserException();
+			throw new NonExistentUserException();
 		}
 
 		BasicDateTime newDate = new BasicDateTimeClass(date);

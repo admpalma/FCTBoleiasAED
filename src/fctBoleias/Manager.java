@@ -40,7 +40,7 @@ public interface Manager extends Serializable {
 	 * @throws NotLoggedInException     if there's no {@link User} logged in
 	 */
 	void addTrip(String origin, String destiny, String date, String hourMinute, int duration, int numberSeats)
-			throws InvalidTripDataException, BookedDateException, NotLoggedInException;
+			throws InvalidTripDataException, DateOccupiedException, NotLoggedInException;
 
 	/**
 	 * Gives the currently logged in {@link User}'s name
@@ -75,14 +75,14 @@ public interface Manager extends Serializable {
 	 *                                  {@link User}
 	 * @throws DateOccupiedException    if {@link User user} already has a {@link Trip ride} or a {@link Trip trip} on that
 	 *                                  date
-	 * @throws InexistentUserException  if the {@link User user} doesn't exist
+	 * @throws NonExistentUserException  if the user doesn't exist
 	 * @throws InvalidDateException     if the given date is invalid
 	 * @throws NonExistentTripException if the trip doesn't exist
 	 * @throws TripIsFullException      if the {@link Trip} is full and the
 	 *                                  {@link User} is left on the waiting queue
 	 */
 	void addNewRide(String name, String date) throws NotLoggedInException, CantRideSelfException, DateOccupiedException,
-			InexistentUserException, InvalidDateException, NonExistentTripException, TripIsFullException;
+	NonExistentUserException, InvalidDateException, NonExistentTripException, TripIsFullException;
 
 	/**
 	 * Checks if there is a {@link User} registered with the given
@@ -159,13 +159,13 @@ public interface Manager extends Serializable {
 	 * @throws NotLoggedInException     if no {@link User} is logged in
 	 * @throws NonExistentTripException if the {@link Trip} we want to consult
 	 *                                  doesn't exist
-	 * @throws InexistentUserException  if the {@link User} with the given email
+	 * @throws NonExistentUserException  if the {@link User} with the given email
 	 *                                  doesn't exist
 	 * @throws InvalidDateException     if the given {@link BasicDateTime date} is
 	 *                                  invalid
 	 */
 	Trip consult(String email, String date)
-			throws NotLoggedInException, NonExistentTripException, InexistentUserException, InvalidDateException;
+			throws NotLoggedInException, NonExistentTripException, NonExistentUserException, InvalidDateException;
 
 	/**
 	 * Cancels the {@link User current user's} taken {@link Trip ride} on the given date
