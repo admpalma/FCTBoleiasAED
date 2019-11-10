@@ -26,7 +26,30 @@ public interface Trip extends Serializable {
 	 * @param user {@link User} to add as a ride
 	 */
 	void addUserAsRide(User user);
+
+	/**
+	 * Gives the {@link String email} of the {@link User driver} of this {@link Trip}
+	 * @return {@link String driver}
+	 */
+	String getDriverEmail();
+
+	/**
+	 * Gives the {@link String origin} of this {@link Trip}
+	 * @return {@link String origin}
+	 */
+	String getOrigin();
 	
+	/**
+	 * Gives the {@link String destiny} of this {@link Trip}
+	 * @return {@link String destiny}
+	 */
+	String getDestiny();
+	
+	/**
+	 * Gives the duration of this {@link Trip}
+	 * @return int duration
+	 */
+	int getDuration();
 	
 	
 }

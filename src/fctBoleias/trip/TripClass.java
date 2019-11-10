@@ -51,6 +51,23 @@ public class TripClass implements Trip {
 	}
 
 	@Override
+	public String getOrigin() {
+		return origin;
+	}
+
+	@Override
+	public String getDestiny() {
+		return destiny;
+	}
+
+
+	@Override
+	public int getDuration() {
+		return duration;
+	}
+
+
+	@Override
 	public boolean hasRides() {
 		return usersInRide.size() > 0;
 	}
@@ -80,6 +97,11 @@ public class TripClass implements Trip {
 		}
 		
 		return result;
+	}
+
+	@Override
+	public String getDriverEmail() {
+		return driver.getEmail();
 	}
 
 	
