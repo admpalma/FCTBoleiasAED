@@ -54,14 +54,19 @@ public class SepChainHashTable<K, V> extends MapWithHashTable<K, V> {
 	private void rehash() {
 		Map<K, V>[] aux = table;
 
-		int arraySize = MapWithHashTable.nextPrime((int) (1.1 * maxSize * 2));
+		int arraySize = MapWithHashTable.nextPrime((int) (1.1 * maxSize * 2));//TODO
 		// Compiler gives a warning.
 		table = (Map<K, V>[]) new Map[arraySize];
-		for (int i = 0; i < arraySize; i++) {
-			Iterator<Entry<K, V>> it = aux[i].iterator();
-			while (it.hasNext()) {
-				Entry<K, V> entry = (Entry<K, V>) it.next();
-				insert(entry.getKey(), entry.getValue());
+		currentSize = 0;
+		for (int i = 0; i < arraySize; i++)
+			table[i] = new MapWithSinglyLinkedList<K, V>();
+		for (int i = 0; i < aux.length; i++) {
+			if (aux[i] != null) {
+				Iterator<Entry<K, V>> it = aux[i].iterator();
+				while (it.hasNext()) {
+					Entry<K, V> entry = (Entry<K, V>) it.next();
+					insert(entry.getKey(), entry.getValue());
+				} 
 			}
 		}
 
