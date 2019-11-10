@@ -25,15 +25,15 @@ public class TripClass implements Trip {
 	private Queue<User> usersWaitingRide; // Users waiting for Ride
 
 	/**
-	 * Ride object constructor Creates an object holding details and information
-	 * about a ride TODO
+	 * Ride object constructor. Creates an object holding details and information
+	 * about a ride
 	 * 
 	 * @param origin   - origin of the ride
 	 * @param destiny  - destiny of the ride
-	 * @param date     - date of the ride
+	 * @param date     - {@link BasicDateTime date} of the ride
 	 * @param capacity - initial number of seats available for other users
 	 * @param duration - duration of ride
-	 * @param driver   - email of who gives the ride
+	 * @param driver   - {@link User} who gives the ride
 	 */
 	public TripClass(String origin, String destiny, BasicDateTime date, int capacity, int duration, User driver) {
 		this.origin = origin;
@@ -88,6 +88,10 @@ public class TripClass implements Trip {
 				usersWaitingRide.size());
 	}
 
+	/**
+	 * Reads the {@link User users} from usersInRide and concatenates their email in a {@link String} with the desired format
+	 * @return {@link String} with the {@link User user}'s in usersInRide emails concatenated in a {@link String}
+	 */
 	private String getUsersInRideList() {
 		try {
 			Iterator<User> iter = usersInRide.iterator();

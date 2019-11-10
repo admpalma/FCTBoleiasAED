@@ -1,6 +1,5 @@
 package fctBoleias;
 
-import dataStructures.NoElementException;
 import fctBoleias.trip.Trip;
 
 /**

@@ -5,7 +5,6 @@ import dataStructures.Iterator;
 import dataStructures.NoElementException;
 import dataStructures.SortedMap;
 import dataStructures.SortedMapWithJavaClass;
-import fctBoleias.BookedDateException;
 import fctBoleias.DateOccupiedException;
 import fctBoleias.NoRegisteredTripsException;
 import fctBoleias.NoRideOnDayException;
@@ -26,18 +25,17 @@ public class UserClass implements User {
 	private String email;
 	private String name;
 	private String password;
-	// private Map<LocalDateTime, List<Trip>> tripsByDate; // User's trips by date
 	private int nLogins;
-	private SortedMap<BasicDateTime, Trip> rides; // BOLEIAS EM QUE PARTICIPA MAS ¬OWNER
-	private SortedMap<BasicDateTime, Trip> trips; // USER'S (this) TRIPS
+	private SortedMap<BasicDateTime, Trip> rides; // Rides in which he takes part but isn't the driver
+	private SortedMap<BasicDateTime, Trip> trips; // User's trips (is the driver)
 
 	/**
-	 * User object constructor Creates an object holding details and information
-	 * about a user
+	 * {@link User} object constructor. Creates an object holding details and information
+	 * about a {@link User}
 	 * 
-	 * @param email    - email of the user
-	 * @param name     - name of the user
-	 * @param password - password of the user
+	 * @param email    - {@link String email} of the user
+	 * @param name     - {@link String name} of the user
+	 * @param password - {@link String password} of the user
 	 */
 	public UserClass(String email, String name, String password) {
 		this.email = email;
@@ -48,30 +46,22 @@ public class UserClass implements User {
 		rides = new SortedMapWithJavaClass<BasicDateTime, Trip>();
 	}
 
-	/**
-	 * @return the email
-	 */
+	@Override
 	public String getEmail() {
 		return email;
 	}
 
-	/**
-	 * @return the name
-	 */
+	@Override
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * @return the password
-	 */
+	@Override
 	public String getPassword() {
 		return password;
 	}
 
-	/**
-	 * @return the nVisits
-	 */
+	@Override
 	public int getNumberLogins() {
 		return nLogins;
 	}
@@ -87,10 +77,10 @@ public class UserClass implements User {
 	}
 
 	@Override
-	public void addTrip(Trip newTrip) throws BookedDateException {
+	public void addTrip(Trip newTrip) throws DateOccupiedException {
 		BasicDateTime date = newTrip.getBasicDateTime();
 		if (hasRideOnDate(date) || hasTripOnDate(date)) {
-			throw new BookedDateException(this);
+			throw new DateOccupiedException(this);
 		}
 		trips.insert(date, newTrip);
 	}

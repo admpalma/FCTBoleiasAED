@@ -14,11 +14,8 @@ public interface Trip extends Serializable {
 	 */
 	BasicDateTime getBasicDateTime();
 
-	// TODO fiz hasRides em vez de dar int numero de users riding porque
-	// do que vi, os comandos nao iam usar esse numero para nada cause fila de
-	// espera exists
-	// if wrong we change and add other getters
 	/**
+	 * Checks if {@link Trip this} has {@link Trip rides} registered
 	 * @return boolean true if this {@link Trip} has {@link User users} registered
 	 *         for rides, false otherwise
 	 */
