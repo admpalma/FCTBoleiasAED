@@ -28,12 +28,12 @@ public class TripClass implements Trip {
 	 * Ride object constructor. Creates an object holding details and information
 	 * about a ride
 	 * 
-	 * @param origin   - origin of the ride
-	 * @param destiny  - destiny of the ride
-	 * @param date     - {@link BasicDateTime date} of the ride
-	 * @param capacity - initial number of seats available for other users
-	 * @param duration - duration of ride
-	 * @param driver   - {@link User} who gives the ride
+	 * @param origin   origin of the ride
+	 * @param destiny  destiny of the ride
+	 * @param date     {@link BasicDateTime date} of the ride
+	 * @param capacity initial number of seats available for other users
+	 * @param duration duration of ride
+	 * @param driver   {@link User} who gives the ride
 	 */
 	public TripClass(String origin, String destiny, BasicDateTime date, int capacity, int duration, User driver) {
 		this.origin = origin;
@@ -89,8 +89,11 @@ public class TripClass implements Trip {
 	}
 
 	/**
-	 * Reads the {@link User users} from usersInRide and concatenates their email in a {@link String} with the desired format
-	 * @return {@link String} with the {@link User user}'s in usersInRide emails concatenated in a {@link String}
+	 * Reads the {@link User users} from usersInRide and concatenates their email in
+	 * a {@link String} with the desired format
+	 * 
+	 * @return {@link String} with the {@link User user}'s in usersInRide emails
+	 *         concatenated in a {@link String}
 	 */
 	private String getUsersInRideList() {
 		try {
@@ -138,6 +141,11 @@ public class TripClass implements Trip {
 	@Override
 	public boolean hasFreeSlots() {
 		return capacity - usersInRide.size() > 0;
+	}
+
+	@Override
+	public TripWrapper wrap() {
+		return new TripWrapperClass(this);
 	}
 
 }

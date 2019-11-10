@@ -54,7 +54,7 @@ public class SepChainHashTable<K, V> extends MapWithHashTable<K, V> {
 	private void rehash() {
 		Map<K, V>[] aux = table;
 
-		int arraySize = MapWithHashTable.nextPrime((int) (1.1 * maxSize * 2));// TODO
+		int arraySize = MapWithHashTable.nextPrime((int) (1.1 * maxSize * 2));
 		// Compiler gives a warning.
 		table = (Map<K, V>[]) new Map[arraySize];
 		currentSize = 0;

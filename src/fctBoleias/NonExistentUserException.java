@@ -7,7 +7,7 @@ import fctBoleias.user.User;
  * login a {@link User} that doesn't exist
  */
 public class NonExistentUserException extends Exception {
-	
+
 	/**
 	 * 
 	 */

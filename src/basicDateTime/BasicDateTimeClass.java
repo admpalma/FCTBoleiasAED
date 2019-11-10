@@ -1,6 +1,6 @@
 package basicDateTime;
 
-import java.util.Arrays; // TODO
+import java.util.Arrays;
 
 /**
  * An implementation of {@link BasicDateTime} using a <code>short[]</code>
@@ -35,17 +35,14 @@ public class BasicDateTimeClass implements BasicDateTime {
 
 	/**
 	 * Converts a {@link String} into a {@link BasicDateTimeClass} This constructor
-	 * takes a date and a time TODO
+	 * takes a date and a time
 	 * 
 	 * @param date a {@link String} with the format <code>"dd-mm-yyyy"</code>
 	 * @param time a {@link String} with the format <code>"hh:mm"</code>
 	 * @throws InvalidDateException if <code>date</code> contains impossible values
 	 */
 	public BasicDateTimeClass(String date, String time) throws InvalidDateException {
-		// String[] dateAndTime = dateTime.split(" ");
-		// String[] date = dateAndTime[0].split("-");
 		String[] newDate = date.split("-");
-		// String[] time = dateAndTime[1].split(":");
 		String[] newTime = time.split(":");
 		rawDate = new short[NUM_FIELDS];
 
@@ -64,7 +61,7 @@ public class BasicDateTimeClass implements BasicDateTime {
 
 	/**
 	 * Converts a {@link String} into a {@link BasicDateTimeClass} This constructor
-	 * takes a {@link String date} only (when time parameter not needed) TODO
+	 * takes a {@link String date} only (when time parameter not needed)
 	 * 
 	 * @param date a {@link String} with the format <code>"dd-mm-yyyy"</code>
 	 * @throws InvalidDateException if <code>date</code> contains impossible values
