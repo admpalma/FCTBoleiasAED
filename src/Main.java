@@ -455,8 +455,6 @@ public class Main {
 			} catch (InvalidPasswordFormatException e) {
 				if (attemptNumber == PASSWORD_ATTEMPTS_LIMIT) {
 					throw e;
-				} else {
-					System.out.println();
 				}
 			}
 			attemptNumber++;
