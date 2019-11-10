@@ -32,21 +32,13 @@ import fctBoleias.user.User;
 public class Main {
 
 	private static final String EXIT_MESSAGE_USERNAME = "Ate a proxima %s.%n";
-
 	private static final String GIVEN_USER_NOT_EXISTS = "Nao existe o utilizador dado.";
-
 	private static final String DATE_ALLOWED_PATTERN = "^[0-9-]+$";
-
 	private static final String TRIP_N_REGISTERED_THANKS_USERNAME = "Deslocacao %d registada. Obrigado %s.%n";
-
 	private static final String USERNAME_RIDE_REMOVED = "%s boleia retirada.%n";
-
 	private static final String END_MESSAGE = "Obrigado. Ate a proxima.";
-
 	private static final String REGISTO_N_EFETUADO = "Registo %d efetuado.%n";
-
 	private static final String NON_EXISTENT_USER = "Utilizador nao existente.";
-
 	private static final String VISITA_N_EFETUADA = "Visita %d efetuada.%n";
 
 	/**
@@ -72,7 +64,7 @@ public class Main {
 	private static final int MIN_PW_LIMIT = 3; // minimum number of characters in a password
 	private static final int MAX_PW_LIMIT = 5; // maximum number of characters in a password
 
-	// Ride related messages
+	// Trip related messages
 	private static final String NO_REGISTERED_RIDES = "%s nao tem deslocacoes registadas.%n";
 	private static final String NO_REGISTERED_RIDES_IN_DATE = " nao existem deslocacoes registadas para ";
 	private static final String RIDE_NOT_REGISTERED = "Deslocacao nao registada.";
@@ -84,7 +76,7 @@ public class Main {
 	private static final String OWN_RIDE_FAIL = " nao pode dar boleia a si propria. Boleia nao registada.";
 	private static final String RIDE_DOESNT_EXIST = "Deslocacao nao existe.";
 	private static final String INVALID_DATE = "Data invalida.";
-	private static final String RIDE_REMOVED = "Deslocacao removida.";
+	private static final String TRIP_REMOVED = "Deslocacao removida.";
 	private static final String INVALID_DATA = "Dados invalidos."; // Invalid data when registering new boleia
 
 	/**
@@ -522,7 +514,7 @@ public class Main {
 	}
 
 	/**
-	 * Command interpreter for "user logged in" context Assumes there's a
+	 * Command interpreter for "user logged in" context. Assumes there's a
 	 * {@link User} logged in
 	 * 
 	 * @param manager         {@link Manager} containing the most relevant data of
@@ -562,7 +554,7 @@ public class Main {
 	}
 
 	/**
-	 * Cancels the {@link User current user's} taken ride on a given date Assumes
+	 * Cancels the {@link User current user's} taken ride on a given date. Assumes
 	 * there's a {@link User} logged in
 	 * 
 	 * @param manager {@link Manager} containing the most relevant data of the
@@ -597,29 +589,32 @@ public class Main {
 	}
 
 	/**
-	 * TODO
+	 * Removes a {@link Trip} on a given date from {@link User current user}.
+	 * Assumes there's a {@link User} logged in
 	 * 
-	 * @param manager {@link Manager} containing the most relevant data of the
-	 *                program
-	 * @param in      {@link Scanner} containing the {@link BasicDateTime date} of
-	 *                the {@link Trip trip to be removed}
+	 * @param manager {@link Manager} containing the {@link Trip} and {@link User}
+	 *                whose {@link Trip} we want to remove
+	 * @param in      {@link Scanner} containing the {@link String date} of the
+	 *                {@link Trip trip} to be removed
 	 */
 	private static void remove(Manager manager, Scanner in) {
 		try {
 			String date = in.next();
 			in.nextLine();
 			manager.remove(date);
-			System.out.println(RIDE_REMOVED);
+			System.out.println(TRIP_REMOVED);
 		} catch (NoTripOnDayException | InvalidDateException | TripHasRidesException e) {
 			System.out.println(e.getMessage());
 		}
 	}
 
 	/**
-	 * TODO
+	 * Adds {@link User current user} as a {@link Trip ride} to the user
+	 * correspondent to {@link String name}'s {@link Trip} on the given date
 	 * 
-	 * @param manager {@link Manager} containing the most relevant data of the
-	 *                program
+	 * @param manager {@link Manager} containing the {@link User} whose {@link Trip}
+	 *                we want to add {@link User current user} as a {@link Trip
+	 *                ride} to
 	 * @param in      {@link Scanner} containing the {@link Trip trip to be added}
 	 *                details
 	 */
