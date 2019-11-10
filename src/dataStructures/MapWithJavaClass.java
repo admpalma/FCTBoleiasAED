@@ -2,6 +2,11 @@ package dataStructures;
 
 public class MapWithJavaClass<K, V> implements Map<K, V> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	protected java.util.Map<K, V> elementos;
 	protected int capPrevista;
 

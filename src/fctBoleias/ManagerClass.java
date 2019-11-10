@@ -6,8 +6,8 @@ import basicDateTime.InvalidDateException;
 import dataStructures.Iterator;
 import dataStructures.IteratorWrappable;
 import dataStructures.Map;
+import dataStructures.MapWithJavaClass;
 import dataStructures.NoElementException;
-import dataStructures.SepChainHashTable;
 import dataStructures.SortedMap;
 import dataStructures.SortedMapWithJavaClass;
 import fctBoleias.trip.CantRideSelfException;
@@ -39,7 +39,7 @@ public class ManagerClass implements Manager {
 
 	public ManagerClass() {
 		this.currentUser = null;
-		usersByEmail = new SepChainHashTable<String, User>(10000);
+		usersByEmail = new MapWithJavaClass<String, User>(10000);
 		tripsByDate = new SortedMapWithJavaClass<BasicDateTime, SortedMap<String, Trip>>();
 	}
 
