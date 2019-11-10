@@ -7,3 +7,5 @@
 .metadata/
 
 manager.ser
+
+tests/SkipTestsGit.sh
