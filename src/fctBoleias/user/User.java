@@ -19,21 +19,21 @@ public interface User extends Serializable {
 	/**
 	 * Gives the {@link User}'s email
 	 * 
-	 * @return the email
+	 * @return the {@link String email}
 	 */
 	String getEmail();
 
 	/**
 	 * Gives the {@link User}'s name
 	 * 
-	 * @return the name
+	 * @return the {@link String name}
 	 */
 	String getName();
 
 	/**
 	 * Gives the {@link User}'s password
 	 * 
-	 * @return the password
+	 * @return the {@link String password}
 	 */
 	String getPassword();
 
@@ -68,6 +68,7 @@ public interface User extends Serializable {
 	void addTrip(Trip newTrip) throws BookedDateException;
 
 	/**
+	 * Gives the number of registered {@link Trip trips} on {@link User this user}
 	 * @return {@link User User's} number of {@link Trip Trips}
 	 */
 	int getNumberTrips();
@@ -122,7 +123,7 @@ public interface User extends Serializable {
 	Trip getTrip(BasicDateTime date) throws NonExistentTripException;
 
 	/**
-	 * 
+	 * Checks if {@link User this user} has a {@link Trip} registered on the given {@link BasicDateTime date}
 	 * @param date {@link BasicDateTime date} to check if the {@link User} has a
 	 *             {@link Trip} on
 	 * @return <code>true</code> if the user has a {@link Trip} on the given date,
@@ -159,7 +160,7 @@ public interface User extends Serializable {
 	Trip cancelRide(BasicDateTime processedDate) throws NoRideOnDayException;
 
 	/**
-	 * 
+	 * Checks if {@link User this user} has a {@link ride} registered on the given {@link BasicDateTime date}
 	 * @param date {@link BasicDateTime date} to check if the {@link User} is taking
 	 *             a ride on
 	 * @return @return <code>true</code> if the user is taking a ride on the given
