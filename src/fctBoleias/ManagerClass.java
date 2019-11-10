@@ -208,7 +208,8 @@ public class ManagerClass implements Manager {
 	}
 
 	@Override
-	public Iterator<TripWrapper> getUserTrips(String email) throws NotLoggedInException, NoRegisteredTripsException, NonExistentUserException {
+	public Iterator<TripWrapper> getUserTrips(String email)
+			throws NotLoggedInException, NoRegisteredTripsException, NonExistentUserException {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		}
@@ -221,8 +222,7 @@ public class ManagerClass implements Manager {
 	}
 
 	@Override
-	public Iterator<TripWrapper> getCurrentUserRides()
-			throws NotLoggedInException, NoRegisteredTripsException {
+	public Iterator<TripWrapper> getCurrentUserRides() throws NotLoggedInException, NoRegisteredTripsException {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		}

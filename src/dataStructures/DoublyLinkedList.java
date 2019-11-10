@@ -41,9 +41,9 @@ public class DoublyLinkedList<E> implements TwoWayList<E> {
 	@Override
 	public int find(E element) {
 		int pos = 0;
-		//DListNode<E> auxNode;
-		//boolean found = false;
-		
+		// DListNode<E> auxNode;
+		// boolean found = false;
+
 		while (pos < currentSize) {
 			if (get(pos).equals(element)) {
 				return pos;
@@ -51,7 +51,7 @@ public class DoublyLinkedList<E> implements TwoWayList<E> {
 				pos++;
 			}
 		}
-		
+
 		return -1;
 	}
 
@@ -88,9 +88,9 @@ public class DoublyLinkedList<E> implements TwoWayList<E> {
 			head.setPrevious(newNode);
 			head = newNode;
 		}
-		
+
 		currentSize++;
-		
+
 	}
 
 	@Override
@@ -130,9 +130,9 @@ public class DoublyLinkedList<E> implements TwoWayList<E> {
 
 		previous.setNext(newNode);
 		aux.setPrevious(newNode);
-		
+
 		currentSize++;
-		
+
 	}
 
 	private E removeMiddle(int position) {
@@ -143,9 +143,9 @@ public class DoublyLinkedList<E> implements TwoWayList<E> {
 
 		auxNext.setPrevious(auxPrevious);
 		auxPrevious.setNext(auxNext);
-		
+
 		currentSize--;
-		
+
 		return aux.getElement();
 	}
 
@@ -171,9 +171,9 @@ public class DoublyLinkedList<E> implements TwoWayList<E> {
 			newHead.setPrevious(null);
 			head = newHead;
 		}
-		
+
 		currentSize--;
-		
+
 		return auxHead.getElement();
 	}
 
@@ -192,9 +192,9 @@ public class DoublyLinkedList<E> implements TwoWayList<E> {
 			newTail.setNext(null);
 			tail = newTail;
 		}
-		
+
 		currentSize--;
-		
+
 		return auxTail.getElement();
 
 	}

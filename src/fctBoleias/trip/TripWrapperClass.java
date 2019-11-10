@@ -1,15 +1,19 @@
 package fctBoleias.trip;
 
 import basicDateTime.BasicDateTime;
+import fctBoleias.Wrapper;
 
+/**
+ * Implements a {@link Wrapper} for a {@link Trip}
+ */
 public class TripWrapperClass implements TripWrapper {
 
 	private Trip trip;
-	
+
 	public TripWrapperClass(Trip trip) {
 		this.trip = trip;
 	}
-	
+
 	@Override
 	public BasicDateTime getBasicDateTime() {
 		return trip.getBasicDateTime();
@@ -44,7 +48,7 @@ public class TripWrapperClass implements TripWrapper {
 	public boolean hasFreeSlots() {
 		return trip.hasFreeSlots();
 	}
-	
+
 	@Override
 	public String toString() {
 		return trip.toString();

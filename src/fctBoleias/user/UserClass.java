@@ -30,12 +30,12 @@ public class UserClass implements User {
 	private SortedMap<BasicDateTime, Trip> trips; // User's trips (is the driver)
 
 	/**
-	 * {@link User} object constructor. Creates an object holding details and information
-	 * about a {@link User}
+	 * {@link User} object constructor. Creates an object holding details and
+	 * information about a {@link User}
 	 * 
-	 * @param email    - {@link String email} of the user
-	 * @param name     - {@link String name} of the user
-	 * @param password - {@link String password} of the user
+	 * @param email    {@link String email} of the user
+	 * @param name     {@link String name} of the user
+	 * @param password {@link String password} of the user
 	 */
 	public UserClass(String email, String name, String password) {
 		this.email = email;

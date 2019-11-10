@@ -62,12 +62,13 @@ public interface User extends Serializable {
 	 * 
 	 * @param newTrip {@link Trip} to be registered
 	 * @throws DateOccupiedException if this {@link User} already has a trip or ride
-	 *                             on the given {@link Trip Trip's} date
+	 *                               on the given {@link Trip Trip's} date
 	 */
 	void addTrip(Trip newTrip) throws DateOccupiedException;
 
 	/**
 	 * Gives the number of registered {@link Trip trips} on {@link User this user}
+	 * 
 	 * @return {@link User User's} number of {@link Trip Trips}
 	 */
 	int getNumberTrips();
@@ -122,7 +123,9 @@ public interface User extends Serializable {
 	Trip getTrip(BasicDateTime date) throws NonExistentTripException;
 
 	/**
-	 * Checks if {@link User this user} has a {@link Trip} registered on the given {@link BasicDateTime date}
+	 * Checks if {@link User this user} has a {@link Trip} registered on the given
+	 * {@link BasicDateTime date}
+	 * 
 	 * @param date {@link BasicDateTime date} to check if the {@link User} has a
 	 *             {@link Trip} on
 	 * @return <code>true</code> if the user has a {@link Trip} on the given date,
@@ -159,7 +162,9 @@ public interface User extends Serializable {
 	Trip cancelRide(BasicDateTime processedDate) throws NoRideOnDayException;
 
 	/**
-	 * Checks if {@link User this user} has a {@link ride} registered on the given {@link BasicDateTime date}
+	 * Checks if {@link User this user} has a {@link ride} registered on the given
+	 * {@link BasicDateTime date}
+	 * 
 	 * @param date {@link BasicDateTime date} to check if the {@link User} is taking
 	 *             a ride on
 	 * @return @return <code>true</code> if the user is taking a ride on the given

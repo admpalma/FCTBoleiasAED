@@ -4,6 +4,11 @@ import basicDateTime.BasicDateTime;
 import fctBoleias.Wrapper;
 import fctBoleias.user.User;
 
+/**
+ * A {@link TripWrapper} acts like {@link Wrapper} around a {@link Trip}
+ * 
+ * @see Wrapper
+ */
 public interface TripWrapper extends Wrapper {
 
 	/**
@@ -15,6 +20,7 @@ public interface TripWrapper extends Wrapper {
 
 	/**
 	 * Checks if {@link Trip this} has {@link Trip rides} registered
+	 * 
 	 * @return boolean true if this {@link Trip} has {@link User users} registered
 	 *         for rides, false otherwise
 	 */
@@ -50,10 +56,11 @@ public interface TripWrapper extends Wrapper {
 	int getDuration();
 
 	/**
-	 * @return <code>true</code> if this {@link Trip} has free slots, <code>false</code> otherwise
+	 * @return <code>true</code> if this {@link Trip} has free slots,
+	 *         <code>false</code> otherwise
 	 */
 	boolean hasFreeSlots();
-	
+
 	String toString();
 
 }
