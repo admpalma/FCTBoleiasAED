@@ -1,15 +1,15 @@
 package dataStructures;
 
 public class QueueInList<E> implements Queue<E> {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	protected List<E> elements;
-	
-	public QueueInList(){
-		elements= new SinglyLinkedList<E>();
+
+	public QueueInList() {
+		elements = new SinglyLinkedList<E>();
 	}
 
 	@Override

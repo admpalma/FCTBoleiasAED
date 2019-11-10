@@ -1,11 +1,9 @@
 package dataStructures;
 
 import java.util.Collection;
-import java.util.Map.Entry;
-import java.util.Set;
 
 public class IteratorKeysValues<E> implements Iterator<E> {
-	
+
 	private Collection<E> set;
 	private java.util.Iterator<E> iterator;
 
@@ -13,7 +11,6 @@ public class IteratorKeysValues<E> implements Iterator<E> {
 		this.set = set;
 		rewind();
 	}
-
 
 	@Override
 	public boolean hasNext() {

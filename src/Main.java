@@ -16,17 +16,16 @@ import fctBoleias.InexistentUserException;
 import fctBoleias.InvalidPasswordFormatException;
 import fctBoleias.Manager;
 import fctBoleias.ManagerClass;
-import fctBoleias.NoRideOnDayException;
 import fctBoleias.NoRegisteredTripsException;
+import fctBoleias.NoRideOnDayException;
 import fctBoleias.NoTripOnDayException;
+import fctBoleias.NonExistentTripException;
+import fctBoleias.NonExistentUserException;
 import fctBoleias.trip.CantRideSelfException;
 import fctBoleias.trip.InvalidTripDataException;
 import fctBoleias.trip.Trip;
 import fctBoleias.trip.TripHasRidesException;
 import fctBoleias.trip.TripIsFullException;
-import fctBoleias.NonExistentTripException;
-import fctBoleias.NonExistentUserException;
-import fctBoleias.NotLoggedInException;
 import fctBoleias.user.IncorrectPasswordException;
 import fctBoleias.user.User;
 
@@ -698,7 +697,7 @@ public class Main {
 					listDateTrips(manager, listingMode);
 				}
 
-			}
+			} // TODO NAO EXISTE O UTILIZADOR DADO
 		} catch (NoRegisteredTripsException | InvalidDateException | NonExistentUserException e) {
 			System.out.println(e.getMessage());
 		}
@@ -711,7 +710,7 @@ public class Main {
 		while (outerIterator.hasNext()) {
 			Iterator<Trip> trips = outerIterator.next().values();
 			while (trips.hasNext()) {
-				Trip trip = (Trip) trips.next();				
+				Trip trip = (Trip) trips.next();
 				System.out.printf("%s %s%n%n", trip.getBasicDateTime().toDateString(), trip.getDriverEmail());
 			}
 		}
@@ -726,7 +725,7 @@ public class Main {
 				Trip trip = trips.next();
 				System.out.println(trip.getDriverEmail());
 				System.out.println();
-			} 
+			}
 		} else {
 			throw new NoRegisteredTripsException();
 		}
@@ -758,11 +757,11 @@ public class Main {
 	 * 
 	 * @param manager {@link Manager} in which the <code>Current User</code> is
 	 *                logging out
-	 * @param in input receiving {@link Scanner} needing to skip a line
+	 * @param in      input receiving {@link Scanner} needing to skip a line
 	 */
 	private static void exit(Manager manager, Scanner in) {
 		assert (manager.isLoggedIn());
-		//in.nextLine();
+		// in.nextLine();
 		System.out.printf("Ate a proxima %s.%n", manager.logoutCurrentUser());
 	}
 

@@ -1,5 +1,11 @@
 package fctBoleias;
 
+import fctBoleias.user.User;
+
+/**
+ * TODO A {@link NonExistentUserException} is thrown when there is an attempt to
+ * login a {@link User} but the {@link User} doesn't exist
+ */
 public class NonExistentUserException extends Exception {
 
 	/**

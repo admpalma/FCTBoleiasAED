@@ -18,7 +18,7 @@ public class ArrayIterator<E> implements Iterator<E> {
 		this.counter = counter;
 		rewind();
 	}
-	
+
 	@Override
 	public boolean hasNext() {
 		return current < counter;
@@ -26,14 +26,14 @@ public class ArrayIterator<E> implements Iterator<E> {
 
 	@Override
 	public E next() throws NoSuchElementException {
-		if (!hasNext()) 
+		if (!hasNext())
 			throw new NoSuchElementException("No more elements.");
 		return vector[current++];
 	}
 
 	@Override
 	public void rewind() {
-		current=0;
+		current = 0;
 	}
 
 }

@@ -82,7 +82,7 @@ public class MapWithSinglyLinkedList<K, V> extends SinglyLinkedList<Entry<K, V>>
 		SListNode<Entry<K, V>> current;
 		try {
 			current = previous.getNext();
-		} catch(NullPointerException e) {
+		} catch (NullPointerException e) {
 			return null;
 		}
 

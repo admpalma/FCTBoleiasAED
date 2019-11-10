@@ -1,6 +1,8 @@
 package tests;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,32 +14,15 @@ class BasicDateTimeClassTest {
 
 	private BasicDateTimeClass[] dates;
 
-	private String[] datesInit = {
-		"01-01-2010 12:00",
-		"01-01-2010 12:02",
-		"01-01-2010 13:00",
-		"02-01-2010 12:00",
-		"01-02-2010 12:00",
-		"01-01-2012 12:00"};
+	private String[] datesInit = { "01-01-2010 12:00", "01-01-2010 12:02", "01-01-2010 13:00", "02-01-2010 12:00",
+			"01-02-2010 12:00", "01-01-2012 12:00" };
 
-	private String[] processedDates = {
-		"1-1-2010 12:0",
-		"1-1-2010 12:2",
-		"1-1-2010 13:0",
-		"2-1-2010 12:0",
-		"1-2-2010 12:0",
-		"1-1-2012 12:0"};
+	private String[] processedDates = { "1-1-2010 12:0", "1-1-2010 12:2", "1-1-2010 13:0", "2-1-2010 12:0",
+			"1-2-2010 12:0", "1-1-2012 12:0" };
 
-	private String[] invalidDatesInit = {
-		"01-01-0000 12:00",
-		"01-00-2010 12:00",
-		"01-13-2010 12:00",
-		"00-01-2010 12:00",
-		"30-02-2010 12:00",
-		"31-04-2010 12:00",
-		"32-01-2010 12:00",
-		"01-01-2010 24:00",
-		"01-01-2010 12:60"};
+	private String[] invalidDatesInit = { "01-01-0000 12:00", "01-00-2010 12:00", "01-13-2010 12:00",
+			"00-01-2010 12:00", "30-02-2010 12:00", "31-04-2010 12:00", "32-01-2010 12:00", "01-01-2010 24:00",
+			"01-01-2010 12:60" };
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -57,7 +42,8 @@ class BasicDateTimeClassTest {
 		assertEquals(0, dates[0].getMinutes());
 		for (int i = 0; i < invalidDatesInit.length; i++) {
 			String[] newInvalidDate = invalidDatesInit[i].split(" ");
-			assertThrows(InvalidDateException.class, () -> new BasicDateTimeClass(newInvalidDate[0], newInvalidDate[1]));
+			assertThrows(InvalidDateException.class,
+					() -> new BasicDateTimeClass(newInvalidDate[0], newInvalidDate[1]));
 		}
 	}
 
@@ -111,7 +97,7 @@ class BasicDateTimeClassTest {
 		}
 		for (int i = 0; i < dates.length; i++) {
 			for (int j = 1; j < dates.length && i < j; j++) {
-				if ((i == 0 ||i == 1 || i == 2) && (j == 0 || j == 1 || j == 2)) {
+				if ((i == 0 || i == 1 || i == 2) && (j == 0 || j == 1 || j == 2)) {
 					assertTrue(dates[i].compareTo(dates[j]) == 0);
 				} else {
 					assertTrue(dates[i].compareTo(dates[j]) < 0);

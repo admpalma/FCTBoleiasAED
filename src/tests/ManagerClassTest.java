@@ -1,6 +1,10 @@
 package tests;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,29 +22,11 @@ class ManagerClassTest {
 
 	private Manager manager;
 
-	private String[] email = {
-		"email1",
-		"email2",
-		"email3",
-		"email4",
-		"email5"
-	};
+	private String[] email = { "email1", "email2", "email3", "email4", "email5" };
 
-	private String[] name = {
-		"name1",
-		"name2",
-		"name3",
-		"name4",
-		"name5"
-	};
+	private String[] name = { "name1", "name2", "name3", "name4", "name5" };
 
-	private String[] password = {
-		"valid1",
-		"valid2",
-		"valid3",
-		"valid4",
-		"valid5"
-	};
+	private String[] password = { "valid1", "valid2", "valid3", "valid4", "valid5" };
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -71,7 +57,7 @@ class ManagerClassTest {
 			assertFalse(manager.isLoggedIn());
 		}
 	}
-	
+
 	@Test
 	void testUserLogin() {
 		for (int i = 0; i < email.length; i++) {
@@ -93,7 +79,7 @@ class ManagerClassTest {
 			assertThrows(LoggedInException.class, () -> manager.userLogin(email[index], password[index]));
 			manager.logoutCurrentUser();
 		}
-		
+
 	}
 
 	@Test
@@ -140,7 +126,8 @@ class ManagerClassTest {
 		}
 		for (int i = 0; i < email.length; i++) {
 			int index = i;
-			assertThrows(InvalidPasswordFormatException.class, () -> manager.registerUser(email[index], name[index], "###"));
+			assertThrows(InvalidPasswordFormatException.class,
+					() -> manager.registerUser(email[index], name[index], "###"));
 		}
 		for (int i = 0; i < email.length; i++) {
 			try {
@@ -151,7 +138,8 @@ class ManagerClassTest {
 		}
 		for (int i = 0; i < email.length; i++) {
 			int index = i;
-			assertThrows(UserAlreadyRegisteredException.class, () -> manager.registerUser(email[index], name[index], password[index]));
+			assertThrows(UserAlreadyRegisteredException.class,
+					() -> manager.registerUser(email[index], name[index], password[index]));
 		}
 		for (int i = 0; i < email.length; i++) {
 			assertTrue(manager.isUserRegistered(email[i]));

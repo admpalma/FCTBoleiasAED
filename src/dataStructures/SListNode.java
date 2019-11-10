@@ -6,12 +6,12 @@ package dataStructures;
 import java.io.Serializable;
 
 class SListNode<E> implements Serializable {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	// Element stored in the node.
 	protected E element;
 	// (Pointer to) the next node.

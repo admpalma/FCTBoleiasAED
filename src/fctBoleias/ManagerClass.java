@@ -3,9 +3,7 @@ package fctBoleias;
 import basicDateTime.BasicDateTime;
 import basicDateTime.BasicDateTimeClass;
 import basicDateTime.InvalidDateException;
-import dataStructures.Entry;
 import dataStructures.Iterator;
-import dataStructures.List;
 import dataStructures.Map;
 import dataStructures.NoElementException;
 import dataStructures.SepChainHashTable;
@@ -36,12 +34,12 @@ public class ManagerClass implements Manager {
 	private User currentUser;
 	private Map<String, User> usersByEmail; // Key: user email
 	private SortedMap<BasicDateTime, SortedMap<String, Trip>> tripsByDate; // Rides by date
-	private List<Trip> allTrips;
+	// private List<Trip> allTrips;
 
 	public ManagerClass() {
 		this.currentUser = null;
-		//TODO capacity
-		usersByEmail = new SepChainHashTable<String, User>();
+		// TODO capacity
+		usersByEmail = new SepChainHashTable<String, User>(10000);
 		tripsByDate = new SortedMapWithJavaClass<BasicDateTime, SortedMap<String, Trip>>();
 	}
 
@@ -86,7 +84,6 @@ public class ManagerClass implements Manager {
 	@Override
 	public void remove(String date)
 			throws NotLoggedInException, NoTripOnDayException, TripHasRidesException, InvalidDateException {
-		// TODO Auto-generated method stub
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		}
@@ -100,11 +97,12 @@ public class ManagerClass implements Manager {
 	}
 
 	@Override
-	public void addNewRide(String email, String date) throws NotLoggedInException, CantRideSelfException,
-			DateOccupiedException, InexistentUserException, InvalidDateException, NonExistentTripException, TripIsFullException {
+	public void addNewRide(String email, String date)
+			throws NotLoggedInException, CantRideSelfException, DateOccupiedException, InexistentUserException,
+			InvalidDateException, NonExistentTripException, TripIsFullException {
 		User tripDriver = usersByEmail.find(email);
 		BasicDateTime newDate;
-		
+
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		} else if (tripDriver == null) {
@@ -187,15 +185,15 @@ public class ManagerClass implements Manager {
 	public Trip consult(String email, String date)
 			throws NotLoggedInException, NonExistentTripException, InexistentUserException, InvalidDateException {
 		User tripDriver = usersByEmail.find(email);
-		
+
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		} else if (tripDriver == null) {
 			throw new InexistentUserException();
 		}
-		
+
 		BasicDateTime newDate = new BasicDateTimeClass(date);
-		
+
 		return tripDriver.getTrip(newDate);
 	}
 
@@ -215,12 +213,13 @@ public class ManagerClass implements Manager {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		}
-		
+
 		return currentUser.getTripsIterator();
 	}
 
 	@Override
-	public Iterator<Trip> getUserRides(String email) throws NotLoggedInException, NonExistentUserException, NoRegisteredTripsException {
+	public Iterator<Trip> getUserRides(String email)
+			throws NotLoggedInException, NonExistentUserException, NoRegisteredTripsException {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		} else if (usersByEmail.find(email) == null) {

@@ -9,7 +9,7 @@ public class SortedMapWithJavaClass<K extends Comparable<K>, V> implements Sorte
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private TreeMap<K, V> map;
 
 	public SortedMapWithJavaClass() {
