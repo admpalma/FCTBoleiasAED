@@ -547,7 +547,7 @@ public class Main {
 			cancelRide(manager, in);
 			break;
 		case SAI:
-			exit(manager, in);
+			exit(manager);
 			break;
 		}
 	}
@@ -692,15 +692,17 @@ public class Main {
 				listAllTrips(manager);
 			} else {
 
-				if (!listingMode.matches("^[^0-9-]+$")) {
-					listMailODDate(manager.getUserTrips(listingMode));
-				} else {
+				if (listingMode.matches("^[0-9-]+$")) {
 					listDateTrips(manager, listingMode);
+				} else {
+					listMailODDate(manager.getUserTrips(listingMode));
 				}
 
 			} // TODO NAO EXISTE O UTILIZADOR DADO
-		} catch (NoRegisteredTripsException | InvalidDateException | NonExistentUserException e) {
+		} catch (NoRegisteredTripsException | InvalidDateException e) {
 			System.out.println(e.getMessage());
+		} catch (NonExistentUserException e) {
+			System.out.println("Nao existe o utilizador dado.");
 		}
 
 	}
@@ -756,11 +758,9 @@ public class Main {
 	 * 
 	 * @param manager {@link Manager} in which the <code>Current User</code> is
 	 *                logging out
-	 * @param in      input receiving {@link Scanner} needing to skip a line
 	 */
-	private static void exit(Manager manager, Scanner in) {
+	private static void exit(Manager manager) {
 		assert (manager.isLoggedIn());
-		// in.nextLine();
 		System.out.printf("Ate a proxima %s.%n", manager.logoutCurrentUser());
 	}
 
