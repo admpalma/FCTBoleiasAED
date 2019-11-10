@@ -140,4 +140,9 @@ public class TripClass implements Trip {
 		return capacity - usersInRide.size() > 0;
 	}
 
+	@Override
+	public TripWrapper wrap() {
+		return new TripWrapperClass(this);
+	}
+
 }

@@ -1,8 +1,6 @@
 package fctBoleias;
 
 import java.io.Serializable;
-import java.net.UnknownServiceException;
-
 import basicDateTime.BasicDateTime;
 import basicDateTime.InvalidDateException;
 import dataStructures.Iterator;

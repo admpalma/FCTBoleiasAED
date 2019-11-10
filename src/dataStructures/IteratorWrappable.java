@@ -1,6 +1,9 @@
 package dataStructures;
 
-public class IteratorWrappable<E extends Wrappable> implements Iterator<E> {
+import fctBoleias.Wrappable;
+import fctBoleias.Wrapper;
+
+public class IteratorWrappable<W extends Wrapper, E extends Wrappable<E>> implements Iterator<E> {
 
 	private Iterator<E> iterator;
 
