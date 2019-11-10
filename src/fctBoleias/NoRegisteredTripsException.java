@@ -1,5 +1,6 @@
 package fctBoleias;
 
+import dataStructures.NoElementException;
 import fctBoleias.trip.Trip;
 
 /**
@@ -9,17 +10,22 @@ import fctBoleias.trip.Trip;
  */
 public class NoRegisteredTripsException extends Exception {
 
+	private static final String NO_TRIPS = "Sem deslocacoes.";
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	public NoRegisteredTripsException() {
-		super("Sem deslocacoes.");
+		super(NO_TRIPS);
 	}
 
 	public NoRegisteredTripsException(String message) {
 		super(message);
+	}
+
+	public NoRegisteredTripsException(Throwable e) {
+		super(NO_TRIPS, e);
 	}
 
 }

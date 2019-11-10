@@ -21,6 +21,7 @@ import fctBoleias.NoRideOnDayException;
 import fctBoleias.NoTripOnDayException;
 import fctBoleias.NonExistentTripException;
 import fctBoleias.NonExistentUserException;
+import fctBoleias.NotLoggedInException;
 import fctBoleias.trip.CantRideSelfException;
 import fctBoleias.trip.InvalidTripDataException;
 import fctBoleias.trip.Trip;
@@ -686,13 +687,13 @@ public class Main {
 			if (listingMode.equalsIgnoreCase("minhas")) {
 				listCurrentUserTrips(manager);
 			} else if (listingMode.equalsIgnoreCase("boleias")) {
-				listMailODDate(manager, manager.getCurrentUserEmail());
+				listMailODDate(manager.getCurrentUserRides());
 			} else if (listingMode.equalsIgnoreCase("todas")) {
 				listAllTrips(manager);
 			} else {
 
-				if (listingMode.matches("^[^0-9-]+$")) {
-					listMailODDate(manager, listingMode);
+				if (!listingMode.matches("^[^0-9-]+$")) {
+					listMailODDate(manager.getUserTrips(listingMode));
 				} else {
 					listDateTrips(manager, listingMode);
 				}
@@ -731,10 +732,7 @@ public class Main {
 		}
 	}
 
-	private static void listMailODDate(Manager manager, String email)
-			throws NoRegisteredTripsException, NonExistentUserException {
-		Iterator<Trip> trips = manager.getUserRides(email);
-
+	private static void listMailODDate(Iterator<Trip> trips) {
 		while (trips.hasNext()) {
 			Trip trip = trips.next();
 			System.out.printf("%s%n%s-%s%n%s %d%n%n", trip.getDriverEmail(), trip.getOrigin(), trip.getDestiny(),
@@ -743,8 +741,9 @@ public class Main {
 
 	}
 
-	private static void listCurrentUserTrips(Manager manager) throws NoRegisteredTripsException {
-		Iterator<Trip> trips = manager.getCurrentUserTrips();
+	// TODO THROWS MESSAGE MAY BE WRONG NAO EXISTE O UTILIZADOR DADO
+	private static void listCurrentUserTrips(Manager manager) throws NoRegisteredTripsException, NonExistentUserException {
+		Iterator<Trip> trips = manager.getUserTrips(manager.getCurrentUserEmail());
 
 		while (trips.hasNext()) {
 			System.out.println(trips.next().toString());

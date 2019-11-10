@@ -209,23 +209,25 @@ public class ManagerClass implements Manager {
 	}
 
 	@Override
-	public Iterator<Trip> getCurrentUserTrips() throws NotLoggedInException, NoRegisteredTripsException {
+	public Iterator<Trip> getUserTrips(String email) throws NotLoggedInException, NoRegisteredTripsException, NonExistentUserException {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		}
 
-		return currentUser.getTripsIterator();
+		try {
+			return usersByEmail.find(email).getTripsIterator();
+		} catch (NullPointerException e) {
+			throw new NonExistentUserException(e);
+		}
 	}
 
 	@Override
-	public Iterator<Trip> getUserRides(String email)
-			throws NotLoggedInException, NonExistentUserException, NoRegisteredTripsException {
+	public Iterator<Trip> getCurrentUserRides()
+			throws NotLoggedInException, NoRegisteredTripsException {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
-		} else if (usersByEmail.find(email) == null) {
-			throw new NonExistentUserException("Nao existe o utilizador dado.");
 		}
-		return usersByEmail.find(email).getRidesIterator();
+		return currentUser.getRidesIterator();
 	}
 
 	@Override

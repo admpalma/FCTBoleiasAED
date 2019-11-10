@@ -179,31 +179,30 @@ public interface Manager extends Serializable {
 	void cancelCurrentUserRide(String date) throws NotLoggedInException, InvalidDateException, NoRideOnDayException;
 
 	/**
-	 * Gives an {@link Iterator} with the current {@link User}'s {@link Trip trips}
+	 * Gives an {@link Iterator} with the {@link User} with the given email's {@link Trip trips}
+	 * @param email {@link String email} of the {@link User} whose {@link Trip trips} we want
 	 * 
 	 * @return {@link Iterator} <{@link Trip}>
+	 * @throws NonExistentUserException if the {@link User} with the given {@link String email} doesn't exist
 	 * @throws NotLoggedInException       if no {@link User} is logged in
 	 * @throws NoRegisteredTripsException if there are no registered {@link Trip
 	 *                                    trips} on the current {@link User}
 	 */
-	Iterator<Trip> getCurrentUserTrips() throws NotLoggedInException, NoRegisteredTripsException;
+	Iterator<Trip> getUserTrips(String email) throws NotLoggedInException, NoRegisteredTripsException, NonExistentUserException;
+
 
 	/**
-	 * Gives an {@link Iterator} with the {@link User} with given email's
-	 * {@link Trip rides}
+	 * Gives an {@link Iterator} with the current {@link User}'s {@link Trip rides}
 	 * 
-	 * @param email {@link String email} of the {@link User} whose {@link Trip
-	 *              rides} we want
 	 * @return {@link Iterator} <{@link Trip}>
 	 * @throws NotLoggedInException       if no {@link User} is logged in
 	 * @throws NoRegisteredTripsException if there are no registered {@link Trip
 	 *                                    rides} on the {@link User} with the given
 	 *                                    email
-	 * @throws NonExistentUserException   if the given <code>email</code> doesn't
-	 *                                    match any {@link User} in the system
 	 */
-	Iterator<Trip> getUserRides(String email)
-			throws NotLoggedInException, NoRegisteredTripsException, NonExistentUserException;
+	Iterator<Trip> getCurrentUserRides()
+			throws NotLoggedInException, NoRegisteredTripsException;
+
 
 	/**
 	 * Gives an {@link Iterator} with the {@link Trip trips} on the given date
