@@ -10,6 +10,7 @@ import fctBoleias.trip.InvalidTripDataException;
 import fctBoleias.trip.Trip;
 import fctBoleias.trip.TripHasRidesException;
 import fctBoleias.trip.TripIsFullException;
+import fctBoleias.trip.TripWrapper;
 import fctBoleias.user.IncorrectPasswordException;
 import fctBoleias.user.User;
 
@@ -180,25 +181,25 @@ public interface Manager extends Serializable {
 	 * Gives an {@link Iterator} with the {@link User} with the given email's {@link Trip trips}
 	 * @param email {@link String email} of the {@link User} whose {@link Trip trips} we want
 	 * 
-	 * @return {@link Iterator} <{@link Trip}>
+	 * @return {@link Iterator} <{@link TripWrapper}>
 	 * @throws NonExistentUserException if the {@link User} with the given {@link String email} doesn't exist
 	 * @throws NotLoggedInException       if no {@link User} is logged in
 	 * @throws NoRegisteredTripsException if there are no registered {@link Trip
 	 *                                    trips} on the current {@link User}
 	 */
-	Iterator<Trip> getUserTrips(String email) throws NotLoggedInException, NoRegisteredTripsException, NonExistentUserException;
+	Iterator<TripWrapper> getUserTrips(String email) throws NotLoggedInException, NoRegisteredTripsException, NonExistentUserException;
 
 
 	/**
 	 * Gives an {@link Iterator} with the current {@link User}'s {@link Trip rides}
 	 * 
-	 * @return {@link Iterator} <{@link Trip}>
+	 * @return {@link Iterator} <{@link TripWrapper}>
 	 * @throws NotLoggedInException       if no {@link User} is logged in
 	 * @throws NoRegisteredTripsException if there are no registered {@link Trip
 	 *                                    rides} on the {@link User} with the given
 	 *                                    email
 	 */
-	Iterator<Trip> getCurrentUserRides()
+	Iterator<TripWrapper> getCurrentUserRides()
 			throws NotLoggedInException, NoRegisteredTripsException;
 
 
@@ -206,11 +207,11 @@ public interface Manager extends Serializable {
 	 * Gives an {@link Iterator} with the {@link Trip trips} on the given date
 	 * 
 	 * @param date {@link String date} of the {@link Trip trips} we want to list
-	 * @return {@link Iterator} <{@link Trip}>
+	 * @return {@link Iterator} <{@link TripWrapper}>
 	 * @throws NotLoggedInException if no {@link User} is logged in
 	 * @throws InvalidDateException if the given date is invalid
 	 */
-	Iterator<Trip> getTripsOnDate(String date) throws NotLoggedInException, InvalidDateException;
+	Iterator<TripWrapper> getTripsOnDate(String date) throws NotLoggedInException, InvalidDateException;
 
 	/**
 	 * Gives an {@link Iterator} with all the sorted maps of trips (all {@link Trip trips} in the system)

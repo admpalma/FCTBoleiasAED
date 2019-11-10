@@ -23,6 +23,7 @@ import fctBoleias.trip.InvalidTripDataException;
 import fctBoleias.trip.Trip;
 import fctBoleias.trip.TripHasRidesException;
 import fctBoleias.trip.TripIsFullException;
+import fctBoleias.trip.TripWrapper;
 import fctBoleias.user.IncorrectPasswordException;
 import fctBoleias.user.User;
 
@@ -734,11 +735,11 @@ public class Main {
 	 */
 	private static void listDateTrips(Manager manager, String date)
 			throws InvalidDateException, NoRegisteredTripsException {
-		Iterator<Trip> trips = manager.getTripsOnDate(date);
+		Iterator<TripWrapper> trips = manager.getTripsOnDate(date);
 		boolean validTrips = false;
 		if (trips != null) {
 			while (trips.hasNext()) {
-				Trip trip = trips.next();
+				TripWrapper trip = trips.next();
 				if (trip.hasFreeSlots()) {
 					validTrips = true;
 					System.out.println(trip.getDriverEmail());
@@ -765,9 +766,9 @@ public class Main {
 	 *                be fetched and listed from
 	 * @param date    {@link String date} of the {@link Trip trips} we want to list
 	 */
-	private static void listMailOriginDestinyDateTrips(Iterator<Trip> trips) {
-		while (trips.hasNext()) {
-			Trip trip = trips.next();
+	private static void listMailOriginDestinyDateTrips(Iterator<TripWrapper> iterator) {
+		while (iterator.hasNext()) {
+			TripWrapper trip = iterator.next();
 			System.out.printf("%s%n%s-%s%n%s %d%n%n", trip.getDriverEmail(), trip.getOrigin(), trip.getDestiny(),
 					trip.getBasicDateTime().toString(), trip.getDuration());
 		}
@@ -786,7 +787,7 @@ public class Main {
 	 *                be fetched and listed from
 	 */
 	private static void listUserTrips(Manager manager) throws NoRegisteredTripsException, NonExistentUserException {
-		Iterator<Trip> trips = manager.getUserTrips(manager.getCurrentUserEmail());
+		Iterator<TripWrapper> trips = manager.getUserTrips(manager.getCurrentUserEmail());
 
 		while (trips.hasNext()) {
 			System.out.println(trips.next().toString());
