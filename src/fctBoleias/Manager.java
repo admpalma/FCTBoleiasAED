@@ -1,6 +1,11 @@
 package fctBoleias;
 
+import java.io.Serializable;
+
+import basicDateTime.BasicDateTime;
 import basicDateTime.InvalidDateException;
+import dataStructures.Iterator;
+import dataStructures.SortedMap;
 import fctBoleias.trip.CantRideSelfException;
 import fctBoleias.trip.InvalidTripDataException;
 import fctBoleias.trip.Trip;
@@ -8,7 +13,7 @@ import fctBoleias.trip.TripHasRidesException;
 import fctBoleias.user.IncorrectPasswordException;
 import fctBoleias.user.User;
 
-public interface Manager {
+public interface Manager extends Serializable {
 
 	/**
 	 * Returns true if there's a {@link User} logged in
@@ -29,21 +34,23 @@ public interface Manager {
 	 * @throws DateOccupiedException if current user already has a trip or ride on that date
 	 * @throws NotLoggedInException if there's no {@link User} logged in
 	 */
-	void addTrip(String origin, String destiny, String date, String hourMinute, int duration, int numberSeats) throws InvalidTripDataException, DateOccupiedException, NotLoggedInException;
+	void addTrip(String origin, String destiny, String date, String hourMinute, int duration, int numberSeats) throws InvalidTripDataException, BookedDateException, NotLoggedInException;
 
 	/**
+	 * TODO
 	 * Gives the currently logged in {@link User}'s name
 	 * @return {@link User User's} name or <code>null</code> if there's no {@link User} logged in
 	 */
 	String getCurrentUserName();
 
 	/**
-	 * Removes a ride
-	 * @param date - date of the ride
-	 * @throws NotLoggedInException if no user is logged in
+	 * Removes a {@link Trip trip} from the currentUser on the given date
+	 * Assumes there's a {@link User} logged in
+	 * @param date the date of the {@link Trip trip} to be removed
+	 * @throws NotLoggedInException if no {@link User user} is logged in
 	 * @throws InvalidDateException if the given date is invalid
-	 * @throws NoTripOnDayException if there's no trip registered on that day
-	 * @throws TripHasRidesException if the trip already has rides
+	 * @throws NoTripOnDayException if there's no {@link Trip trip} registered on that date
+	 * @throws TripHasRidesException if the {@link Trip trip} already has rides and can't be removed
 	 */
 	void remove(String date) throws NotLoggedInException, InvalidDateException, NoTripOnDayException, TripHasRidesException;
 
@@ -51,14 +58,14 @@ public interface Manager {
 	 * Adds a new ride
 	 * @param name - name of the ride owner
 	 * @param date - date of the ride
-	 * @throws NotLoggedInException if no user is logged in
-	 * @throws CantRideSelfException if the ride owner is the current User
+	 * @throws NotLoggedInException if no {@link User} is logged in
+	 * @throws CantRideSelfException if the {@link Trip} owner is the current {@link User}
 	 * @throws DateOccupiedException if user already has a ride or a trip on that date
-	 * @throws NonExistentUserException if the user doesn't exist
+	 * @throws InexistentUserException if the user doesn't exist
 	 * @throws InvalidDateException if the given date is invalid
 	 * @throws NonExistentTripException if the trip doesn't exist
 	 */
-	void addNewRide(String name, String date) throws NotLoggedInException, CantRideSelfException, DateOccupiedException, NonExistentUserException, InvalidDateException, NonExistentTripException;
+	void addNewRide(String name, String date) throws NotLoggedInException, CantRideSelfException, DateOccupiedException, InexistentUserException, InvalidDateException, NonExistentTripException;
 
 	/**
 	 * Checks if there is a {@link User} registered with the given <code>email</code>
@@ -75,9 +82,9 @@ public interface Manager {
 	 * @param password new {@link User User's} password
 	 * @return the number of this registration
 	 * @throws InvalidPasswordFormatException if the password's format is wrong
-	 * @throws IllegalArgumentException if there is already a {@link User} registered with the given <code>email</code>
+	 * @throws UserAlreadyRegisteredException if there is already a {@link User} registered with the given <code>email</code>
 	 */
-	int registerUser(String email, String name, String password) throws InvalidPasswordFormatException, IllegalArgumentException;
+	int registerUser(String email, String name, String password) throws InvalidPasswordFormatException, UserAlreadyRegisteredException;
 
 	/**
 	 * Performs the logout of the <code>Current User</code>
@@ -87,6 +94,7 @@ public interface Manager {
 	String logoutCurrentUser() throws NotLoggedInException;
 
 	/**
+	 * TODO
 	 * Gives the currently logged in {@link User}'s email
 	 * @return {@link User User's} email or <code>null</code> if there's no {@link User} logged in
 	 */
@@ -105,8 +113,64 @@ public interface Manager {
 	int userLogin(String email, String password) throws NonExistentUserException, IncorrectPasswordException, LoggedInException;
 
 	/**
+	 * TODO
 	 * @return {@link User User's} number of {@link Trip Trips} or <code>null</code> if there's no {@link User} logged in
 	 */
 	int getCurrentUserTripNumber();
+
+	/**
+	 * Consults a {@link Trip} from the {@link User} with the given {@link String email} on the given {@link BasicDateTime date}
+	 * @param email {@link String email} of the owner of the {@link Trip} to consult
+	 * @param date {@link BasicDateTime date} of the {@link Trip} to check
+	 * @return TODO
+	 * @throws NotLoggedInException if no {@link User} is logged in
+	 * @throws NonExistentTripException if the {@link Trip} we want to consult doesn't exist
+	 * @throws InexistentUserException if the {@link User} with the given email doesn't exist
+	 * @throws InvalidDateException if the given {@link BasicDateTime date} is invalid
+	 */
+	Trip consult(String email, String date) throws NotLoggedInException, NonExistentTripException, InexistentUserException, InvalidDateException;
+
+	/**
+	 * Cancels the {@link User current user's} taken ride on a given date
+	 * @param date given date
+	 * @throws NotLoggedInException if no {@link User} is logged in
+	 * @throws InvalidDateException if the given date is invalid
+	 * @throws NoRideOnDayException if there's no {@link Trip ride} registered on that date for the {@link User current user}
+	 */
+	void cancelCurrentUserRide(String date) throws NotLoggedInException, InvalidDateException, NoRideOnDayException;
+
+	/**
+	 * Gives an {@link Iterator} with the current {@link User}'s {@link Trip trips}
+	 * @return {@link Iterator} <{@link Trip}>
+	 * @throws NotLoggedInException if no {@link User} is logged in
+	 * @throws NoRegisteredTripsException if there are no registered {@link Trip trips} on the current {@link User}
+	 */
+	Iterator<Trip> getCurrentUserTrips() throws NotLoggedInException, NoRegisteredTripsException;
+
+	/**
+	 * Gives an {@link Iterator} with the {@link User} with given email's {@link Trip rides}
+	 * @param email {@link String email} of the {@link User} whose {@link Trip rides} we want
+	 * @return {@link Iterator} <{@link Trip}>
+	 * @throws NotLoggedInException if no {@link User} is logged in
+	 * @throws NoRegisteredTripsException if there are no registered {@link Trip rides} on the {@link User} with the given email
+	 * @throws NonExistentUserException if the given <code>email</code> doesn't match any {@link User} in the system
+	 */
+	Iterator<Trip> getUserRides(String email) throws NotLoggedInException, NoRegisteredTripsException, NonExistentUserException;
+
+	/**
+	 * Gives an {@link Iterator} with the {@link Trip trips} on the given date
+	 * @param date {@link String date} of the {@link Trip trips} we want to list
+	 * @return {@link Iterator} <{@link Trip}>
+	 * @throws NotLoggedInException if no {@link User} is logged in
+	 * @throws InvalidDateException if the given date is invalid
+	 */
+	Iterator<Trip> getTripsOnDate(String date) throws NotLoggedInException, InvalidDateException;
+
+	/** TODO
+	 * Gives an {@link Iterator} with all the sorted maps of trips
+	 * @return {@link Iterator} <{@link SortedMap}<{@link String}, {@link Trip}>>
+	 * @throws NotLoggedInException if no {@link User} is logged in
+	 */
+	Iterator<SortedMap<String, Trip>> getAllTrips() throws NotLoggedInException;
 	
 }

@@ -1,24 +1,30 @@
-package basicDateTime;
+	package basicDateTime;
 
-import java.io.Serializable;
 import java.util.Arrays;
 
 /**
  * An implementation of {@link BasicDateTime} using a <code>short[]</code>
  */
-public class BasicDateTimeClass implements BasicDateTime, Serializable {
+public class BasicDateTimeClass implements BasicDateTime {
+
+	/**
+	 * Number of positions in {@link BasicDateTimeClass#rawDate rawDate} reserved for only the date
+	 */
+	private static final int NUM_DATE_ONLY_FIELDS = 3;
 
 	/**
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static final String DATE_TOSTRING_FORMAT = "%s-%s-%s %s:%s";
+	private static final String DATE_TOSTRING_FORMAT = "%d-%d-%d %d:%d";
 
 	/**
 	 * {@link BasicDateTimeClass#rawDate rawDate's} array length
 	 */
 	private static final int NUM_FIELDS = 5;
+
+	private static final String DATE_TODATESTRING_FORMAT = "%d-%d-%d";
 
 	/**
 	 * Array storing the date and time's elements <code>(year, month, day, hour and minutes)</code>
@@ -27,22 +33,26 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 
 	/**
 	 * Converts a {@link String} into a {@link BasicDateTimeClass}
-	 * @param date a {@link String} with the format <code>"dd-mm-yyyy hh:mm"</code>
+	 * This constructor takes a date and a time TODO
+	 * @param date a {@link String} with the format <code>"dd-mm-yyyy"</code>
+	 * @param time a {@link String} with the format <code>"hh:mm"</code>
 	 * @throws InvalidDateException if <code>date</code> contains impossible values
 	 */
-	public BasicDateTimeClass(String dateTime) throws InvalidDateException {
-		String[] dateAndTime = dateTime.split(" ");
-		String[] date = dateAndTime[0].split("-");
-		String[] time = dateAndTime[1].split(":");
+	public BasicDateTimeClass(String date, String time) throws InvalidDateException {
+		//String[] dateAndTime = dateTime.split(" ");
+		//String[] date = dateAndTime[0].split("-");
+		String[] newDate = date.split("-");
+		//String[] time = dateAndTime[1].split(":");
+		String[] newTime = time.split(":");
 		rawDate = new short[NUM_FIELDS];
 
-		int j = date.length - 1;
-		for (int i = 0; i < date.length; i++) {
-			rawDate[j] = Short.parseShort(date[i].trim());
+		int j = newDate.length - 1;
+		for (int i = 0; i < newDate.length; i++) {
+			rawDate[j] = Short.parseShort(newDate[i].trim());
 			j--;
 		}
-		for (int i = 0; i < time.length; i++) {
-			rawDate[i + date.length] = Short.parseShort(time[i].trim());
+		for (int i = 0; i < newTime.length; i++) {
+			rawDate[i + newDate.length] = Short.parseShort(newTime[i].trim());
 		}
 		if (!isValid()) {
 			throw new InvalidDateException();
@@ -50,8 +60,18 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 	}
 
 	/**
+	 * Converts a {@link String} into a {@link BasicDateTimeClass}
+	 * This constructor takes a {@link String date} only (when time parameter not needed) TODO
+	 * @param date a {@link String} with the format <code>"dd-mm-yyyy"</code>
+	 * @throws InvalidDateException if <code>date</code> contains impossible values
+	 */
+	public BasicDateTimeClass(String date) throws InvalidDateException {
+		this(date, "00:00"); // Gives placeholder time
+	}
+
+	/**
 	 * @return: boolean true if the date is valid, false otherwise
-	 * doesn't user getMonth() or getDay() since they have isValid() as @pre
+	 * doesn't use getMonth() or getDay() since they have isValid() as @pre
 	 */
 	private boolean isValid() {
 		int year = rawDate[0];
@@ -133,13 +153,25 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 		return rawDate;
 	}
 
+	/**
+	 * @return <code>short[]</code> containing the date only fields in a raw state
+	 */
+	public short[] getDateOnlyVector() {
+		short[] dateOnlyVector = new short[NUM_DATE_ONLY_FIELDS];
+		for (int i = 0; i < NUM_DATE_ONLY_FIELDS; i++) {
+			dateOnlyVector[i] = rawDate[i];
+		}
+		return dateOnlyVector;
+	}
+
 	@Override
 	public int compareTo(BasicDateTime date) {
 		if (date instanceof BasicDateTimeClass) {
 			int compareResult = 0, testField = 0;
-			short[] rawDate = ((BasicDateTimeClass) date).getRawDate();
-			while (compareResult == 0 && testField < NUM_FIELDS) {
-				compareResult = Integer.compare(this.rawDate[testField], rawDate[testField]);
+			short[] rawDate = ((BasicDateTimeClass) date).getDateOnlyVector();
+			short[] thisRawDate = this.getDateOnlyVector();
+			while (compareResult == 0 && testField < NUM_DATE_ONLY_FIELDS) {
+				compareResult = Integer.compare(thisRawDate[testField], rawDate[testField]);
 				testField++;
 			}
 			return compareResult;
@@ -151,14 +183,7 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 	@Override
 	public String toString() {
 		assert(isValid());
-		String[] processedDate = new String[NUM_FIELDS];
-		for (int i = 0; i < processedDate.length; i++) {
-			processedDate[i] = Short.toString(rawDate[i]);
-			if (processedDate[i].length() == 1) {
-				processedDate[i] = "0".concat(processedDate[i]);
-			}
-		}
-		return String.format(DATE_TOSTRING_FORMAT, processedDate[2], processedDate[1], processedDate[0], processedDate[3], processedDate[4]);
+		return String.format(DATE_TOSTRING_FORMAT, rawDate[2], rawDate[1], rawDate[0], rawDate[3], rawDate[4]);
 	}
 
 	/**
@@ -170,15 +195,8 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 		int compareResult = Integer.compare(this.getYear(), date.getYear());
 		if (compareResult == 0) {
 			compareResult = Integer.compare(this.getMonth(), date.getMonth());
-		}
-		if (compareResult == 0) {
+		} else if (compareResult == 0) {
 			compareResult = Integer.compare(this.getDay(), date.getDay());
-		}
-		if (compareResult == 0) {
-			compareResult = Integer.compare(this.getHour(), date.getHour());
-		}
-		if (compareResult == 0) {
-			compareResult = Integer.compare(this.getMinutes(), date.getMinutes());
 		}
 		return compareResult;
 	}
@@ -187,7 +205,7 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Arrays.hashCode(rawDate);
+		result = prime * result + Arrays.hashCode(getDateOnlyVector());
 		return result;
 	}
 
@@ -200,9 +218,15 @@ public class BasicDateTimeClass implements BasicDateTime, Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		BasicDateTimeClass other = (BasicDateTimeClass) obj;
-		if (!Arrays.equals(rawDate, other.rawDate))
+		if (!Arrays.equals(this.getDateOnlyVector(), other.getDateOnlyVector()))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toDateString() {
+		assert(isValid());
+		return String.format(DATE_TODATESTRING_FORMAT, rawDate[2], rawDate[1], rawDate[0]);
 	}
 
 }

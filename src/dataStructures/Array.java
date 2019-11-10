@@ -3,11 +3,19 @@
  */
 package dataStructures;
 
+import java.util.Comparator;
+
 /**
  * @author AED_19_20
  *
  */
 public class Array<E> implements List<E>{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private static final int DEFAULT_SIZE = 50;
 	 
 	/** O array generico

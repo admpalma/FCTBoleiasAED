@@ -1,6 +1,10 @@
 package dataStructures;
 
 public class StackInList<E> implements Stack<E> {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// Memory of the stack: an array.
 	protected List<E> elements;
 		

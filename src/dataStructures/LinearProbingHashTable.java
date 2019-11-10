@@ -2,6 +2,10 @@ package dataStructures;
 
 public class LinearProbingHashTable<K, V> extends MapWithHashTable<K,V>{
 	
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 		// The array of entries.
 		protected Entry<K,V>[] table;
 		

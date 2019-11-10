@@ -1,9 +1,11 @@
 package basicDateTime;
 
+import java.io.Serializable;
+
 /**
  * Stores and represents a date and time
  */
-public interface BasicDateTime extends Comparable<BasicDateTime> {
+public interface BasicDateTime extends Comparable<BasicDateTime>, Serializable {
 
 	/**
 	 * @return the <code>year</code> field of this date
@@ -35,5 +37,27 @@ public interface BasicDateTime extends Comparable<BasicDateTime> {
 	 * @return this {@link BasicDateTime BasicDateTime's} {@link String} version
 	 */
 	String toString();
+	
+	/**
+	 * Compares two date and time objects considering only the date
+	 * @param date {@link BasicDateTime} to be compared with
+	 */
+	@Override
+	int compareTo(BasicDateTime date);
+	
+	/**
+	 * Narrows the equality requirements to only consider the date attributes
+	 * @param obj the reference object with which to compare.
+	 * @return <code>true</code> if this object is the same as the objargument;
+	 * <code>false</code> otherwise.
+	 */
+	@Override
+	boolean equals(Object obj);
+
+	/**
+	 * Returns a {@link String} with the format <code>"dd-mm-yyyy"</code>
+	 * @return this {@link BasicDateTime BasicDateTime's} {@link Date String} version
+	 */
+	String toDateString();
 
 }
