@@ -34,7 +34,6 @@ public class ManagerClass implements Manager {
 	private User currentUser;
 	private Map<String, User> usersByEmail; // Key: user email
 	private SortedMap<BasicDateTime, SortedMap<String, Trip>> tripsByDate; // Rides by date
-	// private List<Trip> allTrips;
 
 	public ManagerClass() {
 		this.currentUser = null;

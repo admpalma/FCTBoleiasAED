@@ -1,6 +1,7 @@
 package fctBoleias;
 
 import java.io.Serializable;
+import java.net.UnknownServiceException;
 
 import basicDateTime.BasicDateTime;
 import basicDateTime.InvalidDateException;
@@ -19,12 +20,12 @@ public interface Manager extends Serializable {
 	/**
 	 * Returns true if there's a {@link User} logged in
 	 * 
-	 * @return true if there's a user logged in, false otherwise
+	 * @return true if there's a {@link User} logged in, false otherwise
 	 */
 	boolean isLoggedIn();
 
 	/**
-	 * Registers a new trip on the current user Assumes there's a {@link User}
+	 * Registers a new {@link Trip} on the {@link User current user}. Assumes there's a {@link User}
 	 * logged in
 	 * 
 	 * @param origin      the new {@link Trip Trip's} origin
@@ -42,7 +43,7 @@ public interface Manager extends Serializable {
 			throws InvalidTripDataException, BookedDateException, NotLoggedInException;
 
 	/**
-	 * TODO Gives the currently logged in {@link User}'s name
+	 * Gives the currently logged in {@link User}'s name
 	 * 
 	 * @return {@link User User's} name or <code>null</code> if there's no
 	 *         {@link User} logged in
@@ -50,7 +51,7 @@ public interface Manager extends Serializable {
 	String getCurrentUserName();
 
 	/**
-	 * Removes a {@link Trip trip} from the currentUser on the given date Assumes
+	 * Removes a {@link Trip trip} from the {@link User current user} on the given date Assumes
 	 * there's a {@link User} logged in
 	 * 
 	 * @param date the date of the {@link Trip trip} to be removed
@@ -65,16 +66,16 @@ public interface Manager extends Serializable {
 			throws NotLoggedInException, InvalidDateException, NoTripOnDayException, TripHasRidesException;
 
 	/**
-	 * Adds a new ride
+	 * Adds {@link User current user} as a new {@link Trip ride} to the {@link User} with the given {@link String name} on the given {@link String date}
 	 * 
-	 * @param name - name of the ride owner
-	 * @param date - date of the ride
+	 * @param name - name of the {@link Trip ride} {@link User owner}
+	 * @param date - date of the {@link Trip ride}
 	 * @throws NotLoggedInException     if no {@link User} is logged in
 	 * @throws CantRideSelfException    if the {@link Trip} owner is the current
 	 *                                  {@link User}
-	 * @throws DateOccupiedException    if user already has a ride or a trip on that
+	 * @throws DateOccupiedException    if {@link User user} already has a {@link Trip ride} or a {@link Trip trip} on that
 	 *                                  date
-	 * @throws InexistentUserException  if the user doesn't exist
+	 * @throws InexistentUserException  if the {@link User user} doesn't exist
 	 * @throws InvalidDateException     if the given date is invalid
 	 * @throws NonExistentTripException if the trip doesn't exist
 	 * @throws TripIsFullException      if the {@link Trip} is full and the
@@ -117,7 +118,7 @@ public interface Manager extends Serializable {
 	String logoutCurrentUser() throws NotLoggedInException;
 
 	/**
-	 * TODO Gives the currently logged in {@link User}'s email
+	 * Gives the currently logged in {@link User}'s <code>email</code>
 	 * 
 	 * @return {@link User User's} email or <code>null</code> if there's no
 	 *         {@link User} logged in
@@ -125,7 +126,7 @@ public interface Manager extends Serializable {
 	String getCurrentUserEmail();
 
 	/**
-	 * Logs in a {@link User} in the system ({@link Manager}) Assumes there's no
+	 * Logs in a {@link User} in the system ({@link Manager}). Assumes there's no
 	 * {@link User} logged in
 	 * 
 	 * @param email    {@link User User's} email
@@ -142,8 +143,7 @@ public interface Manager extends Serializable {
 			throws NonExistentUserException, IncorrectPasswordException, LoggedInException;
 
 	/**
-	 * TODO
-	 * 
+	 * Gives the number of {@link Trip trips} of the {@link User current user}
 	 * @return {@link User User's} number of {@link Trip Trips} or <code>null</code>
 	 *         if there's no {@link User} logged in
 	 */
@@ -168,7 +168,7 @@ public interface Manager extends Serializable {
 			throws NotLoggedInException, NonExistentTripException, InexistentUserException, InvalidDateException;
 
 	/**
-	 * Cancels the {@link User current user's} taken ride on a given date
+	 * Cancels the {@link User current user's} taken {@link Trip ride} on the given date
 	 * 
 	 * @param date given date
 	 * @throws NotLoggedInException if no {@link User} is logged in
@@ -215,7 +215,7 @@ public interface Manager extends Serializable {
 	Iterator<Trip> getTripsOnDate(String date) throws NotLoggedInException, InvalidDateException;
 
 	/**
-	 * TODO Gives an {@link Iterator} with all the sorted maps of trips
+	 * Gives an {@link Iterator} with all the sorted maps of trips (all {@link Trip trips} in the system)
 	 * 
 	 * @return {@link Iterator} <{@link SortedMap}<{@link String}, {@link Trip}>>
 	 * @throws NotLoggedInException if no {@link User} is logged in
