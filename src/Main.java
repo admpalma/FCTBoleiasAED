@@ -23,48 +23,77 @@ import fctBoleias.trip.InvalidTripDataException;
 import fctBoleias.trip.Trip;
 import fctBoleias.trip.TripHasRidesException;
 import fctBoleias.trip.TripIsFullException;
+import fctBoleias.trip.TripWrapper;
 import fctBoleias.user.IncorrectPasswordException;
 import fctBoleias.user.User;
 
 public class Main {
 
-	private static final String USERNAME_ALREADY_HAS_REGISTERED_TRIP_RIDE_ON_DATE = "%s ja tem uma deslocacao ou boleia registada nesta data.%n";
-	private static final String USERNAME_ALREADY_REGISTERED_TRIP_RIDE_ON_DATE = "%s ja registou uma boleia ou deslocacao nesta data.%n";
-	private static final String INEXISTENT_USER = "Utilizador inexistente.";
-	private static final String EXIT_MESSAGE_USERNAME = "Ate a proxima %s.%n";
-	private static final String GIVEN_USER_NOT_EXISTS = "Nao existe o utilizador dado.";
-	private static final String DATE_ALLOWED_PATTERN = "^[0-9-]+$";
-	private static final String TRIP_N_REGISTERED_THANKS_USERNAME = "Deslocacao %d registada. Obrigado %s.%n";
-	private static final String USERNAME_RIDE_REMOVED = "%s boleia retirada.%n";
-	private static final String END_MESSAGE = "Obrigado. Ate a proxima.";
-	private static final String REGISTO_N_EFETUADO = "Registo %d efetuado.%n";
-	private static final String NON_EXISTENT_USER = "Utilizador nao existente.";
-	private static final String VISITA_N_EFETUADA = "Visita %d efetuada.%n";
-
-	/**
-	 * Location where the serialized {@link Manager} is to be stored at
-	 */
-	private static final String SERIALIZING_LOCATION = "manager.ser";
-
 	private static final String DEFAULT_PROMPT = "> ";
 
-	// Register messages
+	/**
+	 * Messages used in {@link Main#addTrip}
+	 */
+	private static final String USERNAME_ALREADY_HAS_REGISTERED_TRIP_RIDE_ON_DATE = "%s ja tem uma deslocacao ou boleia registada nesta data.%n";
+	private static final String TRIP_N_REGISTERED_THANKS_USERNAME = "Deslocacao %d registada. Obrigado %s.%n";
+
+	/**
+	 * Messages used in {@link Main#takeRide} and {@link Main#consult}
+	 */
+	private static final String USERNAME_ALREADY_REGISTERED_TRIP_RIDE_ON_DATE = "%s ja registou uma boleia ou deslocacao nesta data.%n";
+	private static final String INEXISTENT_USER = "Utilizador inexistente.";
+	private static final String RIDE_REGISTERED = "Boleia registada.";
+
+	/**
+	 * Messages used in {@link Main#exit}
+	 */
+	private static final String EXIT_MESSAGE_USERNAME = "Ate a proxima %s.%n";
+
+	/**
+	 * Messages used in {@link Main#list}
+	 */
+	private static final String GIVEN_USER_NOT_EXISTS = "Nao existe o utilizador dado.";
+	private static final String DATE_ALLOWED_PATTERN = "^[0-9-]+$";
+
+	/**
+	 * Messages used in {@link Main#cancelRide}
+	 */
+	private static final String USERNAME_RIDE_REMOVED = "%s boleia retirada.%n";
+
+	/**
+	 * Messages used in {@link Main#processEnd}
+	 */
+	private static final String END_MESSAGE = "Obrigado. Ate a proxima.";
+
+	/**
+	 * Messages used in {@link Main#registerUser}
+	 */
+	private static final String REGISTO_N_EFETUADO = "Registo %d efetuado.%n";
 	private static final String USER_ALREADY_EXISTS = "Utilizador ja existente.";
 	private static final String ASK_NAME_REGISTER = "nome (maximo 50 caracteres): ";
 	private static final String ASK_PW_REGISTER = "password (entre 4 e 6 caracteres - digitos e letras): ";
 
-	// Login messages
+	/**
+	 * Messages used in {@link Main#login}
+	 */
+	private static final String NON_EXISTENT_USER = "Utilizador nao existente.";
+	private static final String VISITA_N_EFETUADA = "Visita %d efetuada.%n";
 	private static final String ASK_PW_LOGIN = "password: ";
+
+	/**
+	 * Messages used in {@link Main#remove}
+	 */
+	private static final String TRIP_REMOVED = "Deslocacao removida.";
 
 	/**
 	 * The number of attempts a user has to choose a password for his registration
 	 */
 	private static final int PASSWORD_ATTEMPTS_LIMIT = 3;
 
-	// Trip related messages
-	private static final String RIDE_REGISTERED = "Boleia registada.";
-	private static final String TRIP_REMOVED = "Deslocacao removida.";
-
+	/**
+	 * Location where the serialized {@link Manager} is to be stored at
+	 */
+	private static final String SERIALIZING_LOCATION = "manager.ser";
 
 	/**
 	 * {@link Enum} containing all of the possible commands and warning messages
@@ -118,7 +147,8 @@ public class Main {
 	 * {@link User} logged in and its corresponding help messages.
 	 */
 	private enum LoggedOutCommands {
-		AJUDA("ajuda - Mostra os comandos existentes"), TERMINA("termina - Termina a execucao do programa"),
+		AJUDA("ajuda - Mostra os comandos existentes"), 
+		TERMINA("termina - Termina a execucao do programa"),
 		REGISTA("regista - Regista um novo utilizador no programa"),
 		ENTRADA("entrada - Permite a entrada (\"login\") dum utilizador no programa");
 
@@ -158,10 +188,13 @@ public class Main {
 	 * {@link User} logged in and its corresponding help messages.
 	 */
 	private enum LoggedInCommands {
-		AJUDA("ajuda - Mostra os comandos existentes"), SAI("sai - Termina a sessao deste utilizador no programa"),
-		NOVA("nova - Regista uma nova deslocacao"), LISTA("lista - Lista todas ou algumas deslocacoes registadas"),
+		AJUDA("ajuda - Mostra os comandos existentes"), 
+		SAI("sai - Termina a sessao deste utilizador no programa"),
+		NOVA("nova - Regista uma nova deslocacao"), 
+		LISTA("lista - Lista todas ou algumas deslocacoes registadas"),
 		BOLEIA("boleia - Regista uma boleia para uma dada deslocacao"),
-		CONSULTA("consulta - Lista a informacao de uma dada deslocacao"), RETIRA("retira - Retira uma dada boleia"),
+		CONSULTA("consulta - Lista a informacao de uma dada deslocacao"), 
+		RETIRA("retira - Retira uma dada boleia"),
 		REMOVE("remove - Elimina uma dada deslocacao");
 
 		/**
@@ -210,7 +243,7 @@ public class Main {
 			manager = deserializeManager(SERIALIZING_LOCATION);
 		} catch (FileNotFoundException e) {
 			manager = new ManagerClass();
-		} 
+		}
 		try (Scanner in = new Scanner(System.in)) {
 			Commands command;
 			do {
@@ -606,8 +639,7 @@ public class Main {
 		try {
 			manager.addNewRide(name, date);
 			System.out.println(RIDE_REGISTERED);
-		} catch (InvalidDateException | NonExistentTripException | CantRideSelfException
-				| TripIsFullException e) {
+		} catch (InvalidDateException | NonExistentTripException | CantRideSelfException | TripIsFullException e) {
 			System.out.println(e.getMessage());
 		} catch (NonExistentUserException e) {
 			System.out.println(INEXISTENT_USER);
@@ -734,11 +766,11 @@ public class Main {
 	 */
 	private static void listDateTrips(Manager manager, String date)
 			throws InvalidDateException, NoRegisteredTripsException {
-		Iterator<Trip> trips = manager.getTripsOnDate(date);
+		Iterator<TripWrapper> trips = manager.getTripsOnDate(date);
 		boolean validTrips = false;
 		if (trips != null) {
 			while (trips.hasNext()) {
-				Trip trip = trips.next();
+				TripWrapper trip = trips.next();
 				if (trip.hasFreeSlots()) {
 					validTrips = true;
 					System.out.println(trip.getDriverEmail());
@@ -765,9 +797,9 @@ public class Main {
 	 *                be fetched and listed from
 	 * @param date    {@link String date} of the {@link Trip trips} we want to list
 	 */
-	private static void listMailOriginDestinyDateTrips(Iterator<Trip> trips) {
-		while (trips.hasNext()) {
-			Trip trip = trips.next();
+	private static void listMailOriginDestinyDateTrips(Iterator<TripWrapper> iterator) {
+		while (iterator.hasNext()) {
+			TripWrapper trip = iterator.next();
 			System.out.printf("%s%n%s-%s%n%s %d%n%n", trip.getDriverEmail(), trip.getOrigin(), trip.getDestiny(),
 					trip.getBasicDateTime().toString(), trip.getDuration());
 		}
@@ -786,7 +818,7 @@ public class Main {
 	 *                be fetched and listed from
 	 */
 	private static void listUserTrips(Manager manager) throws NoRegisteredTripsException, NonExistentUserException {
-		Iterator<Trip> trips = manager.getUserTrips(manager.getCurrentUserEmail());
+		Iterator<TripWrapper> trips = manager.getUserTrips(manager.getCurrentUserEmail());
 
 		while (trips.hasNext()) {
 			System.out.println(trips.next().toString());

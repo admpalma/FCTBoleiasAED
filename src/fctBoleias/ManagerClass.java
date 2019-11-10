@@ -4,6 +4,7 @@ import basicDateTime.BasicDateTime;
 import basicDateTime.BasicDateTimeClass;
 import basicDateTime.InvalidDateException;
 import dataStructures.Iterator;
+import dataStructures.IteratorWrappable;
 import dataStructures.Map;
 import dataStructures.NoElementException;
 import dataStructures.SepChainHashTable;
@@ -15,6 +16,7 @@ import fctBoleias.trip.Trip;
 import fctBoleias.trip.TripClass;
 import fctBoleias.trip.TripHasRidesException;
 import fctBoleias.trip.TripIsFullException;
+import fctBoleias.trip.TripWrapper;
 import fctBoleias.user.IncorrectPasswordException;
 import fctBoleias.user.User;
 import fctBoleias.user.UserClass;
@@ -37,7 +39,6 @@ public class ManagerClass implements Manager {
 
 	public ManagerClass() {
 		this.currentUser = null;
-		// TODO capacity
 		usersByEmail = new SepChainHashTable<String, User>(10000);
 		tripsByDate = new SortedMapWithJavaClass<BasicDateTime, SortedMap<String, Trip>>();
 	}
@@ -131,7 +132,6 @@ public class ManagerClass implements Manager {
 		if (!password.matches(PASSWORD_FORMAT)) {
 			throw new InvalidPasswordFormatException();
 		} else if (isUserRegistered(email)) {
-			// TODO
 			throw new UserAlreadyRegisteredException();
 		}
 		usersByEmail.insert(email, new UserClass(email, name, password));
@@ -208,35 +208,35 @@ public class ManagerClass implements Manager {
 	}
 
 	@Override
-	public Iterator<Trip> getUserTrips(String email) throws NotLoggedInException, NoRegisteredTripsException, NonExistentUserException {
+	public Iterator<TripWrapper> getUserTrips(String email)
+			throws NotLoggedInException, NoRegisteredTripsException, NonExistentUserException {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		}
 
 		try {
-			return usersByEmail.find(email).getTripsIterator();
+			return new IteratorWrappable<TripWrapper, Trip>(usersByEmail.find(email).getTripsIterator());
 		} catch (NullPointerException e) {
 			throw new NonExistentUserException(e);
 		}
 	}
 
 	@Override
-	public Iterator<Trip> getCurrentUserRides()
-			throws NotLoggedInException, NoRegisteredTripsException {
+	public Iterator<TripWrapper> getCurrentUserRides() throws NotLoggedInException, NoRegisteredTripsException {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		}
-		return currentUser.getRidesIterator();
+		return new IteratorWrappable<>(currentUser.getRidesIterator());
 	}
 
 	@Override
-	public Iterator<Trip> getTripsOnDate(String date) throws NotLoggedInException, InvalidDateException {
+	public Iterator<TripWrapper> getTripsOnDate(String date) throws NotLoggedInException, InvalidDateException {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		}
 		BasicDateTime newDate = new BasicDateTimeClass(date);
 		try {
-			return tripsByDate.find(newDate).values();
+			return new IteratorWrappable<>(tripsByDate.find(newDate).values());
 		} catch (NoElementException e) {
 			throw new InvalidDateException(e);
 		} catch (NullPointerException e) {
