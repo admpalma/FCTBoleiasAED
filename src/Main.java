@@ -705,6 +705,15 @@ public class Main {
 
 	}
 
+	/**
+	 * Auxiliary method to list all {@link Trip trips} on the system
+	 * |FORMAT:
+	 * <code>
+	 * dd-mm-yyyy userEmail%n
+	 * </code>|
+	 * @param manager {@link Manager} in which the {@link Trip} is going to be
+	 *                registered
+	 */
 	private static void listAllTrips(Manager manager) {
 		Iterator<SortedMap<String, Trip>> outerIterator = manager.getAllTrips();
 
@@ -717,6 +726,16 @@ public class Main {
 		}
 	}
 
+	/**
+	 * Auxiliary method to list all {@link Trip trips} on the given date
+	 * |FORMAT:
+	 * <code>
+	 * userEmail%n
+	 * </code>|
+	 * @param manager {@link Manager} in which the {@link Trip} is going to be
+	 *                registered
+	 * @param date {@link String date} of the {@link Trip trips} we want to list
+	 */
 	private static void listDateTrips(Manager manager, String date)
 			throws InvalidDateException, NoRegisteredTripsException {
 		Iterator<Trip> trips = manager.getTripsOnDate(date);
@@ -732,6 +751,18 @@ public class Main {
 		}
 	}
 
+	/**
+	 * Auxiliary method to list all {@link Trip trips} given in the {@link Iterator}
+	 * |FORMAT:
+	 * <code>
+	 * userEmail%n
+	 * origin-destiny%n
+	 * dd-mm-yyyy hh:mm duration%n%n
+	 * </code>|
+	 * @param manager {@link Manager} in which the {@link Trip} is going to be
+	 *                registered
+	 * @param date {@link String date} of the {@link Trip trips} we want to list
+	 */
 	private static void listMailODDate(Iterator<Trip> trips) {
 		while (trips.hasNext()) {
 			Trip trip = trips.next();
@@ -741,7 +772,17 @@ public class Main {
 
 	}
 
-	// TODO THROWS MESSAGE MAY BE WRONG NAO EXISTE O UTILIZADOR DADO
+	/**
+	 * Auxiliary method to list all of the given {@link User}'s {@link Trip trips}
+	 * |FORMAT:
+	 * <code>
+	 * userEmail%n
+	 * origin-destiny%n
+	 * dd-mm-yyyy hh:mm duration%n%n
+	 * </code>|
+	 * @param manager {@link Manager} in which the {@link Trip} is going to be
+	 *                registered
+	 */
 	private static void listCurrentUserTrips(Manager manager) throws NoRegisteredTripsException, NonExistentUserException {
 		Iterator<Trip> trips = manager.getUserTrips(manager.getCurrentUserEmail());
 
