@@ -74,8 +74,6 @@ public class Main {
 	private static final String RIDE_REMOVED = "Deslocacao removida.";
 	private static final String INVALID_DATA = "Dados invalidos."; // Invalid data when registering new boleia
 
-	private static final String FINAL_MESSAGE = "Obrigado. Ate a proxima.";
-
 	/**
 	 * The number of attempts a user has to choose a password for his registration
 	 */
@@ -486,7 +484,7 @@ public class Main {
 	 */
 	private static void processEnd(Manager manager) {
 		assert (!manager.isLoggedIn());
-		System.out.println(FINAL_MESSAGE);
+		System.out.println("Obrigado. Ate a proxima.");
 	}
 
 	// LOGGED IN METHODS
@@ -656,7 +654,7 @@ public class Main {
 	 * TODO
 	 * 
 	 * @param manager {@link Manager} in which the {@link Trip} is going to be
-	 *                registered
+	 *                consulted
 	 * @param in      {@link Scanner} which will contain the {@link Trip trip} to be
 	 *                consulted date and {@link User} email
 	 */
@@ -674,8 +672,8 @@ public class Main {
 	/**
 	 * Lists {@link Trip trips} according to the given listing mode
 	 * 
-	 * @param manager {@link Manager} in which the {@link Trip} is going to be
-	 *                registered
+	 * @param manager {@link Manager} in which the {@link Trip trips} are going to be
+	 *                fetched and listed from
 	 * @param in      {@link Scanner} which will contain the listing mode
 	 */
 	private static void list(Manager manager, Scanner in) {
@@ -683,9 +681,9 @@ public class Main {
 		in.nextLine();
 		try {
 			if (listingMode.equalsIgnoreCase("minhas")) {
-				listCurrentUserTrips(manager);
+				listUserTrips(manager);
 			} else if (listingMode.equalsIgnoreCase("boleias")) {
-				listMailODDate(manager.getCurrentUserRides());
+				listMailOriginDestinyDateTrips(manager.getCurrentUserRides());
 			} else if (listingMode.equalsIgnoreCase("todas")) {
 				listAllTrips(manager);
 			} else {
@@ -693,10 +691,10 @@ public class Main {
 				if (listingMode.matches("^[0-9-]+$")) {
 					listDateTrips(manager, listingMode);
 				} else {
-					listMailODDate(manager.getUserTrips(listingMode));
+					listMailOriginDestinyDateTrips(manager.getUserTrips(listingMode));
 				}
 
-			} // TODO NAO EXISTE O UTILIZADOR DADO
+			}
 		} catch (NoRegisteredTripsException | InvalidDateException e) {
 			System.out.println(e.getMessage());
 		} catch (NonExistentUserException e) {
@@ -705,6 +703,15 @@ public class Main {
 
 	}
 
+	/**
+	 * Auxiliary method to list all {@link Trip trips} on the system
+	 * |FORMAT:
+	 * <code>
+	 * dd-mm-yyyy userEmail%n
+	 * </code>|
+	 * @param manager {@link Manager} in which the {@link Trip trips} are going to be
+	 *                fetched and listed from
+	 */
 	private static void listAllTrips(Manager manager) {
 		Iterator<SortedMap<String, Trip>> outerIterator = manager.getAllTrips();
 
@@ -717,22 +724,50 @@ public class Main {
 		}
 	}
 
+	/**
+	 * Auxiliary method to list all {@link Trip trips} on the given date
+	 * |FORMAT:
+	 * <code>
+	 * userEmail%n
+	 * </code>|
+	 * @param manager {@link Manager} in which the {@link Trip trips} are going to be
+	 *                fetched and listed from
+	 * @param date {@link String date} of the {@link Trip trips} we want to list
+	 */
 	private static void listDateTrips(Manager manager, String date)
 			throws InvalidDateException, NoRegisteredTripsException {
 		Iterator<Trip> trips = manager.getTripsOnDate(date);
-
+		boolean validTrips = false;
 		if (trips != null) {
 			while (trips.hasNext()) {
 				Trip trip = trips.next();
-				System.out.println(trip.getDriverEmail());
-				System.out.println();
+				if (trip.hasFreeSlots()) {
+					validTrips = true;
+					System.out.println(trip.getDriverEmail());
+					System.out.println();
+				}
+			}
+			if (!validTrips) {
+				throw new NoRegisteredTripsException();
 			}
 		} else {
 			throw new NoRegisteredTripsException();
 		}
 	}
 
-	private static void listMailODDate(Iterator<Trip> trips) {
+	/**
+	 * Auxiliary method to list all {@link Trip trips} given in the {@link Iterator}
+	 * |FORMAT:
+	 * <code>
+	 * userEmail%n
+	 * origin-destiny%n
+	 * dd-mm-yyyy hh:mm duration%n%n
+	 * </code>|
+	 * @param manager {@link Manager} in which the {@link Trip trips} are going to be
+	 *                fetched and listed from
+	 * @param date {@link String date} of the {@link Trip trips} we want to list
+	 */
+	private static void listMailOriginDestinyDateTrips(Iterator<Trip> trips) {
 		while (trips.hasNext()) {
 			Trip trip = trips.next();
 			System.out.printf("%s%n%s-%s%n%s %d%n%n", trip.getDriverEmail(), trip.getOrigin(), trip.getDestiny(),
@@ -741,8 +776,18 @@ public class Main {
 
 	}
 
-	// TODO THROWS MESSAGE MAY BE WRONG NAO EXISTE O UTILIZADOR DADO
-	private static void listCurrentUserTrips(Manager manager) throws NoRegisteredTripsException, NonExistentUserException {
+	/**
+	 * Auxiliary method to list all of the given {@link User}'s {@link Trip trips}
+	 * |FORMAT:
+	 * <code>
+	 * userEmail%n
+	 * origin-destiny%n
+	 * dd-mm-yyyy hh:mm duration%n%n
+	 * </code>|
+	 * @param manager {@link Manager} in which the {@link Trip trips} are going to be
+	 *                fetched and listed from
+	 */
+	private static void listUserTrips(Manager manager) throws NoRegisteredTripsException, NonExistentUserException {
 		Iterator<Trip> trips = manager.getUserTrips(manager.getCurrentUserEmail());
 
 		while (trips.hasNext()) {
@@ -766,7 +811,7 @@ public class Main {
 
 	/**
 	 * Shows a warning message when the user enters an unknown command and cleans
-	 * any remainers (e.g.: arguments) of such command
+	 * any remainders (e.g.: arguments) of such command
 	 *
 	 * @param in {@link Scanner} that might contain bad input needing to be cleared
 	 */

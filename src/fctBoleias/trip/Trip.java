@@ -70,4 +70,9 @@ public interface Trip extends Serializable {
 	 */
 	void removeUserRide(User user);
 
+	/**
+	 * @return <code>true</code> if this {@link Trip} has free slots, <code>false</code> otherwise
+	 */
+	boolean hasFreeSlots();
+
 }

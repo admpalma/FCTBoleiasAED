@@ -116,7 +116,7 @@ public class TripClass implements Trip {
 	 * {@link User Users} in queue, if there are any
 	 */
 	private void updateQueue() {
-		if (capacity - usersInRide.size() > 0 && !usersWaitingRide.isEmpty()) {
+		if (hasFreeSlots() && !usersWaitingRide.isEmpty()) {
 			try {
 				addUserAsRide(usersWaitingRide.dequeue());
 			} catch (TripIsFullException e) {
@@ -129,6 +129,11 @@ public class TripClass implements Trip {
 	public void removeUserRide(User user) {
 		usersInRide.remove(usersInRide.find(user));
 		updateQueue();
+	}
+
+	@Override
+	public boolean hasFreeSlots() {
+		return capacity - usersInRide.size() > 0;
 	}
 
 }
