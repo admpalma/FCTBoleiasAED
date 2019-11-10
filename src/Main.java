@@ -9,7 +9,6 @@ import java.util.Scanner;
 import basicDateTime.BasicDateTime;
 import basicDateTime.InvalidDateException;
 import dataStructures.Iterator;
-import dataStructures.NoSuchElementException;
 import dataStructures.SortedMap;
 import fctBoleias.BookedDateException;
 import fctBoleias.DateOccupiedException;
@@ -26,7 +25,6 @@ import fctBoleias.trip.Trip;
 import fctBoleias.trip.TripHasRidesException;
 import fctBoleias.NonExistentTripException;
 import fctBoleias.NonExistentUserException;
-import fctBoleias.NotLoggedInException;
 import fctBoleias.user.IncorrectPasswordException;
 import fctBoleias.user.User;
 
@@ -547,7 +545,7 @@ public class Main {
 			cancelRide(manager, in);
 			break;
 		case SAI:
-			exit(manager);
+			exit(manager, in);
 			break;
 		}
 	}
@@ -668,7 +666,7 @@ public class Main {
 		in.nextLine();
 		try {
 			System.out.printf("%s", manager.consult(email, date).toString());
-		} catch (NonExistentTripException | NonExistentUserException | InvalidDateException e) {
+		} catch (NonExistentTripException | InexistentUserException | InvalidDateException e) {
 			System.out.println(e.getMessage());
 		}
 	}
@@ -684,15 +682,15 @@ public class Main {
 		String listingMode = in.next();
 		in.nextLine();
 		try {
-			if (listingMode.equals("minhas")) {
+			if (listingMode.equalsIgnoreCase("minhas")) {
 				listCurrentUserTrips(manager);
-			} else if (listingMode.equals("boleias")) {
+			} else if (listingMode.equalsIgnoreCase("boleias")) {
 				listMailODDate(manager, manager.getCurrentUserEmail());
-			} else if (listingMode.equals("todas")) {
+			} else if (listingMode.equalsIgnoreCase("todas")) {
 				listAllTrips(manager);
 			} else {
 
-				if (listingMode.matches("^.+[@]{1}.+$")) {
+				if (listingMode.matches("^[^0-9-]+$")) {
 					listMailODDate(manager, listingMode);
 				} else {
 					listDateTrips(manager, listingMode);
@@ -712,18 +710,23 @@ public class Main {
 			Iterator<Trip> trips = outerIterator.next().values();
 			while (trips.hasNext()) {
 				Trip trip = (Trip) trips.next();				
-				System.out.printf("%s %s", trip.getBasicDateTime().toString(), trip.getDriverEmail());
+				System.out.printf("%s %s%n%n", trip.getBasicDateTime().toDateString(), trip.getDriverEmail());
 			}
 		}
 	}
 
 	private static void listDateTrips(Manager manager, String date)
-			throws NoRegisteredTripsException, InvalidDateException {
+			throws InvalidDateException, NoRegisteredTripsException {
 		Iterator<Trip> trips = manager.getTripsOnDate(date);
 
-		while (trips.hasNext()) {
-			Trip trip = trips.next();
-			System.out.println(trip.getDriverEmail());
+		if (trips != null) {
+			while (trips.hasNext()) {
+				Trip trip = trips.next();
+				System.out.println(trip.getDriverEmail());
+				System.out.println();
+			} 
+		} else {
+			throw new NoRegisteredTripsException();
 		}
 	}
 
@@ -733,7 +736,7 @@ public class Main {
 
 		while (trips.hasNext()) {
 			Trip trip = trips.next();
-			System.out.printf("%s%n%s-%s%n%s %d%n", trip.getDriverEmail(), trip.getOrigin(), trip.getDestiny(),
+			System.out.printf("%s%n%s-%s%n%s %d%n%n", trip.getDriverEmail(), trip.getOrigin(), trip.getDestiny(),
 					trip.getBasicDateTime().toString(), trip.getDuration());
 		}
 
@@ -753,9 +756,11 @@ public class Main {
 	 * 
 	 * @param manager {@link Manager} in which the <code>Current User</code> is
 	 *                logging out
+	 * @param in input receiving {@link Scanner} needing to skip a line
 	 */
-	private static void exit(Manager manager) {
+	private static void exit(Manager manager, Scanner in) {
 		assert (manager.isLoggedIn());
+		//in.nextLine();
 		System.out.printf("Ate a proxima %s.%n", manager.logoutCurrentUser());
 	}
 

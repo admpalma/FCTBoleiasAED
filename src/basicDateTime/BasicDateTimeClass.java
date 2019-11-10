@@ -24,6 +24,8 @@ public class BasicDateTimeClass implements BasicDateTime {
 	 */
 	private static final int NUM_FIELDS = 5;
 
+	private static final String DATE_TODATESTRING_FORMAT = "%d-%d-%d";
+
 	/**
 	 * Array storing the date and time's elements <code>(year, month, day, hour and minutes)</code>
 	 */
@@ -219,6 +221,12 @@ public class BasicDateTimeClass implements BasicDateTime {
 		if (!Arrays.equals(this.getDateOnlyVector(), other.getDateOnlyVector()))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toDateString() {
+		assert(isValid());
+		return String.format(DATE_TODATESTRING_FORMAT, rawDate[2], rawDate[1], rawDate[0]);
 	}
 
 }

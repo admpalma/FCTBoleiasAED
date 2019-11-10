@@ -7,17 +7,22 @@ package basicDateTime;
  */
 public class InvalidDateException extends Exception {
 
+	private static final String DATA_INVALIDA = "Data invalida.";
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	public InvalidDateException() {
-		super("Data invalida.");
+		super(DATA_INVALIDA);
 	}
 
 	public InvalidDateException(String message) {
 		super(message);
+	}
+
+	public InvalidDateException(Throwable e) {
+		super(DATA_INVALIDA, e);
 	}
 
 }

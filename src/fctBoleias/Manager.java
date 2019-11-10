@@ -125,10 +125,10 @@ public interface Manager extends Serializable {
 	 * @return TODO
 	 * @throws NotLoggedInException if no {@link User} is logged in
 	 * @throws NonExistentTripException if the {@link Trip} we want to consult doesn't exist
-	 * @throws NonExistentUserException if the {@link User} with the given email doesn't exist
+	 * @throws InexistentUserException if the {@link User} with the given email doesn't exist
 	 * @throws InvalidDateException if the given {@link BasicDateTime date} is invalid
 	 */
-	Trip consult(String email, String date) throws NotLoggedInException, NonExistentTripException, NonExistentUserException, InvalidDateException;
+	Trip consult(String email, String date) throws NotLoggedInException, NonExistentTripException, InexistentUserException, InvalidDateException;
 
 	/**
 	 * Cancels the {@link User current user's} taken ride on a given date
@@ -153,8 +153,9 @@ public interface Manager extends Serializable {
 	 * @return {@link Iterator} <{@link Trip}>
 	 * @throws NotLoggedInException if no {@link User} is logged in
 	 * @throws NoRegisteredTripsException if there are no registered {@link Trip rides} on the {@link User} with the given email
+	 * @throws NonExistentUserException if the given <code>email</code> doesn't match any {@link User} in the system
 	 */
-	Iterator<Trip> getUserRides(String email) throws NotLoggedInException, NoRegisteredTripsException;
+	Iterator<Trip> getUserRides(String email) throws NotLoggedInException, NoRegisteredTripsException, NonExistentUserException;
 
 	/**
 	 * Gives an {@link Iterator} with the {@link Trip trips} on the given date

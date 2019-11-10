@@ -4,6 +4,8 @@ import basicDateTime.BasicDateTime;
 import dataStructures.Array;
 import dataStructures.Iterator;
 import dataStructures.List;
+import dataStructures.NoElementException;
+import dataStructures.NoSuchElementException;
 import dataStructures.Queue;
 import dataStructures.QueueInList;
 import fctBoleias.user.User;
@@ -83,20 +85,25 @@ public class TripClass implements Trip {
 
 	@Override
 	public String toString() {
-		return String.format("%s%n%s-%s%n%s %d%nLugares vagos: %d%nBoleias: %s%nEm espera: %d%n", driver.getEmail(), origin, destiny, date.toString(), duration, capacity-usersInRide.size(), getUsersInRideList(), usersWaitingRide.size());
+		return String.format("%s%n%s-%s%n%s %d%nLugares vagos: %d%n%s%nEm espera: %d%n", driver.getEmail(), origin, destiny, date.toString(), duration, capacity-usersInRide.size(), getUsersInRideList(), usersWaitingRide.size());
 	}
 
 	private String getUsersInRideList() {
-		Iterator<User> iter = usersInRide.iterator();
-		String result = "";
-		String toAdd = "; ";
-		
-		while (iter.hasNext()) {
-			if (!iter.hasNext()) toAdd = "";
-			result += iter.next().getEmail() + toAdd;
+		try {
+			Iterator<User> iter = usersInRide.iterator();
+			StringBuilder result = new StringBuilder(2*usersInRide.size());
+			result.append("Boleias: ");
+			String toAdd = "; ";
+			while (iter.hasNext()) {
+				result.append(iter.next().getEmail());
+				if (iter.hasNext()) {
+					result.append(toAdd);
+				}
+			}
+			return result.toString();
+		} catch (NoElementException e) {
+			return "Sem boleias registadas.";
 		}
-		
-		return result;
 	}
 
 	@Override
@@ -104,11 +111,20 @@ public class TripClass implements Trip {
 		return driver.getEmail();
 	}
 
-	@Override
-	public void updateQueue() {
+	/**
+	 * Checks if there are free slots on this {@link Trip} and fills them with {@link User Users} in queue,
+	 * if there are any
+	 */
+	private void updateQueue() {
 		if (capacity - usersInRide.size() > 0 && !usersWaitingRide.isEmpty()) {
 			addUserAsRide(usersWaitingRide.dequeue());
 		}
+	}
+
+	@Override
+	public void removeUserRide(User user) {
+		usersInRide.remove(usersInRide.find(user));
+		updateQueue();
 	}
 
 	

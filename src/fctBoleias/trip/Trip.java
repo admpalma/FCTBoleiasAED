@@ -50,13 +50,11 @@ public interface Trip extends Serializable {
 	 * @return int duration
 	 */
 	int getDuration();
-	
-	
 
 	/**
-	 * Checks if there are free slots on this {@link Trip} and fills them with {@link User Users} in queue,
-	 * if there are any
+	 * Remove the given {@link User} from the gruop of {@link User Users} taking ride on this {@link Trip}
+	 * @param currentUser the given {@link User}
 	 */
-	void updateQueue();
+	void removeUserRide(User user);
 
 }

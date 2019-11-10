@@ -54,4 +54,10 @@ public interface BasicDateTime extends Comparable<BasicDateTime>, Serializable {
 	@Override
 	boolean equals(Object obj);
 
+	/**
+	 * Returns a {@link String} with the format <code>"dd-mm-yyyy"</code>
+	 * @return this {@link BasicDateTime BasicDateTime's} {@link Date String} version
+	 */
+	String toDateString();
+
 }

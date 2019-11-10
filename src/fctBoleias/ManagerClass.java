@@ -39,6 +39,7 @@ public class ManagerClass implements Manager {
 
 	public ManagerClass() {
 		this.currentUser = null;
+		//TODO capacity
 		usersByEmail = new SepChainHashTable<String, User>();
 		tripsByDate = new SortedMapWithJavaClass<BasicDateTime, SortedMap<String, Trip>>();
 	}
@@ -183,13 +184,13 @@ public class ManagerClass implements Manager {
 
 	@Override
 	public Trip consult(String email, String date)
-			throws NotLoggedInException, NonExistentTripException, NonExistentUserException, InvalidDateException {
+			throws NotLoggedInException, NonExistentTripException, InexistentUserException, InvalidDateException {
 		User tripDriver = usersByEmail.find(email);
 		
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		} else if (tripDriver == null) {
-			throw new NonExistentUserException();
+			throw new InexistentUserException();
 		}
 		
 		BasicDateTime newDate = new BasicDateTimeClass(date);
@@ -205,7 +206,7 @@ public class ManagerClass implements Manager {
 		}
 		BasicDateTime processedDate = new BasicDateTimeClass(date);
 		Trip removedRide = currentUser.cancelRide(processedDate);
-		removedRide.updateQueue();
+		removedRide.removeUserRide(currentUser);
 	}
 
 	@Override
@@ -218,9 +219,11 @@ public class ManagerClass implements Manager {
 	}
 
 	@Override
-	public Iterator<Trip> getUserRides(String email) throws NotLoggedInException, NoRegisteredTripsException {
+	public Iterator<Trip> getUserRides(String email) throws NotLoggedInException, NonExistentUserException, NoRegisteredTripsException {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
+		} else if (usersByEmail.find(email) == null) {
+			throw new NonExistentUserException("Nao existe o utilizador dado.");
 		}
 		return usersByEmail.find(email).getRidesIterator();
 	}
@@ -234,7 +237,9 @@ public class ManagerClass implements Manager {
 		try {
 			return tripsByDate.find(newDate).values();
 		} catch (NoElementException e) {
-			throw new InvalidDateException();
+			throw new InvalidDateException(e);
+		} catch (NullPointerException e) {
+			return null;
 		}
 	}
 
