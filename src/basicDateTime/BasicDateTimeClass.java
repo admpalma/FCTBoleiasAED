@@ -17,7 +17,7 @@ public class BasicDateTimeClass implements BasicDateTime {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static final String DATE_TOSTRING_FORMAT = "%s-%s-%s %s:%s";
+	private static final String DATE_TOSTRING_FORMAT = "%d-%d-%d %d:%d";
 
 	/**
 	 * {@link BasicDateTimeClass#rawDate rawDate's} array length
@@ -56,7 +56,7 @@ public class BasicDateTimeClass implements BasicDateTime {
 			throw new InvalidDateException();
 		}
 	}
-	
+
 	/**
 	 * Converts a {@link String} into a {@link BasicDateTimeClass}
 	 * This constructor takes a {@link String date} only (when time parameter not needed) TODO
@@ -150,7 +150,7 @@ public class BasicDateTimeClass implements BasicDateTime {
 		assert(isValid());
 		return rawDate;
 	}
-	
+
 	/**
 	 * @return <code>short[]</code> containing the date only fields in a raw state
 	 */
@@ -181,14 +181,7 @@ public class BasicDateTimeClass implements BasicDateTime {
 	@Override
 	public String toString() {
 		assert(isValid());
-		String[] processedDate = new String[NUM_FIELDS];
-		for (int i = 0; i < processedDate.length; i++) {
-			processedDate[i] = Short.toString(rawDate[i]);
-			if (processedDate[i].length() == 1) {
-				processedDate[i] = "0".concat(processedDate[i]);
-			}
-		}
-		return String.format(DATE_TOSTRING_FORMAT, processedDate[2], processedDate[1], processedDate[0], processedDate[3], processedDate[4]);
+		return String.format(DATE_TOSTRING_FORMAT, rawDate[2], rawDate[1], rawDate[0], rawDate[3], rawDate[4]);
 	}
 
 	/**

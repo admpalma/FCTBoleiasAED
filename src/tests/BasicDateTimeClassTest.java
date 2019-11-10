@@ -11,7 +11,7 @@ import basicDateTime.InvalidDateException;
 class BasicDateTimeClassTest {
 
 	private BasicDateTimeClass[] dates;
-	
+
 	private String[] datesInit = {
 		"01-01-2010 12:00",
 		"01-01-2010 12:02",
@@ -19,7 +19,15 @@ class BasicDateTimeClassTest {
 		"02-01-2010 12:00",
 		"01-02-2010 12:00",
 		"01-01-2012 12:00"};
-	
+
+	private String[] processedDates = {
+		"1-1-2010 12:0",
+		"1-1-2010 12:2",
+		"1-1-2010 13:0",
+		"2-1-2010 12:0",
+		"1-2-2010 12:0",
+		"1-1-2012 12:0"};
+
 	private String[] invalidDatesInit = {
 		"01-01-0000 12:00",
 		"01-00-2010 12:00",
@@ -35,7 +43,7 @@ class BasicDateTimeClassTest {
 	void setUp() throws Exception {
 		dates = new BasicDateTimeClass[6];
 		for (int i = 0; i < datesInit.length; i++) {
-			String[] newDate = datesInit[i].split(" "); 
+			String[] newDate = datesInit[i].split(" ");
 			dates[i] = new BasicDateTimeClass(newDate[0], newDate[1]);
 		}
 	}
@@ -48,7 +56,7 @@ class BasicDateTimeClassTest {
 		assertEquals(12, dates[0].getHour());
 		assertEquals(0, dates[0].getMinutes());
 		for (int i = 0; i < invalidDatesInit.length; i++) {
-			String[] newInvalidDate = invalidDatesInit[i].split(" "); 
+			String[] newInvalidDate = invalidDatesInit[i].split(" ");
 			assertThrows(InvalidDateException.class, () -> new BasicDateTimeClass(newInvalidDate[0], newInvalidDate[1]));
 		}
 	}
@@ -108,7 +116,7 @@ class BasicDateTimeClassTest {
 				} else {
 					assertTrue(dates[i].compareTo(dates[j]) < 0);
 				}
-				
+
 			}
 		}
 		for (int i = 1; i < dates.length; i++) {
@@ -118,15 +126,15 @@ class BasicDateTimeClassTest {
 				} else {
 					assertTrue(dates[i].compareTo(dates[j]) > 0);
 				}
-				
+
 			}
 		}
 	}
-	
+
 	@Test
 	void testToString() {
 		for (int i = 0; i < dates.length; i++) {
-			assertEquals(datesInit[i], dates[i].toString());
+			assertEquals(processedDates[i], dates[i].toString());
 		}
 	}
 
