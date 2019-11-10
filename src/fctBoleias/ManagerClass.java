@@ -39,7 +39,6 @@ public class ManagerClass implements Manager {
 
 	public ManagerClass() {
 		this.currentUser = null;
-		// TODO capacity
 		usersByEmail = new SepChainHashTable<String, User>(10000);
 		tripsByDate = new SortedMapWithJavaClass<BasicDateTime, SortedMap<String, Trip>>();
 	}
@@ -133,7 +132,6 @@ public class ManagerClass implements Manager {
 		if (!password.matches(PASSWORD_FORMAT)) {
 			throw new InvalidPasswordFormatException();
 		} else if (isUserRegistered(email)) {
-			// TODO
 			throw new UserAlreadyRegisteredException();
 		}
 		usersByEmail.insert(email, new UserClass(email, name, password));
