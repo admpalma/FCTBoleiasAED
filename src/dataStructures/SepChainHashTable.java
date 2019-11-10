@@ -54,7 +54,7 @@ public class SepChainHashTable<K, V> extends MapWithHashTable<K, V> {
 	private void rehash() {
 		Map<K, V>[] aux = table;
 
-		int arraySize = MapWithHashTable.nextPrime((int) (1.1 * maxSize * 2));//TODO
+		int arraySize = MapWithHashTable.nextPrime((int) (1.1 * maxSize * 2));// TODO
 		// Compiler gives a warning.
 		table = (Map<K, V>[]) new Map[arraySize];
 		currentSize = 0;
@@ -66,7 +66,7 @@ public class SepChainHashTable<K, V> extends MapWithHashTable<K, V> {
 				while (it.hasNext()) {
 					Entry<K, V> entry = (Entry<K, V>) it.next();
 					insert(entry.getKey(), entry.getValue());
-				} 
+				}
 			}
 		}
 
@@ -85,9 +85,9 @@ public class SepChainHashTable<K, V> extends MapWithHashTable<K, V> {
 	public Iterator<K> keys() throws NoElementException {
 		if (isEmpty())
 			throw new NoElementException("Map is empty.");
-		
+
 		List<K> temp = new SinglyLinkedList<K>();
-		
+
 		for (int i = 0; i < table.length; i++) {
 			Iterator<Entry<K, V>> it = table[i].iterator();
 			while (it.hasNext()) {
@@ -95,7 +95,7 @@ public class SepChainHashTable<K, V> extends MapWithHashTable<K, V> {
 				temp.addLast(entry.getKey());
 			}
 		}
-		
+
 		return temp.iterator();
 	}
 
@@ -103,9 +103,9 @@ public class SepChainHashTable<K, V> extends MapWithHashTable<K, V> {
 	public Iterator<V> values() throws NoElementException {
 		if (isEmpty())
 			throw new NoElementException("Map is empty.");
-		
+
 		List<V> temp = new SinglyLinkedList<V>();
-		
+
 		for (int i = 0; i < table.length; i++) {
 			Iterator<Entry<K, V>> it = table[i].iterator();
 			while (it.hasNext()) {
@@ -113,7 +113,7 @@ public class SepChainHashTable<K, V> extends MapWithHashTable<K, V> {
 				temp.addLast(entry.getValue());
 			}
 		}
-		
+
 		return temp.iterator();
 	}
 
@@ -121,9 +121,9 @@ public class SepChainHashTable<K, V> extends MapWithHashTable<K, V> {
 	public Iterator<Entry<K, V>> iterator() throws NoElementException {
 		if (isEmpty())
 			throw new NoElementException("Map is empty.");
-		
+
 		List<Entry<K, V>> temp = new SinglyLinkedList<Entry<K, V>>();
-		
+
 		for (int i = 0; i < table.length; i++) {
 			Iterator<Entry<K, V>> it = table[i].iterator();
 			while (it.hasNext()) {
@@ -131,7 +131,7 @@ public class SepChainHashTable<K, V> extends MapWithHashTable<K, V> {
 				temp.addLast(entry);
 			}
 		}
-		
+
 		return temp.iterator();
 	}
 

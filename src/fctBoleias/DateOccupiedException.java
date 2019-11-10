@@ -1,7 +1,15 @@
 package fctBoleias;
 
+import basicDateTime.BasicDateTime;
+import fctBoleias.trip.Trip;
 import fctBoleias.user.User;
 
+/**
+ * A {@link DateOccupiedException} is thrown when there is an attempt to create
+ * a new {@link Trip trip} or {@link Trip ride} on a given {@link BasicDateTime
+ * date} but the {@link User user} already has a {@link Trip trip} or
+ * {@link Trip ride} on that {@link BasicDateTime date}
+ */
 public class DateOccupiedException extends Exception {
 
 	/**
@@ -11,8 +19,6 @@ public class DateOccupiedException extends Exception {
 
 	public DateOccupiedException(User user) {
 		super(String.format("%s ja registou uma boleia ou deslocacao nesta data.", user.getName()));
-
-		
 	}
 
 	public DateOccupiedException(String message) {

@@ -11,16 +11,16 @@ import java.io.Serializable;
  */
 public interface Queue<E> extends Serializable {
 	// Returns true iff the queue contains no elements.
-	boolean isEmpty( );
-	 
+	boolean isEmpty();
+
 	// Returns the number of elements in the queue.
-	int size( );
-	 
+	int size();
+
 	// Inserts the specified element at the rear of the queue.
-	void enqueue( E element );
-	 
+	void enqueue(E element);
+
 	// Removes and returns the element at the front of the queue.
-	//@throws NoElementException if isEmpty()
-	E dequeue( ) throws NoElementException;
+	// @throws NoElementException if isEmpty()
+	E dequeue() throws NoElementException;
 
 }

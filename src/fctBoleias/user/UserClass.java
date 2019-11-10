@@ -149,7 +149,7 @@ public class UserClass implements User {
 		try {
 			return trips.values();
 		} catch (NoElementException e) {
-			throw new NoRegisteredTripsException();
+			throw new NoRegisteredTripsException(e);
 		}
 	}
 
@@ -158,7 +158,7 @@ public class UserClass implements User {
 		try {
 			return rides.values();
 		} catch (NoElementException e) {
-			throw new NoRegisteredTripsException();
+			throw new NoRegisteredTripsException(e);
 		}
 	}
 

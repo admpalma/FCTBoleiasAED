@@ -7,11 +7,11 @@ public class StackInList<E> implements Stack<E> {
 	private static final long serialVersionUID = 1L;
 	// Memory of the stack: an array.
 	protected List<E> elements;
-		
+
 	public StackInList() {
-		elements=new SinglyLinkedList<E>();
+		elements = new SinglyLinkedList<E>();
 	}
-	
+
 	@Override
 	public boolean isEmpty() {
 		return elements.isEmpty();

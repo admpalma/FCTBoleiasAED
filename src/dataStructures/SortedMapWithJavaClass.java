@@ -1,6 +1,5 @@
 package dataStructures;
 
-import java.util.Collection;
 import java.util.TreeMap;
 
 public class SortedMapWithJavaClass<K extends Comparable<K>, V> implements SortedMap<K, V> {
@@ -9,7 +8,7 @@ public class SortedMapWithJavaClass<K extends Comparable<K>, V> implements Sorte
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private TreeMap<K, V> map;
 
 	public SortedMapWithJavaClass() {
@@ -28,20 +27,25 @@ public class SortedMapWithJavaClass<K extends Comparable<K>, V> implements Sorte
 
 	@Override
 	public Iterator<K> keys() throws NoElementException {
+		if (isEmpty()) {
+			throw new NoElementException();
+		}
 		return new IteratorKeysValues<K>(map.keySet());
 	}
 
 	@Override
 	public Iterator<V> values() throws NoElementException {
-		Collection<V> values = map.values();
-		if (values.isEmpty()) {
+		if (isEmpty()) {
 			throw new NoElementException();
 		}
-		return new IteratorKeysValues<V>(values);
+		return new IteratorKeysValues<V>(map.values());
 	}
 
 	@Override
 	public Iterator<Entry<K, V>> iterator() throws NoElementException {
+		if (isEmpty()) {
+			throw new NoElementException();
+		}
 		return new IteratorEntries<K, V>(map);
 	}
 

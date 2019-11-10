@@ -16,17 +16,17 @@ import fctBoleias.InexistentUserException;
 import fctBoleias.InvalidPasswordFormatException;
 import fctBoleias.Manager;
 import fctBoleias.ManagerClass;
-import fctBoleias.NoRideOnDayException;
 import fctBoleias.NoRegisteredTripsException;
+import fctBoleias.NoRideOnDayException;
 import fctBoleias.NoTripOnDayException;
+import fctBoleias.NonExistentTripException;
+import fctBoleias.NonExistentUserException;
+import fctBoleias.NotLoggedInException;
 import fctBoleias.trip.CantRideSelfException;
 import fctBoleias.trip.InvalidTripDataException;
 import fctBoleias.trip.Trip;
 import fctBoleias.trip.TripHasRidesException;
 import fctBoleias.trip.TripIsFullException;
-import fctBoleias.NonExistentTripException;
-import fctBoleias.NonExistentUserException;
-import fctBoleias.NotLoggedInException;
 import fctBoleias.user.IncorrectPasswordException;
 import fctBoleias.user.User;
 
@@ -455,8 +455,6 @@ public class Main {
 			} catch (InvalidPasswordFormatException e) {
 				if (attemptNumber == PASSWORD_ATTEMPTS_LIMIT) {
 					throw e;
-				} else {
-					System.out.println();
 				}
 			}
 			attemptNumber++;
@@ -547,7 +545,7 @@ public class Main {
 			cancelRide(manager, in);
 			break;
 		case SAI:
-			exit(manager, in);
+			exit(manager);
 			break;
 		}
 	}
@@ -687,20 +685,22 @@ public class Main {
 			if (listingMode.equalsIgnoreCase("minhas")) {
 				listCurrentUserTrips(manager);
 			} else if (listingMode.equalsIgnoreCase("boleias")) {
-				listMailODDate(manager, manager.getCurrentUserEmail());
+				listMailODDate(manager.getCurrentUserRides());
 			} else if (listingMode.equalsIgnoreCase("todas")) {
 				listAllTrips(manager);
 			} else {
 
-				if (listingMode.matches("^[^0-9-]+$")) {
-					listMailODDate(manager, listingMode);
-				} else {
+				if (listingMode.matches("^[0-9-]+$")) {
 					listDateTrips(manager, listingMode);
+				} else {
+					listMailODDate(manager.getUserTrips(listingMode));
 				}
 
-			}
-		} catch (NoRegisteredTripsException | InvalidDateException | NonExistentUserException e) {
+			} // TODO NAO EXISTE O UTILIZADOR DADO
+		} catch (NoRegisteredTripsException | InvalidDateException e) {
 			System.out.println(e.getMessage());
+		} catch (NonExistentUserException e) {
+			System.out.println("Nao existe o utilizador dado.");
 		}
 
 	}
@@ -711,7 +711,7 @@ public class Main {
 		while (outerIterator.hasNext()) {
 			Iterator<Trip> trips = outerIterator.next().values();
 			while (trips.hasNext()) {
-				Trip trip = (Trip) trips.next();				
+				Trip trip = (Trip) trips.next();
 				System.out.printf("%s %s%n%n", trip.getBasicDateTime().toDateString(), trip.getDriverEmail());
 			}
 		}
@@ -726,16 +726,13 @@ public class Main {
 				Trip trip = trips.next();
 				System.out.println(trip.getDriverEmail());
 				System.out.println();
-			} 
+			}
 		} else {
 			throw new NoRegisteredTripsException();
 		}
 	}
 
-	private static void listMailODDate(Manager manager, String email)
-			throws NoRegisteredTripsException, NonExistentUserException {
-		Iterator<Trip> trips = manager.getUserRides(email);
-
+	private static void listMailODDate(Iterator<Trip> trips) {
 		while (trips.hasNext()) {
 			Trip trip = trips.next();
 			System.out.printf("%s%n%s-%s%n%s %d%n%n", trip.getDriverEmail(), trip.getOrigin(), trip.getDestiny(),
@@ -744,8 +741,9 @@ public class Main {
 
 	}
 
-	private static void listCurrentUserTrips(Manager manager) throws NoRegisteredTripsException {
-		Iterator<Trip> trips = manager.getCurrentUserTrips();
+	// TODO THROWS MESSAGE MAY BE WRONG NAO EXISTE O UTILIZADOR DADO
+	private static void listCurrentUserTrips(Manager manager) throws NoRegisteredTripsException, NonExistentUserException {
+		Iterator<Trip> trips = manager.getUserTrips(manager.getCurrentUserEmail());
 
 		while (trips.hasNext()) {
 			System.out.println(trips.next().toString());
@@ -758,11 +756,9 @@ public class Main {
 	 * 
 	 * @param manager {@link Manager} in which the <code>Current User</code> is
 	 *                logging out
-	 * @param in input receiving {@link Scanner} needing to skip a line
 	 */
-	private static void exit(Manager manager, Scanner in) {
+	private static void exit(Manager manager) {
 		assert (manager.isLoggedIn());
-		//in.nextLine();
 		System.out.printf("Ate a proxima %s.%n", manager.logoutCurrentUser());
 	}
 

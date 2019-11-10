@@ -9,18 +9,18 @@ public class StackInArray<E> implements Stack<E> {
 
 	// Default capacity of the stack.
 	private static final int DEFAULTCAPACITY = 1000;
-	
+
 	// Memory of the stack: an array.
 	protected List<E> elements;
-	
+
 	public StackInArray(int capacity) {
-		elements=new Array<E>(capacity);
+		elements = new Array<E>(capacity);
 	}
-	
+
 	public StackInArray() {
 		this(DEFAULTCAPACITY);
 	}
-		
+
 	@Override
 	public boolean isEmpty() {
 		return elements.isEmpty();
@@ -39,8 +39,8 @@ public class StackInArray<E> implements Stack<E> {
 	}
 
 	@Override
-	public void push(E element) throws OutOfCapacityException{
-		if ( ((Array<E>) elements).isFull()) 
+	public void push(E element) throws OutOfCapacityException {
+		if (((Array<E>) elements).isFull())
 			throw new OutOfCapacityException("Stack is full.");
 		elements.addLast(element);
 	}

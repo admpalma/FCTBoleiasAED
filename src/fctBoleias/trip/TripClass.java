@@ -5,7 +5,6 @@ import dataStructures.Array;
 import dataStructures.Iterator;
 import dataStructures.List;
 import dataStructures.NoElementException;
-import dataStructures.NoSuchElementException;
 import dataStructures.Queue;
 import dataStructures.QueueInList;
 import fctBoleias.user.User;
@@ -16,7 +15,7 @@ public class TripClass implements Trip {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	// Instance variables containing the ride's details and information
 	private String origin, destiny;
 	private BasicDateTime date;
@@ -27,8 +26,8 @@ public class TripClass implements Trip {
 
 	/**
 	 * Ride object constructor Creates an object holding details and information
-	 * about a ride
-	 * TODO
+	 * about a ride TODO
+	 * 
 	 * @param origin   - origin of the ride
 	 * @param destiny  - destiny of the ride
 	 * @param date     - date of the ride
@@ -62,12 +61,10 @@ public class TripClass implements Trip {
 		return destiny;
 	}
 
-
 	@Override
 	public int getDuration() {
 		return duration;
 	}
-
 
 	@Override
 	public boolean hasRides() {
@@ -86,13 +83,15 @@ public class TripClass implements Trip {
 
 	@Override
 	public String toString() {
-		return String.format("%s%n%s-%s%n%s %d%nLugares vagos: %d%n%s%nEm espera: %d%n", driver.getEmail(), origin, destiny, date.toString(), duration, capacity-usersInRide.size(), getUsersInRideList(), usersWaitingRide.size());
+		return String.format("%s%n%s-%s%n%s %d%nLugares vagos: %d%n%s%nEm espera: %d%n", driver.getEmail(), origin,
+				destiny, date.toString(), duration, capacity - usersInRide.size(), getUsersInRideList(),
+				usersWaitingRide.size());
 	}
 
 	private String getUsersInRideList() {
 		try {
 			Iterator<User> iter = usersInRide.iterator();
-			StringBuilder result = new StringBuilder(2*usersInRide.size());
+			StringBuilder result = new StringBuilder(2 * usersInRide.size());
 			result.append("Boleias: ");
 			String toAdd = "; ";
 			while (iter.hasNext()) {
@@ -113,8 +112,8 @@ public class TripClass implements Trip {
 	}
 
 	/**
-	 * Checks if there are free slots on this {@link Trip} and fills them with {@link User Users} in queue,
-	 * if there are any
+	 * Checks if there are free slots on this {@link Trip} and fills them with
+	 * {@link User Users} in queue, if there are any
 	 */
 	private void updateQueue() {
 		if (capacity - usersInRide.size() > 0 && !usersWaitingRide.isEmpty()) {
@@ -132,6 +131,4 @@ public class TripClass implements Trip {
 		updateQueue();
 	}
 
-	
-	
 }

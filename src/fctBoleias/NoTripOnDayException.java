@@ -5,9 +5,9 @@ import fctBoleias.trip.Trip;
 import fctBoleias.user.User;
 
 /**
- * A {@link NoTripOnDayException} is thrown when a {@link User}
- * attempts to cancel a {@link Trip} on a given {@link BasicDateTime date} 
- * but has no {@link Trip} registered on that {@link BasicDateTime date}
+ * A {@link NoTripOnDayException} is thrown when a {@link User} attempts to
+ * cancel a {@link Trip} on a given {@link BasicDateTime date} but has no
+ * {@link Trip} registered on that {@link BasicDateTime date}
  */
 public class NoTripOnDayException extends Exception {
 
