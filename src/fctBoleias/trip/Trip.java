@@ -52,4 +52,11 @@ public interface Trip extends Serializable {
 	int getDuration();
 	
 	
+
+	/**
+	 * Checks if there are free slots on this {@link Trip} and fills them with {@link User Users} in queue,
+	 * if there are any
+	 */
+	void updateQueue();
+
 }

@@ -112,7 +112,7 @@ public class ManagerClass implements Manager {
 			throw new NonExistentTripException();
 		} else if (email.equals(currentUser.getEmail())) {
 			throw new CantRideSelfException(tripDriver);
-		} else if (currentUser.hasRideOrTripOnDate(newDate)) {
+		} else if (currentUser.hasRideOnDate(newDate) || currentUser.hasTripOnDate(newDate)) {
 			throw new DateOccupiedException(currentUser);
 		}
 		Trip ride = tripDriver.addUserToTrip(currentUser, newDate);
@@ -193,6 +193,17 @@ public class ManagerClass implements Manager {
 		BasicDateTime newDate = new BasicDateTimeClass(date);
 		
 		return tripDriver.getTrip(newDate);
+	}
+
+	@Override
+	public void cancelCurrentUserRide(String date)
+			throws NotLoggedInException, InvalidDateException, NoRideOnDayException {
+		if (currentUser == null) {
+			throw new NotLoggedInException();
+		}
+		BasicDateTime processedDate = new BasicDateTimeClass(date);
+		Trip removedRide = currentUser.cancelRide(processedDate);
+		removedRide.updateQueue();
 	}
 
 	@Override

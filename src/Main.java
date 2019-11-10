@@ -16,6 +16,7 @@ import fctBoleias.InexistentUserException;
 import fctBoleias.InvalidPasswordFormatException;
 import fctBoleias.Manager;
 import fctBoleias.ManagerClass;
+import fctBoleias.NoRideOnDayException;
 import fctBoleias.NoRegisteredTripsException;
 import fctBoleias.NoTripOnDayException;
 import fctBoleias.trip.CantRideSelfException;
@@ -503,10 +504,29 @@ public class Main {
 			remove(manager, in);
 			break;
 		case RETIRA:
+			cancelRide(manager, in);
 			break;
 		case SAI:
 			exit(manager);
 			break;
+		}
+	}
+
+	/**
+	 * Cancels the {@link User current user's} taken ride on a given date
+	 * Assumes there's a {@link User} logged in
+	 * @param manager {@link Manager} containing the most relevant data of the program
+	 * @param in {@link Scanner} to parse the given date
+	 */
+	private static void cancelRide(Manager manager, Scanner in) {
+		try {
+			assert(manager.isLoggedIn());
+			String date = in.next();
+			in.nextLine();
+			manager.cancelCurrentUserRide(date);
+			System.out.printf("%s boleia retirada.%n", manager.getCurrentUserName());
+		} catch (InvalidDateException | NoRideOnDayException e) {
+			System.out.println(e.getMessage());
 		}
 	}
 
