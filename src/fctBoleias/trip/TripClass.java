@@ -104,6 +104,13 @@ public class TripClass implements Trip {
 		return driver.getEmail();
 	}
 
+	@Override
+	public void updateQueue() {
+		if (capacity - usersInRide.size() > 0 && !usersWaitingRide.isEmpty()) {
+			addUserAsRide(usersWaitingRide.dequeue());
+		}
+	}
+
 	
 	
 }

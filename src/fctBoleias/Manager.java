@@ -127,5 +127,14 @@ public interface Manager extends Serializable {
 	 * @throws InvalidDateException if the given {@link BasicDateTime date} is invalid
 	 */
 	Trip consult(String email, String date) throws NotLoggedInException, NonExistentTripException, NonExistentUserException, InvalidDateException;
+
+	/**
+	 * Cancels the {@link User current user's} taken ride on a given date
+	 * @param date given date
+	 * @throws NotLoggedInException if no {@link User} is logged in
+	 * @throws InvalidDateException if the given date is invalid
+	 * @throws NoRideOnDayException if there's no {@link Trip ride} registered on that date for the {@link User current user}
+	 */
+	void cancelCurrentUserRide(String date) throws NotLoggedInException, InvalidDateException, NoRideOnDayException;
 	
 }

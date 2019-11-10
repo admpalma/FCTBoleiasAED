@@ -8,6 +8,7 @@ import basicDateTime.BasicDateTime;
 import basicDateTime.BasicDateTimeClass;
 import fctBoleias.BookedDateException;
 import fctBoleias.DateOccupiedException;
+import fctBoleias.NoRideOnDayException;
 import fctBoleias.NoTripOnDayException;
 import fctBoleias.NonExistentTripException;
 import fctBoleias.trip.Trip;
@@ -73,13 +74,6 @@ public interface User extends Serializable {
 	void removeTrip(BasicDateTime date) throws NoTripOnDayException, TripHasRidesException;
 
 	/**
-	 * Checks if this {@link User} has a ride on the given {@link BasicDateTime date}
-	 * @param date {@link BasicDateTime date} to check if the {@link User} has a ride on
-	 * @return true if the user has a ride on the given date, false otherwise
-	 */
-	boolean hasRideOrTripOnDate(BasicDateTime date);
-
-	/**
 	 * Adds a {@link User} as a ride to this {@link User user's} {@link Trip} on the given {@link BasicDateTime date}
 	 * @param user {@link User} to add to add as a ride
 	 * @param date {@link BasicDateTime date} of the ride 
@@ -109,5 +103,20 @@ public interface User extends Serializable {
 	 * @return <code>true</code> if the user has a {@link Trip} on the given date, <code>false</code> otherwise
 	 */
 	boolean hasTripOnDate(BasicDateTime date);
+
+	/**
+	 * Cancels this {@link User User's} taken ride on a given date
+	 * @param processedDate given date
+	 * @return {@link Trip} which this {@link User} is no longer taking as a ride
+	 * @throws NoRideOnDayException if there's no {@link Trip ride} registered on the given date for this {@link User}
+	 */
+	Trip cancelRide(BasicDateTime processedDate) throws NoRideOnDayException;
+
+	/**
+	 * 
+	 * @param date {@link BasicDateTime date} to check if the {@link User} is taking a ride on
+	 * @return @return <code>true</code> if the user is taking a ride on the given date, <code>false</code> otherwise
+	 */
+	boolean hasRideOnDate(BasicDateTime date);
 
 }

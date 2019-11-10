@@ -5,6 +5,7 @@ import dataStructures.SortedMap;
 import dataStructures.SortedMapWithJavaClass;
 import fctBoleias.BookedDateException;
 import fctBoleias.DateOccupiedException;
+import fctBoleias.NoRideOnDayException;
 import fctBoleias.NoTripOnDayException;
 import fctBoleias.NonExistentTripException;
 import fctBoleias.trip.Trip;
@@ -83,10 +84,11 @@ public class UserClass implements User {
 
 	@Override
 	public void addTrip(Trip newTrip) throws BookedDateException {
-		if (hasRideOrTripOnDate(newTrip.getBasicDateTime())) {
+		BasicDateTime date = newTrip.getBasicDateTime();
+		if (hasRideOnDate(date) || hasTripOnDate(date)) {
 			throw new BookedDateException(this);
 		}
-		trips.insert(newTrip.getBasicDateTime(), newTrip);
+		trips.insert(date, newTrip);
 	}
 
 	@Override
@@ -103,11 +105,6 @@ public class UserClass implements User {
 			throw new TripHasRidesException(this);
 		}
 		trips.remove(date);
-	}
-
-	@Override
-	public boolean hasRideOrTripOnDate(BasicDateTime date) {
-		return rides.find(date) != null || hasTripOnDate(date);
 	}
 
 	@Override
@@ -141,6 +138,19 @@ public class UserClass implements User {
 	@Override
 	public boolean hasTripOnDate(BasicDateTime date) {
 		return trips.find(date) != null;
+	}
+
+	@Override
+	public Trip cancelRide(BasicDateTime processedDate) throws NoRideOnDayException {
+		if (!hasRideOnDate(processedDate)) {
+			throw new NoRideOnDayException(this);
+		}
+		return rides.remove(processedDate);
+	}
+
+	@Override
+	public boolean hasRideOnDate(BasicDateTime date) {
+		return rides.find(date) != null;
 	}
 
 }
