@@ -4,17 +4,19 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.sql.Date;
 import java.util.Scanner;
 
 import basicDateTime.BasicDateTime;
 import basicDateTime.InvalidDateException;
+import dataStructures.Iterator;
+import dataStructures.NoSuchElementException;
 import fctBoleias.BookedDateException;
 import fctBoleias.DateOccupiedException;
 import fctBoleias.InexistentUserException;
 import fctBoleias.InvalidPasswordFormatException;
 import fctBoleias.Manager;
 import fctBoleias.ManagerClass;
+import fctBoleias.NoRegisteredTripsException;
 import fctBoleias.NoTripOnDayException;
 import fctBoleias.trip.CantRideSelfException;
 import fctBoleias.trip.InvalidTripDataException;
@@ -22,6 +24,7 @@ import fctBoleias.trip.Trip;
 import fctBoleias.trip.TripHasRidesException;
 import fctBoleias.NonExistentTripException;
 import fctBoleias.NonExistentUserException;
+import fctBoleias.NotLoggedInException;
 import fctBoleias.user.IncorrectPasswordException;
 import fctBoleias.user.User;
 
@@ -491,6 +494,7 @@ public class Main {
 			consult(manager, in);
 			break;
 		case LISTA:
+			list(manager, in);
 			break;
 		case NOVA:
 			addTrip(manager, in);
@@ -577,9 +581,9 @@ public class Main {
 	}
 
 	/**
-	 * 
+	 * TODO
 	 * @param manager {@link Manager} in which the {@link Trip} is going to be registered
-	 * @param in {@link Scanner} containing the {@link Trip trip to be added} details
+	 * @param in {@link Scanner} which will contain the {@link Trip trip} to be consulted date and {@link User} email
 	 */
 	private static void consult(Manager manager, Scanner in) {
 		String email = in.next();
@@ -588,8 +592,74 @@ public class Main {
 		try {
 			System.out.printf("%s", manager.consult(email, date).toString());
 		} catch (NonExistentTripException | NonExistentUserException | InvalidDateException e) {
-			
+			System.out.println(e.getMessage());
 		}
+	}
+
+	/**
+	 * Lists {@link Trip trips} according to the given listing mode
+	 * @param manager {@link Manager} in which the {@link Trip} is going to be registered
+	 * @param in {@link Scanner} which will contain the listing mode
+	 */
+	private static void list(Manager manager, Scanner in) {
+		String listingMode = in.next();
+		in.nextLine();
+		try {
+			if (listingMode.equals("minhas")) {
+				listCurrentUserTrips(manager);
+			} else if (listingMode.equals("boleias")) {
+				listMailODDate(manager);
+			} else if (listingMode.equals("todas")) {
+				listAllTrips(manager);
+			} else {
+				
+				if (listingMode.matches("^.+[@]{1}.+$")) {
+					listMailODDate(manager);
+				} else {
+					listDateTrips(manager);
+				}
+			}
+		} catch (NoRegisteredTripsException | InvalidDateException | NonExistentUserException e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
+	private static void listAllTrips(Manager manager) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void listDateTrips(Manager manager) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void listMailODDate(Manager manager) {
+		try {
+			Iterator<Trip> trips = manager.getCurrentUserRides();
+			
+			while (trips.hasNext()) {
+				Trip trip = trips.next();
+				System.out.printf("%s%n%s-%s%n%s %d", trip.getDriverEmail(), trip.getOrigin(), trip.getDestiny(), trip.getBasicDateTime().toString(), trip.getDuration());
+			}
+		} catch (NotLoggedInException | NoSuchElementException | NoRegisteredTripsException e) {
+			e.getMessage();
+		}
+		
+	}
+
+	private static void listCurrentUserTrips(Manager manager) {
+		try {
+			Iterator<Trip> trips = manager.getCurrentUserTrips();
+			
+			while (trips.hasNext()) {
+				System.out.println(trips.next().toString());
+			}
+		} catch (NotLoggedInException | NoSuchElementException | NoRegisteredTripsException e) {
+			e.getMessage();
+		}
+		
 	}
 
 	/**

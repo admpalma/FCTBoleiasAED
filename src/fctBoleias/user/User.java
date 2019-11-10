@@ -6,8 +6,10 @@ import org.omg.CORBA.UserException;
 
 import basicDateTime.BasicDateTime;
 import basicDateTime.BasicDateTimeClass;
+import dataStructures.Iterator;
 import fctBoleias.BookedDateException;
 import fctBoleias.DateOccupiedException;
+import fctBoleias.NoRegisteredTripsException;
 import fctBoleias.NoTripOnDayException;
 import fctBoleias.NonExistentTripException;
 import fctBoleias.trip.Trip;
@@ -109,5 +111,19 @@ public interface User extends Serializable {
 	 * @return <code>true</code> if the user has a {@link Trip} on the given date, <code>false</code> otherwise
 	 */
 	boolean hasTripOnDate(BasicDateTime date);
+
+	/**
+	 * Gives an {@link Iterator} of all the {@link Trip trips} of this {@link User} 
+	 * @return {@link Iterator} <{@link Trip}>
+	 * @throws NoRegisteredTripsException if there are no registered {@link Trip trips} on this {@link User}
+	 */
+	Iterator<Trip> getTripsIterator() throws NoRegisteredTripsException;
+
+	/**
+	 * Gives an {@link Iterator} of all the {@link Trip rides} of this {@link User} 
+	 * @return {@link Iterator} <{@link Trip}>
+	 * @throws NoRegisteredTripsException if there are no registered {@link Trip rides} on this {@link User}
+	 */
+	Iterator<Trip> getRidesIterator() throws NoRegisteredTripsException;
 
 }

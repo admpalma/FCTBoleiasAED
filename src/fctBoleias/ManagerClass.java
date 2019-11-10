@@ -3,6 +3,7 @@ package fctBoleias;
 import basicDateTime.BasicDateTime;
 import basicDateTime.BasicDateTimeClass;
 import basicDateTime.InvalidDateException;
+import dataStructures.Iterator;
 import dataStructures.List;
 import dataStructures.Map;
 import dataStructures.SepChainHashTable;
@@ -192,6 +193,23 @@ public class ManagerClass implements Manager {
 		BasicDateTime newDate = new BasicDateTimeClass(date);
 		
 		return tripDriver.getTrip(newDate);
+	}
+
+	@Override
+	public Iterator<Trip> getCurrentUserTrips() throws NotLoggedInException, NoRegisteredTripsException {
+		if (currentUser == null) {
+			throw new NotLoggedInException();
+		}
+		
+		return currentUser.getTripsIterator();
+	}
+
+	@Override
+	public Iterator<Trip> getCurrentUserRides() throws NotLoggedInException, NoRegisteredTripsException {
+		if (currentUser == null) {
+			throw new NotLoggedInException();
+		}
+		return currentUser.getRidesIterator();
 	}
 
 }

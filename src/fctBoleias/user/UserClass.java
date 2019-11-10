@@ -1,10 +1,13 @@
 package fctBoleias.user;
 
 import basicDateTime.BasicDateTime;
+import dataStructures.Iterator;
+import dataStructures.NoElementException;
 import dataStructures.SortedMap;
 import dataStructures.SortedMapWithJavaClass;
 import fctBoleias.BookedDateException;
 import fctBoleias.DateOccupiedException;
+import fctBoleias.NoRegisteredTripsException;
 import fctBoleias.NoTripOnDayException;
 import fctBoleias.NonExistentTripException;
 import fctBoleias.trip.Trip;
@@ -141,6 +144,24 @@ public class UserClass implements User {
 	@Override
 	public boolean hasTripOnDate(BasicDateTime date) {
 		return trips.find(date) != null;
+	}
+
+	@Override
+	public Iterator<Trip> getTripsIterator() throws NoRegisteredTripsException {
+		try {
+			return trips.values();
+		} catch (NoElementException e) {
+			throw new NoRegisteredTripsException();
+		}
+	}
+
+	@Override
+	public Iterator<Trip> getRidesIterator() throws NoRegisteredTripsException {
+		try {
+			return rides.values();
+		} catch (NoElementException e) {
+			throw new NoRegisteredTripsException();
+		}
 	}
 
 }

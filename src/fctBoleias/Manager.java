@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import basicDateTime.BasicDateTime;
 import basicDateTime.InvalidDateException;
+import dataStructures.Iterator;
 import fctBoleias.trip.CantRideSelfException;
 import fctBoleias.trip.InvalidTripDataException;
 import fctBoleias.trip.Trip;
@@ -127,5 +128,21 @@ public interface Manager extends Serializable {
 	 * @throws InvalidDateException if the given {@link BasicDateTime date} is invalid
 	 */
 	Trip consult(String email, String date) throws NotLoggedInException, NonExistentTripException, NonExistentUserException, InvalidDateException;
+
+	/**
+	 * Gives an {@link Iterator} with the the current {@link User}'s {@link Trip trips}
+	 * @return {@link Iterator} <{@link Trip}>
+	 * @throws NotLoggedInException if no {@link User} is logged in
+	 * @throws NoRegisteredTripsException if there are no registered {@link Trip trips} on the current {@link User}
+	 */
+	Iterator<Trip> getCurrentUserTrips() throws NotLoggedInException, NoRegisteredTripsException;
+
+	/**
+	 * Gives an {@link Iterator} with the the current {@link User}'s {@link Trip rides}
+	 * @return {@link Iterator} <{@link Trip}>
+	 * @throws NotLoggedInException if no {@link User} is logged in
+	 * @throws NoRegisteredTripsException if there are no registered {@link Trip rides} on the current {@link User}
+	 */
+	Iterator<Trip> getCurrentUserRides() throws NotLoggedInException, NoRegisteredTripsException;
 	
 }
