@@ -91,7 +91,7 @@ public class ManagerClass implements Manager {
 
 		currentUser.removeTrip(newDate);
 
-		// We know it was removed from the user if it gets to here cause no exception
+		assert(!currentUser.hasTripOnDate(newDate));
 		tripsByDate.find(newDate).remove(currentUser.getEmail());
 
 	}
@@ -226,7 +226,7 @@ public class ManagerClass implements Manager {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		}
-		return new IteratorWrappable<>(currentUser.getRidesIterator());
+		return new IteratorWrappable<TripWrapper, Trip>(currentUser.getRidesIterator());
 	}
 
 	@Override
@@ -236,7 +236,7 @@ public class ManagerClass implements Manager {
 		}
 		BasicDateTime newDate = new BasicDateTimeClass(date);
 		try {
-			return new IteratorWrappable<>(tripsByDate.find(newDate).values());
+			return new IteratorWrappable<TripWrapper, Trip>(tripsByDate.find(newDate).values());
 		} catch (NoElementException e) {
 			throw new InvalidDateException(e);
 		} catch (NullPointerException e) {
