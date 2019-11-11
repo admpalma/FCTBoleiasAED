@@ -708,23 +708,27 @@ public class Main {
 	 * @param in      {@link Scanner} which will contain the listing mode
 	 */
 	private static void list(Manager manager, Scanner in) {
-		String listingMode = in.next();
+		String listingMode = in.next().toLowerCase();
 		in.nextLine();
 		try {
-			if (listingMode.equalsIgnoreCase("minhas")) {
+			switch (listingMode) {
+			case "minhas":
 				listUserTrips(manager);
-			} else if (listingMode.equalsIgnoreCase("boleias")) {
+				break;
+			case "boleias":
 				listMailOriginDestinyDateTrips(manager.getCurrentUserRides());
-			} else if (listingMode.equalsIgnoreCase("todas")) {
+				break;
+			case "todas":
 				listAllTrips(manager);
-			} else {
-
+				break;
+			default:
+				
 				if (listingMode.matches(DATE_ALLOWED_PATTERN)) {
 					listDateTrips(manager, listingMode);
 				} else {
 					listMailOriginDestinyDateTrips(manager.getUserTrips(listingMode));
 				}
-
+				break;
 			}
 		} catch (NoRegisteredTripsException | InvalidDateException e) {
 			System.out.println(e.getMessage());
@@ -755,7 +759,7 @@ public class Main {
 	}
 
 	/**
-	 * Auxiliary method to list all {@link Trip trips} on the given date |FORMAT:
+	 * Auxiliary method to list all {@link Trip trips} (via {@link TripWrapper}) on the given date |FORMAT:
 	 * <code>
 	 * userEmail%n
 	 * </code>|
