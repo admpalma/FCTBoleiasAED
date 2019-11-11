@@ -181,7 +181,7 @@ public class ManagerClass implements Manager {
 	}
 
 	@Override
-	public Trip consult(String email, String date)
+	public TripWrapper consult(String email, String date)
 			throws NotLoggedInException, NonExistentTripException, NonExistentUserException, InvalidDateException {
 		User tripDriver = usersByEmail.find(email);
 
@@ -193,7 +193,7 @@ public class ManagerClass implements Manager {
 
 		BasicDateTime newDate = new BasicDateTimeClass(date);
 
-		return tripDriver.getTrip(newDate);
+		return tripDriver.getTrip(newDate).wrap();
 	}
 
 	@Override
