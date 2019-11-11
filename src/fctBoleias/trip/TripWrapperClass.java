@@ -35,8 +35,8 @@ public class TripWrapperClass implements TripWrapper {
 	}
 
 	@Override
-	public String getDestiny() {
-		return trip.getDestiny();
+	public String getDestination() {
+		return trip.getDestination();
 	}
 
 	@Override

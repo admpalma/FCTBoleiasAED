@@ -17,7 +17,7 @@ public class TripClass implements Trip {
 	private static final long serialVersionUID = 1L;
 
 	// Instance variables containing the ride's details and information
-	private String origin, destiny;
+	private String origin, destination;
 	private BasicDateTime date;
 	private List<User> usersInRide;
 	private int duration, capacity;
@@ -29,15 +29,15 @@ public class TripClass implements Trip {
 	 * about a ride
 	 * 
 	 * @param origin   origin of the ride
-	 * @param destiny  destiny of the ride
+	 * @param destination  destiny of the ride
 	 * @param date     {@link BasicDateTime date} of the ride
 	 * @param capacity initial number of seats available for other users
 	 * @param duration duration of ride
 	 * @param driver   {@link User} who gives the ride
 	 */
-	public TripClass(String origin, String destiny, BasicDateTime date, int capacity, int duration, User driver) {
+	public TripClass(String origin, String destination, BasicDateTime date, int capacity, int duration, User driver) {
 		this.origin = origin;
-		this.destiny = destiny;
+		this.destination = destination;
 		this.date = date;
 		this.duration = duration;
 		this.usersInRide = new Array<User>(capacity);
@@ -57,8 +57,8 @@ public class TripClass implements Trip {
 	}
 
 	@Override
-	public String getDestiny() {
-		return destiny;
+	public String getDestination() {
+		return destination;
 	}
 
 	@Override
@@ -84,7 +84,7 @@ public class TripClass implements Trip {
 	@Override
 	public String toString() {
 		return String.format("%s%n%s-%s%n%s %d%nLugares vagos: %d%n%s%nEm espera: %d%n", driver.getEmail(), origin,
-				destiny, date.toString(), duration, capacity - usersInRide.size(), getUsersInRideList(),
+				destination, date.toString(), duration, capacity - usersInRide.size(), getUsersInRideList(),
 				usersWaitingRide.size());
 	}
 

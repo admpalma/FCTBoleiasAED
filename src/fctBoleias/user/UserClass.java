@@ -27,7 +27,7 @@ public class UserClass implements User {
 	private String password;
 	private int nLogins;
 	private SortedMap<BasicDateTime, Trip> rides; // Rides in which he takes part but isn't the driver
-	private SortedMap<BasicDateTime, Trip> trips; // User's trips (is the driver)
+	private SortedMap<BasicDateTime, Trip> trips; // User's trips (this User is the driver)
 
 	/**
 	 * {@link User} object constructor. Creates an object holding details and

@@ -29,7 +29,7 @@ public interface Manager extends Serializable {
 	 * there's a {@link User} logged in
 	 * 
 	 * @param origin      the new {@link Trip Trip's} origin
-	 * @param destiny     the new {@link Trip Trip's} destiny
+	 * @param destination     the new {@link Trip Trip's} destination
 	 * @param date        the new {@link Trip Trip's} date
 	 * @param hourMinute  the new {@link Trip Trip's} hour and minutes
 	 * @param duration    the new {@link Trip Trip's} duration
@@ -39,7 +39,7 @@ public interface Manager extends Serializable {
 	 *                                  on that date
 	 * @throws NotLoggedInException     if there's no {@link User} logged in
 	 */
-	void addTrip(String origin, String destiny, String date, String hourMinute, int duration, int numberSeats)
+	void addTrip(String origin, String destination, String date, String hourMinute, int duration, int numberSeats)
 			throws InvalidTripDataException, DateOccupiedException, NotLoggedInException;
 
 	/**

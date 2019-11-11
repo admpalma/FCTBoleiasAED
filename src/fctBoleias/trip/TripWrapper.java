@@ -42,11 +42,11 @@ public interface TripWrapper extends Wrapper {
 	String getOrigin();
 
 	/**
-	 * Gives the {@link String destiny} of this {@link Trip}
+	 * Gives the {@link String destination} of this {@link Trip}
 	 * 
-	 * @return {@link String destiny}
+	 * @return {@link String destination}
 	 */
-	String getDestiny();
+	String getDestination();
 
 	/**
 	 * Gives the duration of this {@link Trip}

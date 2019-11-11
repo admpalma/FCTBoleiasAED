@@ -662,13 +662,13 @@ public class Main {
 			assert (manager.isLoggedIn());
 			in.nextLine();
 			String origin = in.nextLine();
-			String destiny = in.nextLine();
+			String destination = in.nextLine();
 			String date = in.next();
 			String hourMinute = in.next();
 			int duration = in.nextInt();
 			int numberSeats = in.nextInt();
 			in.nextLine();
-			manager.addTrip(origin, destiny, date, hourMinute, duration, numberSeats);
+			manager.addTrip(origin, destination, date, hourMinute, duration, numberSeats);
 			System.out.printf(TRIP_N_REGISTERED_THANKS_USERNAME, manager.getCurrentUserTripNumber(),
 					manager.getCurrentUserName());
 		} catch (InvalidTripDataException e) {
@@ -716,7 +716,7 @@ public class Main {
 				listUserTrips(manager);
 				break;
 			case "boleias":
-				listMailOriginDestinyDateTrips(manager.getCurrentUserRides());
+				listMailOriginDestinationDateTrips(manager.getCurrentUserRides());
 				break;
 			case "todas":
 				listAllTrips(manager);
@@ -726,7 +726,7 @@ public class Main {
 				if (listingMode.matches(DATE_ALLOWED_PATTERN)) {
 					listDateTrips(manager, listingMode);
 				} else {
-					listMailOriginDestinyDateTrips(manager.getUserTrips(listingMode));
+					listMailOriginDestinationDateTrips(manager.getUserTrips(listingMode));
 				}
 				break;
 			}
@@ -793,7 +793,7 @@ public class Main {
 	 * Auxiliary method to list all {@link Trip trips} given in the {@link Iterator}
 	 * |FORMAT: <code>
 	 * userEmail%n
-	 * origin-destiny%n
+	 * origin-destination%n
 	 * dd-mm-yyyy hh:mm duration%n%n
 	 * </code>|
 	 * 
@@ -801,10 +801,10 @@ public class Main {
 	 *                be fetched and listed from
 	 * @param date    {@link String date} of the {@link Trip trips} we want to list
 	 */
-	private static void listMailOriginDestinyDateTrips(Iterator<TripWrapper> iterator) {
+	private static void listMailOriginDestinationDateTrips(Iterator<TripWrapper> iterator) {
 		while (iterator.hasNext()) {
 			TripWrapper trip = iterator.next();
-			System.out.printf("%s%n%s-%s%n%s %d%n%n", trip.getDriverEmail(), trip.getOrigin(), trip.getDestiny(),
+			System.out.printf("%s%n%s-%s%n%s %d%n%n", trip.getDriverEmail(), trip.getOrigin(), trip.getDestination(),
 					trip.getBasicDateTime().toString(), trip.getDuration());
 		}
 
@@ -814,7 +814,7 @@ public class Main {
 	 * Auxiliary method to list all of the given {@link User}'s {@link Trip trips}
 	 * |FORMAT: <code>
 	 * userEmail%n
-	 * origin-destiny%n
+	 * origin-destination%n
 	 * dd-mm-yyyy hh:mm duration%n%n
 	 * </code>|
 	 * 

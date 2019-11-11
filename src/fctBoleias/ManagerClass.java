@@ -49,7 +49,7 @@ public class ManagerClass implements Manager {
 	}
 
 	@Override
-	public void addTrip(String origin, String destiny, String date, String hourMinute, int duration, int numberSeats)
+	public void addTrip(String origin, String destination, String date, String hourMinute, int duration, int numberSeats)
 			throws NotLoggedInException, InvalidTripDataException, DateOccupiedException {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
@@ -58,7 +58,7 @@ public class ManagerClass implements Manager {
 		}
 		try {
 			BasicDateTime dateTime = new BasicDateTimeClass(date, hourMinute);
-			Trip newTrip = new TripClass(origin, destiny, dateTime, numberSeats, duration, currentUser);
+			Trip newTrip = new TripClass(origin, destination, dateTime, numberSeats, duration, currentUser);
 			currentUser.addTrip(newTrip);
 			SortedMap<String, Trip> tripsInDay = tripsByDate.find(dateTime);
 			if (tripsInDay == null) {
