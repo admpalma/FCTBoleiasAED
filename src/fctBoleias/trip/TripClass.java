@@ -125,7 +125,9 @@ public class TripClass implements Trip {
 	private void updateQueue() {
 		if (hasFreeSlots() && !usersWaitingRide.isEmpty()) {
 			try {
-				addUserAsRide(usersWaitingRide.dequeue());
+				User user = usersWaitingRide.dequeue();
+				if (user.hasRideOnDate(this.date) || user.hasTripOnDate(this.date)) updateQueue();
+				addUserAsRide(user);
 			} catch (TripIsFullException e) {
 				throw new AssertionError("This code should be unreachable!");
 			}
