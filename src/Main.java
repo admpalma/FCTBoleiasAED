@@ -708,17 +708,17 @@ public class Main {
 	 * @param in      {@link Scanner} which will contain the listing mode
 	 */
 	private static void list(Manager manager, Scanner in) {
-		String listingMode = in.next().toLowerCase();
+		String listingMode = in.next();
 		in.nextLine();
 		try {
-			switch (listingMode) {
-			case "minhas":
+			switch (listingMode.toUpperCase()) {
+			case "MINHAS":
 				listUserTrips(manager);
 				break;
-			case "boleias":
+			case "BOLEIAS":
 				listMailOriginDestinationDateTrips(manager.getCurrentUserRides());
 				break;
-			case "todas":
+			case "TODAS":
 				listAllTrips(manager);
 				break;
 			default:

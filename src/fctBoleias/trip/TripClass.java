@@ -123,14 +123,17 @@ public class TripClass implements Trip {
 	 * {@link User Users} in queue, if there are any
 	 */
 	private void updateQueue() {
-		if (hasFreeSlots() && !usersWaitingRide.isEmpty()) {
-			try {
+		try {
+			if (hasFreeSlots() && !usersWaitingRide.isEmpty()) {
 				User user = usersWaitingRide.dequeue();
-				if (user.hasRideOnDate(this.date) || user.hasTripOnDate(this.date)) updateQueue();
-				addUserAsRide(user);
-			} catch (TripIsFullException e) {
-				throw new AssertionError("This code should be unreachable!");
+				if (user.hasRideOnDate(this.date) || user.hasTripOnDate(this.date)) {
+					updateQueue();
+				} else {
+					addUserAsRide(user);
+				}
 			}
+		} catch (TripIsFullException e) {
+			throw new AssertionError("This code should be unreachable!");
 		}
 	}
 
