@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 import basicDateTime.InvalidDateException;
 import dataStructures.Iterator;
-import dataStructures.SortedMap;
 import fctBoleias.DateOccupiedException;
 import fctBoleias.InvalidPasswordFormatException;
 import fctBoleias.Manager;
@@ -747,14 +746,10 @@ public class Main {
 	 *                be fetched and listed from
 	 */
 	private static void listAllTrips(Manager manager) {
-		Iterator<SortedMap<String, Trip>> outerIterator = manager.getAllTrips();
-
-		while (outerIterator.hasNext()) {
-			Iterator<Trip> trips = outerIterator.next().values();
-			while (trips.hasNext()) {
-				Trip trip = (Trip) trips.next();
-				System.out.printf("%s %s%n%n", trip.getBasicDateTime().toDateString(), trip.getDriverEmail());
-			}
+		Iterator<TripWrapper> trips = manager.getAllTrips();
+		while (trips.hasNext()) {
+			TripWrapper trip = trips.next();
+			System.out.printf("%s %s%n%n", trip.getBasicDateTime().toDateString(), trip.getDriverEmail());
 		}
 	}
 

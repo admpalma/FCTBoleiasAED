@@ -227,6 +227,6 @@ public interface Manager extends Serializable {
 	 * @return {@link Iterator} <{@link SortedMap}<{@link String}, {@link Trip}>>
 	 * @throws NotLoggedInException if no {@link User} is logged in
 	 */
-	Iterator<SortedMap<String, Trip>> getAllTrips() throws NotLoggedInException;
+	Iterator<TripWrapper> getAllTrips() throws NotLoggedInException;
 
 }
