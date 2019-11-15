@@ -4,6 +4,7 @@ import basicDateTime.BasicDateTime;
 import basicDateTime.BasicDateTimeClass;
 import basicDateTime.InvalidDateException;
 import dataStructures.Iterator;
+import dataStructures.NestedMapValuesIterator;
 import dataStructures.IteratorWrappable;
 import dataStructures.Map;
 import dataStructures.MapWithJavaClass;
@@ -245,11 +246,11 @@ public class ManagerClass implements Manager {
 	}
 
 	@Override
-	public Iterator<SortedMap<String, Trip>> getAllTrips() throws NotLoggedInException {
+	public Iterator<TripWrapper> getAllTrips() throws NotLoggedInException {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		}
-		return tripsByDate.values();
+		return new IteratorWrappable<TripWrapper, Trip>(new NestedMapValuesIterator<Trip, SortedMap<String, Trip>>(tripsByDate));
 	}
 
 }

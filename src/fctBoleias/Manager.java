@@ -5,7 +5,6 @@ import java.io.Serializable;
 import basicDateTime.BasicDateTime;
 import basicDateTime.InvalidDateException;
 import dataStructures.Iterator;
-import dataStructures.SortedMap;
 import fctBoleias.trip.CantRideSelfException;
 import fctBoleias.trip.InvalidTripDataException;
 import fctBoleias.trip.Trip;
@@ -184,36 +183,36 @@ public interface Manager extends Serializable {
 
 	/**
 	 * Gives an {@link Iterator} with the {@link User} with the given email's
-	 * {@link Trip trips}
+	 * {@link TripWrapper trips}
 	 * 
-	 * @param email {@link String email} of the {@link User} whose {@link Trip
+	 * @param email {@link String email} of the {@link User} whose {@link TripWrapper
 	 *              trips} we want
 	 * 
 	 * @return {@link Iterator} <{@link TripWrapper}>
 	 * @throws NonExistentUserException   if the {@link User} with the given
 	 *                                    {@link String email} doesn't exist
 	 * @throws NotLoggedInException       if no {@link User} is logged in
-	 * @throws NoRegisteredTripsException if there are no registered {@link Trip
+	 * @throws NoRegisteredTripsException if there are no registered {@link TripWrapper
 	 *                                    trips} on the current {@link User}
 	 */
 	Iterator<TripWrapper> getUserTrips(String email)
 			throws NotLoggedInException, NoRegisteredTripsException, NonExistentUserException;
 
 	/**
-	 * Gives an {@link Iterator} with the current {@link User}'s {@link Trip rides}
+	 * Gives an {@link Iterator} with the current {@link User}'s {@link TripWrapper rides}
 	 * 
 	 * @return {@link Iterator} <{@link TripWrapper}>
 	 * @throws NotLoggedInException       if no {@link User} is logged in
-	 * @throws NoRegisteredTripsException if there are no registered {@link Trip
+	 * @throws NoRegisteredTripsException if there are no registered {@link TripWrapper
 	 *                                    rides} on the {@link User} with the given
 	 *                                    email
 	 */
 	Iterator<TripWrapper> getCurrentUserRides() throws NotLoggedInException, NoRegisteredTripsException;
 
 	/**
-	 * Gives an {@link Iterator} with the {@link Trip trips} on the given date
+	 * Gives an {@link Iterator} with the {@link TripWrapper trips} on the given date
 	 * 
-	 * @param date {@link String date} of the {@link Trip trips} we want to list
+	 * @param date {@link String date} of the {@link TripWrapper trips} we want to list
 	 * @return {@link Iterator} <{@link TripWrapper}>
 	 * @throws NotLoggedInException if no {@link User} is logged in
 	 * @throws InvalidDateException if the given date is invalid
@@ -221,12 +220,12 @@ public interface Manager extends Serializable {
 	Iterator<TripWrapper> getTripsOnDate(String date) throws NotLoggedInException, InvalidDateException;
 
 	/**
-	 * Gives an {@link Iterator} with all the sorted maps of trips (all {@link Trip
+	 * Gives an {@link Iterator} with all the sorted maps of trips (all {@link TripWrapper
 	 * trips} in the system)
 	 * 
-	 * @return {@link Iterator} <{@link SortedMap}<{@link String}, {@link Trip}>>
+	 * @return {@link Iterator} of {@link TripWrapper trips}
 	 * @throws NotLoggedInException if no {@link User} is logged in
 	 */
-	Iterator<SortedMap<String, Trip>> getAllTrips() throws NotLoggedInException;
+	Iterator<TripWrapper> getAllTrips() throws NotLoggedInException;
 
 }
