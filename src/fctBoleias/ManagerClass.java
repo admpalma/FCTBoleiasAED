@@ -4,7 +4,7 @@ import basicDateTime.BasicDateTime;
 import basicDateTime.BasicDateTimeClass;
 import basicDateTime.InvalidDateException;
 import dataStructures.Iterator;
-import dataStructures.IteratorNested;
+import dataStructures.NestedMapValuesIterator;
 import dataStructures.IteratorWrappable;
 import dataStructures.Map;
 import dataStructures.MapWithJavaClass;
@@ -250,7 +250,7 @@ public class ManagerClass implements Manager {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		}
-		return new IteratorWrappable<TripWrapper, Trip>(new IteratorNested<Trip, SortedMap<String, Trip>>(tripsByDate.values()));
+		return new IteratorWrappable<TripWrapper, Trip>(new NestedMapValuesIterator<Trip, SortedMap<String, Trip>>(tripsByDate));
 	}
 
 }
