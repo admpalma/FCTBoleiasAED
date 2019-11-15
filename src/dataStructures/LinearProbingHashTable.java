@@ -44,7 +44,7 @@ public class LinearProbingHashTable<K, V> extends MapWithHashTable<K, V> {
 	}
 
 	@Override
-	public V find(K key) {
+	public V get(K key) {
 		// TODO Auto-generated method stub
 		return null;
 	}

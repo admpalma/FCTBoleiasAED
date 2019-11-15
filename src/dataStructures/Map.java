@@ -27,7 +27,7 @@ public interface Map<K, V> extends Serializable {
 
 	// If there is an entry in the map whose key is the specified key,
 	// returns its value; otherwise, returns null.
-	V find(K key);
+	V get(K key);
 
 	// If there is an entry in the map whose key is the specified key,
 	// replaces its value by the specified value and returns the old value;

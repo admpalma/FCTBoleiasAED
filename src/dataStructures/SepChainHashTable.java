@@ -33,8 +33,8 @@ public class SepChainHashTable<K, V> extends MapWithHashTable<K, V> {
 	// If there is an entry in the map whose key is the specified key,
 	// returns its value; otherwise, returns null.
 	@Override
-	public V find(K key) {
-		return table[this.hash(key)].find(key);
+	public V get(K key) {
+		return table[this.hash(key)].get(key);
 	}
 
 	// If there is an entry in the map whose key is the specified key,

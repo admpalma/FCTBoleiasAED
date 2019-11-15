@@ -44,8 +44,8 @@ public class MapWithSinglyLinkedList<K, V> extends SinglyLinkedList<Entry<K, V>>
 		return super.find(element);
 	}
 
-	// @Override
-	public V find(K key) {
+	@Override
+	public V get(K key) {
 		Iterator<Entry<K, V>> it = this.iterator();
 		while (it.hasNext()) {
 			Entry<K, V> entry = (Entry<K, V>) it.next();

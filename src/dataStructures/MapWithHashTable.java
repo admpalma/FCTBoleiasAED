@@ -65,7 +65,7 @@ public abstract class MapWithHashTable<K, V> implements Map<K, V> {
 	public abstract Iterator<Entry<K, V>> iterator() throws NoElementException;
 
 	@Override
-	public abstract V find(K key);
+	public abstract V get(K key);
 
 	@Override
 	public abstract V insert(K key, V value);

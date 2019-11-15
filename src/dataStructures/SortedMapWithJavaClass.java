@@ -50,7 +50,7 @@ public class SortedMapWithJavaClass<K extends Comparable<K>, V> implements Sorte
 	}
 
 	@Override
-	public V find(K key) {
+	public V get(K key) {
 		return map.get(key);
 	}
 
