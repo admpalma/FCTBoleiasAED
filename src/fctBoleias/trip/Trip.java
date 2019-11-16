@@ -3,7 +3,7 @@ package fctBoleias.trip;
 import java.io.Serializable;
 
 import basicDateTime.BasicDateTime;
-import fctBoleias.Wrappable;
+import dataStructures.Wrappable;
 import fctBoleias.user.User;
 
 public interface Trip extends TripWrapper, Serializable, Wrappable<TripWrapper> {

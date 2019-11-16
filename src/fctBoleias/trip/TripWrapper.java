@@ -1,7 +1,7 @@
 package fctBoleias.trip;
 
 import basicDateTime.BasicDateTime;
-import fctBoleias.Wrapper;
+import dataStructures.Wrapper;
 import fctBoleias.user.User;
 
 /**

@@ -1,7 +1,7 @@
 package fctBoleias.trip;
 
 import basicDateTime.BasicDateTime;
-import fctBoleias.Wrapper;
+import dataStructures.Wrapper;
 
 /**
  * Implements a {@link Wrapper} for a {@link Trip}

@@ -1,17 +1,12 @@
 package dataStructures;
 
-import fctBoleias.Wrappable;
-import fctBoleias.Wrapper;
-
 /**
  * Iterator for {@link Wrappable} objects
  *
  * @param <E> {@link Wrapper}
  * @param <T> {@link Wrappable} object
  */
-public class IteratorWrappable<E extends Wrapper, T extends Wrappable<E>> implements Iterator<E> {
-
-	private Iterator<T> iterator;
+public class IteratorWrappable<E extends Wrapper, T extends Wrappable<E>> extends AbstractIteratorWrapper<E, T> implements Iterator<E> {
 
 	/**
 	 * Constructs an {@link IteratorWrappable}
@@ -19,22 +14,12 @@ public class IteratorWrappable<E extends Wrapper, T extends Wrappable<E>> implem
 	 * @param iterator {@link Iterator} of {@link Wrappable Wrappables}
 	 */
 	public IteratorWrappable(Iterator<T> iterator) {
-		this.iterator = iterator;
-	}
-
-	@Override
-	public boolean hasNext() {
-		return iterator.hasNext();
+		super(iterator);
 	}
 
 	@Override
 	public E next() throws NoSuchElementException {
-		return iterator.next().wrap();
-	}
-
-	@Override
-	public void rewind() {
-		iterator.rewind();
+		return wrappedIterator.next().wrap();
 	}
 
 }
