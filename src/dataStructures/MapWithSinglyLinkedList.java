@@ -13,30 +13,12 @@ public class MapWithSinglyLinkedList<K, V> extends SinglyLinkedList<Entry<K, V>>
 
 	@Override
 	public Iterator<K> keys() throws NoElementException {
-		Iterator<Entry<K, V>> iter = this.iterator();
-
-		List<K> l = new SinglyLinkedList<K>();
-
-		while (iter.hasNext()) {
-			Entry<K, V> entry = (Entry<K, V>) iter.next();
-			l.addLast(entry.getKey());
-		}
-
-		return l.iterator();
+		return new IteratorKeys<K, Entry<K, V>>(this.iterator());
 	}
 
 	@Override
 	public Iterator<V> values() throws NoElementException {
-		Iterator<Entry<K, V>> iter = this.iterator();
-
-		List<V> l = new SinglyLinkedList<V>();
-
-		while (iter.hasNext()) {
-			Entry<K, V> entry = (Entry<K, V>) iter.next();
-			l.addLast(entry.getValue());
-		}
-
-		return l.iterator();
+		return new IteratorValues<V, Entry<K, V>>(this.iterator());
 	}
 
 	@Override
