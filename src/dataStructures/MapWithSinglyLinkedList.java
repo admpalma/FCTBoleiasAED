@@ -28,14 +28,18 @@ public class MapWithSinglyLinkedList<K, V> extends SinglyLinkedList<Entry<K, V>>
 
 	@Override
 	public V get(K key) {
-		Iterator<Entry<K, V>> it = this.iterator();
-		while (it.hasNext()) {
-			Entry<K, V> entry = (Entry<K, V>) it.next();
-			if (entry.getKey().equals(key)) {
-				return entry.getValue();
+		if (!this.isEmpty()) {
+			Iterator<Entry<K, V>> it = this.iterator();
+			while (it.hasNext()) {
+				Entry<K, V> entry = it.next();
+				if (entry.getKey().equals(key)) {
+					return entry.getValue();
+				}
 			}
+		} else {
+			return null;
 		}
-		return null;
+		throw new AssertionError("Unreachable Code!");
 	}
 
 	@Override

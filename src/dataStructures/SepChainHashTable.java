@@ -8,6 +8,11 @@ public class SepChainHashTable<K, V> extends MapWithHashTable<K, V> {
 	private static final long serialVersionUID = 1L;
 	// The array of maps.
 	protected Map<K, V>[] table;
+	
+	/**
+	 * Number of different entries in {@link SepChainHashTable#table}
+	 */
+	protected int entries;
 
 	public SepChainHashTable() {
 		this(DEFAULTCAPACITY);
@@ -47,6 +52,7 @@ public class SepChainHashTable<K, V> extends MapWithHashTable<K, V> {
 		V valueOld = table[this.hash(key)].insert(key, value);
 		if (valueOld == null)
 			currentSize++;
+		entries++;
 		return valueOld;
 	}
 
@@ -64,7 +70,7 @@ public class SepChainHashTable<K, V> extends MapWithHashTable<K, V> {
 			if (aux[i] != null) {
 				Iterator<Entry<K, V>> it = aux[i].iterator();
 				while (it.hasNext()) {
-					Entry<K, V> entry = (Entry<K, V>) it.next();
+					Entry<K, V> entry = it.next();
 					insert(entry.getKey(), entry.getValue());
 				}
 			}
@@ -76,45 +82,21 @@ public class SepChainHashTable<K, V> extends MapWithHashTable<K, V> {
 	@Override
 	public V remove(K key) {
 		V value = table[this.hash(key)].remove(key);
-		if (value != null)
+		if (value != null) {
 			currentSize--;
+			entries--;
+		}
 		return value;
 	}
 
 	@Override
 	public Iterator<K> keys() throws NoElementException {
-		if (isEmpty())
-			throw new NoElementException("Map is empty.");
-
-		List<K> temp = new SinglyLinkedList<K>();
-
-		for (int i = 0; i < table.length; i++) {
-			Iterator<Entry<K, V>> it = table[i].iterator();
-			while (it.hasNext()) {
-				Entry<K, V> entry = (Entry<K, V>) it.next();
-				temp.addLast(entry.getKey());
-			}
-		}
-
-		return temp.iterator();
+		return new IteratorKeys<K, Entry<K, V>>(this.iterator());
 	}
 
 	@Override
 	public Iterator<V> values() throws NoElementException {
-		if (isEmpty())
-			throw new NoElementException("Map is empty.");
-
-		List<V> temp = new SinglyLinkedList<V>();
-
-		for (int i = 0; i < table.length; i++) {
-			Iterator<Entry<K, V>> it = table[i].iterator();
-			while (it.hasNext()) {
-				Entry<K, V> entry = (Entry<K, V>) it.next();
-				temp.addLast(entry.getValue());
-			}
-		}
-
-		return temp.iterator();
+		return new IteratorValues<V, Entry<K, V>>(this.iterator());
 	}
 
 	@Override
@@ -122,17 +104,20 @@ public class SepChainHashTable<K, V> extends MapWithHashTable<K, V> {
 		if (isEmpty())
 			throw new NoElementException("Map is empty.");
 
-		List<Entry<K, V>> temp = new SinglyLinkedList<Entry<K, V>>();
+		@SuppressWarnings("unchecked")
+		Entry<K, V>[] temp = (Entry<K, V>[]) new Entry<?, ?>[entries];
 
-		for (int i = 0; i < table.length; i++) {
-			Iterator<Entry<K, V>> it = table[i].iterator();
-			while (it.hasNext()) {
-				Entry<K, V> entry = (Entry<K, V>) it.next();
-				temp.addLast(entry);
+		int tableIndex = 0, tempIndex = 0;
+		while (tempIndex < entries && tableIndex < table.length) {
+			if (!table[tableIndex].isEmpty()) {
+				Iterator<Entry<K, V>> it = table[tableIndex++].iterator();
+				while (it.hasNext()) {
+					temp[tempIndex++] = it.next();
+				}
 			}
 		}
 
-		return temp.iterator();
+		return new ArrayIterator<Entry<K, V>>(temp, entries);
 	}
 
 }

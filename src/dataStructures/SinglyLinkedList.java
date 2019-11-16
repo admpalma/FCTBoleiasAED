@@ -33,6 +33,9 @@ public class SinglyLinkedList<E> implements List<E> {
 
 	@Override
 	public Iterator<E> iterator() throws NoElementException {
+		if (isEmpty()) {
+			throw new NoElementException();
+		}
 		return new SinglyLLIterator<E>(head);
 	}
 
