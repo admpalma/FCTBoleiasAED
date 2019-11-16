@@ -18,14 +18,10 @@ public class BasicDateTimeClass implements BasicDateTime {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static final String DATE_TOSTRING_FORMAT = "%d-%d-%d %d:%d";
-
 	/**
 	 * {@link BasicDateTimeClass#rawDate rawDate's} array length
 	 */
 	private static final int NUM_FIELDS = 5;
-
-	private static final String DATE_TODATESTRING_FORMAT = "%d-%d-%d";
 
 	/**
 	 * Array storing the date and time's elements
@@ -182,7 +178,9 @@ public class BasicDateTimeClass implements BasicDateTime {
 	@Override
 	public String toString() {
 		assert (isValid());
-		return String.format(DATE_TOSTRING_FORMAT, rawDate[2], rawDate[1], rawDate[0], rawDate[3], rawDate[4]);
+		StringBuilder sb = new StringBuilder(16);
+		sb.append(toDateString()).append(" ").append(getHour()).append(":").append(getMinutes());
+		return sb.toString();
 	}
 
 	/**
@@ -228,7 +226,9 @@ public class BasicDateTimeClass implements BasicDateTime {
 	@Override
 	public String toDateString() {
 		assert (isValid());
-		return String.format(DATE_TODATESTRING_FORMAT, rawDate[2], rawDate[1], rawDate[0]);
+		StringBuilder sb = new StringBuilder(10);
+		sb.append(getDay()).append("-").append(getMonth()).append("-").append(getYear());
+		return sb.toString();
 	}
 
 }
