@@ -83,9 +83,16 @@ public class TripClass implements Trip {
 
 	@Override
 	public String toString() {
-		return String.format("%s%n%s-%s%n%s %d%nLugares vagos: %d%n%s%nEm espera: %d%n", driver.getEmail(), origin,
-				destination, date.toString(), duration, capacity - usersInRide.size(), getUsersInRideList(),
-				usersWaitingRide.size());
+		String usersInRideStr = getUsersInRideList();
+		StringBuilder sb = new StringBuilder(150 + usersInRideStr.length());
+		String newLine = System.lineSeparator();
+		sb.append(driver.getEmail()).append(newLine);
+		sb.append(origin).append("-").append(destination).append(newLine);
+		sb.append(date.toString()).append(" ").append(duration).append(newLine);
+		sb.append("Lugares vagos: ").append(freeSlots()).append(newLine);
+		sb.append(usersInRideStr).append(newLine);
+		sb.append("Em espera: ").append(usersWaitingRide.size()).append(newLine);
+		return sb.toString();
 	}
 
 	/**
@@ -98,7 +105,7 @@ public class TripClass implements Trip {
 	private String getUsersInRideList() {
 		try {
 			Iterator<User> iter = usersInRide.iterator();
-			StringBuilder result = new StringBuilder(2 * usersInRide.size());
+			StringBuilder result = new StringBuilder(35 * usersInRide.size());
 			result.append("Boleias: ");
 			String toAdd = "; ";
 			while (iter.hasNext()) {
@@ -145,7 +152,12 @@ public class TripClass implements Trip {
 
 	@Override
 	public boolean hasFreeSlots() {
-		return capacity - usersInRide.size() > 0;
+		return freeSlots() > 0;
+	}
+
+	@Override
+	public int freeSlots() {
+		return capacity - usersInRide.size();
 	}
 
 	@Override

@@ -54,4 +54,9 @@ public class TripWrapperClass implements TripWrapper {
 		return trip.toString();
 	}
 
+	@Override
+	public int freeSlots() {
+		return trip.freeSlots();
+	}
+
 }
