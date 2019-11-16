@@ -20,6 +20,7 @@ class BSTTest {
 
 	@Test
 	void testIterator() {
+		assertThrows(NoElementException.class, () -> bst.iterator());
 		testInsert();
 		Iterator<Entry<Integer, Integer>> it = bst.iterator();
 		int i = 0;
@@ -32,6 +33,7 @@ class BSTTest {
 
 	@Test
 	void testKeys() {
+		assertThrows(NoElementException.class, () -> bst.keys());
 		testInsert();
 		Iterator<Integer> it = bst.keys();
 		int i = 0;
@@ -43,6 +45,7 @@ class BSTTest {
 
 	@Test
 	void testValues() {
+		assertThrows(NoElementException.class, () -> bst.values());
 		testInsert();
 		Iterator<Integer> it = bst.values();
 		int i = 0;
@@ -50,11 +53,6 @@ class BSTTest {
 			int next = it.next();
 			assertEquals(i++, next);
 		}
-	}
-
-	@Test
-	void testFindNode() {
-		fail("Not yet implemented");
 	}
 
 	@Test
@@ -112,19 +110,14 @@ class BSTTest {
 	@Test
 	void testMaxEntry() {
 		testInsert();
-		Entry<Integer, Integer> max = bst.minEntry();
+		Entry<Integer, Integer> max = bst.maxEntry();
 		assertEquals(19, max.getKey());
 		assertEquals(19, max.getValue());
 		bst.insert(-1, 30);
 		bst.insert(40, -1);
-		max = bst.minEntry();
+		max = bst.maxEntry();
 		assertEquals(-1, max.getKey());
 		assertEquals(30, max.getValue());
-	}
-
-	@Test
-	void testMaxNode() {
-		fail("Not yet implemented");
 	}
 
 	@Test
