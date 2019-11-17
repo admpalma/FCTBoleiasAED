@@ -1,6 +1,12 @@
 package dataStructures;
 
 public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	static class BSTNode<E> {
 
 		protected BSTNode<E> parent;
@@ -80,7 +86,7 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	}
 
 	@Override
-	public V findValue(K key) {
+	public V get(K key) {
 		BSTNode<Entry<K, V>> res = findNode(root, key);
 		if (res == null)
 			return null;

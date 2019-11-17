@@ -2,6 +2,11 @@ package dataStructures;
 
 public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements SortedMap<K, V> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	static class AVLNode<E> extends BSTNode<E> {
 		// Height of the node
 		protected int height;
@@ -73,8 +78,8 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 			zPos.setHeight();
 			if (!zPos.isBalance()) {
 				// perform a trinode restructuring at zPos's tallest grandchild
-//If yPos (tallerChild(zPos)) denote the child of zPos with greater height. 
-//Finally, let xPos be the child of yPos with greater height
+				// If yPos (tallerChild(zPos)) denote the child of zPos with greater height.
+				// Finally, let xPos be the child of yPos with greater height
 				AVLNode<Entry<K, V>> xPos = tallerChild((AVLNode<Entry<K, V>>) tallerChild(zPos));
 				zPos = (AVLNode<Entry<K, V>>) restructure(xPos); // tri-node restructure (from parent class)
 				((AVLNode<Entry<K, V>>) zPos.getLeft()).setHeight(); // recompute heights
@@ -89,7 +94,7 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 	public V insert(K key, V value) {
 
 		BSTNode<Entry<K, V>> closestNode = findClosest(key);
-		
+
 		// Key already existed
 		BSTNode<Entry<K, V>> insertedNode = insertAux(key, value, closestNode);
 		if (insertedNode == null)
@@ -102,10 +107,11 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 
 	@Override
 	public V remove(K key) {
-		if(isEmpty()) return null;
-		
+		if (isEmpty())
+			return null;
+
 		BSTNode<Entry<K, V>> removed = removeAux(key);
-		
+
 		// TODO not always needed? if we remove the root probably not
 		rebalance((AVLNode<Entry<K, V>>) removed); // rebalance up from the node
 		return removed.element.getValue();

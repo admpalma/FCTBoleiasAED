@@ -2,6 +2,11 @@ package dataStructures;
 
 public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private static final String RIGHTRIGHT = "11";
 	private static final String RIGHTLEFT = "10";
 	private static final String LEFTRIGHT = "01";
@@ -78,23 +83,22 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 		BSTNode<Entry<K, V>> z = y.parent; // GRANDPARENT
 
 		BSTNode<Entry<K, V>> newRoot = x;
-		
+
 		/*
-		 * a) y is left child of z and x is left child of y (Left Left Case) return y
-		 * b) y is left child of z and x is right child of y (Left Right Case) return x
-		 * c) y is right child of z and x is right child of y (Right Right Case) return y
+		 * a) y is left child of z and x is left child of y (Left Left Case) return y b)
+		 * y is left child of z and x is right child of y (Left Right Case) return x c)
+		 * y is right child of z and x is right child of y (Right Right Case) return y
 		 * d) y is right child of z and x is left child of y (Right Left Case) return x
 		 */
 
 		String bitSequence = generateBits(x, y, z);
-		
+
 		/*
-		 * bitSequence is a String representing a two bit number
-		 * bit 1 represents parent relationship between y and z
-		 * bit 0 represents parent relationship between x and y
-		 * when the former is the latter's right child, bit is set to 1
-		 * when the former is the latter's left  child, bit is set to 0
-		*/
+		 * bitSequence is a String representing a two bit number bit 1 represents parent
+		 * relationship between y and z bit 0 represents parent relationship between x
+		 * and y when the former is the latter's right child, bit is set to 1 when the
+		 * former is the latter's left child, bit is set to 0
+		 */
 
 		switch (bitSequence) {
 		case LEFTLEFT:
@@ -121,8 +125,10 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 	}
 
 	/**
-	 * Generates a String representing a two bit number based on parent relationships between the nodes
-	 * @param x base of restructure 
+	 * Generates a String representing a two bit number based on parent
+	 * relationships between the nodes
+	 * 
+	 * @param x base of restructure
 	 * @param y {@link BSTNode x}'s {@link BSTNode parent}
 	 * @param z {@link BSTNode y}'s {@link BSTNode parent}
 	 * @return {@link String bit sequence}
