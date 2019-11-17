@@ -148,35 +148,35 @@ class AdvancedBSTTest extends BSTTest {
 		int i = 2;
 		/** Rotate third tree in {@link AdvancedBST#restructure()} again */
 		advancedBST.rotateRight(nodes[i][0]);
-		assertEquals(nodes[i][0], nodes[i][2].right);
-		assertEquals(nodes[i][1], nodes[i][2].left);
-		assertEquals(nodes[i][4], nodes[i][0].right);
+		assertEquals(nodes[i][0], nodes[i][1].right);
+		assertEquals(nodes[i][2], nodes[i][1].left);
+		assertEquals(nodes[i][6], nodes[i][0].right);
 		assertEquals(nodes[i][5], nodes[i][0].left);
-		assertEquals(nodes[i][6], nodes[i][1].right);
-		assertEquals(nodes[i][3], nodes[i][1].left);
-		assertEquals(null, nodes[i][2].parent);	//Incomplete testing
-		assertEquals(nodes[i][2], nodes[i][0].parent);
-		assertEquals(nodes[i][2], nodes[i][1].parent);
-		assertEquals(nodes[i][1], nodes[i][3].parent);
-		assertEquals(nodes[i][1], nodes[i][6].parent);
+		assertEquals(nodes[i][4], nodes[i][2].right);
+		assertEquals(nodes[i][3], nodes[i][2].left);
+		assertEquals(null, nodes[i][1].parent);	//Incomplete testing
+		assertEquals(nodes[i][1], nodes[i][0].parent);
+		assertEquals(nodes[i][1], nodes[i][2].parent);
+		assertEquals(nodes[i][2], nodes[i][3].parent);
+		assertEquals(nodes[i][2], nodes[i][4].parent);
 		assertEquals(nodes[i][0], nodes[i][5].parent);
-		assertEquals(nodes[i][0], nodes[i][4].parent);
+		assertEquals(nodes[i][0], nodes[i][6].parent);
 		i++;
 		/** Rotate fourth tree in {@link AdvancedBST#restructure()} again */
 		advancedBST.rotateLeft(nodes[i][0]);
-		assertEquals(nodes[i][0], nodes[i][2].right);
-		assertEquals(nodes[i][1], nodes[i][2].left);
-		assertEquals(nodes[i][6], nodes[i][0].right);
+		assertEquals(nodes[i][0], nodes[i][1].right);
+		assertEquals(nodes[i][2], nodes[i][1].left);
+		assertEquals(nodes[i][4], nodes[i][0].right);
 		assertEquals(nodes[i][3], nodes[i][0].left);
-		assertEquals(nodes[i][4], nodes[i][1].right);
-		assertEquals(nodes[i][5], nodes[i][1].left);
-		assertEquals(null, nodes[i][2].parent);	//Incomplete testing
-		assertEquals(nodes[i][2], nodes[i][0].parent);
-		assertEquals(nodes[i][2], nodes[i][1].parent);
+		assertEquals(nodes[i][6], nodes[i][2].right);
+		assertEquals(nodes[i][5], nodes[i][2].left);
+		assertEquals(null, nodes[i][1].parent);	//Incomplete testing
+		assertEquals(nodes[i][1], nodes[i][0].parent);
+		assertEquals(nodes[i][1], nodes[i][2].parent);
 		assertEquals(nodes[i][0], nodes[i][3].parent);
-		assertEquals(nodes[i][0], nodes[i][6].parent);
-		assertEquals(nodes[i][1], nodes[i][5].parent);
-		assertEquals(nodes[i][1], nodes[i][4].parent);
+		assertEquals(nodes[i][0], nodes[i][4].parent);
+		assertEquals(nodes[i][2], nodes[i][5].parent);
+		assertEquals(nodes[i][2], nodes[i][6].parent);
 	}
 
 }
