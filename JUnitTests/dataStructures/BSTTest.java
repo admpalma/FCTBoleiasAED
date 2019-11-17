@@ -11,7 +11,7 @@ import dataStructures.Iterator;
 
 class BSTTest {
 
-	private BST<Integer, Integer> bst;
+	protected BST<Integer, Integer> bst;
 	
 	@BeforeEach
 	void setUp() throws Exception {
