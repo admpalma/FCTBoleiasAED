@@ -53,6 +53,11 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 
 	// Number of elements
 	protected int currentSize;
+	
+	public BST() {
+		root = null;
+		currentSize = 0;
+	}
 
 	@Override
 	public Iterator<Entry<K, V>> iterator() {
@@ -102,6 +107,7 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		if (insertAux(key, value, closestNode) == null)
 			return closestNode.element.getValue();
 
+		currentSize++;
 		return null;
 	}
 
@@ -159,9 +165,9 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 			} else {
 				nextNode = current.right;
 			}
-			/*
-			 * if (nextNode == null) break;
-			 */
+			if (nextNode == null) {
+				return current;
+			}
 			current = nextNode;
 		}
 		return current;
@@ -171,7 +177,7 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	public V remove(K key) {
 		if (isEmpty())
 			return null;
-
+		currentSize--;
 		return removeAux(key).element.getValue();
 	}
 
