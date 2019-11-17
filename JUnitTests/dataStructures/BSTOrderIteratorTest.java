@@ -28,22 +28,22 @@ class BSTOrderIteratorTest {
 	void testBSTOrderIterator() {
 		assertFalse(bstItFail.hasNext());
 		assertThrows(NoSuchElementException.class, () -> bstItFail.next());
-		assertTrue(bstItFail.hasNext());
+		assertTrue(bstIt.hasNext());
 		int i = 0;
 		while (bstIt.hasNext()) {
 			assertEquals(i++, bstIt.next());
 		}
-		assertThrows(NoSuchElementException.class, () -> bstItFail.next());
+		assertThrows(NoSuchElementException.class, () -> bstIt.next());
 	}
 
 	@Test
 	void testHasNext() {
 		assertFalse(bstItFail.hasNext());
 		for (int i = 0; i < 20; i++) {
-			assertTrue(bstItFail.hasNext());
+			assertTrue(bstIt.hasNext());
 			bstIt.next();
 		}
-		assertThrows(NoSuchElementException.class, () -> bstItFail.next());
+		assertThrows(NoSuchElementException.class, () -> bstIt.next());
 	}
 
 	@Test
@@ -54,7 +54,7 @@ class BSTOrderIteratorTest {
 		while (bstIt.hasNext()) {
 			assertEquals(i++, bstIt.next());
 		}
-		assertThrows(NoSuchElementException.class, () -> bstItFail.next());
+		assertThrows(NoSuchElementException.class, () -> bstIt.next());
 	}
 
 	@Test
