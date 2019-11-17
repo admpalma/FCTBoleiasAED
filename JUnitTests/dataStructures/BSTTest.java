@@ -68,12 +68,12 @@ class BSTTest {
 			assertEquals(i, bst.size());
 			bst.insert(i, i);
 		}
-		for (int i = 19; i >= 10; i--) {
-			assertEquals(i - 9, bst.size());
+		for (int i = 19, j = 10; i >= 10; i--) {
+			assertEquals(j++, bst.size());
 			bst.insert(i, i);
 		}
 		for (int i = 0; i < 20; i++) {
-			assertEquals(i, bst.get(1));
+			assertEquals(i, bst.get(i));
 		}
 		assertFalse(bst.isEmpty());
 	}
