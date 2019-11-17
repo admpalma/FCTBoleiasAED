@@ -6,6 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
+import basicDateTime.BasicDateTime;
 import basicDateTime.InvalidDateException;
 import dataStructures.Iterator;
 import fctBoleias.DateOccupiedException;
@@ -300,7 +301,7 @@ public class Main {
 	 */
 	private static void printPrompt(Manager manager) {
 		if (manager.isLoggedIn()) {
-			System.out.printf("%s %s", manager.getCurrentUserEmail(), DEFAULT_PROMPT);
+			System.out.print(manager.getCurrentUserEmail() + " " + DEFAULT_PROMPT);
 		} else {
 			System.out.print(DEFAULT_PROMPT);
 		}
@@ -715,7 +716,7 @@ public class Main {
 				listUserTrips(manager);
 				break;
 			case "BOLEIAS":
-				listMailOriginDestinationDateTrips(manager.getCurrentUserRides());
+				listCurrentUserRides(manager.getCurrentUserRides());
 				break;
 			case "TODAS":
 				listAllTrips(manager);
@@ -725,7 +726,7 @@ public class Main {
 				if (listingMode.matches(DATE_ALLOWED_PATTERN)) {
 					listDateTrips(manager, listingMode);
 				} else {
-					listMailOriginDestinationDateTrips(manager.getUserTrips(listingMode));
+					listCurrentUserRides(manager.getUserTrips(listingMode));
 				}
 				break;
 			}
@@ -785,22 +786,19 @@ public class Main {
 	}
 
 	/**
-	 * Auxiliary method to list all {@link Trip trips} given in the {@link Iterator}
-	 * |FORMAT: <code>
-	 * userEmail%n
-	 * origin-destination%n
-	 * dd-mm-yyyy hh:mm duration%n%n
-	 * </code>|
+	 * Auxiliary method to list all {@link Trip trips} being taken as a ride given in the {@link Iterator}<p>
+	 * Format:<br>
+	 * {@link #getDriverEmail() driver email}<br>
+	 * {@link #getOrigin() origin}-{@link #getDestination() destination}<br>
+	 * {@link BasicDateTime#toString() dateTime} {@link #getDuration() duration}<br>
 	 * 
 	 * @param manager {@link Manager} in which the {@link Trip trips} are going to
 	 *                be fetched and listed from
 	 * @param date    {@link String date} of the {@link Trip trips} we want to list
 	 */
-	private static void listMailOriginDestinationDateTrips(Iterator<TripWrapper> iterator) {
+	private static void listCurrentUserRides(Iterator<TripWrapper> iterator) {
 		while (iterator.hasNext()) {
-			TripWrapper trip = iterator.next();
-			System.out.printf("%s%n%s-%s%n%s %d%n%n", trip.getDriverEmail(), trip.getOrigin(), trip.getDestination(),
-					trip.getBasicDateTime().toString(), trip.getDuration());
+			System.out.println(iterator.next().toRideString());
 		}
 
 	}

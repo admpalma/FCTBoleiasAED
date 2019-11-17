@@ -83,12 +83,11 @@ public class TripClass implements Trip {
 
 	@Override
 	public String toString() {
+		String simpleStr = this.toSimpleString();
 		String usersInRideStr = getUsersInRideList();
-		StringBuilder sb = new StringBuilder(150 + usersInRideStr.length());
+		StringBuilder sb = new StringBuilder(20 + simpleStr.length() + usersInRideStr.length());
 		String newLine = System.lineSeparator();
-		sb.append(driver.getEmail()).append(newLine);
-		sb.append(origin).append("-").append(destination).append(newLine);
-		sb.append(date.toString()).append(" ").append(duration).append(newLine);
+		sb.append(simpleStr);
 		sb.append("Lugares vagos: ").append(freeSlots()).append(newLine);
 		sb.append(usersInRideStr).append(newLine);
 		sb.append("Em espera: ").append(usersWaitingRide.size()).append(newLine);
@@ -163,6 +162,27 @@ public class TripClass implements Trip {
 	@Override
 	public TripWrapper wrap() {
 		return new TripWrapperClass(this);
+	}
+
+	@Override
+	public String toRideString() {
+		return this.toSimpleString();
+	}
+	
+	/**
+	 * Returns a {@link String} with the following format:<p>
+	 * {@link #getDriverEmail() driver email}<br>
+	 * {@link #getOrigin() origin}-{@link #getDestination() destination}<br>
+	 * {@link BasicDateTime#toString() dateTime} {@link #getDuration() duration}<br>
+	 * @return {@link String} with a simple description of this {@link Trip}
+	 */
+	private String toSimpleString() {
+		StringBuilder sb = new StringBuilder(120);
+		String newLine = System.lineSeparator();
+		sb.append(driver.getEmail()).append(newLine);
+		sb.append(origin).append("-").append(destination).append(newLine);
+		sb.append(date.toString()).append(" ").append(duration).append(newLine);
+		return sb.toString();
 	}
 
 }
