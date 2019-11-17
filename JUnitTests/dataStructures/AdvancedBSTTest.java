@@ -30,7 +30,7 @@ class AdvancedBSTTest extends BSTTest {
 	void setUp() throws Exception {
 		bst = new AdvancedBST<Integer, Integer>();
 		advancedBST = new AdvancedBST<Integer, Integer>();
-		nodes = (BSTNode<Entry<Integer, Integer>>[][]) new BSTNode<?>[t2][7];
+		nodes = (BSTNode<Entry<Integer, Integer>>[][]) new BSTNode<?>[4][7];
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 7; j++) {
 				nodes[i][j] = new BSTNode<Entry<Integer, Integer>>(new EntryClass<Integer, Integer>(i, j));
