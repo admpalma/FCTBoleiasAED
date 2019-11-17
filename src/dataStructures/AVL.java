@@ -2,11 +2,6 @@ package dataStructures;
 
 public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements SortedMap<K, V> {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
 	static class AVLNode<E> extends BSTNode<E> {
 		// Height of the node
 		protected int height;
@@ -54,8 +49,13 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 	 * Return a child of p with greater height
 	 */
 	protected AVLNode<Entry<K, V>> tallerChild(AVLNode<Entry<K, V>> p) {
-		// TODO
-		return null;
+		AVLNode<Entry<K, V>> left = (AVLNode<Entry<K, V>>) p.left;
+		AVLNode<Entry<K, V>> right = (AVLNode<Entry<K, V>>) p.left;
+
+		// If left node's height is higher, return left node
+		// If right node's height is higher, return right node
+		return p.getHeight(left) > p.getHeight(right) ? left : right;
+
 	}
 
 	/**
@@ -73,38 +73,42 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 			zPos.setHeight();
 			if (!zPos.isBalance()) {
 				// perform a trinode restructuring at zPos's tallest grandchild
-				//If yPos (tallerChild(zPos)) denote the child of zPos with greater height. 
-				//Finally, let xPos be the child of yPos with greater height
+//If yPos (tallerChild(zPos)) denote the child of zPos with greater height. 
+//Finally, let xPos be the child of yPos with greater height
 				AVLNode<Entry<K, V>> xPos = tallerChild((AVLNode<Entry<K, V>>) tallerChild(zPos));
 				zPos = (AVLNode<Entry<K, V>>) restructure(xPos); // tri-node restructure (from parent class)
 				((AVLNode<Entry<K, V>>) zPos.getLeft()).setHeight(); // recompute heights
 				((AVLNode<Entry<K, V>>) zPos.getRight()).setHeight();
 				zPos.setHeight();
-			}
+			} else
+				break; // TODO this? If the node is not unbalanced then none above it are
 		}
 	}
 
 	@Override
 	public V insert(K key, V value) {
-		// TODO
-		V valueToReturn = null;
-		AVLNode<Entry<K, V>> newNode = null; // node where the new entry is being inserted (if find(key)==null)
-		// insert the new Entry (if find(key)==null)
-		// or set the new value (if find(key)!=null)
-		if (newNode != null) // (if find(key)==null)
-			rebalance(newNode); // rebalance up from the insertion node
-		return valueToReturn;
+
+		BSTNode<Entry<K, V>> closestNode = findClosest(key);
+		
+		// Key already existed
+		BSTNode<Entry<K, V>> insertedNode = insertAux(key, value, closestNode);
+		if (insertedNode == null)
+			return closestNode.element.getValue();
+		else {
+			rebalance((AVLNode<Entry<K, V>>) insertedNode);
+		}
+		return null;
 	}
 
 	@Override
 	public V remove(K key) {
-		// TODO
-		V valueToReturn = null;
-		AVLNode<Entry<K, V>> node = null; // father of node where the key was
-		// removeNode is the BST remove(key)
-		if (node != null) // (if find(key)==null)
-			rebalance(node); // rebalance up from the node
-		return valueToReturn;
+		if(isEmpty()) return null;
+		
+		BSTNode<Entry<K, V>> removed = removeAux(key);
+		
+		// TODO not always needed? if we remove the root probably not
+		rebalance((AVLNode<Entry<K, V>>) removed); // rebalance up from the node
+		return removed.element.getValue();
 	}
 
 }

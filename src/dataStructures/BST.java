@@ -1,12 +1,6 @@
 package dataStructures;
 
 public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
 	static class BSTNode<E> {
 
 		protected BSTNode<E> parent;
@@ -43,8 +37,7 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		}
 
 		boolean isInternal() {
-			// TODO
-			return true;
+			return (left != null || right != null);
 		}
 
 	}
@@ -54,14 +47,6 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 
 	// Number of elements
 	protected int currentSize;
-	
-	protected BST(BSTNode<Entry<K, V>> n) {
-		root = n;
-	}
-	
-	public BST() {
-		this(null);
-	}
 
 	@Override
 	public Iterator<Entry<K, V>> iterator() {
@@ -95,7 +80,7 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	}
 
 	@Override
-	public V get(K key) {
+	public V findValue(K key) {
 		BSTNode<Entry<K, V>> res = findNode(root, key);
 		if (res == null)
 			return null;
@@ -104,20 +89,180 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 
 	@Override
 	public V insert(K key, V value) {
-		// TODO
+
+		BSTNode<Entry<K, V>> closestNode = findClosest(key);
+
+		// Key already existed
+		if (insertAux(key, value, closestNode) == null)
+			return closestNode.element.getValue();
+
 		return null;
+	}
+
+	/**
+	 * 
+	 * @param key
+	 * @param value
+	 * @param closestNode
+	 * @return or null if it replaces the value of an existing entry (key already
+	 *         existed)
+	 */
+	protected BSTNode<Entry<K, V>> insertAux(K key, V value, BSTNode<Entry<K, V>> closestNode) {
+
+		BSTNode<Entry<K, V>> newNode = null; // node where the new entry is being inserted (if find(key)==null)
+		Entry<K, V> newEntry = new EntryClass<K, V>(key, value);
+
+		if (size() == 0) {
+			// If the tree was empty we insert as root
+			newNode = new BSTNode<Entry<K, V>>(newEntry);
+			root = newNode;
+		} else {
+			newNode = new BSTNode<Entry<K, V>>(newEntry, closestNode, null, null);
+
+			int num = closestNode.getElement().getKey().compareTo(key);
+			if (num == 0) { // If key already existed
+				newNode = new BSTNode<Entry<K, V>>(newEntry, closestNode.parent, null, null);
+				closestNode = newNode;
+				return null;
+			} else if (num < 0)
+				closestNode.left = newNode;
+			else
+				closestNode.right = newNode;
+		}
+		return newNode;
+	}
+
+	/**
+	 * Finds the closest node to insert or the node with the same key
+	 * 
+	 * @param key key to find
+	 * @return
+	 */
+	protected BSTNode<Entry<K, V>> findClosest(K key) {
+
+		BSTNode<Entry<K, V>> current = root;
+		BSTNode<Entry<K, V>> nextNode = root; // initialize to something
+
+		while (nextNode != null) {
+			int num = current.getElement().getKey().compareTo(key);
+
+			if (num == 0) {
+				return current;
+			} else if (num < 0) {
+				nextNode = current.left;
+			} else {
+				nextNode = current.right;
+			}
+			/*
+			 * if (nextNode == null) break;
+			 */
+			current = nextNode;
+		}
+		return current;
 	}
 
 	@Override
 	public V remove(K key) {
-		// TODO
-		return null;
+		if (isEmpty())
+			return null;
+
+		return removeAux(key).element.getValue();
+	}
+
+	protected BSTNode<Entry<K, V>> removeAux(K key) throws NoSuchElementException {
+
+		BSTNode<Entry<K, V>> foundNode = findNode(root, key);
+
+		if (foundNode == null)
+			throw new NoSuchElementException("Node not found!");
+
+		BSTNode<Entry<K, V>> parent = foundNode.getParent();
+
+		// If the node we wish to remove is the parent's right node
+		boolean amRightChild = parent.getRight().equals(foundNode);
+
+		int children = 0;
+		if (foundNode.getRight() != null)
+			children += 1;
+		else if (foundNode.getLeft() != null)
+			children += 2;
+
+		switch (children) {
+		case 0: // No children
+			removeInternal(parent, amRightChild);
+			break;
+		case 1: // Has right child
+			removeWithOneChild(amRightChild, parent, foundNode.getRight());
+			break;
+		case 2: // Has left child
+			removeWithOneChild(amRightChild, parent, foundNode.getLeft());
+			break;
+		default: // Has both children
+			removeWithBothChildren(foundNode);
+			break;
+
+		}
+		return foundNode;
+	}
+
+	// TODO may still not work, stuff missing?
+	private void removeWithBothChildren(BSTNode<Entry<K, V>> foundNode) {
+		// get min value of the right child
+		// put that on the place of removal
+		// add the right child as the right child of the min value node
+		// add the min value as the parent of the right child
+		// clean remaining stuff
+
+		BSTNode<Entry<K, V>> rightChild = foundNode.getRight();
+		BSTNode<Entry<K, V>> minValueNode = minNode(rightChild);
+		BSTNode<Entry<K, V>> removedNodeParent = foundNode.getParent();
+
+		minValueNode.right = rightChild;
+		rightChild.parent = minValueNode;
+
+		// TODO CHECK THIS CLEANUP
+		minValueNode.parent.left = null;
+
+		if (removedNodeParent != null) {
+			removedNodeParent.right = minValueNode;
+		} else {
+			root = minValueNode;
+		}
+
+	}
+
+	private void removeWithOneChild(boolean amRightChild, BSTNode<Entry<K, V>> parent, BSTNode<Entry<K, V>> child) {
+		if (parent == null) {
+			root = child;
+		} else if (amRightChild) {
+			parent.right = child;
+		} else {
+			parent.left = child;
+		}
+	}
+
+	private void removeInternal(BSTNode<Entry<K, V>> parent, boolean amRightChild) {
+		if (parent == null) {
+			root = null;
+		} else if (amRightChild) {
+			parent.right = null;
+		} else {
+			parent.left = null;
+		}
 	}
 
 	@Override
 	public Entry<K, V> minEntry() throws NoElementException {
-		// TODO
-		return null;
+		if (this.isEmpty())
+			throw new NoElementException();
+		return this.minNode(root).getElement();
+	}
+
+	// Precondition: node != null.
+	protected BSTNode<Entry<K, V>> minNode(BSTNode<Entry<K, V>> node) {
+		if (node.getLeft() == null)
+			return node;
+		return this.minNode(node.getLeft());
 	}
 
 	@Override

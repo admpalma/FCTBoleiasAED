@@ -2,11 +2,11 @@ package dataStructures;
 
 public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final String RIGHTRIGHT = "11";
+	private static final String RIGHTLEFT = "10";
+	private static final String LEFTRIGHT = "01";
+	private static final String LEFTLEFT = "00";
+
 	// metodos comuns a arvores binarias de pesquisa avancadas
 	// Operacoes basicas para trocar a forma da arvore tratando
 	// de reduzir a sua altura
@@ -21,6 +21,10 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 	protected void rotateLeft(BSTNode<Entry<K, V>> Y) {
 		// a single rotation modifies a constant number of parent-child relationships,
 		// it can be implemented in O(1)time
+		BSTNode<Entry<K, V>> pivot = Y.right;
+		Y.right = pivot.left;
+		pivot.left = Y;
+		Y.parent = pivot;
 	}
 
 	/**
@@ -34,6 +38,10 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 	protected void rotateRight(BSTNode<Entry<K, V>> Y) {
 		// a single rotation modifies a constant number of parent-child relationships,
 		// it can be implemented in O(1)time
+		BSTNode<Entry<K, V>> pivot = Y.left;
+		Y.left = pivot.right;
+		pivot.right = Y;
+		Y.parent = pivot;
 	}
 
 	/**
@@ -66,6 +74,64 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 		// time
 		// TODO
 
-		return null;
+		BSTNode<Entry<K, V>> y = x.parent; // PARENT
+		BSTNode<Entry<K, V>> z = y.parent; // GRANDPARENT
+
+		BSTNode<Entry<K, V>> newRoot = x;
+		
+		/*
+		 * a) y is left child of z and x is left child of y (Left Left Case) return y
+		 * b) y is left child of z and x is right child of y (Left Right Case) return x
+		 * c) y is right child of z and x is right child of y (Right Right Case) return y
+		 * d) y is right child of z and x is left child of y (Right Left Case) return x
+		 */
+
+		String bitSequence = generateBits(x, y, z);
+		
+		/*
+		 * bitSequence is a String representing a two bit number
+		 * bit 1 represents parent relationship between y and z
+		 * bit 0 represents parent relationship between x and y
+		 * when the former is the latter's right child, bit is set to 1
+		 * when the former is the latter's left  child, bit is set to 0
+		*/
+
+		switch (bitSequence) {
+		case LEFTLEFT:
+			rotateRight(z);
+			newRoot = y;
+			break;
+		case LEFTRIGHT:
+			rotateLeft(y);
+			rotateRight(z);
+			// newRoot was initialized to x to save operation
+			break;
+		case RIGHTLEFT:
+			rotateRight(y);
+			rotateLeft(z);
+			// newRoot was initialized to x to save operation
+			break;
+		case RIGHTRIGHT:
+			rotateLeft(z);
+			newRoot = y;
+			break;
+		}
+
+		return newRoot;
+	}
+
+	/**
+	 * Generates a String representing a two bit number based on parent relationships between the nodes
+	 * @param x base of restructure 
+	 * @param y {@link BSTNode x}'s {@link BSTNode parent}
+	 * @param z {@link BSTNode y}'s {@link BSTNode parent}
+	 * @return {@link String bit sequence}
+	 */
+	private String generateBits(BSTNode<Entry<K, V>> x, BSTNode<Entry<K, V>> y, BSTNode<Entry<K, V>> z) {
+		char[] sequence = new char[2];
+		sequence[0] = z.getRight().equals(y) ? '1' : '0'; // BIT 1
+		sequence[1] = y.getRight().equals(x) ? '1' : '0'; // BIT 0
+		String res = new String(sequence);
+		return res;
 	}
 }
