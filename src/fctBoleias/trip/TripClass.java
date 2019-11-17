@@ -185,4 +185,12 @@ public class TripClass implements Trip {
 		return sb.toString();
 	}
 
+	@Override
+	public String toDateAndDriverString() {
+		StringBuilder sb = new StringBuilder(40);
+		String newLine = System.lineSeparator();
+		sb.append(date.toDateString()).append(" ").append(driver.getEmail()).append(newLine);
+		return sb.toString();
+	}
+
 }

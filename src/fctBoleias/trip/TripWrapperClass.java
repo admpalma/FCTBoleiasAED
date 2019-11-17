@@ -64,4 +64,9 @@ public class TripWrapperClass implements TripWrapper {
 		return trip.toRideString();
 	}
 
+	@Override
+	public String toDateAndDriverString() {
+		return trip.toDateAndDriverString();
+	}
+
 }

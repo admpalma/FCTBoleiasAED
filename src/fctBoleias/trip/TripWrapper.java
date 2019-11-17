@@ -81,6 +81,13 @@ public interface TripWrapper extends Wrapper {
 	 * @return {@link String} describing the {@link Trip} which is being taken as a ride
 	 */
 	String toRideString();
+	
+	/**
+	 * Returns a {@link String} with the following format:<p>
+	 * {@link BasicDateTime#toString() date} {@link #getDriverEmail() driver email}<br>
+	 * @return {@link String} describing the {@link Trip}
+	 */
+	String toDateAndDriverString();
 
 	/**
 	 * @return the number of free slots in this {@link Trip}

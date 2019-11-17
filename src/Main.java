@@ -749,8 +749,7 @@ public class Main {
 	private static void listAllTrips(Manager manager) {
 		Iterator<TripWrapper> trips = manager.getAllTrips();
 		while (trips.hasNext()) {
-			TripWrapper trip = trips.next();
-			System.out.printf("%s %s%n%n", trip.getBasicDateTime().toDateString(), trip.getDriverEmail());
+			System.out.println(trips.next().toDateAndDriverString());
 		}
 	}
 
