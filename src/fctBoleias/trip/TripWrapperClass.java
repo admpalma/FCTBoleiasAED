@@ -60,8 +60,8 @@ public class TripWrapperClass implements TripWrapper {
 	}
 
 	@Override
-	public String toRideString() {
-		return trip.toRideString();
+	public String toMediumDetailString() {
+		return trip.toMediumDetailString();
 	}
 
 	@Override

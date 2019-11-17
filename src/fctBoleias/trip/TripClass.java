@@ -165,7 +165,7 @@ public class TripClass implements Trip {
 	}
 
 	@Override
-	public String toRideString() {
+	public String toMediumDetailString() {
 		return this.toSimpleString();
 	}
 	

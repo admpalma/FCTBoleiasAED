@@ -716,7 +716,7 @@ public class Main {
 				listUserTrips(manager);
 				break;
 			case "BOLEIAS":
-				listCurrentUserRides(manager.getCurrentUserRides());
+				listWithMediumDetailsTrips(manager.getCurrentUserRides());
 				break;
 			case "TODAS":
 				listAllTrips(manager);
@@ -726,7 +726,7 @@ public class Main {
 				if (listingMode.matches(DATE_ALLOWED_PATTERN)) {
 					listDateTrips(manager, listingMode);
 				} else {
-					listCurrentUserRides(manager.getUserTrips(listingMode));
+					listWithMediumDetailsTrips(manager.getUserTrips(listingMode));
 				}
 				break;
 			}
@@ -785,7 +785,7 @@ public class Main {
 	}
 
 	/**
-	 * Auxiliary method to list all {@link Trip trips} being taken as a ride given in the {@link Iterator}<p>
+	 * Auxiliary method to list all {@link Trip trips} given in the {@link Iterator}<p>
 	 * Format:<br>
 	 * {@link #getDriverEmail() driver email}<br>
 	 * {@link #getOrigin() origin}-{@link #getDestination() destination}<br>
@@ -795,9 +795,9 @@ public class Main {
 	 *                be fetched and listed from
 	 * @param date    {@link String date} of the {@link Trip trips} we want to list
 	 */
-	private static void listCurrentUserRides(Iterator<TripWrapper> iterator) {
+	private static void listWithMediumDetailsTrips(Iterator<TripWrapper> iterator) {
 		while (iterator.hasNext()) {
-			System.out.println(iterator.next().toRideString());
+			System.out.println(iterator.next().toMediumDetailString());
 		}
 
 	}
