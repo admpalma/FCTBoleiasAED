@@ -36,55 +36,48 @@ public class MapWithSinglyLinkedList<K, V> extends SinglyLinkedList<Entry<K, V>>
 					return entry.getValue();
 				}
 			}
-		} else {
-			return null;
 		}
-		throw new AssertionError("Unreachable Code!");
+		return null;
 	}
 
 	@Override
 	public V insert(K key, V value) {
-
 		SListNode<Entry<K, V>> e = head;
-
 		while (e != null) {
-			if (e.getElement().getKey().equals(key)) {
-				V oldValue = e.getElement().getValue();
+			Entry<K, V> oldElem = e.getElement();
+			if (oldElem.getKey().equals(key)) {
 				e.setElement(new EntryClass<K, V>(key, value));
-				return oldValue;
+				return oldElem.getValue();
 			}
 			e = e.getNext();
 		}
-
 		addLast(new EntryClass<K, V>(key, value));
-
 		return null;
 	}
 
 	@Override
 	public V remove(K key) {
-
-		SListNode<Entry<K, V>> previous = head;
-		SListNode<Entry<K, V>> current;
-		try {
-			current = previous.getNext();
-		} catch (NullPointerException e) {
+		if (isEmpty()) {
+			return null;
+		} else if (head.getElement().getKey().equals(key)) {
+			return removeFirst().getValue();
+		} else if (tail.getElement().getKey().equals(key)) {
+			return removeLast().getValue();
+		} else {
+			SListNode<Entry<K, V>> previous = head;
+			SListNode<Entry<K, V>> current = previous.getNext();
+			while (current != null) {
+				Entry<K, V> currentElem = current.getElement();
+				if (currentElem.getKey().equals(key)) {
+					previous.setNext(current.getNext());
+					currentSize--;
+					return currentElem.getValue();
+				}
+				previous = current;
+				current = current.getNext();
+			}
 			return null;
 		}
-
-		if (previous.getElement().getKey().equals(key)) {
-			return previous.getElement().getValue();
-		}
-
-		while (current != null) {
-			if (current.getElement().getKey().equals(key)) {
-				previous.setNext(current.getNext());
-				return current.getElement().getValue();
-			}
-			previous = current;
-			current = current.getNext();
-		}
-		return null;
 	}
 
 }
