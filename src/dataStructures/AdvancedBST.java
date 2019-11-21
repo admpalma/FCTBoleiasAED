@@ -27,9 +27,19 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 		// a single rotation modifies a constant number of parent-child relationships,
 		// it can be implemented in O(1)time
 		BSTNode<Entry<K, V>> pivot = Y.right;
+		
+		rotateAux(Y);
+
+		Y.right.parent = Y.parent;
+		Y.right = pivot.left;
+		pivot.left = Y;
+
+
+		/*
 		Y.right = pivot.left;
 		pivot.left = Y;
 		Y.parent = pivot;
+		*/
 	}
 
 	/**
@@ -44,9 +54,27 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 		// a single rotation modifies a constant number of parent-child relationships,
 		// it can be implemented in O(1)time
 		BSTNode<Entry<K, V>> pivot = Y.left;
+
+		rotateAux(Y);
+		Y.left.parent = Y.parent;
 		Y.left = pivot.right;
-		pivot.right = Y;
-		Y.parent = pivot;
+		pivot.right = Y;	
+		
+	}
+	
+	/**
+	 * This method does the mutual part of the rotation for both rotateLeft and rotateRight
+	 * Checks if our root of rotation is the tree's root
+	 * @param Y - root of rotation
+	 */
+	private void rotateAux(BSTNode<Entry<K, V>> Y) {
+		if (Y == root) {
+			root = Y.left;
+		} else if (Y.parent.left == Y) {
+			Y.parent.left = Y.left;
+		} else {
+			Y.parent.right = Y.left;
+		}
 	}
 
 	/**
@@ -76,20 +104,19 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 		// and is first rotated above its parent Y, and then above what was originally
 		// its grandparent Z.
 		// In any of the cases, the trinode restructuring is completed with O(1)running
-		// time
-		// TODO
-
-		BSTNode<Entry<K, V>> y = x.parent; // PARENT
-		BSTNode<Entry<K, V>> z = y.parent; // GRANDPARENT
-
-		BSTNode<Entry<K, V>> newRoot = x;
-
+		// time							
+		
 		/*
 		 * a) y is left child of z and x is left child of y (Left Left Case) return y b)
 		 * y is left child of z and x is right child of y (Left Right Case) return x c)
 		 * y is right child of z and x is right child of y (Right Right Case) return y
 		 * d) y is right child of z and x is left child of y (Right Left Case) return x
 		 */
+
+		BSTNode<Entry<K, V>> y = x.parent; // PARENT
+		BSTNode<Entry<K, V>> z = y.parent; // GRANDPARENT
+
+		BSTNode<Entry<K, V>> newRoot = x;
 
 		String bitSequence = generateBits(x, y, z);
 
