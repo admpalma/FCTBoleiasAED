@@ -1,36 +1,44 @@
 package dataStructures;
 
 public class StackInList<E> implements Stack<E> {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	// Memory of the stack: an array.
+	protected List<E> elements;
 
-	private List<E> list;
-	
 	public StackInList() {
-		list = new SinglyLinkedList<E>();
+		elements = new SinglyLinkedList<E>();
 	}
-	
+
 	@Override
 	public boolean isEmpty() {
-		return list.isEmpty();
+		return elements.isEmpty();
 	}
 
 	@Override
 	public int size() {
-		return list.size();
+		return elements.size();
 	}
 
 	@Override
 	public E top() throws NoElementException {
-		return list.getLast();
+		if (isEmpty())
+			throw new NoElementException("Stack is empty.");
+		return elements.getFirst();
 	}
 
 	@Override
 	public void push(E element) {
-		list.addLast(element);
+		elements.addFirst(element);
 	}
 
 	@Override
 	public E pop() throws NoElementException {
-		return list.removeLast();
+		if (isEmpty())
+			throw new NoElementException("Stack is empty.");
+		return elements.removeFirst();
 	}
 
 }
