@@ -93,12 +93,25 @@ class BSTTest {
 		testInsert();
 		for (int i = 9; i >= 0; i--) {
 			bst.remove(i);
-			assertEquals(null, bst.get(i));
+			for (int j = 9; j >= i; j--) {
+				assertEquals(null, bst.get(j));
+			}
+			for (int j = 0; j < i; j++) {
+				assertEquals(j, bst.get(j));
+			}
+			for (int j = 10; j < 20; j++) {
+				assertEquals(j, bst.get(j));
+			}
 			assertEquals(i, bst.size() - 10);
 		}
 		for (int i = 10; i < 20; i++) {
 			bst.remove(i);
-			assertEquals(null, bst.get(i));
+			for (int j = 10; j < i; j++) {
+				assertEquals(null, bst.get(j));
+			}
+			for (int j = i + 1; j < 20; j++) {
+				assertEquals(j, bst.get(j));
+			}
 			assertEquals(19 - i, bst.size());
 		}
 		assertTrue(bst.isEmpty());
