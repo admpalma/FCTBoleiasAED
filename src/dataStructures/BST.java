@@ -131,7 +131,7 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		} else {
 			newNode = new BSTNode<Entry<K, V>>(newEntry, closestNode, null, null);
 
-			int num = closestNode.getElement().getKey().compareTo(key);
+			int num = key.compareTo(closestNode.getElement().getKey());
 			if (num == 0) { // If key already existed
 				newNode = new BSTNode<Entry<K, V>>(newEntry, closestNode.parent, null, null);
 				closestNode = newNode;
@@ -156,7 +156,7 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		BSTNode<Entry<K, V>> nextNode = root; // initialize to something
 
 		while (nextNode != null) {
-			int num = current.getElement().getKey().compareTo(key);
+			int num = key.compareTo(current.getElement().getKey());
 
 			if (num == 0) {
 				return current;
