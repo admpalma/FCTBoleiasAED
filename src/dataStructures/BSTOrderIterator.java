@@ -10,8 +10,11 @@ public class BSTOrderIterator<K,V> implements Iterator<Entry<K,V>> {
 	
 	public BSTOrderIterator(BSTNode<Entry<K, V>> root) {
 		this.root = root;
-		rewind();
-		pushLeftSubtree(root);
+		if (root == null) {
+			stack = new StackInList<BSTNode<Entry<K,V>>>();
+		} else {
+			rewind();
+		}
 	}
 
 	private void pushLeftSubtree(BSTNode<Entry<K, V>> node) {
@@ -34,19 +37,20 @@ public class BSTOrderIterator<K,V> implements Iterator<Entry<K,V>> {
 		}
 		
 		BSTNode<Entry<K, V>> node = stack.pop();
+		Entry<K, V> next = node.element;
 
 		if (node.right != null) {
 			node = node.right;
 			pushLeftSubtree(node);
 		}
 
-		return node.element;
+		return next;
 	}
 
 	@Override
 	public void rewind() {
 		stack = new StackInList<BSTNode<Entry<K,V>>>();
-		stack.push(this.root);
+		pushLeftSubtree(root);
 	}
 
 }

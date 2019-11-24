@@ -26,7 +26,7 @@ class BSTTest {
 		int i = 0;
 		while (it.hasNext()) {
 			Entry<Integer, Integer> next = it.next();
-			assertEquals(i++, next.getKey());
+			assertEquals(i, next.getKey());
 			assertEquals(i++, next.getValue());
 		}
 	}

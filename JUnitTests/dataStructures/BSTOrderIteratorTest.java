@@ -31,7 +31,7 @@ class BSTOrderIteratorTest {
 		assertTrue(bstIt.hasNext());
 		int i = 0;
 		while (bstIt.hasNext()) {
-			assertEquals(i++, bstIt.next());
+			assertEquals(i++, bstIt.next().getKey());
 		}
 		assertThrows(NoSuchElementException.class, () -> bstIt.next());
 	}
@@ -48,11 +48,10 @@ class BSTOrderIteratorTest {
 
 	@Test
 	void testNext() {
-		bstItFail = new BSTOrderIterator<Integer, Integer>(null);
 		assertThrows(NoSuchElementException.class, () -> bstItFail.next());
 		int i = 0;
 		while (bstIt.hasNext()) {
-			assertEquals(i++, bstIt.next());
+			assertEquals(i++, bstIt.next().getKey());
 		}
 		assertThrows(NoSuchElementException.class, () -> bstIt.next());
 	}
