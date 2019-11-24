@@ -58,6 +58,7 @@ class BSTTest {
 	@Test
 	void testGet() {
 		testInsert();
+		bst = new BST<Integer, Integer>();
 		testRemove();
 	}
 

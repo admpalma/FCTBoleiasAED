@@ -60,20 +60,21 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	}
 
 	@Override
-	public Iterator<Entry<K, V>> iterator() {
+	public Iterator<Entry<K, V>> iterator() throws NoElementException {
+		if (root == null) {
+			throw new NoElementException();
+		}
 		return new BSTOrderIterator<K, V>(root);
 	}
 
 	@Override
 	public Iterator<K> keys() throws NoElementException {
-		// TODO Auto-generated method stub
-		return null;
+		return new IteratorKeys<K, Entry<K,V>>(this.iterator());
 	}
 
 	@Override
 	public Iterator<V> values() throws NoElementException {
-		// TODO Auto-generated method stub
-		return null;
+		return new IteratorValues<V, Entry<K,V>>(this.iterator());
 	}
 
 	protected BSTNode<Entry<K, V>> findNode(BSTNode<Entry<K, V>> n, K key) {
