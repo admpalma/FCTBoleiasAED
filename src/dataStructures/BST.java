@@ -190,26 +190,26 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 			throw new NoSuchElementException("Node not found!");
 
 		BSTNode<Entry<K, V>> parent = foundNode.getParent();
-		boolean hasRightChild = false;
+		boolean isRightChild = false;
 		// If the node we wish to remove is the parent's right node
 		if (parent != null) {
-			hasRightChild = foundNode.equals(parent.getRight());
+			isRightChild = foundNode.equals(parent.getRight());
 		}
 		int children = 0;
 		if (foundNode.getRight() != null)
 			children += 1;
-		else if (foundNode.getLeft() != null)
+		if (foundNode.getLeft() != null)
 			children += 2;
 
 		switch (children) {
 		case 0: // No children
-			removeInternal(parent, hasRightChild);
+			removeInternal(parent, isRightChild);
 			break;
 		case 1: // Has right child
-			removeWithOneChild(true, parent, foundNode.getRight());
+			removeWithOneChild(isRightChild, parent, foundNode.getRight());
 			break;
 		case 2: // Has left child
-			removeWithOneChild(false, parent, foundNode.getLeft());
+			removeWithOneChild(isRightChild, parent, foundNode.getLeft());
 			break;
 		default: // Has both children
 			removeWithBothChildren(foundNode);
@@ -227,19 +227,23 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		// add the min value as the parent of the right child
 		// clean remaining stuff
 
-		BSTNode<Entry<K, V>> rightChild = foundNode.getRight();
-		BSTNode<Entry<K, V>> minValueNode = minNode(rightChild);
-		BSTNode<Entry<K, V>> removedNodeParent = foundNode.getParent();
+		BSTNode<Entry<K, V>> minValueNode = minNode(foundNode.getRight());
+		assert(minValueNode.left == null);
+		
+		// minValue parent and left child links
+		minValueNode.right.parent = minValueNode.parent;
+		minValueNode.parent.left = minValueNode.right;
+		
+		// minValue links
+		minValueNode.right = foundNode.getRight();
+		minValueNode.left = foundNode.getLeft();
+		minValueNode.parent = foundNode.getParent();
+		
+		// minValue children links
+		minValueNode.right.parent = minValueNode;
+		minValueNode.left.parent = minValueNode;
 
-		minValueNode.right = rightChild;
-		rightChild.parent = minValueNode;
-
-		// TODO CHECK THIS CLEANUP
-		minValueNode.parent.left = null;
-
-		if (removedNodeParent != null) {
-			removedNodeParent.right = minValueNode;
-		} else {
+		if (foundNode == root) {
 			root = minValueNode;
 		}
 
