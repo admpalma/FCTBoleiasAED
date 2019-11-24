@@ -84,7 +84,7 @@ class BSTTest {
 		for (int i = 9; i >= 0; i--) {
 			bst.remove(i);
 			assertEquals(null, bst.get(i));
-			assertEquals(i, bst.size());
+			assertEquals(i, bst.size() - 10);
 		}
 		for (int i = 10; i < 20; i++) {
 			bst.remove(i);

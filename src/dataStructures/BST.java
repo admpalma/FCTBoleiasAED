@@ -189,10 +189,11 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 			throw new NoSuchElementException("Node not found!");
 
 		BSTNode<Entry<K, V>> parent = foundNode.getParent();
-
+		boolean hasRightChild = false;
 		// If the node we wish to remove is the parent's right node
-		boolean amRightChild = parent.getRight().equals(foundNode);
-
+		if (parent != null) {
+			hasRightChild = foundNode.equals(parent.getRight());
+		}
 		int children = 0;
 		if (foundNode.getRight() != null)
 			children += 1;
@@ -201,13 +202,13 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 
 		switch (children) {
 		case 0: // No children
-			removeInternal(parent, amRightChild);
+			removeInternal(parent, hasRightChild);
 			break;
 		case 1: // Has right child
-			removeWithOneChild(amRightChild, parent, foundNode.getRight());
+			removeWithOneChild(true, parent, foundNode.getRight());
 			break;
 		case 2: // Has left child
-			removeWithOneChild(amRightChild, parent, foundNode.getLeft());
+			removeWithOneChild(false, parent, foundNode.getLeft());
 			break;
 		default: // Has both children
 			removeWithBothChildren(foundNode);
@@ -251,6 +252,7 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		} else {
 			parent.left = child;
 		}
+		child.parent = parent;
 	}
 
 	private void removeInternal(BSTNode<Entry<K, V>> parent, boolean amRightChild) {
