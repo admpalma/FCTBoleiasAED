@@ -68,7 +68,8 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 	 * @param Y - root of rotation
 	 */
 	private void rotateAux(BSTNode<Entry<K, V>> Y) {
-		if (Y == root) {
+		//TODO O comentado simula que Y e root, mas tbh isto devia ser abstrato e verificar a root torna-se nonsense
+		if (Y == root /*|| Y.parent == null*/) {
 			root = Y.left;
 		} else if (Y.parent.left == Y) {
 			Y.parent.left = Y.left;
@@ -107,9 +108,9 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 		// time							
 		
 		/*
-		 * a) y is left child of z and x is left child of y (Left Left Case) return y b)
-		 * y is left child of z and x is right child of y (Left Right Case) return x c)
-		 * y is right child of z and x is right child of y (Right Right Case) return y
+		 * a) y is left child of z and x is left child of y (Left Left Case) return y
+		 * b) y is left child of z and x is right child of y (Left Right Case) return x
+		 * c) y is right child of z and x is right child of y (Right Right Case) return y
 		 * d) y is right child of z and x is left child of y (Right Left Case) return x
 		 */
 
