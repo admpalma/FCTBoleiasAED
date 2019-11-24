@@ -17,7 +17,16 @@ class BSTOrderIteratorTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		bst = new BST<Integer, Integer>();
-		for (int i = 0; i < 20; i++) {
+		for (int i = 5; i < 10; i++) {
+			bst.insert(i, i);
+		}
+		for (int i = 0; i < 5; i++) {
+			bst.insert(i, i);
+		}
+		for (int i = 19; i >= 15; i--) {
+			bst.insert(i, i);
+		}
+		for (int i = 10; i < 15; i++) {
 			bst.insert(i, i);
 		}
 		bstIt = new BSTOrderIterator<Integer, Integer>(bst.root);

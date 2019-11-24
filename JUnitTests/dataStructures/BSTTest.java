@@ -65,11 +65,20 @@ class BSTTest {
 	@Test
 	void testInsert() {
 		assertTrue(bst.isEmpty());
-		for (int i = 0; i < 10; i++) {
-			assertEquals(i, bst.size());
+		int j = 0;
+		for (int i = 5; i < 10; i++) {
+			assertEquals(j++, bst.size());
 			bst.insert(i, i);
 		}
-		for (int i = 19, j = 10; i >= 10; i--) {
+		for (int i = 0; i < 5; i++) {
+			assertEquals(j++, bst.size());
+			bst.insert(i, i);
+		}
+		for (int i = 19; i >= 15; i--) {
+			assertEquals(j++, bst.size());
+			bst.insert(i, i);
+		}
+		for (int i = 10; i < 15; i++) {
 			assertEquals(j++, bst.size());
 			bst.insert(i, i);
 		}
