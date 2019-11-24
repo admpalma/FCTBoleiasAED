@@ -104,8 +104,8 @@ class BSTTest {
 		bst.insert(-1, 30);
 		bst.insert(40, -1);
 		min = bst.minEntry();
-		assertEquals(40, min.getKey());
-		assertEquals(-1, min.getValue());
+		assertEquals(-1, min.getKey());
+		assertEquals(30, min.getValue());
 	}
 
 	@Test
@@ -117,8 +117,8 @@ class BSTTest {
 		bst.insert(-1, 30);
 		bst.insert(40, -1);
 		max = bst.maxEntry();
-		assertEquals(-1, max.getKey());
-		assertEquals(30, max.getValue());
+		assertEquals(40, max.getKey());
+		assertEquals(-1, max.getValue());
 	}
 
 	@Test
