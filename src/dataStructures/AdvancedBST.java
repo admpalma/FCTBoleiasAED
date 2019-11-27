@@ -27,19 +27,20 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 		// a single rotation modifies a constant number of parent-child relationships,
 		// it can be implemented in O(1)time
 		BSTNode<Entry<K, V>> pivot = Y.right;
-		
-		rotateAux(Y);
-
-		Y.right.parent = Y.parent;
-		Y.right = pivot.left;
-		pivot.left = Y;
-
-
-		/*
-		Y.right = pivot.left;
-		pivot.left = Y;
+		BSTNode<Entry<K, V>> rootParent = Y.parent;
+		//TODO readability refactor
 		Y.parent = pivot;
-		*/
+		pivot.parent = rootParent;
+		if (rootParent != null) {
+			rootParent.left = pivot;
+		}
+		Y.right = pivot.left;
+		if (pivot.left != null) {
+			pivot.left.parent = Y;
+		}
+		pivot.left = Y;
+		
+		
 	}
 
 	/**
@@ -54,12 +55,18 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 		// a single rotation modifies a constant number of parent-child relationships,
 		// it can be implemented in O(1)time
 		BSTNode<Entry<K, V>> pivot = Y.left;
-
-		rotateAux(Y);
-		Y.left.parent = Y.parent;
+		BSTNode<Entry<K, V>> rootParent = Y.parent;
+		//TODO readability refactor
+		if (pivot.right != null) {
+			pivot.right.parent = Y;
+		}
 		Y.left = pivot.right;
-		pivot.right = Y;	
-		
+		pivot.right = Y;
+		Y.parent = pivot;
+		pivot.parent = rootParent;
+		if (rootParent != null) {
+			rootParent.right = pivot;
+		}
 	}
 	
 	/**
@@ -69,7 +76,7 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 	 */
 	private void rotateAux(BSTNode<Entry<K, V>> Y) {
 		//TODO O comentado simula que Y e root, mas tbh isto devia ser abstrato e verificar a root torna-se nonsense
-		if (Y == root /*|| Y.parent == null*/) {
+		if (Y == root || Y.parent == null) {
 			root = Y.left;
 		} else if (Y.parent.left == Y) {
 			Y.parent.left = Y.left;
