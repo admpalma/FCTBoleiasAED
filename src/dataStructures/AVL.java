@@ -1,5 +1,7 @@
 package dataStructures;
 
+import dataStructures.BST.BSTNode;
+
 public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements SortedMap<K, V> {
 
 	/**
@@ -93,14 +95,24 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 	@Override
 	public V insert(K key, V value) {
 
-		BSTNode<Entry<K, V>> closestNode = findClosest(key);
+		AVLNode<Entry<K, V>> closestNode = (AVLNode<Entry<K, V>>) findClosest(key);
+		
+		EntryClass<K, V> newEntry = new EntryClass<K, V>(key, value);
+		BSTNode<Entry<K, V>> newNode;
 
-		// Key already existed
-		BSTNode<Entry<K, V>> insertedNode = insertAux(key, value, closestNode);
+		if (size() == 0) {
+			newNode = new AVLNode<Entry<K, V>>(newEntry);
+		} else {
+			newNode = new AVLNode<Entry<K, V>>(newEntry, closestNode, null, null);
+		}
+		
+		AVLNode<Entry<K, V>> insertedNode = (AVLNode<Entry<K, V>>) insertAux(key, value, closestNode, newNode);
 		if (insertedNode == null)
 			return closestNode.element.getValue();
 		else {
-			rebalance((AVLNode<Entry<K, V>>) insertedNode);
+			// TODO insertNode.parent was null pointing
+			if (insertedNode!=root)
+				rebalance((AVLNode<Entry<K, V>>) insertedNode);
 		}
 		return null;
 	}

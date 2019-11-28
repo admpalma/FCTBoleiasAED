@@ -105,7 +105,20 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		BSTNode<Entry<K, V>> closestNode = findClosest(key);
 
 		// Key already existed
-		if (insertAux(key, value, closestNode) == null)
+		
+		EntryClass<K, V> newEntry = new EntryClass<K, V>(key, value);
+		
+		//BSTNode<Entry<K, V>> newNode = new BSTNode<Entry<K,V>>(, parent, left, right);
+		BSTNode<Entry<K, V>> newNode;
+
+		if (size() == 0) {
+			newNode = new BSTNode<Entry<K, V>>(newEntry);
+		} else {
+			newNode = new BSTNode<Entry<K, V>>(newEntry, closestNode, null, null);
+		}
+		
+		
+		if (insertAux(key, value, closestNode, newNode) == null)
 			return closestNode.element.getValue();
 
 		currentSize++;
@@ -120,21 +133,22 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	 * @return or null if it replaces the value of an existing entry (key already
 	 *         existed)
 	 */
-	protected BSTNode<Entry<K, V>> insertAux(K key, V value, BSTNode<Entry<K, V>> closestNode) {
+	protected BSTNode<Entry<K, V>> insertAux(K key, V value, BSTNode<Entry<K, V>> closestNode, BSTNode<Entry<K, V>> newNode) {
 
-		BSTNode<Entry<K, V>> newNode = null; // node where the new entry is being inserted (if find(key)==null)
-		Entry<K, V> newEntry = new EntryClass<K, V>(key, value);
+		//BSTNode<Entry<K, V>> newNode = newNode; // node where the new entry is being inserted (if find(key)==null)
+		//Entry<K, V> newEntry = new EntryClass<K, V>(key, value);
 
 		if (size() == 0) {
 			// If the tree was empty we insert as root
-			newNode = new BSTNode<Entry<K, V>>(newEntry);
+			//newNode = new BSTNode<Entry<K, V>>(newEntry);
 			root = newNode;
 		} else {
-			newNode = new BSTNode<Entry<K, V>>(newEntry, closestNode, null, null);
+			//newNode = new BSTNode<Entry<K, V>>(newEntry, closestNode, null, null);
 
 			int num = key.compareTo(closestNode.getElement().getKey());
 			if (num == 0) { // If key already existed
-				newNode = new BSTNode<Entry<K, V>>(newEntry, closestNode.parent, null, null);
+				//newNode = new BSTNode<Entry<K, V>>(newEntry, closestNode.parent, null, null);
+				newNode.parent = newNode.parent.parent;
 				closestNode = newNode;
 				return null;
 			} else if (num < 0)
