@@ -170,8 +170,8 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 	 */
 	private String generateBits(BSTNode<Entry<K, V>> x, BSTNode<Entry<K, V>> y, BSTNode<Entry<K, V>> z) {
 		char[] sequence = new char[2];
-		sequence[0] = z.getRight().equals(y) ? '1' : '0'; // BIT 1
-		sequence[1] = y.getRight().equals(x) ? '1' : '0'; // BIT 0
+		sequence[0] = y.equals(z.getRight()) ? '1' : '0'; // BIT 1
+		sequence[1] = x.equals(y.getRight()) ? '1' : '0'; // BIT 0
 		String res = new String(sequence);
 		return res;
 	}
