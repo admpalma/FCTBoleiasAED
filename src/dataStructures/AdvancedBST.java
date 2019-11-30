@@ -32,7 +32,11 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 		Y.parent = pivot;
 		pivot.parent = rootParent;
 		if (rootParent != null) {
-			rootParent.left = pivot;
+			if (rootParent.element.getKey().compareTo(pivot.element.getKey()) < 0) {
+				rootParent.right = pivot;
+			} else {
+				rootParent.left = pivot;
+			}
 		}
 		Y.right = pivot.left;
 		if (pivot.left != null) {
@@ -65,7 +69,11 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 		Y.parent = pivot;
 		pivot.parent = rootParent;
 		if (rootParent != null) {
-			rootParent.right = pivot;
+			if (rootParent.element.getKey().compareTo(pivot.element.getKey()) < 0) {
+				rootParent.right = pivot;
+			} else {
+				rootParent.left = pivot;
+			}
 		}
 	}
 	
