@@ -64,9 +64,9 @@ public class ManagerClass implements Manager {
 			SortedMap<String, Trip> tripsInDay = tripsByDate.get(dateTime);
 			if (tripsInDay == null) {
 				tripsInDay = new SortedMapWithJavaClass<String, Trip>();
+				tripsByDate.insert(dateTime, tripsInDay);
 			}
 			tripsInDay.insert(currentUser.getEmail(), newTrip);
-			tripsByDate.insert(dateTime, tripsInDay);
 		} catch (InvalidDateException e) {
 			throw new InvalidTripDataException(e);
 		}
