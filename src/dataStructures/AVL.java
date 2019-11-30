@@ -1,7 +1,5 @@
 package dataStructures;
 
-import dataStructures.BST.BSTNode;
-
 public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements SortedMap<K, V> {
 
 	/**
@@ -114,6 +112,7 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 			if (insertedNode!=root)
 				rebalance((AVLNode<Entry<K, V>>) insertedNode);
 		}
+		currentSize++;
 		return null;
 	}
 
@@ -126,6 +125,7 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 
 		// TODO not always needed? if we remove the root probably not
 		rebalance((AVLNode<Entry<K, V>>) removed); // rebalance up from the node
+		currentSize--;
 		return removed.element.getValue();
 	}
 
