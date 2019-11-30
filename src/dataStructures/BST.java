@@ -101,76 +101,88 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 
 	@Override
 	public V insert(K key, V value) {
-
 		BSTNode<Entry<K, V>> closestNode = findClosest(key);
-
-		// Key already existed
-		
-		EntryClass<K, V> newEntry = new EntryClass<K, V>(key, value);
-		
-		//BSTNode<Entry<K, V>> newNode = new BSTNode<Entry<K,V>>(, parent, left, right);
-		BSTNode<Entry<K, V>> newNode;
-
-		if (size() == 0) {
-			newNode = new BSTNode<Entry<K, V>>(newEntry);
-		} else {
-			newNode = new BSTNode<Entry<K, V>>(newEntry, closestNode, null, null);
+		V overriddenValue = null;
+		if (closestNode != null) {
+			overriddenValue = closestNode.element.getValue();
 		}
-		
-		
-		if (insertAux(key, value, closestNode, newNode) == null)
-			return closestNode.element.getValue();
-
-		currentSize++;
-		return null;
+		BSTNode<Entry<K, V>> insertedNode = insertAux(key, value, closestNode);
+		if (closestNode == insertedNode) {
+			return overriddenValue;
+		} else {
+			return null;
+		}
 	}
-
+	
+	/**
+	 * Factory method to create new {@link BSTNode BSTNodes}.<br>
+	 * May be overridden by subclasses that require more specialized nodes.
+	 * @param element new {@link BSTNode BSTNode's} {@link BSTNode#element}
+	 * @param parent new {@link BSTNode BSTNode's} {@link BSTNode#parent}
+	 * @param left new {@link BSTNode BSTNode's} {@link BSTNode#left}
+	 * @param right new {@link BSTNode BSTNode's} {@link BSTNode#right}
+	 * @return new {@link BSTNode} initialized with the given parameters
+	 */
+	protected BSTNode<Entry<K, V>> nodeOf(Entry<K, V> element, BSTNode<Entry<K, V>> parent, BSTNode<Entry<K, V>> left, BSTNode<Entry<K, V>> right) {
+		//TODO isto com genericos era lit mas da um pouco de trabalho
+		return new BSTNode<Entry<K, V>>(element, parent, left, right);
+	}
+	
 	/**
 	 * 
 	 * @param key
 	 * @param value
 	 * @param closestNode
-	 * @return or null if it replaces the value of an existing entry (key already
-	 *         existed)
+	 * @return
 	 */
-	protected BSTNode<Entry<K, V>> insertAux(K key, V value, BSTNode<Entry<K, V>> closestNode, BSTNode<Entry<K, V>> newNode) {
-
-		//BSTNode<Entry<K, V>> newNode = newNode; // node where the new entry is being inserted (if find(key)==null)
-		//Entry<K, V> newEntry = new EntryClass<K, V>(key, value);
-
-		if (size() == 0) {
-			// If the tree was empty we insert as root
-			//newNode = new BSTNode<Entry<K, V>>(newEntry);
-			root = newNode;
+	protected BSTNode<Entry<K, V>> insertAux(K key, V value, BSTNode<Entry<K, V>> closestNode) {
+		BSTNode<Entry<K, V>> insertedNode;
+		if (this.isEmpty()) {
+			insertedNode = nodeOf(new EntryClass<K, V>(key, value), null, null, null);
+			root = insertedNode;
+			currentSize++;
 		} else {
-			//newNode = new BSTNode<Entry<K, V>>(newEntry, closestNode, null, null);
-
-			int num = key.compareTo(closestNode.getElement().getKey());
+			assert(closestNode != null);
+			int num = key.compareTo(closestNode.element.getKey());
 			if (num == 0) { // If key already existed
-				//newNode = new BSTNode<Entry<K, V>>(newEntry, closestNode.parent, null, null);
-				newNode.parent = newNode.parent.parent;
-				closestNode = newNode;
-				return null;
-			} else if (num < 0)
-				closestNode.left = newNode;
-			else
-				closestNode.right = newNode;
+				closestNode.element = new EntryClass<K, V>(key, value);
+				insertedNode = closestNode;
+			} else {
+				insertedNode = nodeOf(new EntryClass<K, V>(key, value), closestNode, null, null);
+				if (num < 0) {
+					closestNode.left = insertedNode;
+				} else {
+					closestNode.right = insertedNode;
+				}
+				currentSize++;
+			}	
 		}
-		return newNode;
+		return insertedNode;
 	}
 
 	/**
 	 * Finds the closest node to insert or the node with the same key
 	 * 
 	 * @param key key to find
-	 * @return
+	 * @return <code>null</code> if this {@link BST} is empty, otherwise:<br>
+	 * 
+	 * {@link BSTNode} of this {@link BST}
+	 * that has an {@link Entry} with an equal <code>key</code> to the given one as it's {@link BSTNode#element element} 
+	 * if there is such a {@link BSTNode};<br>
+	 * 
+	 * {@link BSTNode} of this {@link BST} fit to be the parent of another {@link BSTNode} 
+	 * that has an {@link Entry} with the given <code>key</code> as it's {@link BSTNode#element element}
+	 * if there is no {@link BSTNode} matching the previous situation.
 	 */
 	protected BSTNode<Entry<K, V>> findClosest(K key) {
+		if (this.isEmpty()) {
+			return null;
+		}
 
 		BSTNode<Entry<K, V>> current = root;
-		BSTNode<Entry<K, V>> nextNode = root; // initialize to something
+		BSTNode<Entry<K, V>> nextNode;
 
-		while (nextNode != null) {
+		do {
 			int num = key.compareTo(current.getElement().getKey());
 
 			if (num == 0) {
@@ -184,7 +196,7 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 				return current;
 			}
 			current = nextNode;
-		}
+		} while (nextNode != null);
 		return current;
 	}
 
