@@ -1,7 +1,5 @@
 package dataStructures;
 
-import dataStructures.BST.BSTNode;
-
 public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements SortedMap<K, V> {
 
 	/**
@@ -10,6 +8,11 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 	private static final long serialVersionUID = 1L;
 
 	static class AVLNode<E> extends BSTNode<E> {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		
 		// Height of the node
 		protected int height;
 
@@ -34,8 +37,12 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 		}
 
 		public boolean isBalance() {
-			int dif = getHeight((AVLNode<E>) left) - getHeight((AVLNode<E>) right);
+			int dif = getBalance();
 			return dif == 0 || dif == -1 || dif == 1;
+		}
+		
+		public int getBalance() {
+			return getHeight((AVLNode<E>) left) - getHeight((AVLNode<E>) right);
 		}
 
 		public int setHeight() {
@@ -53,16 +60,32 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 	}
 
 	/**
-	 * Return a child of p with greater height
+	 * Return a child of p with greater height, <code>null</code> if both children have the same height
 	 */
 	protected AVLNode<Entry<K, V>> tallerChild(AVLNode<Entry<K, V>> p) {
 		AVLNode<Entry<K, V>> left = (AVLNode<Entry<K, V>>) p.left;
-		AVLNode<Entry<K, V>> right = (AVLNode<Entry<K, V>>) p.left;
+		AVLNode<Entry<K, V>> right = (AVLNode<Entry<K, V>>) p.right;
+		if (p.getHeight(left) == p.getHeight(right)) {
+			return null;
+		} else {
+			return p.getHeight(left) > p.getHeight(right) ? left : right;
+		}
+	}
 
-		// If left node's height is higher, return left node
-		// If right node's height is higher, return right node
-		return p.getHeight(left) > p.getHeight(right) ? left : right;
-
+	@Override
+	public V insert(K key, V value) {
+		AVLNode<Entry<K, V>> closestNode = (AVLNode<Entry<K, V>>) findClosest(key);
+		V overriddenValue = null;
+		if (closestNode != null) {
+			overriddenValue = closestNode.element.getValue();
+		}
+		AVLNode<Entry<K, V>> insertedNode = (AVLNode<Entry<K, V>>) insertAux(key, value, closestNode);
+		if (closestNode == insertedNode) {
+			return overriddenValue;
+		} else {
+			rebalance(insertedNode);
+			return null;
+		}
 	}
 
 	/**
@@ -71,50 +94,37 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 	 * trinode restructuring if it's unbalanced. the rebalance is completed with
 	 * O(log n)running time
 	 */
-	protected void rebalance(AVLNode<Entry<K, V>> zPos) {
-		if (zPos.isInternal())
-			zPos.setHeight();
-		// Melhorar se possivel
-		while (zPos != null) { // traverse up the tree towards the root
-			zPos = (AVLNode<Entry<K, V>>) zPos.getParent();
-			zPos.setHeight();
-			if (!zPos.isBalance()) {
-				// perform a trinode restructuring at zPos's tallest grandchild
-				// If yPos (tallerChild(zPos)) denote the child of zPos with greater height.
-				// Finally, let xPos be the child of yPos with greater height
-				AVLNode<Entry<K, V>> xPos = tallerChild((AVLNode<Entry<K, V>>) tallerChild(zPos));
-				zPos = (AVLNode<Entry<K, V>>) restructure(xPos); // tri-node restructure (from parent class)
-				((AVLNode<Entry<K, V>>) zPos.getLeft()).setHeight(); // recompute heights
-				((AVLNode<Entry<K, V>>) zPos.getRight()).setHeight();
-				zPos.setHeight();
-			} else
-				break; // TODO this? If the node is not unbalanced then none above it are
+	protected void rebalance(AVLNode<Entry<K, V>> z) {
+		if (z.isInternal()) {
+			z.setHeight();
 		}
+		while (!z.isBalance()) {
+			z = rebalanceSubtree(z);
+			if (z.parent == null) {
+				root = z;
+			}
+		}
+	}
+	
+	/**
+	 * Rebalances a subtree rooted at z
+	 * @param z root of the subtree to rebalance
+	 * @return root of the balanced subtree
+	 */
+	private AVLNode<Entry<K, V>> rebalanceSubtree(AVLNode<Entry<K, V>> z) {
+		assert(tallerChild(z) != null);
+		assert(tallerChild(tallerChild(z)) != null);
+		z = (AVLNode<Entry<K, V>>) restructure(tallerChild(tallerChild(z)));
+		((AVLNode<Entry<K, V>>) z.getLeft()).setHeight();
+	    ((AVLNode<Entry<K, V>>) z.getRight()).setHeight();
+		z.setHeight();
+		return z;
 	}
 
 	@Override
-	public V insert(K key, V value) {
-
-		AVLNode<Entry<K, V>> closestNode = (AVLNode<Entry<K, V>>) findClosest(key);
-		
-		EntryClass<K, V> newEntry = new EntryClass<K, V>(key, value);
-		BSTNode<Entry<K, V>> newNode;
-
-		if (size() == 0) {
-			newNode = new AVLNode<Entry<K, V>>(newEntry);
-		} else {
-			newNode = new AVLNode<Entry<K, V>>(newEntry, closestNode, null, null);
-		}
-		
-		AVLNode<Entry<K, V>> insertedNode = (AVLNode<Entry<K, V>>) insertAux(key, value, closestNode, newNode);
-		if (insertedNode == null)
-			return closestNode.element.getValue();
-		else {
-			// TODO insertNode.parent was null pointing
-			if (insertedNode!=root)
-				rebalance((AVLNode<Entry<K, V>>) insertedNode);
-		}
-		return null;
+	protected BSTNode<Entry<K, V>> nodeOf(Entry<K, V> element, BSTNode<Entry<K, V>> parent, BSTNode<Entry<K, V>> left, BSTNode<Entry<K, V>> right) {
+		//TODO isto com genericos era lit mas da um pouco de trabalho
+		return new AVLNode<Entry<K, V>>(element, (AVLNode<Entry<K, V>>) parent, (AVLNode<Entry<K, V>>) left, (AVLNode<Entry<K, V>>) right);
 	}
 
 	@Override
@@ -122,10 +132,9 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 		if (isEmpty())
 			return null;
 
-		BSTNode<Entry<K, V>> removed = removeAux(key);
-
+		AVLNode<Entry<K, V>> removed = (AVLNode<Entry<K, V>>) removeAux(key);
 		// TODO not always needed? if we remove the root probably not
-		rebalance((AVLNode<Entry<K, V>>) removed); // rebalance up from the node
+		rebalance(removed); // rebalance up from the node
 		return removed.element.getValue();
 	}
 

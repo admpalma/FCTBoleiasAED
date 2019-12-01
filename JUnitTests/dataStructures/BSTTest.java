@@ -15,7 +15,7 @@ class BSTTest {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		bst = new BST<Integer, Integer>();
+		bst = newTree();
 	}
 
 	@Test
@@ -58,8 +58,12 @@ class BSTTest {
 	@Test
 	void testGet() {
 		testInsert();
-		bst = new BST<Integer, Integer>();
+		bst = newTree();
 		testRemove();
+	}
+
+	protected BST<Integer, Integer> newTree() {
+		return new BST<Integer, Integer>();
 	}
 
 	@Test
