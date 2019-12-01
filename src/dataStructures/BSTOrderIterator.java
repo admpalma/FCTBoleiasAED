@@ -4,7 +4,7 @@ import dataStructures.BST.BSTNode;
 
 public class BSTOrderIterator<K,V> implements Iterator<Entry<K,V>> {
 
-	private Stack<BSTNode<Entry<K, V>>> stack;
+	protected Stack<BSTNode<Entry<K, V>>> stack;
 	/** For rewind*/
 	private BSTNode<Entry<K, V>> root; 
 	

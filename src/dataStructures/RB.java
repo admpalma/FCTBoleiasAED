@@ -34,6 +34,21 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 		public boolean isRed() {
 			return isRed;
 		}
+		
+		/**
+		 * @return <code>true</code> if one of {@link RBNode this RBNode's} adjancent {@link RBNode RBNodes} is red,
+		 * <code>false</code> otherwise
+		 */
+		public boolean hasAdjacentRed() {
+			if (parent != null && ((RBNode<E>) parent).isRed()) {
+				return true;
+			} else if (right != null && ((RBNode<E>) right).isRed()) {
+				return true;
+			} else if (left != null && ((RBNode<E>) left).isRed()) {
+				return true;
+			}
+			return false;
+		}
 
 	}
 
