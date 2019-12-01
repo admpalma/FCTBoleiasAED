@@ -3,6 +3,7 @@ package fctBoleias;
 import basicDateTime.BasicDateTime;
 import basicDateTime.BasicDateTimeClass;
 import basicDateTime.InvalidDateException;
+import dataStructures.AVL;
 import dataStructures.Iterator;
 import dataStructures.NestedMapValuesIterator;
 import dataStructures.IteratorWrappable;
@@ -10,7 +11,6 @@ import dataStructures.Map;
 import dataStructures.NoElementException;
 import dataStructures.SepChainHashTable;
 import dataStructures.SortedMap;
-import dataStructures.SortedMapWithJavaClass;
 import fctBoleias.trip.CantRideSelfException;
 import fctBoleias.trip.InvalidTripDataException;
 import fctBoleias.trip.Trip;
@@ -41,7 +41,7 @@ public class ManagerClass implements Manager {
 	public ManagerClass() {
 		this.currentUser = null;
 		usersByEmail = new SepChainHashTable<String, User>(10000);
-		tripsByDate = new SortedMapWithJavaClass<BasicDateTime, SortedMap<String, Trip>>();
+		tripsByDate = new AVL<BasicDateTime, SortedMap<String, Trip>>();
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class ManagerClass implements Manager {
 			currentUser.addTrip(newTrip);
 			SortedMap<String, Trip> tripsInDay = tripsByDate.get(dateTime);
 			if (tripsInDay == null) {
-				tripsInDay = new SortedMapWithJavaClass<String, Trip>();
+				tripsInDay = new AVL<String, Trip>();
 				tripsByDate.insert(dateTime, tripsInDay);
 			}
 			tripsInDay.insert(currentUser.getEmail(), newTrip);

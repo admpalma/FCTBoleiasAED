@@ -1,10 +1,10 @@
 package fctBoleias.user;
 
 import basicDateTime.BasicDateTime;
+import dataStructures.AVL;
 import dataStructures.Iterator;
 import dataStructures.NoElementException;
 import dataStructures.SortedMap;
-import dataStructures.SortedMapWithJavaClass;
 import fctBoleias.DateOccupiedException;
 import fctBoleias.NoRegisteredTripsException;
 import fctBoleias.NoRideOnDayException;
@@ -42,8 +42,8 @@ public class UserClass implements User {
 		this.name = name;
 		this.password = password;
 		this.nLogins = 0;
-		trips = new SortedMapWithJavaClass<BasicDateTime, Trip>();
-		rides = new SortedMapWithJavaClass<BasicDateTime, Trip>();
+		trips = new AVL<BasicDateTime, Trip>();
+		rides = new AVL<BasicDateTime, Trip>();
 	}
 
 	@Override
