@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import dataStructures.BST.BSTNode;
 
-class AdvancedBSTTest extends BSTTest {
+abstract class AbstractAdvancedBSTTest extends BSTTest {
 
 	protected static final int x  = 2;
 	protected static final int y  = 1;
@@ -28,8 +28,8 @@ class AdvancedBSTTest extends BSTTest {
 	@SuppressWarnings("unchecked")
 	@BeforeEach
 	void setUp() throws Exception {
-		bst = new AdvancedBST<Integer, Integer>();
-		advancedBST = new AdvancedBST<Integer, Integer>();
+		bst = newTree();
+		advancedBST = (AdvancedBST<Integer, Integer>) newTree();
 		nodes = (BSTNode<Entry<Integer, Integer>>[][]) new BSTNode<?>[4][7];
 		for (int i = 0; i < 4; i++) {
 			setNodeTree(i);

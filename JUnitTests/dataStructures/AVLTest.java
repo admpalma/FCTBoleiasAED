@@ -7,16 +7,16 @@ import org.junit.jupiter.api.Test;
 
 import dataStructures.AVL.AVLNode;
 
-class AVLTest extends AdvancedBSTTest {
+class AVLTest extends AbstractAdvancedBSTTest {
 
 	protected AVL<Integer, Integer> avl;
 
 	@SuppressWarnings("unchecked")
 	@BeforeEach
 	void setUp() throws Exception {
-		bst = new AVL<Integer, Integer>();
-		advancedBST = new AVL<Integer, Integer>();
-		avl = new AVL<Integer, Integer>();
+		bst = newTree();
+		advancedBST = (AdvancedBST<Integer, Integer>) newTree();
+		avl = (AVL<Integer, Integer>) newTree();
 		nodes = (AVLNode<Entry<Integer, Integer>>[][]) new AVLNode<?>[4][7];
 		for (int i = 0; i < 4; i++) {
 			setNodeTree(i);
