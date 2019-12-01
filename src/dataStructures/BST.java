@@ -1,5 +1,7 @@
 package dataStructures;
 
+import java.io.Serializable;
+
 public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 
 	/**
@@ -7,8 +9,13 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	static class BSTNode<E> {
+	static class BSTNode<E> implements Serializable {
 
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		
 		protected BSTNode<E> parent;
 		protected BSTNode<E> left;
 		protected BSTNode<E> right;
@@ -237,7 +244,8 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 			removeWithOneChild(isRightChild, parent, foundNode.getLeft());
 			break;
 		default: // Has both children
-			removeWithBothChildren(foundNode);
+			BSTNode<Entry<K, V>> nodeToUpdate = foundNode;
+			removeWithBothChildren(nodeToUpdate);
 			break;
 
 		}
@@ -246,34 +254,27 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	}
 
 	// TODO may still not work, stuff missing?
-	private void removeWithBothChildren(BSTNode<Entry<K, V>> foundNode) {
+	private void removeWithBothChildren(BSTNode<Entry<K, V>> nodeToUpdate) {
 		// get min value of the right child
 		// put that on the place of removal
 		// add the right child as the right child of the min value node
 		// add the min value as the parent of the right child
 		// clean remaining stuff
 
-		BSTNode<Entry<K, V>> minValueNode = minNode(foundNode.getRight());
+		BSTNode<Entry<K, V>> minValueNode = minNode(nodeToUpdate.getRight());
 		assert(minValueNode.left == null);
 		
+		boolean isRightChild = false;
+		// If the node we wish to remove is the parent's right node
+		if (minValueNode.parent != null) {
+			isRightChild = minValueNode.equals(minValueNode.parent.getRight());
+		}
+		nodeToUpdate.element = minValueNode.element;
 		if (minValueNode.right != null) {
-			// minValue parent and left child links
-			minValueNode.right.parent = minValueNode.parent;
-			minValueNode.parent.left = minValueNode.right;
+			removeWithOneChild(isRightChild, minValueNode.parent, minValueNode.right);
+		} else {
+			removeInternal(minValueNode.parent, isRightChild);
 		}
-		// minValue links
-		minValueNode.right = foundNode.getRight();
-		minValueNode.left = foundNode.getLeft();
-		minValueNode.parent = foundNode.getParent();
-		
-		// minValue children links
-		minValueNode.right.parent = minValueNode;
-		minValueNode.left.parent = minValueNode;
-
-		if (foundNode == root) {
-			root = minValueNode;
-		}
-
 	}
 
 	private void removeWithOneChild(boolean amRightChild, BSTNode<Entry<K, V>> parent, BSTNode<Entry<K, V>> child) {
