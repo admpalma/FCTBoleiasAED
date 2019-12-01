@@ -114,7 +114,8 @@ public class LinearProbingHashTable<K, V> extends MapWithHashTable<K, V> {
 		currentSize = 0;
 		for (int i = 0; i < auxTable.length; i++) {
 			Entry<K, V> entry = auxTable[i];
-			insert(entry.getKey(), entry.getValue());
+			if (entry != null)
+				insert(entry.getKey(), entry.getValue());
 		}
 		maxSize *= 2;
 	}
