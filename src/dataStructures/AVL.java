@@ -65,15 +65,11 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 	protected AVLNode<Entry<K, V>> tallerChild(AVLNode<Entry<K, V>> p) {
 		AVLNode<Entry<K, V>> left = (AVLNode<Entry<K, V>>) p.left;
 		AVLNode<Entry<K, V>> right = (AVLNode<Entry<K, V>>) p.right;
-		//TODO I swear to god i hate crappy comments, para isto mais valia nem terem dado nada xD
-		//assert(p.getHeight(left) != p.getHeight(right));
-		// If left node's height is higher, return left node
-		// If right node's height is higher, return right node
 		if (p.getHeight(left) == p.getHeight(right)) {
 			return null;
+		} else {
+			return p.getHeight(left) > p.getHeight(right) ? left : right;
 		}
-		return p.getHeight(left) > p.getHeight(right) ? left : right;
-
 	}
 
 	@Override
@@ -98,19 +94,16 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 	 * trinode restructuring if it's unbalanced. the rebalance is completed with
 	 * O(log n)running time
 	 */
-	protected void rebalance(AVLNode<Entry<K, V>> insertedNode) {
-		AVLNode<Entry<K, V>> unbalancedNode = insertedNode;
-		AVLNode<Entry<K, V>> balancedSubroot = null;
-		do {
-			unbalancedNode = findUnbalanced(unbalancedNode);
-			if (unbalancedNode != null) {
-				balancedSubroot = rebalanceSubtree(unbalancedNode);
-				if (balancedSubroot.parent == null) {
-					root = balancedSubroot;
-				}
-				unbalancedNode = balancedSubroot;
+	protected void rebalance(AVLNode<Entry<K, V>> z) {
+		if (z.isInternal()) {
+			z.setHeight();
+		}
+		while (!z.isBalance()) {
+			z = rebalanceSubtree(z);
+			if (z.parent == null) {
+				root = z;
 			}
-		} while (unbalancedNode != null && root != balancedSubroot);
+		}
 	}
 	
 	/**
@@ -119,43 +112,13 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 	 * @return root of the balanced subtree
 	 */
 	private AVLNode<Entry<K, V>> rebalanceSubtree(AVLNode<Entry<K, V>> z) {
-		AVLNode<Entry<K, V>> y = tallerChild(z);
-		AVLNode<Entry<K, V>> x = tallerChild(y);
-		if (x == null) {
-			int balanceFactor = z.getBalance();
-			if (balanceFactor <= 0) {
-				x = (AVLNode<Entry<K, V>>) y.left;
-			} else {
-				x = (AVLNode<Entry<K, V>>) y.right;
-			}
-		}
-		z = (AVLNode<Entry<K, V>>) restructure(x);
+		assert(tallerChild(z) != null);
+		assert(tallerChild(tallerChild(z)) != null);
+		z = (AVLNode<Entry<K, V>>) restructure(tallerChild(tallerChild(z)));
 		((AVLNode<Entry<K, V>>) z.getLeft()).setHeight();
-        ((AVLNode<Entry<K, V>>) z.getRight()).setHeight();
+	    ((AVLNode<Entry<K, V>>) z.getRight()).setHeight();
 		z.setHeight();
 		return z;
-	}
-
-	/**
-	 * Iterates upwards from node updating its parent's heights until an unbalanced subtree is found
-	 * @param node {@link AVLNode} from which to start the iteration
-	 * @return root of the first found unbalanced subtree upwards from node, <code>null</code> if there's no such subtree
-	 */
-	private AVLNode<Entry<K, V>> findUnbalanced(AVLNode<Entry<K, V>> node) {
-		if (node.isInternal()) {
-			node.setHeight();
-		}
-		AVLNode<Entry<K, V>> current = node;
-		while (current.parent != null && current.isBalance()) {
-			current = (AVLNode<Entry<K, V>>) current.parent;
-			current.setHeight();
-		}
-		if (!current.isBalance()) {
-			return current;
-		} else {
-			return null;
-		}
-		
 	}
 
 	@Override

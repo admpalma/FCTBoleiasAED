@@ -80,11 +80,16 @@ class AVLTest extends AdvancedBSTTest {
 	@Test
 	void testRebalance() {
 		for (int i = 0; i < nodes.length; i++) {
+			avl = new AVL<Integer, Integer>((AVLNode<Entry<Integer, Integer>>) nodes[i][z]);
 			avl.rebalance((AVLNode<Entry<Integer, Integer>>) nodes[i][z]);
+			if (i == 0 || i == 3) {
+				assertTrue(avl.root == nodes[i][y]);
+			} else {
+				assertTrue(avl.root == nodes[i][x]);
+			}
 			for (int j = 0; j < nodes.length; j++) {
 				assertTrue(((AVLNode<Entry<Integer, Integer>>) nodes[i][j]).isBalance());
 			}
 		}
 	}
-
 }
