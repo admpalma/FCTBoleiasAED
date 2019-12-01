@@ -58,6 +58,11 @@ public class LinearProbingHashTable<K, V> extends MapWithHashTable<K, V> {
 	}
 
 	@Override
+	/**
+	 * Best case: O(1)
+	 * Average case: O()
+	 * Worst case: O(n)
+	 */
 	public V get(K key) {
 		int pos = findPos(key);
 		if (pos == -1 || isEmpty(pos))
@@ -88,6 +93,11 @@ public class LinearProbingHashTable<K, V> extends MapWithHashTable<K, V> {
 
 	@Override
 	//without remove
+	/**
+	 * Best case: O(1)
+	 * Average case: O()
+	 * Worst case: O(n)
+	 */
 	public V insert(K key, V value) {
 		if (this.isFull())
 			this.rehash();
