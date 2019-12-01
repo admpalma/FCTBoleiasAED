@@ -1,7 +1,7 @@
 package fctBoleias.trip;
 
 import basicDateTime.BasicDateTime;
-import fctBoleias.Wrapper;
+import dataStructures.Wrapper;
 
 /**
  * Implements a {@link Wrapper} for a {@link Trip}
@@ -52,6 +52,21 @@ public class TripWrapperClass implements TripWrapper {
 	@Override
 	public String toString() {
 		return trip.toString();
+	}
+
+	@Override
+	public int freeSlots() {
+		return trip.freeSlots();
+	}
+
+	@Override
+	public String toMediumDetailString() {
+		return trip.toMediumDetailString();
+	}
+
+	@Override
+	public String toDateAndDriverString() {
+		return trip.toDateAndDriverString();
 	}
 
 }

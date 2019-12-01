@@ -3,13 +3,14 @@ package fctBoleias;
 import basicDateTime.BasicDateTime;
 import basicDateTime.BasicDateTimeClass;
 import basicDateTime.InvalidDateException;
+import dataStructures.AVL;
 import dataStructures.Iterator;
+import dataStructures.NestedMapValuesIterator;
 import dataStructures.IteratorWrappable;
 import dataStructures.Map;
-import dataStructures.MapWithJavaClass;
 import dataStructures.NoElementException;
+import dataStructures.SepChainHashTable;
 import dataStructures.SortedMap;
-import dataStructures.SortedMapWithJavaClass;
 import fctBoleias.trip.CantRideSelfException;
 import fctBoleias.trip.InvalidTripDataException;
 import fctBoleias.trip.Trip;
@@ -39,8 +40,8 @@ public class ManagerClass implements Manager {
 
 	public ManagerClass() {
 		this.currentUser = null;
-		usersByEmail = new MapWithJavaClass<String, User>(10000);
-		tripsByDate = new SortedMapWithJavaClass<BasicDateTime, SortedMap<String, Trip>>();
+		usersByEmail = new SepChainHashTable<String, User>(10000);
+		tripsByDate = new AVL<BasicDateTime, SortedMap<String, Trip>>();
 	}
 
 	@Override
@@ -60,12 +61,12 @@ public class ManagerClass implements Manager {
 			BasicDateTime dateTime = new BasicDateTimeClass(date, hourMinute);
 			Trip newTrip = new TripClass(origin, destination, dateTime, numberSeats, duration, currentUser);
 			currentUser.addTrip(newTrip);
-			SortedMap<String, Trip> tripsInDay = tripsByDate.find(dateTime);
+			SortedMap<String, Trip> tripsInDay = tripsByDate.get(dateTime);
 			if (tripsInDay == null) {
-				tripsInDay = new SortedMapWithJavaClass<String, Trip>();
+				tripsInDay = new AVL<String, Trip>();
+				tripsByDate.insert(dateTime, tripsInDay);
 			}
 			tripsInDay.insert(currentUser.getEmail(), newTrip);
-			tripsByDate.insert(dateTime, tripsInDay);
 		} catch (InvalidDateException e) {
 			throw new InvalidTripDataException(e);
 		}
@@ -92,7 +93,7 @@ public class ManagerClass implements Manager {
 		currentUser.removeTrip(newDate);
 
 		assert(!currentUser.hasTripOnDate(newDate));
-		tripsByDate.find(newDate).remove(currentUser.getEmail());
+		tripsByDate.get(newDate).remove(currentUser.getEmail());
 
 	}
 
@@ -100,7 +101,7 @@ public class ManagerClass implements Manager {
 	public void addNewRide(String email, String date)
 			throws NotLoggedInException, CantRideSelfException, DateOccupiedException, NonExistentUserException,
 			InvalidDateException, NonExistentTripException, TripIsFullException {
-		User tripDriver = usersByEmail.find(email);
+		User tripDriver = usersByEmail.get(email);
 		BasicDateTime newDate;
 
 		if (currentUser == null) {
@@ -123,7 +124,7 @@ public class ManagerClass implements Manager {
 
 	@Override
 	public boolean isUserRegistered(String email) {
-		return usersByEmail.find(email) != null;
+		return usersByEmail.get(email) != null;
 	}
 
 	@Override
@@ -159,7 +160,7 @@ public class ManagerClass implements Manager {
 		if (isLoggedIn()) {
 			throw new LoggedInException();
 		}
-		User user = usersByEmail.find(email);
+		User user = usersByEmail.get(email);
 		if (user == null) {
 			throw new NonExistentUserException();
 		} else if (!user.checkPassword(password)) {
@@ -183,7 +184,7 @@ public class ManagerClass implements Manager {
 	@Override
 	public TripWrapper consult(String email, String date)
 			throws NotLoggedInException, NonExistentTripException, NonExistentUserException, InvalidDateException {
-		User tripDriver = usersByEmail.find(email);
+		User tripDriver = usersByEmail.get(email);
 
 		if (currentUser == null) {
 			throw new NotLoggedInException();
@@ -215,7 +216,7 @@ public class ManagerClass implements Manager {
 		}
 
 		try {
-			return new IteratorWrappable<TripWrapper, Trip>(usersByEmail.find(email).getTripsIterator());
+			return new IteratorWrappable<TripWrapper, Trip>(usersByEmail.get(email).getTripsIterator());
 		} catch (NullPointerException e) {
 			throw new NonExistentUserException(e);
 		}
@@ -236,7 +237,7 @@ public class ManagerClass implements Manager {
 		}
 		BasicDateTime newDate = new BasicDateTimeClass(date);
 		try {
-			return new IteratorWrappable<TripWrapper, Trip>(tripsByDate.find(newDate).values());
+			return new IteratorWrappable<TripWrapper, Trip>(tripsByDate.get(newDate).values());
 		} catch (NoElementException e) {
 			throw new InvalidDateException(e);
 		} catch (NullPointerException e) {
@@ -245,11 +246,11 @@ public class ManagerClass implements Manager {
 	}
 
 	@Override
-	public Iterator<SortedMap<String, Trip>> getAllTrips() throws NotLoggedInException {
+	public Iterator<TripWrapper> getAllTrips() throws NotLoggedInException {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		}
-		return tripsByDate.values();
+		return new IteratorWrappable<TripWrapper, Trip>(new NestedMapValuesIterator<Trip, SortedMap<String, Trip>>(tripsByDate));
 	}
 
 }

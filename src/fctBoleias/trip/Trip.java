@@ -2,18 +2,10 @@ package fctBoleias.trip;
 
 import java.io.Serializable;
 
-import basicDateTime.BasicDateTime;
-import fctBoleias.Wrappable;
+import dataStructures.Wrappable;
 import fctBoleias.user.User;
 
 public interface Trip extends TripWrapper, Serializable, Wrappable<TripWrapper> {
-
-	/**
-	 * Gives the {@link BasicDateTime date} of this {@link Trip}
-	 * 
-	 * @return a {@link BasicDateTime} holding this {@link Trip Trip's} date
-	 */
-	BasicDateTime getBasicDateTime();
 
 	/**
 	 * Adds {@link User} to {@link Trip this} as a ride

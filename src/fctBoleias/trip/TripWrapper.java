@@ -1,7 +1,7 @@
 package fctBoleias.trip;
 
 import basicDateTime.BasicDateTime;
-import fctBoleias.Wrapper;
+import dataStructures.Wrapper;
 import fctBoleias.user.User;
 
 /**
@@ -61,6 +61,37 @@ public interface TripWrapper extends Wrapper {
 	 */
 	boolean hasFreeSlots();
 
+	/**
+	 * Returns a {@link String} with the following format:<p>
+	 * {@link #getDriverEmail() driver email}<br>
+	 * {@link #getOrigin() origin}-{@link #getDestination() destination}<br>
+	 * {@link BasicDateTime#toString() dateTime} {@link #getDuration() duration}<br>
+	 * <code>Lugares vagos: </code>{@link #freeSlots() free slots}<br>
+	 * <code>"Users in trip emails'"</code><br>
+	 * <code>Em espera: "number of users in queue"</code><br>
+	 * @return {@link String} describing the {@link Trip}
+	 */
 	String toString();
+	
+	/**
+	 * Returns a {@link String} with the following format:<p>
+	 * {@link #getDriverEmail() driver email}<br>
+	 * {@link #getOrigin() origin}-{@link #getDestination() destination}<br>
+	 * {@link BasicDateTime#toString() dateTime} {@link #getDuration() duration}<br>
+	 * @return {@link String} describing the {@link Trip}
+	 */
+	String toMediumDetailString();
+	
+	/**
+	 * Returns a {@link String} with the following format:<p>
+	 * {@link BasicDateTime#toString() date} {@link #getDriverEmail() driver email}<br>
+	 * @return {@link String} describing the {@link Trip}
+	 */
+	String toDateAndDriverString();
+
+	/**
+	 * @return the number of free slots in this {@link Trip}
+	 */
+	int freeSlots();
 
 }

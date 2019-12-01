@@ -83,9 +83,15 @@ public class TripClass implements Trip {
 
 	@Override
 	public String toString() {
-		return String.format("%s%n%s-%s%n%s %d%nLugares vagos: %d%n%s%nEm espera: %d%n", driver.getEmail(), origin,
-				destination, date.toString(), duration, capacity - usersInRide.size(), getUsersInRideList(),
-				usersWaitingRide.size());
+		String simpleStr = this.toSimpleString();
+		String usersInRideStr = getUsersInRideList();
+		StringBuilder sb = new StringBuilder(20 + simpleStr.length() + usersInRideStr.length());
+		String newLine = System.lineSeparator();
+		sb.append(simpleStr);
+		sb.append("Lugares vagos: ").append(freeSlots()).append(newLine);
+		sb.append(usersInRideStr).append(newLine);
+		sb.append("Em espera: ").append(usersWaitingRide.size()).append(newLine);
+		return sb.toString();
 	}
 
 	/**
@@ -98,7 +104,7 @@ public class TripClass implements Trip {
 	private String getUsersInRideList() {
 		try {
 			Iterator<User> iter = usersInRide.iterator();
-			StringBuilder result = new StringBuilder(2 * usersInRide.size());
+			StringBuilder result = new StringBuilder(35 * usersInRide.size());
 			result.append("Boleias: ");
 			String toAdd = "; ";
 			while (iter.hasNext()) {
@@ -145,12 +151,46 @@ public class TripClass implements Trip {
 
 	@Override
 	public boolean hasFreeSlots() {
-		return capacity - usersInRide.size() > 0;
+		return freeSlots() > 0;
+	}
+
+	@Override
+	public int freeSlots() {
+		return capacity - usersInRide.size();
 	}
 
 	@Override
 	public TripWrapper wrap() {
 		return new TripWrapperClass(this);
+	}
+
+	@Override
+	public String toMediumDetailString() {
+		return this.toSimpleString();
+	}
+	
+	/**
+	 * Returns a {@link String} with the following format:<p>
+	 * {@link #getDriverEmail() driver email}<br>
+	 * {@link #getOrigin() origin}-{@link #getDestination() destination}<br>
+	 * {@link BasicDateTime#toString() dateTime} {@link #getDuration() duration}<br>
+	 * @return {@link String} with a simple description of this {@link Trip}
+	 */
+	private String toSimpleString() {
+		StringBuilder sb = new StringBuilder(120);
+		String newLine = System.lineSeparator();
+		sb.append(driver.getEmail()).append(newLine);
+		sb.append(origin).append("-").append(destination).append(newLine);
+		sb.append(date.toString()).append(" ").append(duration).append(newLine);
+		return sb.toString();
+	}
+
+	@Override
+	public String toDateAndDriverString() {
+		StringBuilder sb = new StringBuilder(40);
+		String newLine = System.lineSeparator();
+		sb.append(date.toDateString()).append(" ").append(driver.getEmail()).append(newLine);
+		return sb.toString();
 	}
 
 }

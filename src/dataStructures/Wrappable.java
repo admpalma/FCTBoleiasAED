@@ -1,4 +1,4 @@
-package fctBoleias;
+package dataStructures;
 
 /**
  * An interface which extends {@link Wrappable} is such that its implementation

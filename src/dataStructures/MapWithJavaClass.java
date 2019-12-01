@@ -48,7 +48,7 @@ public class MapWithJavaClass<K, V> implements Map<K, V> {
 	}
 
 	@Override
-	public V find(K key) {
+	public V get(K key) {
 		return elementos.get(key);
 	}
 

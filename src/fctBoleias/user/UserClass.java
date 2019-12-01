@@ -1,10 +1,10 @@
 package fctBoleias.user;
 
 import basicDateTime.BasicDateTime;
+import dataStructures.AVL;
 import dataStructures.Iterator;
 import dataStructures.NoElementException;
 import dataStructures.SortedMap;
-import dataStructures.SortedMapWithJavaClass;
 import fctBoleias.DateOccupiedException;
 import fctBoleias.NoRegisteredTripsException;
 import fctBoleias.NoRideOnDayException;
@@ -42,8 +42,8 @@ public class UserClass implements User {
 		this.name = name;
 		this.password = password;
 		this.nLogins = 0;
-		trips = new SortedMapWithJavaClass<BasicDateTime, Trip>();
-		rides = new SortedMapWithJavaClass<BasicDateTime, Trip>();
+		trips = new AVL<BasicDateTime, Trip>();
+		rides = new AVL<BasicDateTime, Trip>();
 	}
 
 	@Override
@@ -92,7 +92,7 @@ public class UserClass implements User {
 
 	@Override
 	public void removeTrip(BasicDateTime date) throws NoTripOnDayException, TripHasRidesException {
-		Trip trip = trips.find(date);
+		Trip trip = trips.get(date);
 		if (trip == null) { // If we don't find the trip (doesn't exist)
 			throw new NoTripOnDayException(this);
 		} else if (trip.hasRides()) {
@@ -103,7 +103,7 @@ public class UserClass implements User {
 
 	@Override
 	public Trip addUserToTrip(User user, BasicDateTime date) throws NonExistentTripException, TripIsFullException {
-		Trip trip = trips.find(date);
+		Trip trip = trips.get(date);
 		if (trip == null) {
 			throw new NonExistentTripException();
 		}
@@ -114,7 +114,7 @@ public class UserClass implements User {
 	@Override
 	public void addRide(Trip ride) throws DateOccupiedException {
 		BasicDateTime rideDate = ride.getBasicDateTime();
-		if (rides.find(rideDate) != null) {
+		if (rides.get(rideDate) != null) {
 			throw new DateOccupiedException(this);
 		}
 		rides.insert(rideDate, ride);
@@ -122,7 +122,7 @@ public class UserClass implements User {
 
 	@Override
 	public Trip getTrip(BasicDateTime date) throws NonExistentTripException {
-		Trip trip = trips.find(date);
+		Trip trip = trips.get(date);
 		if (trip == null) {
 			throw new NonExistentTripException();
 		}
@@ -131,7 +131,7 @@ public class UserClass implements User {
 
 	@Override
 	public boolean hasTripOnDate(BasicDateTime date) {
-		return trips.find(date) != null;
+		return trips.get(date) != null;
 	}
 
 	@Override
@@ -162,7 +162,7 @@ public class UserClass implements User {
 
 	@Override
 	public boolean hasRideOnDate(BasicDateTime date) {
-		return rides.find(date) != null;
+		return rides.get(date) != null;
 	}
 
 }
