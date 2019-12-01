@@ -1,5 +1,7 @@
 package dataStructures;
 
+import dataStructures.RB.RBNode;
+
 public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements SortedMap<K, V> {
 
 	/**
@@ -34,10 +36,10 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 		public boolean isRed() {
 			return isRed;
 		}
-		
+
 		/**
-		 * @return <code>true</code> if one of {@link RBNode this RBNode's} adjancent {@link RBNode RBNodes} is red,
-		 * <code>false</code> otherwise
+		 * @return <code>true</code> if one of {@link RBNode this RBNode's} adjancent
+		 *         {@link RBNode RBNodes} is red, <code>false</code> otherwise
 		 */
 		public boolean hasAdjacentRed() {
 			if (parent != null && ((RBNode<E>) parent).isRed()) {
@@ -62,10 +64,6 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 
 	@Override
 	public V insert(K key, V value) {
-		// TODO
-		// RBNode<Entry<K, V>> newNode = null; // node where the new entry is being
-		// inserted (if find(key)==null)
-		// insert the new Entry (if find(key)==null)
 		RBNode<Entry<K, V>> closestNode = (RBNode<Entry<K, V>>) findClosest(key);
 		V overriddenValue = null;
 
@@ -74,67 +72,54 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 		}
 
 		RBNode<Entry<K, V>> insertedNode = (RBNode<Entry<K, V>>) insertAux(key, value, closestNode);
-		/*
-		if (closestNode == insertedNode) {
-			return overriddenValue;
-		} else {
-			// If the node is root set it to BLACK and done
-			if (insertedNode == root) {
-				insertedNode.setColour(BLACK);
-				return null;
-			}
-			assert(insertedNode != root);
-			insertedNode.setColour(RED);
-			RBNode<E>
-			if (((RBNode<Entry<K, V>>) insertedNode.getParent()).isRed()) {
-				RBNode<Entry<K, V>> uncle;
-			}
-			rebalance(insertedNode);
+
+		insertedNode.setColour(RED); // Red
+		if (insertedNode == root) {
+			insertedNode.setColour(BLACK); // Black
 			return null;
+		} else if (((RBNode<Entry<K, V>>) insertedNode.getParent()).isRed()) {
+			if (insertedNode.getParent().getParent() == null) return overriddenValue;
+			if (insertedNode.getParent() == null)
+			remedyDoubleRed(insertedNode); // fix a double-red color violation
 		}
-		*/
 
-		insertedNode.setColour(RED); //Red
-	    if (insertedNode.getParent()==null)
-	    	insertedNode.setColour(BLACK); //Black
-	    else
-	      remedyDoubleRed(insertedNode); // fix a double-red color violation 
 		return overriddenValue;
-
 	}
 
-	//pre: !isRoot(posZ)
+	// pre: !isRoot(posZ)
 	private void remedyDoubleRed(RBNode<Entry<K, V>> posZ) {
-		assert(posZ != root);
-		RBNode<Entry<K,V>> posV = (RBNode<Entry<K, V>>) posZ.getParent();
-		RBNode<Entry<K,V>> grandparent = (RBNode<Entry<K, V>>) posV.getParent();
-	    // RED parent
-	    // we have a double red: posZ and posV
-    	RBNode<Entry<K, V>> uncle = posV.getLeft() != null ? (RBNode<Entry<K, V>>) posV.getLeft() : (RBNode<Entry<K, V>>) posV.getRight() ;
-    	// Case black uncle ou null: trinode restructuring
-    	if (uncle == null || !uncle.isRed()) {
-    		RBNode<Entry<K, V>> node = (RBNode<Entry<K, V>>) restructure(posZ); // restructure
-    		// recolor
-    		grandparent.setColour(!grandparent.isRed);
-    		node.setColour(!node.isRed);
-    		// TODO might have root problems
-    	}
-    	// Case red uncle: recoloring
-    	else {
-    		// recolor
-    		posV.setColour(BLACK);
-    		uncle.setColour(BLACK);
-    		if (grandparent != root) {
-    			grandparent.setColour(RED); 
-    		}
-    		remedyDoubleRed(grandparent);
-    		//restructure
-    	}
+		// TODO
+		//assert (posZ != root || posZ.getParent() != null);
+		RBNode<Entry<K, V>> posV = (RBNode<Entry<K, V>>) posZ.getParent();
+		RBNode<Entry<K, V>> grandparent = (RBNode<Entry<K, V>>) posV.getParent();
+		// RED parent
+		// we have a double red: posZ and posV
+		RBNode<Entry<K, V>> uncle = posV.getLeft() != null ? (RBNode<Entry<K, V>>) posV.getLeft()
+				: (RBNode<Entry<K, V>>) posV.getRight();
+		// Case black uncle ou null: trinode restructuring
+		if (uncle == null || !uncle.isRed()) {
+			RBNode<Entry<K, V>> node = (RBNode<Entry<K, V>>) restructure(posZ); // restructure
+			// recolor
+			grandparent.setColour(!grandparent.isRed);
+			node.setColour(!node.isRed);
+			// TODO might have root problems
+		}
+		// Case red uncle: recoloring
+		else {
+			// recolor
+			posV.setColour(BLACK);
+			uncle.setColour(BLACK);
+			if (grandparent != root) {
+				grandparent.setColour(RED);
+			}
+			remedyDoubleRed(grandparent);
+			// restructure
+		}
 
 	}
 
 	@Override
-	public V remove(K key) {		
+	public V remove(K key) {
 		if (isEmpty())
 			return null;
 
@@ -148,7 +133,7 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 			if (removedNode.left == null && removedNode.right == null) {
 				// No children
 				remedyDoubleBlack(removedNode);
-			// case black node with a red child: recoloring (set children black)
+				// case black node with a red child: recoloring (set children black)
 			} else if (removedNode.left != null && left.isRed()) {
 				// Set black
 				left.setColour(BLACK);
