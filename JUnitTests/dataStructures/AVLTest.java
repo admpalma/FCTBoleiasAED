@@ -19,9 +19,7 @@ class AVLTest extends AdvancedBSTTest {
 		avl = new AVL<Integer, Integer>();
 		nodes = (AVLNode<Entry<Integer, Integer>>[][]) new AVLNode<?>[4][7];
 		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 7; j++) {
-				nodes[i][j] = new AVLNode<Entry<Integer, Integer>>(new EntryClass<Integer, Integer>(i, j));
-			}
+			setNodeTree(i);
 		}
 		initNodes(nodes);
 		for (int i = 0; i < 4; i++) {
@@ -70,7 +68,7 @@ class AVLTest extends AdvancedBSTTest {
 			assertEquals(nodes[i][y], avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i][z]));
 			assertEquals(nodes[i][x], avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i][y]));
 		}
-		int i = 0;
+		//int i = 0;
 		//assertEquals(nodes[i][t1], avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i++][x])); //TODO t1 ou t2?
 		//assertEquals(nodes[i][t2], avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i++][x])); //TODO t2 ou t3?
 		//assertEquals(nodes[i][t2], avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i++][x])); //TODO t2 ou t3?

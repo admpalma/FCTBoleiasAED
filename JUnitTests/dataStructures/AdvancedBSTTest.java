@@ -32,11 +32,53 @@ class AdvancedBSTTest extends BSTTest {
 		advancedBST = new AdvancedBST<Integer, Integer>();
 		nodes = (BSTNode<Entry<Integer, Integer>>[][]) new BSTNode<?>[4][7];
 		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 7; j++) {
-				nodes[i][j] = new BSTNode<Entry<Integer, Integer>>(new EntryClass<Integer, Integer>(i, j));
-			}
+			setNodeTree(i);
 		}
 		initNodes(nodes);
+	}
+
+	protected void setNodeTree(int i) {
+		int j = 0;
+		switch (i) {
+		case 0:
+			nodes[i][t1] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][x] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][t2] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][y] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][t3] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][z] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][t4] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			break;
+		case 1:
+			nodes[i][t1] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][y] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][t2] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][x] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][t3] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][z] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][t4] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			break;
+		case 2:
+			nodes[i][t1] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][z] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][t2] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][x] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][t3] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][y] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][t4] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			break;
+		case 3:
+			nodes[i][t1] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][z] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][t2] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][y] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][t3] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][x] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			nodes[i][t4] = bst.nodeOf(new EntryClass<Integer, Integer>(j++, i), null, null, null);
+			break;
+		default:
+			break;
+		}
 	}
 
 	protected void initNodes(BSTNode<Entry<Integer, Integer>>[][] nodes) {
