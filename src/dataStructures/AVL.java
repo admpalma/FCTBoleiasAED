@@ -8,6 +8,11 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 	private static final long serialVersionUID = 1L;
 
 	static class AVLNode<E> extends BSTNode<E> {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		
 		// Height of the node
 		protected int height;
 
@@ -32,8 +37,12 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 		}
 
 		public boolean isBalance() {
-			int dif = getHeight((AVLNode<E>) left) - getHeight((AVLNode<E>) right);
+			int dif = getBalance();
 			return dif == 0 || dif == -1 || dif == 1;
+		}
+		
+		public int getBalance() {
+			return getHeight((AVLNode<E>) left) - getHeight((AVLNode<E>) right);
 		}
 
 		public int setHeight() {
@@ -51,15 +60,18 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 	}
 
 	/**
-	 * Return a child of p with greater height
+	 * Return a child of p with greater height, <code>null</code> if both children have the same height
 	 */
 	protected AVLNode<Entry<K, V>> tallerChild(AVLNode<Entry<K, V>> p) {
 		AVLNode<Entry<K, V>> left = (AVLNode<Entry<K, V>>) p.left;
 		AVLNode<Entry<K, V>> right = (AVLNode<Entry<K, V>>) p.right;
 		//TODO I swear to god i hate crappy comments, para isto mais valia nem terem dado nada xD
-		assert(p.getHeight(left) != p.getHeight(right));
+		//assert(p.getHeight(left) != p.getHeight(right));
 		// If left node's height is higher, return left node
 		// If right node's height is higher, return right node
+		if (p.getHeight(left) == p.getHeight(right)) {
+			return null;
+		}
 		return p.getHeight(left) > p.getHeight(right) ? left : right;
 
 	}
@@ -86,28 +98,49 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 	 * trinode restructuring if it's unbalanced. the rebalance is completed with
 	 * O(log n)running time
 	 */
-	private void rebalance(AVLNode<Entry<K, V>> insertedNode) {
-		AVLNode<Entry<K, V>> unbalancedNode, balancedSubroot = null;
+	protected void rebalance(AVLNode<Entry<K, V>> insertedNode) {
+		AVLNode<Entry<K, V>> unbalancedNode = insertedNode;
+		AVLNode<Entry<K, V>> balancedSubroot = null;
 		do {
-			unbalancedNode = findUnbalanced(insertedNode);
+			unbalancedNode = findUnbalanced(unbalancedNode);
 			if (unbalancedNode != null) {
 				balancedSubroot = rebalanceSubtree(unbalancedNode);
 				if (balancedSubroot.parent == null) {
 					root = balancedSubroot;
 				}
-			} 
+				unbalancedNode = balancedSubroot;
+			}
 		} while (unbalancedNode != null && root != balancedSubroot);
 	}
 	
-	
+	/**
+	 * Rebalances a subtree rooted at z
+	 * @param z root of the subtree to rebalance
+	 * @return root of the balanced subtree
+	 */
 	private AVLNode<Entry<K, V>> rebalanceSubtree(AVLNode<Entry<K, V>> z) {
-		z = (AVLNode<Entry<K, V>>) restructure(tallerChild(tallerChild(z)));
+		AVLNode<Entry<K, V>> y = tallerChild(z);
+		AVLNode<Entry<K, V>> x = tallerChild(y);
+		if (x == null) {
+			int balanceFactor = z.getBalance();
+			if (balanceFactor <= 0) {
+				x = (AVLNode<Entry<K, V>>) y.left;
+			} else {
+				x = (AVLNode<Entry<K, V>>) y.right;
+			}
+		}
+		z = (AVLNode<Entry<K, V>>) restructure(x);
 		((AVLNode<Entry<K, V>>) z.getLeft()).setHeight();
         ((AVLNode<Entry<K, V>>) z.getRight()).setHeight();
 		z.setHeight();
 		return z;
 	}
 
+	/**
+	 * Iterates upwards from node updating its parent's heights until an unbalanced subtree is found
+	 * @param node {@link AVLNode} from which to start the iteration
+	 * @return root of the first found unbalanced subtree upwards from node, <code>null</code> if there's no such subtree
+	 */
 	private AVLNode<Entry<K, V>> findUnbalanced(AVLNode<Entry<K, V>> node) {
 		if (node.isInternal()) {
 			node.setHeight();
@@ -136,10 +169,9 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 		if (isEmpty())
 			return null;
 
-		BSTNode<Entry<K, V>> removed = removeAux(key);
-
+		AVLNode<Entry<K, V>> removed = (AVLNode<Entry<K, V>>) removeAux(key);
 		// TODO not always needed? if we remove the root probably not
-		rebalanceSubtree((AVLNode<Entry<K, V>>) removed); // rebalance up from the node
+		rebalance(removed); // rebalance up from the node
 		return removed.element.getValue();
 	}
 

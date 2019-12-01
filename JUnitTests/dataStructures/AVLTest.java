@@ -58,7 +58,9 @@ class AVLTest extends AdvancedBSTTest {
 		}
 		for (int i = 10; i < 20; i++) {
 			avl.remove(i);
-			assertTrue(((AVLNode<Entry<Integer, Integer>>) avl.root).isBalance());
+			if (avl.root != null) {
+				assertTrue(((AVLNode<Entry<Integer, Integer>>) avl.root).isBalance());
+			}
 		}
 	}
 
@@ -68,16 +70,21 @@ class AVLTest extends AdvancedBSTTest {
 			assertEquals(nodes[i][y], avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i][z]));
 			assertEquals(nodes[i][x], avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i][y]));
 		}
-		//int i = 0;
-		//assertEquals(nodes[i][t1], avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i++][x])); //TODO t1 ou t2?
-		//assertEquals(nodes[i][t2], avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i++][x])); //TODO t2 ou t3?
-		//assertEquals(nodes[i][t2], avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i++][x])); //TODO t2 ou t3?
-		//assertEquals(nodes[i][t3], avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i++][x])); //TODO t3 ou t4?
+		int i = 0;
+		assertEquals(null, avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i++][x]));
+		assertEquals(null, avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i++][x]));
+		assertEquals(null, avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i++][x]));
+		assertEquals(null, avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i++][x]));
 	}
 
 	@Test
 	void testRebalance() {
-		fail("Not yet implemented");
+		for (int i = 0; i < nodes.length; i++) {
+			avl.rebalance((AVLNode<Entry<Integer, Integer>>) nodes[i][z]);
+			for (int j = 0; j < nodes.length; j++) {
+				assertTrue(((AVLNode<Entry<Integer, Integer>>) nodes[i][j]).isBalance());
+			}
+		}
 	}
 
 }
