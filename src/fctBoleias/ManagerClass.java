@@ -7,6 +7,7 @@ import dataStructures.AVL;
 import dataStructures.Iterator;
 import dataStructures.NestedMapValuesIterator;
 import dataStructures.IteratorWrappable;
+import dataStructures.LinearProbingHashTable;
 import dataStructures.Map;
 import dataStructures.NoElementException;
 import dataStructures.SepChainHashTable;
@@ -40,7 +41,7 @@ public class ManagerClass implements Manager {
 
 	public ManagerClass() {
 		this.currentUser = null;
-		usersByEmail = new SepChainHashTable<String, User>(10000);
+		usersByEmail = new LinearProbingHashTable<String, User>(200);
 		tripsByDate = new AVL<BasicDateTime, SortedMap<String, Trip>>();
 	}
 
