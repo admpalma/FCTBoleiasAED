@@ -140,7 +140,6 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 
 		// TODO not always needed? if we remove the root probably not
 		rebalanceSubtree((AVLNode<Entry<K, V>>) removed); // rebalance up from the node
-		currentSize--;
 		return removed.element.getValue();
 	}
 

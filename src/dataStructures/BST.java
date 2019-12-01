@@ -204,7 +204,6 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	public V remove(K key) {
 		if (isEmpty())
 			return null;
-		currentSize--;
 		return removeAux(key).element.getValue();
 	}
 
@@ -242,6 +241,7 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 			break;
 
 		}
+		currentSize--;
 		return foundNode;
 	}
 
@@ -256,10 +256,11 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		BSTNode<Entry<K, V>> minValueNode = minNode(foundNode.getRight());
 		assert(minValueNode.left == null);
 		
-		// minValue parent and left child links
-		minValueNode.right.parent = minValueNode.parent;
-		minValueNode.parent.left = minValueNode.right;
-		
+		if (minValueNode.right != null) {
+			// minValue parent and left child links
+			minValueNode.right.parent = minValueNode.parent;
+			minValueNode.parent.left = minValueNode.right;
+		}
 		// minValue links
 		minValueNode.right = foundNode.getRight();
 		minValueNode.left = foundNode.getLeft();
