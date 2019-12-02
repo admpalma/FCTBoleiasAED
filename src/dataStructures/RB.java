@@ -1,7 +1,5 @@
 package dataStructures;
 
-import dataStructures.RB.RBNode;
-
 public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements SortedMap<K, V> {
 
 	/**
@@ -87,7 +85,7 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 	}
 
 	// pre: !isRoot(posZ)
-	private void remedyDoubleRed(RBNode<Entry<K, V>> posZ) {
+	protected void remedyDoubleRed(RBNode<Entry<K, V>> posZ) {
 		// TODO
 		//assert (posZ != root || posZ.getParent() != null);
 		RBNode<Entry<K, V>> posV = (RBNode<Entry<K, V>>) posZ.getParent();
