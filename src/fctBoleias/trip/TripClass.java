@@ -6,7 +6,7 @@ import dataStructures.Iterator;
 import dataStructures.List;
 import dataStructures.NoElementException;
 import dataStructures.Queue;
-import dataStructures.QueueInList;
+import dataStructures.QueueInArray;
 import fctBoleias.user.User;
 
 public class TripClass implements Trip {
@@ -16,6 +16,11 @@ public class TripClass implements Trip {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Capacity of queue of {@link User users} waiting for a {@link Trip ride}
+	 */
+	private static final int QUEUE_CAPACITY = 10 ;
+	
 	// Instance variables containing the ride's details and information
 	private String origin, destination;
 	private BasicDateTime date;
@@ -41,7 +46,7 @@ public class TripClass implements Trip {
 		this.date = date;
 		this.duration = duration;
 		this.usersInRide = new Array<User>(capacity);
-		this.usersWaitingRide = new QueueInList<User>();
+		this.usersWaitingRide = new QueueInArray<User>(QUEUE_CAPACITY);
 		this.driver = driver;
 		this.capacity = capacity;
 	}
