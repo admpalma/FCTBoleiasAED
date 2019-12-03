@@ -68,10 +68,12 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 			overriddenValue = closestNode.element.getValue();
 		}
 		RBNode<Entry<K, V>> insertedNode = (RBNode<Entry<K, V>>) insertAux(key, value, closestNode);
-		if (insertedNode != closestNode) {
+		if (closestNode == insertedNode) {
+			return overriddenValue;
+		} else {
 			fixAfterInsertion(insertedNode);
+			return null;
 		}
-		return overriddenValue;
 	}
 
 	/**
