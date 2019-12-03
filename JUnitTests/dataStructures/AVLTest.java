@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import dataStructures.AVL.AVLNode;
+import dataStructures.RB.RBNode;
 
 class AVLTest extends AbstractAdvancedBSTTest {
 
@@ -28,6 +29,29 @@ class AVLTest extends AbstractAdvancedBSTTest {
 			}
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	private void verifyAVLProperties() {
+		BSTOrderIterator<Integer, Integer> it = (BSTOrderIterator<Integer, Integer>) avl.iterator();
+		List<Integer> heightInEachPath = new SinglyLinkedList<Integer>();
+		while (it.hasNext()) {
+			AVLNode<?> stackTop = (AVLNode<?>) it.stack.top();
+			if (stackTop.left == null && stackTop.right == null) {
+				int height = 1;
+				while (stackTop.parent != null) {
+					height++;
+					stackTop = (AVLNode<?>) stackTop.parent;
+				}
+				heightInEachPath.addLast(height);
+			}
+			it.next();
+		}
+		for (int i = 0; i < heightInEachPath.size(); i++) {
+			for (int j = 0; j < heightInEachPath.size() && i != j; j++) {
+				assertTrue(1 >= Math.abs(heightInEachPath.get(i) - heightInEachPath.get(j)));
+			}
+		}
+	}
 
 	@Test
 	void testInsert() {
@@ -35,10 +59,12 @@ class AVLTest extends AbstractAdvancedBSTTest {
 		assertTrue(((AVLNode<Entry<Integer, Integer>>) bst.root).isBalance());
 		for (int i = 0; i < 10; i++) {
 			avl.insert(i, i);
+			verifyAVLProperties();
 			assertTrue(((AVLNode<Entry<Integer, Integer>>) avl.root).isBalance());
 		}
 		for (int i = 19; i >= 10; i--) {
 			avl.insert(i, i);
+			verifyAVLProperties();
 			assertTrue(((AVLNode<Entry<Integer, Integer>>) avl.root).isBalance());
 		}
 	}
@@ -54,11 +80,13 @@ class AVLTest extends AbstractAdvancedBSTTest {
 		testInsert();
 		for (int i = 9; i >= 0; i--) {
 			avl.remove(i);
+			verifyAVLProperties();
 			assertTrue(((AVLNode<Entry<Integer, Integer>>) avl.root).isBalance());
 		}
 		for (int i = 10; i < 20; i++) {
 			avl.remove(i);
 			if (avl.root != null) {
+				verifyAVLProperties();
 				assertTrue(((AVLNode<Entry<Integer, Integer>>) avl.root).isBalance());
 			}
 		}
