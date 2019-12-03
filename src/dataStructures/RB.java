@@ -1,9 +1,5 @@
 package dataStructures;
 
-import com.sun.corba.se.spi.ior.MakeImmutable;
-
-import dataStructures.RB.RBNode;
-
 public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements SortedMap<K, V> {
 
 	/**
@@ -40,7 +36,7 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 		}
 
 		/**
-		 * @return <code>true</code> if one of {@link RBNode this RBNode's} adjancent
+		 * @return <code>true</code> if one of {@link RBNode this RBNode's} adjacent
 		 *         {@link RBNode RBNodes} is red, <code>false</code> otherwise
 		 */
 		public boolean hasAdjacentRed() {
@@ -68,91 +64,75 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 	public V insert(K key, V value) {
 		RBNode<Entry<K, V>> closestNode = (RBNode<Entry<K, V>>) findClosest(key);
 		V overriddenValue = null;
-
 		if (closestNode != null) {
 			overriddenValue = closestNode.element.getValue();
 		}
-
 		RBNode<Entry<K, V>> insertedNode = (RBNode<Entry<K, V>>) insertAux(key, value, closestNode);
-
-		insertedNode.setColour(RED); // Red
-		
-		// TODO
-		if (size() < 3) return overriddenValue;
-		
-		// TODO for tests
-		if (insertedNode.getParent() == null || insertedNode == root) {
-			insertedNode.setColour(BLACK); // Black
-			return null;
-		} else {
-			// TODO
-			if (insertedNode.getParent().getParent() == null)
-				return overriddenValue;
-			remedyDoubleRed(insertedNode);
+		if (insertedNode != closestNode) {
+			fixAfterInsertion(insertedNode);
 		}
-
 		return overriddenValue;
 	}
 
-	// pre: !isRoot(x)
-	protected void remedyDoubleRed(RBNode<Entry<K, V>> x) {
-		RBNode<Entry<K, V>> parent, grandparent, uncle;
-		parent = (RBNode<Entry<K, V>>) x.getParent();
-
-		// parent came to null in second run of this
-		// meaning the if failed and grandparent has no parent
-
-		if (parent.isRed()) {
-			
-			// TODO we set uncle but can't if grandparent is null
-			
-			grandparent = (RBNode<Entry<K, V>>) parent.getParent();
-			
-			// TODO GRANDPARENT NULL??
-			if (grandparent == null) {
-				uncle=null;
-			}
-			else {
-				// TODO WHAT IF GRANDPARENT IS NULL?
-				// TODO FAILED IN 3rd recursion cause grandparent was null but shouldn't be
-				// since it's a check that we do before calling the recursion??
-				if (grandparent.getLeft() != null && grandparent.getLeft().equals(parent)) {
-					uncle = (RBNode<Entry<K, V>>) grandparent.getRight();
-				} else {
-					uncle = (RBNode<Entry<K, V>>) grandparent.getLeft();
-				}
-			}
-
-			// RED parent
-			assert (parent != null);
-			// we have a double red: posZ and posV
-			// Case black uncle ou null: trinode restructuring
-			if (uncle == null || !uncle.isRed()) {
-				/*if (uncle==null) {
-					uncle = new RBNode<Entry<K,V>>(null, grandparent, null, null);
-				}*/
-				RBNode<Entry<K, V>> node = (RBNode<Entry<K, V>>) restructure(x); // restructure
-				// recolor
-				// grandparent.setColour(!grandparent.isRed);
-				// node.setColour(!node.isRed);
-				node.setColour(BLACK);
-				((RBNode<Entry<K, V>>) node.getLeft()).setColour(RED);
-				((RBNode<Entry<K, V>>) node.getRight()).setColour(RED);
-				// TODO might have root problems
-			}
-			// Case red uncle: recoloring
-			else {
-				// recolor
-				parent.setColour(BLACK);
-				uncle.setColour(BLACK);
-				// TODO TESTS grandparent != root
-				if (grandparent.getParent() != null) {
-					grandparent.setColour(RED);
-					remedyDoubleRed(grandparent);
-				}
-			}
+	/**
+	 * Performs the needed operations to keep the RB properties of this {@link RB} after an insertion
+	 * @param redNode {@link RBNode} that disrupted this {@link RB RB's} properties
+	 */
+	private void fixAfterInsertion(RBNode<Entry<K, V>> redNode) {
+		assert(redNode.isRed());
+		if (redNode == root) {
+			redNode.setColour(BLACK);
+		} else if (((RBNode<Entry<K,V>>) redNode.getParent()).isRed()) {
+			remedyDoubleRed(redNode);
 		}
+	}
 
+	/**
+	 * Remedies a double red situation
+	 * @param redNode {@link RBNode} that disrupted this {@link RB RB's} properties
+	 */
+	protected void remedyDoubleRed(RBNode<Entry<K, V>> redNode) {
+		assert (redNode != root);
+		assert (((RBNode<Entry<K, V>>) redNode.getParent()).isRed());
+		assert (redNode.getParent().getParent() != null);
+		
+		RBNode<Entry<K, V>> parent = (RBNode<Entry<K, V>>) redNode.getParent();
+		RBNode<Entry<K, V>> grandparent = (RBNode<Entry<K, V>>) parent.getParent();
+		RBNode<Entry<K, V>> uncle = (RBNode<Entry<K, V>>) grandparent.getUncleOf(redNode);
+
+		if (uncle == null || !uncle.isRed()) {
+			fixBlackUncleCaseAfterInsertion(redNode);
+		} else {
+			fixRedUncleCaseAfterInsertion(parent, grandparent, uncle);
+		}
+	}
+
+	/**
+	 * TODO
+	 * @param redNode
+	 */
+	private void fixBlackUncleCaseAfterInsertion(RBNode<Entry<K, V>> redNode) {
+		RBNode<Entry<K, V>> node = (RBNode<Entry<K, V>>) restructure(redNode);
+		node.setColour(BLACK);
+		((RBNode<Entry<K, V>>) node.getLeft()).setColour(RED);
+		((RBNode<Entry<K, V>>) node.getRight()).setColour(RED);
+		if (node.getParent() == null) {
+			root = node;
+		}
+	}
+
+	/**
+	 * TODO
+	 * @param parent
+	 * @param grandparent
+	 * @param uncle
+	 */
+	private void fixRedUncleCaseAfterInsertion(RBNode<Entry<K, V>> parent, RBNode<Entry<K, V>> grandparent,
+			RBNode<Entry<K, V>> uncle) {
+		parent.setColour(BLACK);
+		uncle.setColour(BLACK);
+		grandparent.setColour(RED);
+		fixAfterInsertion(grandparent);
 	}
 
 	@Override

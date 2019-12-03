@@ -35,6 +35,20 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		E getElement() {
 			return element;
 		}
+		
+		/**
+		 * Returns the {@link BSTNode uncle} of this {@link BSTNode BSTNode's} given grandchild
+		 * @param grandchild one of this {@link BSTNode BSTNode's} grandchildren
+		 * @return {@link BSTNode uncle} of this {@link BSTNode BSTNode's} given grandchild, <code>null</code> if the grandchild doesn't have an uncle
+		 */
+		protected BSTNode<E> getUncleOf(BSTNode<E> grandchild) {
+			if (grandchild.parent == right) {
+				return left;
+			} else if (grandchild.parent == left) {
+				return right;
+			}
+			throw new AssertionError("Given node is not a grandchild of this node!");
+		}
 
 		// ...
 		BSTNode<E> getLeft() {
