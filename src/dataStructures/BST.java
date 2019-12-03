@@ -145,7 +145,6 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	 * @return new {@link BSTNode} initialized with the given parameters
 	 */
 	protected BSTNode<Entry<K, V>> nodeOf(Entry<K, V> element, BSTNode<Entry<K, V>> parent, BSTNode<Entry<K, V>> left, BSTNode<Entry<K, V>> right) {
-		//TODO isto com genericos era lit mas da um pouco de trabalho
 		return new BSTNode<Entry<K, V>>(element, parent, left, right);
 	}
 	
@@ -273,18 +272,14 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		return foundNode;
 	}
 
-	// TODO may still not work, stuff missing?
+
 	private BSTNode<Entry<K, V>> removeWithBothChildren(BSTNode<Entry<K, V>> nodeToUpdate) {
-		// get min value of the right child
-		// put that on the place of removal
-		// add the right child as the right child of the min value node
-		// add the min value as the parent of the right child
-		// clean remaining stuff
 
 		BSTNode<Entry<K, V>> minValueNode = minNode(nodeToUpdate.getRight());
 		assert(minValueNode.left == null);
 		
 		boolean isRightChild = false;
+
 		// If the node we wish to remove is the parent's right node
 		if (minValueNode.parent != null) {
 			isRightChild = minValueNode.equals(minValueNode.parent.getRight());

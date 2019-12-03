@@ -88,7 +88,7 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 	 * Rebalance method called by insert and remove. Traverses the path from zPos to
 	 * the root. For each node encountered, we recompute its height and perform a
 	 * trinode restructuring if it's unbalanced. the rebalance is completed with
-	 * O(log n)running time
+	 * O(log n) running time
 	 */
 	protected void rebalance(AVLNode<Entry<K, V>> z) {
 		if (z.isInternal()) {
@@ -123,7 +123,6 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 
 	@Override
 	protected BSTNode<Entry<K, V>> nodeOf(Entry<K, V> element, BSTNode<Entry<K, V>> parent, BSTNode<Entry<K, V>> left, BSTNode<Entry<K, V>> right) {
-		//TODO isto com genericos era lit mas da um pouco de trabalho
 		return new AVLNode<Entry<K, V>>(element, (AVLNode<Entry<K, V>>) parent, (AVLNode<Entry<K, V>>) left, (AVLNode<Entry<K, V>>) right);
 	}
 
