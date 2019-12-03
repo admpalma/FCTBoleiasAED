@@ -1,5 +1,7 @@
 package dataStructures;
 
+import dataStructures.RB.RBNode;
+
 public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements SortedMap<K, V> {
 
 	/**
@@ -172,90 +174,56 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 			return null;
 		RBNode<Entry<K, V>> v = (RBNode<Entry<K, V>>) findNode(root, key);
 		V removedValue = v.element.getValue();
-		RBNode<Entry<K, V>> u = (RBNode<Entry<K, V>>) removeAux(v);
-		if (u == v) {
-			v = null;
-		}
-		fixAfterRemoval(u, v);
+		RBNode<Entry<K, V>> p = (RBNode<Entry<K, V>>) removeAux(v);
+		fixAfterRemoval(p);
 		return removedValue;
 	}
 
 	/**
-	 * @param u
-	 * @param v 
+	 * @param p
 	 */
-	private void fixAfterRemoval(RBNode<Entry<K, V>> u, RBNode<Entry<K, V>> v) {
-		// TODO CHECK THIS SINCE BOOK TALKS ABOUT OVERWRITTING SOMETHING
-		
-		
-
-		if (u.isRed() || RBNode.isRed(v)) {
-			u.setColour(BLACK);
-		} else if (!u.isRed() && !RBNode.isRed(v)) {
-			u.setColour(BLACK);
-			remedyDoubleBlack(u);
+	private void fixAfterRemoval(RBNode<Entry<K, V>> p) {
+		if (p.isRed()) {
+			p.setColour(BLACK);
+		} else if (p.parent != null) {
+			RBNode<Entry<K, V>> sibling = (RBNode<Entry<K, V>>) p.parent.getSiblingOf(p);
+			if (sibling != null) {
+				if (sibling.isInternal() && (!sibling.isRed() || sibling.left.isInternal())) {
+					remedyDoubleBlack(p);
+				} 
+			}			
 		}
-		// throw new Ass
-			
-		/*if (u.parent == null || u != root) {
-			// Get the sibling
-			RBNode<Entry<K, V>> sibling = u.getParent().getLeft().equals(u)
-					? (RBNode<Entry<K, V>>) u.getParent().getRight()
-					: (RBNode<Entry<K, V>>) u.getParent().getLeft();
-
-			if (sibling.isInternal() && (!sibling.isRed() || sibling.getLeft().isInternal())) {
-				remedyDoubleBlack(u);
-			}
-
-			/*
-			 * RBNode<Entry<K, V>> left = (RBNode<Entry<K, V>>) removedNode.getLeft();
-			 * RBNode<Entry<K, V>> right = (RBNode<Entry<K, V>>) removedNode.getRight(); //
-			 * case black node without children: remedyDoubleBlack(node) if
-			 * (removedNode.left == null && removedNode.right == null) { // No children
-			 * remedyDoubleBlack(removedNode); // case black node with a red child:
-			 * recoloring (set children black) } else if (removedNode.left != null &&
-			 * left.isRed()) { // Set black left.setColour(BLACK); } else {
-			 * right.setColour(BLACK); }
-			 */
-		//}
-		// case red node: end
 	}
 
 	/** Remedies a double black violation at a given node caused by removal. */
-	protected void remedyDoubleBlack(RBNode<Entry<K, V>> u) {
-		RBNode<Entry<K, V>> parent = (RBNode<Entry<K, V>>) u.getParent();		
-		RBNode<Entry<K, V>> sibling = (RBNode<Entry<K, V>>) parent.getSiblingOf(u);
-		if (sibling == null || !sibling.isRed()) {
-			
-			if (sibling.hasRedChild()) {
-				
-			}
-			
-			
-			
-			
-			
-			RBNode<Entry<K, V>> left = (RBNode<Entry<K, V>>) sibling.getLeft();
-			RBNode<Entry<K, V>> right = (RBNode<Entry<K, V>>) sibling.getRight();
-
-			if ((left != null && left.isRed()) || (right != null && right.isRed())) {
-				RBNode<Entry<K, V>> node = (RBNode<Entry<K, V>>) restructure(u);
-				u.setColour(parent.isRed());
-				((RBNode<Entry<K, V>>) node.getLeft()).setColour(BLACK);
-				((RBNode<Entry<K, V>>) node.getRight()).setColour(BLACK);
+	protected void remedyDoubleBlack(RBNode<Entry<K, V>> p) {
+		RBNode<Entry<K, V>> z = (RBNode<Entry<K, V>>) p.getParent();		
+		RBNode<Entry<K, V>> y = (RBNode<Entry<K, V>>) z.getSiblingOf(p);
+		
+		if (!y.isRed()) {
+			if (((RBNode<Entry<K,V>>) y.left).isRed() || ((RBNode<Entry<K,V>>) y.right).isRed()) {
+				RBNode<Entry<K, V>> x = ((RBNode<Entry<K,V>>) y.left).isRed() ? (RBNode<Entry<K,V>>) y.left : (RBNode<Entry<K,V>>) y.right;
+				RBNode<Entry<K, V>> middle = (RBNode<Entry<K, V>>) restructure(x);
+				middle.setColour(z.isRed);
+				((RBNode<Entry<K,V>>) middle.left).setColour(BLACK);
+				((RBNode<Entry<K,V>>) middle.right).setColour(BLACK);
 			} else {
-				sibling.setColour(RED); // Sibling goes red
-				if (parent.isRed()) {
-					parent.setColour(BLACK); // Parent goes black if was red
-				} else if (parent != root || parent.getParent() != null) { // TODO TESTS
-					remedyDoubleBlack(parent);
+				y.setColour(RED);
+				if (z.isRed()) {
+					z.setColour(BLACK);
+				} else if (z != root) {
+					remedyDoubleBlack(z);
 				}
 			}
 		} else {
-			restructure(sibling);
-			sibling.setColour(BLACK);
-			parent.setColour(RED);
-			remedyDoubleBlack(u);
+			if (y == y.parent.left) {
+				rotateLeft(y);
+			} else {
+				rotateRight(y);
+			}
+			y.setColour(BLACK);
+			z.setColour(RED);
+			remedyDoubleBlack(p);
 		}
 	}
 
