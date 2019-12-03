@@ -225,12 +225,19 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	public V remove(K key) {
 		if (isEmpty())
 			return null;
-		return removeAux(key).element.getValue();
+		BSTNode<Entry<K, V>> foundNode = findNode(root, key);
+		V removedValue = foundNode.element.getValue();
+		removeAux(foundNode);
+		return removedValue;
 	}
 
-	protected BSTNode<Entry<K, V>> removeAux(K key) throws NoSuchElementException {
-
-		BSTNode<Entry<K, V>> foundNode = findNode(root, key);
+	/**
+	 * 
+	 * @param foundNode
+	 * @return the effectively removed {@link BSTNode}
+	 * @throws NoSuchElementException
+	 */
+	protected BSTNode<Entry<K, V>> removeAux(BSTNode<Entry<K, V>> foundNode) throws NoSuchElementException {
 
 		if (foundNode == null)
 			throw new NoSuchElementException("Node not found!");
@@ -258,8 +265,7 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 			removeWithOneChild(isRightChild, parent, foundNode.getLeft());
 			break;
 		default: // Has both children
-			BSTNode<Entry<K, V>> nodeToUpdate = foundNode;
-			removeWithBothChildren(nodeToUpdate);
+			foundNode = removeWithBothChildren(foundNode);
 			break;
 
 		}
@@ -268,7 +274,7 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	}
 
 	// TODO may still not work, stuff missing?
-	private void removeWithBothChildren(BSTNode<Entry<K, V>> nodeToUpdate) {
+	private BSTNode<Entry<K, V>> removeWithBothChildren(BSTNode<Entry<K, V>> nodeToUpdate) {
 		// get min value of the right child
 		// put that on the place of removal
 		// add the right child as the right child of the min value node
@@ -289,6 +295,7 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		} else {
 			removeInternal(minValueNode.parent, isRightChild);
 		}
+		return minValueNode;
 	}
 
 	private void removeWithOneChild(boolean amRightChild, BSTNode<Entry<K, V>> parent, BSTNode<Entry<K, V>> child) {
