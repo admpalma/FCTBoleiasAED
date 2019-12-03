@@ -131,6 +131,7 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 		if (isEmpty())
 			return null;
 		AVLNode<Entry<K, V>> foundNode = (AVLNode<Entry<K, V>>) findNode(root, key);
+		if (foundNode == null) return null;
 		V removedValue = foundNode.element.getValue();
 		AVLNode<Entry<K, V>> removedNode = (AVLNode<Entry<K, V>>) removeAux(foundNode);
 		rebalance(removedNode); // rebalance up from the node
