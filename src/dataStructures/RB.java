@@ -1,7 +1,5 @@
 package dataStructures;
 
-import dataStructures.RB.RBNode;
-
 public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements SortedMap<K, V> {
 
 	/**
@@ -74,11 +72,18 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 		 */
 		@Override
 		protected BSTNode<E> getSiblingOf(BSTNode<E> child) {
-			
-			BSTNode<E> sibling = child.equals(child.parent.left)
-					? child.parent.right
-					: child.parent.left;
+			BSTNode<E> sibling = (child == left) ? right : left;
 			return sibling;
+		}
+
+		protected RBNode<E> getRedChild() {
+			if (isRed((RBNode<E>) right)) {
+				return (RBNode<E>) right;
+			} else if (isRed((RBNode<E>) left)) {
+				return (RBNode<E>) left;
+			} else {
+				return null;
+			}
 		}
 
 	}
@@ -174,57 +179,99 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 			return null;
 		RBNode<Entry<K, V>> v = (RBNode<Entry<K, V>>) findNode(root, key);
 		V removedValue = v.element.getValue();
-		RBNode<Entry<K, V>> p = (RBNode<Entry<K, V>>) removeAux(v);
-		fixAfterRemoval(p);
+		RBNode<Entry<K, V>> u = (RBNode<Entry<K, V>>) removeAux(v);
+		if (u == v) {
+			u = null;
+		}
+		fixAfterRemoval(u, v);
 		return removedValue;
 	}
 
 	/**
-	 * @param p
+	 * @param u
+	 * @param v 
 	 */
-	private void fixAfterRemoval(RBNode<Entry<K, V>> p) {
-		if (p.isRed()) {
-			p.setColour(BLACK);
-		} else if (p.parent != null) {
-			RBNode<Entry<K, V>> sibling = (RBNode<Entry<K, V>>) p.parent.getSiblingOf(p);
-			if (sibling != null) {
-				if (sibling.isInternal() && (!sibling.isRed() || sibling.left.isInternal())) {
-					remedyDoubleBlack(p);
-				} 
-			}			
+	private void fixAfterRemoval(RBNode<Entry<K, V>> u, RBNode<Entry<K, V>> v) {
+		if (RBNode.isRed(u) || v.isRed()) {
+			v.setColour(BLACK);
+		} else if (!RBNode.isRed(u) && !v.isRed()) {
+			remedyDoubleBlack(u, v);
+//			RBNode<Entry<K, V>> sibling = (RBNode<Entry<K, V>>) u.parent.getSiblingOf(u);
+//			if (sibling != null) {
+//				if (sibling.isInternal() && (!sibling.isRed() || sibling.left.isInternal())) {
+//					remedyDoubleBlack(u);
+//				} 
+//			}			
 		}
 	}
 
-	/** Remedies a double black violation at a given node caused by removal. */
-	protected void remedyDoubleBlack(RBNode<Entry<K, V>> p) {
-		RBNode<Entry<K, V>> z = (RBNode<Entry<K, V>>) p.getParent();		
-		RBNode<Entry<K, V>> y = (RBNode<Entry<K, V>>) z.getSiblingOf(p);
+	/** Remedies a double black violation at a given node caused by removal. 
+	 * @param v */
+	protected void remedyDoubleBlack(RBNode<Entry<K, V>> u, RBNode<Entry<K, V>> v) {
+		RBNode<Entry<K, V>> parent;
+		if (u != null) {
+			parent = (RBNode<Entry<K, V>>) u.getParent();
+		} else {
+			parent = (RBNode<Entry<K, V>>) v.getParent();
+		}
+		RBNode<Entry<K, V>> sibling = (RBNode<Entry<K, V>>) parent.getSiblingOf(u);
 		
-		if (!y.isRed()) {
-			if (((RBNode<Entry<K,V>>) y.left).isRed() || ((RBNode<Entry<K,V>>) y.right).isRed()) {
-				RBNode<Entry<K, V>> x = ((RBNode<Entry<K,V>>) y.left).isRed() ? (RBNode<Entry<K,V>>) y.left : (RBNode<Entry<K,V>>) y.right;
-				RBNode<Entry<K, V>> middle = (RBNode<Entry<K, V>>) restructure(x);
-				middle.setColour(z.isRed);
-				((RBNode<Entry<K,V>>) middle.left).setColour(BLACK);
-				((RBNode<Entry<K,V>>) middle.right).setColour(BLACK);
+		if (parent != null) {
+			if (!RBNode.isRed(sibling)) {
+				RBNode<Entry<K, V>> redChild = sibling.getRedChild();
+				if (redChild != null) {
+					restructure(redChild);
+				} else {
+					sibling.setColour(RED);
+					remedyDoubleBlack(u, v);
+				}
 			} else {
-				y.setColour(RED);
-				if (z.isRed()) {
-					z.setColour(BLACK);
-				} else if (z != root) {
-					remedyDoubleBlack(z);
+				if (sibling == parent.left) {
+					rotateRight(parent);
+				} else {
+					rotateLeft(parent);
 				}
 			}
-		} else {
-			if (y == y.parent.left) {
-				rotateLeft(y);
-			} else {
-				rotateRight(y);
-			}
-			y.setColour(BLACK);
-			z.setColour(RED);
-			remedyDoubleBlack(p);
 		}
+		if (u != null && u.parent == null) {
+			root = u;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+//		RBNode<Entry<K, V>> z = (RBNode<Entry<K, V>>) p.getParent();		
+//		RBNode<Entry<K, V>> y = (RBNode<Entry<K, V>>) z.getSiblingOf(p);
+//		
+//		if (!y.isRed()) {
+//			if (((RBNode<Entry<K,V>>) y.left).isRed() || ((RBNode<Entry<K,V>>) y.right).isRed()) {
+//				RBNode<Entry<K, V>> x = ((RBNode<Entry<K,V>>) y.left).isRed() ? (RBNode<Entry<K,V>>) y.left : (RBNode<Entry<K,V>>) y.right;
+//				RBNode<Entry<K, V>> middle = (RBNode<Entry<K, V>>) restructure(x);
+//				middle.setColour(z.isRed);
+//				((RBNode<Entry<K,V>>) middle.left).setColour(BLACK);
+//				((RBNode<Entry<K,V>>) middle.right).setColour(BLACK);
+//			} else {
+//				y.setColour(RED);
+//				if (z.isRed()) {
+//					z.setColour(BLACK);
+//				} else if (z != root) {
+//					remedyDoubleBlack(z);
+//				}
+//			}
+//		} else {
+//			if (y == y.parent.left) {
+//				rotateLeft(y);
+//			} else {
+//				rotateRight(y);
+//			}
+//			y.setColour(BLACK);
+//			z.setColour(RED);
+//			remedyDoubleBlack(p);
+//		}
 	}
 
 	@Override
