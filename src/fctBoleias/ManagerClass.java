@@ -45,6 +45,9 @@ public class ManagerClass implements Manager {
 	}
 
 	@Override
+	/**
+	 * O(1) in all cases
+	 */
 	public boolean isLoggedIn() {
 		return currentUser != null;
 	}
@@ -74,6 +77,9 @@ public class ManagerClass implements Manager {
 	}
 
 	@Override
+	/**
+	 * O(1) in all cases
+	 */
 	public String getCurrentUserName() {
 		try {
 			return currentUser.getName();
@@ -83,6 +89,9 @@ public class ManagerClass implements Manager {
 	}
 
 	@Override
+	/*
+	 * O()
+	 */
 	public void remove(String date)
 			throws NotLoggedInException, NoTripOnDayException, TripHasRidesException, InvalidDateException {
 		if (currentUser == null) {
