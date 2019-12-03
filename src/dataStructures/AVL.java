@@ -80,7 +80,7 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 			overriddenValue = closestNode.element.getValue();
 		}
 		AVLNode<Entry<K, V>> insertedNode = (AVLNode<Entry<K, V>>) insertAux(key, value, closestNode);
-		if (closestNode == insertedNode) {
+		if (closestNode == insertedNode || insertedNode == root) {
 			return overriddenValue;
 		} else {
 			rebalance(insertedNode);
@@ -98,11 +98,15 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 		if (z.isInternal()) {
 			z.setHeight();
 		}
-		while (!z.isBalance()) {
+		while (z.isBalance() && z != root) {
+			z = (AVLNode<Entry<K, V>>) z.getParent();
+			z.setHeight();
+		}
+		if (!z.isBalance()) {
 			z = rebalanceSubtree(z);
 			if (z.parent == null) {
 				root = z;
-			}
+			} 
 		}
 	}
 	
