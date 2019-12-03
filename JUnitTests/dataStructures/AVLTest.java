@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import dataStructures.AVL.AVLNode;
-import dataStructures.RB.RBNode;
 
 class AVLTest extends AbstractAdvancedBSTTest {
 

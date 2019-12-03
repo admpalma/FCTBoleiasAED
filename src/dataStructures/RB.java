@@ -34,6 +34,14 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 		public boolean isRed() {
 			return isRed;
 		}
+		
+		public static boolean isRed(RBNode<?> node) {
+			if (node == null) {
+				return false;
+			} else {
+				return node.isRed;
+			}
+		}
 
 		/**
 		 * @return <code>true</code> if one of {@link RBNode this RBNode's} adjacent
@@ -48,6 +56,27 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 				return true;
 			}
 			return false;
+		}
+
+		public boolean hasRedChild() {
+			if (right != null && ((RBNode<E>) right).isRed()) {
+				return true;
+			} else if (left != null && ((RBNode<E>) left).isRed()) {
+				return true;
+			}
+			return false;
+		}
+		
+		/**
+		 * TODO supports <code>null</code> as valid child
+		 */
+		@Override
+		protected BSTNode<E> getSiblingOf(BSTNode<E> child) {
+			
+			BSTNode<E> sibling = child.equals(child.parent.left)
+					? child.parent.right
+					: child.parent.left;
+			return sibling;
 		}
 
 	}
@@ -141,24 +170,41 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 	public V remove(K key) {
 		if (isEmpty())
 			return null;
-
-		// Remove as BST remove
-		RBNode<Entry<K, V>> removedNode = (RBNode<Entry<K, V>>) removeAux(key);
-
-		// TODO CHECK THIS SINCE BOOK TALKS ABOUT OVERWRITTING SOMETHING
-
-		if (removedNode.isRed()) {
-			removedNode.setColour(BLACK);
+		RBNode<Entry<K, V>> v = (RBNode<Entry<K, V>>) findNode(root, key);
+		V removedValue = v.element.getValue();
+		RBNode<Entry<K, V>> u = (RBNode<Entry<K, V>>) removeAux(v);
+		if (u == v) {
+			v = null;
 		}
-		// TODO TESTS
-		else if (removedNode.parent == null || removedNode != root) {
+		fixAfterRemoval(u, v);
+		return removedValue;
+	}
+
+	/**
+	 * @param u
+	 * @param v 
+	 */
+	private void fixAfterRemoval(RBNode<Entry<K, V>> u, RBNode<Entry<K, V>> v) {
+		// TODO CHECK THIS SINCE BOOK TALKS ABOUT OVERWRITTING SOMETHING
+		
+		
+
+		if (u.isRed() || RBNode.isRed(v)) {
+			u.setColour(BLACK);
+		} else if (!u.isRed() && !RBNode.isRed(v)) {
+			u.setColour(BLACK);
+			remedyDoubleBlack(u);
+		}
+		// throw new Ass
+			
+		/*if (u.parent == null || u != root) {
 			// Get the sibling
-			RBNode<Entry<K, V>> sibling = removedNode.getParent().getLeft().equals(removedNode)
-					? (RBNode<Entry<K, V>>) removedNode.getParent().getRight()
-					: (RBNode<Entry<K, V>>) removedNode.getParent().getLeft();
+			RBNode<Entry<K, V>> sibling = u.getParent().getLeft().equals(u)
+					? (RBNode<Entry<K, V>>) u.getParent().getRight()
+					: (RBNode<Entry<K, V>>) u.getParent().getLeft();
 
 			if (sibling.isInternal() && (!sibling.isRed() || sibling.getLeft().isInternal())) {
-				remedyDoubleBlack(removedNode);
+				remedyDoubleBlack(u);
 			}
 
 			/*
@@ -171,34 +217,30 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 			 * left.isRed()) { // Set black left.setColour(BLACK); } else {
 			 * right.setColour(BLACK); }
 			 */
-		}
+		//}
 		// case red node: end
-		return removedNode.element.getValue();
 	}
 
 	/** Remedies a double black violation at a given node caused by removal. */
-	protected void remedyDoubleBlack(RBNode<Entry<K, V>> x) {
-		RBNode<Entry<K, V>> parent = (RBNode<Entry<K, V>>) x.getParent();
-		RBNode<Entry<K, V>> sibling;
-
-		if (parent.getLeft().equals(x)) {
-			sibling = (RBNode<Entry<K, V>>) parent.getRight();
-		} else {
-			sibling = (RBNode<Entry<K, V>>) parent.getLeft();
-		}
-
-		if (sibling.isRed()) {
-			restructure(sibling);
-			sibling.setColour(BLACK);
-			parent.setColour(RED);
-			remedyDoubleBlack(x);
-		} else {
+	protected void remedyDoubleBlack(RBNode<Entry<K, V>> u) {
+		RBNode<Entry<K, V>> parent = (RBNode<Entry<K, V>>) u.getParent();		
+		RBNode<Entry<K, V>> sibling = (RBNode<Entry<K, V>>) parent.getSiblingOf(u);
+		if (sibling == null || !sibling.isRed()) {
+			
+			if (sibling.hasRedChild()) {
+				
+			}
+			
+			
+			
+			
+			
 			RBNode<Entry<K, V>> left = (RBNode<Entry<K, V>>) sibling.getLeft();
 			RBNode<Entry<K, V>> right = (RBNode<Entry<K, V>>) sibling.getRight();
 
 			if ((left != null && left.isRed()) || (right != null && right.isRed())) {
-				RBNode<Entry<K, V>> node = (RBNode<Entry<K, V>>) restructure(x);
-				x.setColour(parent.isRed());
+				RBNode<Entry<K, V>> node = (RBNode<Entry<K, V>>) restructure(u);
+				u.setColour(parent.isRed());
 				((RBNode<Entry<K, V>>) node.getLeft()).setColour(BLACK);
 				((RBNode<Entry<K, V>>) node.getRight()).setColour(BLACK);
 			} else {
@@ -209,8 +251,12 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 					remedyDoubleBlack(parent);
 				}
 			}
+		} else {
+			restructure(sibling);
+			sibling.setColour(BLACK);
+			parent.setColour(RED);
+			remedyDoubleBlack(u);
 		}
-
 	}
 
 	@Override
