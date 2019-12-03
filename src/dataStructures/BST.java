@@ -128,7 +128,7 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 			overriddenValue = closestNode.element.getValue();
 		}
 		BSTNode<Entry<K, V>> insertedNode = insertAux(key, value, closestNode);
-		if (closestNode == insertedNode) {
+		if (closestNode == insertedNode || insertedNode == root) {
 			return overriddenValue;
 		} else {
 			return null;

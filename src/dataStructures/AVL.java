@@ -60,16 +60,12 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 	}
 
 	/**
-	 * Return a child of p with greater height, <code>null</code> if both children have the same height
+	 * Return a child of p with greater height, <code>right</code> if both children have the same height
 	 */
 	protected AVLNode<Entry<K, V>> tallerChild(AVLNode<Entry<K, V>> p) {
 		AVLNode<Entry<K, V>> left = (AVLNode<Entry<K, V>>) p.left;
 		AVLNode<Entry<K, V>> right = (AVLNode<Entry<K, V>>) p.right;
-		if (p.getHeight(left) == p.getHeight(right)) {
-			return null;
-		} else {
-			return p.getHeight(left) > p.getHeight(right) ? left : right;
-		}
+		return p.getHeight(left) > p.getHeight(right) ? left : right;
 	}
 
 	@Override
@@ -98,16 +94,16 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 		if (z.isInternal()) {
 			z.setHeight();
 		}
-		while (z.isBalance() && z != root) {
+		while (z.isBalance() && z.parent != null) {
 			z = (AVLNode<Entry<K, V>>) z.getParent();
 			z.setHeight();
+			if (!z.isBalance()) {
+				z = rebalanceSubtree(z);
+			}
 		}
-		if (!z.isBalance()) {
-			z = rebalanceSubtree(z);
-			if (z.parent == null) {
-				root = z;
-			} 
-		}
+		if (z.parent == null) {
+			root = z;
+		} 
 	}
 	
 	/**
@@ -137,8 +133,8 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 			return null;
 		AVLNode<Entry<K, V>> foundNode = (AVLNode<Entry<K, V>>) findNode(root, key);
 		V removedValue = foundNode.element.getValue();
-		removeAux(foundNode);
-		rebalance(foundNode); // rebalance up from the node
+		AVLNode<Entry<K, V>> removedNode = (AVLNode<Entry<K, V>>) removeAux(foundNode);
+		rebalance(removedNode); // rebalance up from the node
 		return removedValue;
 	}
 

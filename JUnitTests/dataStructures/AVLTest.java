@@ -71,21 +71,25 @@ class AVLTest extends AbstractAdvancedBSTTest {
 			assertEquals(nodes[i][x], avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i][y]));
 		}
 		int i = 0;
-		assertEquals(null, avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i++][x]));
-		assertEquals(null, avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i++][x]));
-		assertEquals(null, avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i++][x]));
-		assertEquals(null, avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i++][x]));
+		assertEquals(nodes[i][t2], avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i++][x]));
+		assertEquals(nodes[i][t3], avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i++][x]));
+		assertEquals(nodes[i][t3], avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i++][x]));
+		assertEquals(nodes[i][t4], avl.tallerChild((AVLNode<Entry<Integer, Integer>>) nodes[i++][x]));
 	}
 
 	@Test
 	void testRebalance() {
 		for (int i = 0; i < nodes.length; i++) {
 			avl = new AVL<Integer, Integer>((AVLNode<Entry<Integer, Integer>>) nodes[i][z]);
-			avl.rebalance((AVLNode<Entry<Integer, Integer>>) nodes[i][z]);
-			if (i == 0 || i == 3) {
-				assertTrue(avl.root == nodes[i][y]);
+			if (i == 2 || i == 3) {
+				avl.rebalance((AVLNode<Entry<Integer, Integer>>) nodes[i][t1]);
 			} else {
-				assertTrue(avl.root == nodes[i][x]);
+				avl.rebalance((AVLNode<Entry<Integer, Integer>>) nodes[i][t4]);
+			}
+			if (i == 0 || i == 3) {
+				assertEquals(nodes[i][y], avl.root);
+			} else {
+				assertEquals(nodes[i][x], avl.root);
 			}
 			for (int j = 0; j < nodes.length; j++) {
 				assertTrue(((AVLNode<Entry<Integer, Integer>>) nodes[i][j]).isBalance());
