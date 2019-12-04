@@ -35,7 +35,7 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 			return isRed;
 		}
 		
-		public static boolean isRed(RBNode<?> node) {
+		public static <E> boolean isRed(RBNode<E> node) {
 			if (node == null) {
 				return false;
 			} else {
@@ -274,42 +274,6 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
     private static <K,V> RBNode<Entry<K, V>> rightOf(RBNode<Entry<K, V>> p) {
         return (p == null) ? null: (RBNode<Entry<K, V>>) p.right;
     }
-	
-    /** From CLR */
-    private void rotateLeft(RBNode<Entry<K, V>> p) {
-        if (p != null) {
-        	RBNode<Entry<K, V>> r = (RBNode<Entry<K, V>>) p.right;
-            p.right = r.left;
-            if (r.left != null)
-                r.left.parent = p;
-            r.parent = p.parent;
-            if (p.parent == null)
-                root = r;
-            else if (p.parent.left == p)
-                p.parent.left = r;
-            else
-                p.parent.right = r;
-            r.left = p;
-            p.parent = r;
-        }
-    }
-
-    /** From CLR */
-    private void rotateRight(RBNode<Entry<K, V>> p) {
-        if (p != null) {
-        	RBNode<Entry<K, V>> l = (RBNode<Entry<K, V>>) p.left;
-            p.left = l.right;
-            if (l.right != null) l.right.parent = p;
-            l.parent = p.parent;
-            if (p.parent == null)
-                root = l;
-            else if (p.parent.right == p)
-                p.parent.right = l;
-            else p.parent.left = l;
-            l.right = p;
-            p.parent = l;
-        }
-    }
     
     private void fixAfterDeletion(RBNode<Entry<K, V>> x) {
         while (x != root && colourOf(x) == BLACK) {
@@ -320,6 +284,9 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
                     setColour(sib, BLACK);
                     setColour(parentOf(x), RED);
                     rotateLeft(parentOf(x));
+                    if (x.parent.parent.parent == null) {
+						root = x.parent.parent;
+					}
                     sib = rightOf(parentOf(x));
                 }
 
@@ -332,12 +299,18 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
                         setColour(leftOf(sib), BLACK);
                         setColour(sib, RED);
                         rotateRight(sib);
+                        if (x.parent.parent.parent == null) {
+    						root = x.parent.parent;
+    					}
                         sib = rightOf(parentOf(x));
                     }
                     setColour(sib, colourOf(parentOf(x)));
                     setColour(parentOf(x), BLACK);
                     setColour(rightOf(sib), BLACK);
                     rotateLeft(parentOf(x));
+                    if (x.parent.parent.parent == null) {
+						root = x.parent.parent;
+					}
                     x = (RBNode<Entry<K, V>>) root;
                 }
             } else { // symmetric
@@ -347,6 +320,9 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
                     setColour(sib, BLACK);
                     setColour(parentOf(x), RED);
                     rotateRight(parentOf(x));
+                    if (x.parent.parent.parent == null) {
+						root = x.parent.parent;
+					}
                     sib = leftOf(parentOf(x));
                 }
 
@@ -359,12 +335,18 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
                         setColour(rightOf(sib), BLACK);
                         setColour(sib, RED);
                         rotateLeft(sib);
+                        if (x.parent.parent.parent == null) {
+    						root = x.parent.parent;
+    					}
                         sib = leftOf(parentOf(x));
                     }
                     setColour(sib, colourOf(parentOf(x)));
                     setColour(parentOf(x), BLACK);
                     setColour(leftOf(sib), BLACK);
                     rotateRight(parentOf(x));
+                    if (x.parent.parent.parent == null) {
+						root = x.parent.parent;
+					}
                     x = (RBNode<Entry<K, V>>) root;
                 }
             }

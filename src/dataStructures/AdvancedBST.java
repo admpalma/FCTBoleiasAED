@@ -28,11 +28,15 @@ public abstract class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> 
 		// it can be implemented in O(1)time
 		BSTNode<Entry<K, V>> pivot = Y.right;
 		BSTNode<Entry<K, V>> rootParent = Y.parent;
+		boolean wasRightChild = false;
+		if (rootParent != null) {
+			wasRightChild = rootParent.right == Y;
+		}
 		//TODO readability refactor
 		Y.parent = pivot;
 		pivot.parent = rootParent;
 		if (rootParent != null) {
-			if (rootParent.element.getKey().compareTo(pivot.element.getKey()) < 0) {
+			if (wasRightChild) {
 				rootParent.right = pivot;
 			} else {
 				rootParent.left = pivot;
@@ -60,6 +64,10 @@ public abstract class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> 
 		// it can be implemented in O(1)time
 		BSTNode<Entry<K, V>> pivot = Y.left;
 		BSTNode<Entry<K, V>> rootParent = Y.parent;
+		boolean wasRightChild = false;
+		if (rootParent != null) {
+			wasRightChild = rootParent.right == Y;
+		}
 		//TODO readability refactor
 		if (pivot.right != null) {
 			pivot.right.parent = Y;
@@ -69,7 +77,7 @@ public abstract class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> 
 		Y.parent = pivot;
 		pivot.parent = rootParent;
 		if (rootParent != null) {
-			if (rootParent.element.getKey().compareTo(pivot.element.getKey()) < 0) {
+			if (wasRightChild) {
 				rootParent.right = pivot;
 			} else {
 				rootParent.left = pivot;
