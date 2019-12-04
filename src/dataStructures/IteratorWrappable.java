@@ -6,7 +6,8 @@ package dataStructures;
  * @param <E> {@link Wrapper}
  * @param <T> {@link Wrappable} object
  */
-public class IteratorWrappable<E extends Wrapper, T extends Wrappable<E>> extends AbstractIteratorWrapper<E, T> implements Iterator<E> {
+public class IteratorWrappable<E extends Wrapper, T extends Wrappable<E>> extends AbstractIteratorWrapper<E, T>
+		implements Iterator<E> {
 
 	/**
 	 * Constructs an {@link IteratorWrappable}

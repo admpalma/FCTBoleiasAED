@@ -255,6 +255,9 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		if (isEmpty())
 			return null;
 		BSTNode<Entry<K, V>> foundNode = findNode(root, key);
+		if (foundNode == null) {
+			return null;
+		}
 		V removedValue = foundNode.element.getValue();
 		removeAux(foundNode);
 		return removedValue;

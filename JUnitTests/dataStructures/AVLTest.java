@@ -29,7 +29,7 @@ class AVLTest extends AbstractAdvancedBSTTest {
 			}
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	private void verifyAVLProperties() {
 		BSTOrderIterator<Integer, Integer> it = (BSTOrderIterator<Integer, Integer>) avl.iterator();

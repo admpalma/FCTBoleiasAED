@@ -23,7 +23,7 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 
 		public AVLNode(E element, AVLNode<E> parent, AVLNode<E> left, AVLNode<E> right) { // char balance,
 			super(element, parent, left, right);
-			height = 1 + Math.max(getHeight((AVLNode<E>) left), getHeight((AVLNode<E>) right));
+			height = 1 + Math.max(getHeight(left), getHeight(right));
 		}
 
 		protected int getHeight(AVLNode<E> no) {

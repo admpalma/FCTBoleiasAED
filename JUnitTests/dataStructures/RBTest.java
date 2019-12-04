@@ -255,7 +255,7 @@ class RBTest extends AbstractAdvancedBSTTest {
 			rb.insert(i, i);
 			verifyRBProperties();
 		}
-		for (int i = 19; i >= 10; i--) {
+		for (int i = 9999; i >= 10; i--) {
 			rb.insert(i, i);
 			verifyRBProperties();
 		}
@@ -268,7 +268,7 @@ class RBTest extends AbstractAdvancedBSTTest {
 			rb.remove(i);
 			verifyRBProperties();
 		}
-		for (int i = 10; i < 20; i++) {
+		for (int i = 10000; i < 20; i++) {
 			rb.remove(i);
 			if (rb.root != null) {
 				verifyRBProperties();

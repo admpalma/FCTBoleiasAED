@@ -10,21 +10,23 @@ public class NestedMapValuesIterator<V, T extends Map<?, V>> implements Iterator
 
 	private Iterator<T> nestedMapIterator;
 	private Iterator<V> lastIterator;
-	
+
 	/**
 	 * Constructs an {@link NestedMapValuesIterator}
+	 * 
 	 * @param iterator {@link Iterator} of the set of inner nested {@link Map Maps}
 	 */
 	public NestedMapValuesIterator(Iterator<T> iterator) {
 		nestedMapIterator = iterator;
 		lastIterator = nestedMapIterator.next().values();
 	}
-	
+
 	/**
 	 * Constructs an {@link NestedMapValuesIterator}
+	 * 
 	 * @param outerMap outer nested {@link Map}
 	 */
-	public NestedMapValuesIterator(Map<?,T> outerMap) {
+	public NestedMapValuesIterator(Map<?, T> outerMap) {
 		this(outerMap.values());
 	}
 

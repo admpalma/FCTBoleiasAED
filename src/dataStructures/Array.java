@@ -40,12 +40,14 @@ public class Array<E> implements List<E> {
 		this(DEFAULT_SIZE);
 	}
 
+	@Override
 	public void addLast(E elem) {
 		if (isFull())
 			resize();
 		array[counter++] = elem;
 	}
 
+	@Override
 	public void add(int pos, E elem) throws InvalidPositionException {
 		if (pos < 0 || pos > counter)
 			throw new InvalidPositionException("Invalid Position.");
@@ -57,6 +59,7 @@ public class Array<E> implements List<E> {
 		counter++;
 	}
 
+	@Override
 	public void addFirst(E elem) {
 		if (isFull())
 			resize();
@@ -73,12 +76,14 @@ public class Array<E> implements List<E> {
 		array = tmp;
 	}
 
+	@Override
 	public E removeLast() throws NoElementException {
 		if (counter == 0)
 			throw new NoElementException("No such element.");
 		return array[--counter];
 	}
 
+	@Override
 	public E remove(int pos) throws InvalidPositionException {
 		if (pos < 0 || pos >= counter)
 			throw new InvalidPositionException("Invalid position.");
@@ -89,16 +94,19 @@ public class Array<E> implements List<E> {
 		return elem;
 	}
 
+	@Override
 	public E removeFirst() throws NoElementException {
 		if (counter == 0)
 			throw new NoElementException("No such element.");
 		return remove(0);
 	}
 
+	@Override
 	public int size() {
 		return counter;
 	}
 
+	@Override
 	public E get(int pos) throws InvalidPositionException {
 		if (pos < 0 || pos >= counter)
 			throw new InvalidPositionException("Invalid position.");
@@ -106,24 +114,28 @@ public class Array<E> implements List<E> {
 		return array[pos];
 	}
 
+	@Override
 	public Iterator<E> iterator() throws NoElementException {
 		if (counter == 0)
 			throw new NoElementException("Array is empty.");
 		return new ArrayIterator<E>(array, counter);
 	}
 
+	@Override
 	public E getFirst() throws NoElementException {
 		if (counter == 0)
 			throw new NoElementException("No such element.");
 		return get(0);
 	}
 
+	@Override
 	public E getLast() throws NoElementException {
 		if (counter == 0)
 			throw new NoElementException("No such element.");
 		return get(counter - 1);
 	}
 
+	@Override
 	public int find(E elem) {
 		boolean found = false;
 		int i = 0;

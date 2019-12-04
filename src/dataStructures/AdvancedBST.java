@@ -22,8 +22,9 @@ public abstract class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> 
 	 * 
 	 * @param Y root of the rotation
 	 * @pre: Y has a right child
+	 * @return pivot
 	 */
-	protected void rotateLeft(BSTNode<Entry<K, V>> Y) {
+	protected BSTNode<Entry<K, V>> rotateLeft(BSTNode<Entry<K, V>> Y) {
 		// a single rotation modifies a constant number of parent-child relationships,
 		// it can be implemented in O(1)time
 		BSTNode<Entry<K, V>> pivot = Y.right;
@@ -32,7 +33,7 @@ public abstract class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> 
 		if (rootParent != null) {
 			wasRightChild = rootParent.right == Y;
 		}
-		//TODO readability refactor
+		// TODO readability refactor
 		Y.parent = pivot;
 		pivot.parent = rootParent;
 		if (rootParent != null) {
@@ -47,8 +48,7 @@ public abstract class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> 
 			pivot.left.parent = Y;
 		}
 		pivot.left = Y;
-		
-		
+		return pivot;
 	}
 
 	/**
@@ -58,8 +58,9 @@ public abstract class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> 
 	 * 
 	 * @param Y - root of the rotation
 	 * @pre: Y has a left child
+	 * @return pivot
 	 */
-	protected void rotateRight(BSTNode<Entry<K, V>> Y) {
+	protected BSTNode<Entry<K, V>> rotateRight(BSTNode<Entry<K, V>> Y) {
 		// a single rotation modifies a constant number of parent-child relationships,
 		// it can be implemented in O(1)time
 		BSTNode<Entry<K, V>> pivot = Y.left;
@@ -68,7 +69,7 @@ public abstract class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> 
 		if (rootParent != null) {
 			wasRightChild = rootParent.right == Y;
 		}
-		//TODO readability refactor
+		// TODO readability refactor
 		if (pivot.right != null) {
 			pivot.right.parent = Y;
 		}
@@ -83,6 +84,7 @@ public abstract class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> 
 				rootParent.left = pivot;
 			}
 		}
+		return pivot;
 	}
 
 	/**
@@ -112,12 +114,12 @@ public abstract class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> 
 		// and is first rotated above its parent Y, and then above what was originally
 		// its grandparent Z.
 		// In any of the cases, the trinode restructuring is completed with O(1)running
-		// time							
-		
+		// time
+
 		/*
-		 * a) y is left child of z and x is left child of y (Left Left Case) return y
-		 * b) y is left child of z and x is right child of y (Left Right Case) return x
-		 * c) y is right child of z and x is right child of y (Right Right Case) return y
+		 * a) y is left child of z and x is left child of y (Left Left Case) return y b)
+		 * y is left child of z and x is right child of y (Left Right Case) return x c)
+		 * y is right child of z and x is right child of y (Right Right Case) return y
 		 * d) y is right child of z and x is left child of y (Right Left Case) return x
 		 */
 

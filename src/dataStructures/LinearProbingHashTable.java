@@ -16,9 +16,9 @@ public class LinearProbingHashTable<K, V> extends MapWithHashTable<K, V> {
 	@SuppressWarnings("unchecked")
 	public LinearProbingHashTable(int capacity) {
 		// Load factor is 1/2 (0.5)
-		int arraySize = MapWithHashTable.nextPrime((int) (2 * capacity));
+		int arraySize = MapWithHashTable.nextPrime(2 * capacity);
 		// Compiler gives a warning.
-		table = (Entry<K, V>[]) new Entry[arraySize];
+		table = new Entry[arraySize];
 		for (int i = 0; i < arraySize; i++)
 			table[i] = null;
 		maxSize = capacity;
@@ -59,9 +59,7 @@ public class LinearProbingHashTable<K, V> extends MapWithHashTable<K, V> {
 
 	@Override
 	/**
-	 * Best case: O(1)
-	 * Average case: O()
-	 * Worst case: O(n)
+	 * Best case: O(1) Average case: O() Worst case: O(n)
 	 */
 	public V get(K key) {
 		int pos = findPos(key);
@@ -85,18 +83,16 @@ public class LinearProbingHashTable<K, V> extends MapWithHashTable<K, V> {
 			return -1;
 		return pos;
 	}
-	
-	//without remove
+
+	// without remove
 	private boolean isEmpty(int pos) {
-		return table[pos]==null;
+		return table[pos] == null;
 	}
 
 	@Override
-	//without remove
+	// without remove
 	/**
-	 * Best case: O(1)
-	 * Average case: O()
-	 * Worst case: O(n)
+	 * Best case: O(1) Average case: O() Worst case: O(n)
 	 */
 	public V insert(K key, V value) {
 		if (this.isFull())
@@ -118,9 +114,9 @@ public class LinearProbingHashTable<K, V> extends MapWithHashTable<K, V> {
 		Entry<K, V>[] auxTable = table;
 
 		// Load factor is 1/2 (0.5)
-		int arraySize = MapWithHashTable.nextPrime((int) (2 * maxSize*2));
+		int arraySize = MapWithHashTable.nextPrime(2 * maxSize * 2);
 		// Compiler gives a warning.
-		table = (Entry<K, V>[]) new Entry[arraySize];
+		table = new Entry[arraySize];
 		currentSize = 0;
 		for (int i = 0; i < auxTable.length; i++) {
 			Entry<K, V> entry = auxTable[i];

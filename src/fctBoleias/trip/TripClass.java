@@ -19,8 +19,8 @@ public class TripClass implements Trip {
 	/**
 	 * Capacity of queue of {@link User users} waiting for a {@link Trip ride}
 	 */
-	private static final int QUEUE_CAPACITY = 10 ;
-	
+	private static final int QUEUE_CAPACITY = 10;
+
 	// Instance variables containing the ride's details and information
 	private String origin, destination;
 	private BasicDateTime date;
@@ -33,12 +33,12 @@ public class TripClass implements Trip {
 	 * Ride object constructor. Creates an object holding details and information
 	 * about a ride
 	 * 
-	 * @param origin   origin of the ride
-	 * @param destination  destiny of the ride
-	 * @param date     {@link BasicDateTime date} of the ride
-	 * @param capacity initial number of seats available for other users
-	 * @param duration duration of ride
-	 * @param driver   {@link User} who gives the ride
+	 * @param origin      origin of the ride
+	 * @param destination destiny of the ride
+	 * @param date        {@link BasicDateTime date} of the ride
+	 * @param capacity    initial number of seats available for other users
+	 * @param duration    duration of ride
+	 * @param driver      {@link User} who gives the ride
 	 */
 	public TripClass(String origin, String destination, BasicDateTime date, int capacity, int duration, User driver) {
 		this.origin = origin;
@@ -173,12 +173,14 @@ public class TripClass implements Trip {
 	public String toMediumDetailString() {
 		return this.toSimpleString();
 	}
-	
+
 	/**
-	 * Returns a {@link String} with the following format:<p>
+	 * Returns a {@link String} with the following format:
+	 * <p>
 	 * {@link #getDriverEmail() driver email}<br>
 	 * {@link #getOrigin() origin}-{@link #getDestination() destination}<br>
 	 * {@link BasicDateTime#toString() dateTime} {@link #getDuration() duration}<br>
+	 * 
 	 * @return {@link String} with a simple description of this {@link Trip}
 	 */
 	private String toSimpleString() {
