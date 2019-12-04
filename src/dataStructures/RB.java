@@ -179,99 +179,151 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 			return null;
 		RBNode<Entry<K, V>> v = (RBNode<Entry<K, V>>) findNode(root, key);
 		V removedValue = v.element.getValue();
-		RBNode<Entry<K, V>> u = (RBNode<Entry<K, V>>) removeAux(v);
-		if (u == v) {
-			u = null;
-		}
-		fixAfterRemoval(u, v);
+		RBNode<Entry<K, V>> deletedNode = (RBNode<Entry<K, V>>) removeAux(v);
+		v.setColour(deletedNode.isRed());
+		RBNode<Entry<K, V>> x = getFromReplacementNode(deletedNode);
+		fixAfterRemoval(deletedNode, x);
 		return removedValue;
 	}
 
 	/**
+	 * Initial steps: part 1
+	 * @param deletedNode
+	 * @return
+	 */
+	private RBNode<Entry<K, V>> getFromReplacementNode(RBNode<Entry<K, V>> deletedNode) {
+		// TODO Auto-generated method stub
+		if (deletedNode.right != null) {
+			return (RBNode<Entry<K, V>>) deletedNode.right;
+		} else if (deletedNode.left != null) {
+			return (RBNode<Entry<K, V>>) deletedNode.left;
+		} else {
+			return null;
+		}
+	}
+
+	private enum RemovalFixes {
+		x_isRed, x_isBlackAndSibling_isRed, x_isBlackAndSibling_isBlackAndBothChildren_areBlack,
+		third_A, third_B, fourth_A, fourth_B;
+
+		public static RemovalFixes identifyFix(RBNode<?> x, RBNode<?> w, RBNode<?> deletedNode) {
+			// TODO Auto-generated method stub
+			if (RBNode.isRed(x)) {
+				return x_isRed;
+			} else {
+				if (RBNode.isRed(w)) {
+					return x_isBlackAndSibling_isRed;
+				} else {
+					if (!RBNode.isRed((RBNode<?>) w.right) && !RBNode.isRed((RBNode<?>) w.left)) {
+						return x_isBlackAndSibling_isBlackAndBothChildren_areBlack;
+					} else if (x == deletedNode.left) {
+						if (RBNode.isRed((RBNode<?>) w.right)) {
+							return fourth_A;
+						} else if (RBNode.isRed((RBNode<?>) w.left) && !RBNode.isRed((RBNode<?>) w.right)) {
+							return third_A;
+						}
+					} else if (x == deletedNode.right) {
+						if (RBNode.isRed((RBNode<?>) w.left)) {
+							return fourth_A;
+						} else if (RBNode.isRed((RBNode<?>) w.right) && !RBNode.isRed((RBNode<?>) w.left)) {
+							return third_A;
+						}
+					}
+				}
+			}
+			return null;
+		}
+		
+	}
+	
+	/**
 	 * @param u
 	 * @param v 
 	 */
-	private void fixAfterRemoval(RBNode<Entry<K, V>> u, RBNode<Entry<K, V>> v) {
-		if (RBNode.isRed(u) || v.isRed()) {
-			v.setColour(BLACK);
-		} else if (!RBNode.isRed(u) && !v.isRed()) {
-			remedyDoubleBlack(u, v);
-//			RBNode<Entry<K, V>> sibling = (RBNode<Entry<K, V>>) u.parent.getSiblingOf(u);
-//			if (sibling != null) {
-//				if (sibling.isInternal() && (!sibling.isRed() || sibling.left.isInternal())) {
-//					remedyDoubleBlack(u);
-//				} 
-//			}			
+	private void fixAfterRemoval(RBNode<Entry<K, V>> deletedNode, RBNode<Entry<K, V>> x) {
+		if (deletedNode.isRed() && (RBNode.isRed(x) || x == null)) {
+			//done
+		} else if (!deletedNode.isRed() && (!RBNode.isRed(x) || x == null)) {
+			RBNode<Entry<K, V>> sibling = (RBNode<Entry<K, V>>) deletedNode.parent.getSiblingOf(x);
+			RemovalFixes fix = RemovalFixes.identifyFix(x, sibling, deletedNode);
+			remedyDoubleBlack(x, sibling, deletedNode, fix);
+		} else if (deletedNode.isRed() && !x.isRed()) {
+			x.setColour(RED);
+			RBNode<Entry<K, V>> sibling = (RBNode<Entry<K, V>>) deletedNode.getSiblingOf(x);
+			RemovalFixes fix = RemovalFixes.identifyFix(x, sibling, deletedNode);
+			remedyDoubleBlack(x, sibling, deletedNode, fix);
+		} else if (!deletedNode.isRed() && x.isRed()) {
+			x.setColour(BLACK);
+			//done
 		}
 	}
 
 	/** Remedies a double black violation at a given node caused by removal. 
-	 * @param v */
-	protected void remedyDoubleBlack(RBNode<Entry<K, V>> u, RBNode<Entry<K, V>> v) {
-		RBNode<Entry<K, V>> parent;
-		if (u != null) {
-			parent = (RBNode<Entry<K, V>>) u.getParent();
-		} else {
-			parent = (RBNode<Entry<K, V>>) v.getParent();
-		}
-		RBNode<Entry<K, V>> sibling = (RBNode<Entry<K, V>>) parent.getSiblingOf(u);
-		
-		if (parent != null) {
-			if (!RBNode.isRed(sibling)) {
-				RBNode<Entry<K, V>> redChild = sibling.getRedChild();
-				if (redChild != null) {
-					restructure(redChild);
-				} else {
-					sibling.setColour(RED);
-					remedyDoubleBlack(u, v);
-				}
-			} else {
-				if (sibling == parent.left) {
-					rotateRight(parent);
-				} else {
-					rotateLeft(parent);
-				}
+	 * @param v 
+	 * @param deletedNode 
+	 * @param fix */
+	protected void remedyDoubleBlack(RBNode<Entry<K, V>> x, RBNode<Entry<K, V>> w, RBNode<Entry<K, V>> deletedNode, RemovalFixes fix) {
+		switch (fix) {
+		case fourth_A:
+			w.setColour(((RBNode<?>) w.parent).isRed());
+			((RBNode<?>) w.parent).setColour(BLACK);
+			if (w.right != null) {
+				((RBNode<?>) w.right).setColour(BLACK);
 			}
+			rotateLeft(w.parent);
+			break;
+		case fourth_B:
+			w.setColour(((RBNode<?>) x.parent).isRed());
+			((RBNode<?>) x.parent).setColour(BLACK);
+			((RBNode<?>) w.left).setColour(BLACK);
+			rotateRight(x.parent);
+			break;
+		case third_A:
+			((RBNode<?>) w.left).setColour(BLACK);
+			w.setColour(RED);
+			rotateRight(w);
+			w = (RBNode<Entry<K, V>>) w.parent.right;
+			remedyDoubleBlack(x, w, deletedNode, RemovalFixes.fourth_A);
+			break;
+		case third_B:
+			((RBNode<?>) w.right).setColour(BLACK);
+			w.setColour(RED);
+			rotateLeft(w);
+			w = (RBNode<Entry<K, V>>) x.parent.left;
+			remedyDoubleBlack(x, w, deletedNode, RemovalFixes.fourth_B);
+			break;
+		case x_isBlackAndSibling_isBlackAndBothChildren_areBlack:
+			w.setColour(RED);
+			x = (RBNode<Entry<K, V>>) w.parent;
+			if (x.isRed()) {
+				x.setColour(RED);
+			} else {
+				RBNode<Entry<K, V>> sibling = (RBNode<Entry<K, V>>) w.parent.getSiblingOf(x);
+				RemovalFixes refix = RemovalFixes.identifyFix(x, sibling, (RBNode<?>) x.parent);
+				remedyDoubleBlack(x, sibling, (RBNode<Entry<K, V>>) x.parent, refix);
+			}
+			break;
+		case x_isBlackAndSibling_isRed:
+			w.setColour(BLACK);
+			((RBNode<?>) w.parent).setColour(BLACK);
+			if (x == w.parent.left) {
+				rotateLeft(w.parent);
+				w = (RBNode<Entry<K, V>>) w.parent.right;
+			} else if (x == w.parent.right) {
+				rotateRight(w.parent);
+				w = (RBNode<Entry<K, V>>) w.parent.left;
+			} else {
+				throw new AssertionError();
+			}
+			RemovalFixes refix = RemovalFixes.identifyFix(x, w, deletedNode);
+			remedyDoubleBlack(x, w, deletedNode, refix);
+			break;
+		case x_isRed:
+			x.setColour(BLACK);
+			break;
+		default:
+			break;
 		}
-		if (u != null && u.parent == null) {
-			root = u;
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-//		RBNode<Entry<K, V>> z = (RBNode<Entry<K, V>>) p.getParent();		
-//		RBNode<Entry<K, V>> y = (RBNode<Entry<K, V>>) z.getSiblingOf(p);
-//		
-//		if (!y.isRed()) {
-//			if (((RBNode<Entry<K,V>>) y.left).isRed() || ((RBNode<Entry<K,V>>) y.right).isRed()) {
-//				RBNode<Entry<K, V>> x = ((RBNode<Entry<K,V>>) y.left).isRed() ? (RBNode<Entry<K,V>>) y.left : (RBNode<Entry<K,V>>) y.right;
-//				RBNode<Entry<K, V>> middle = (RBNode<Entry<K, V>>) restructure(x);
-//				middle.setColour(z.isRed);
-//				((RBNode<Entry<K,V>>) middle.left).setColour(BLACK);
-//				((RBNode<Entry<K,V>>) middle.right).setColour(BLACK);
-//			} else {
-//				y.setColour(RED);
-//				if (z.isRed()) {
-//					z.setColour(BLACK);
-//				} else if (z != root) {
-//					remedyDoubleBlack(z);
-//				}
-//			}
-//		} else {
-//			if (y == y.parent.left) {
-//				rotateLeft(y);
-//			} else {
-//				rotateRight(y);
-//			}
-//			y.setColour(BLACK);
-//			z.setColour(RED);
-//			remedyDoubleBlack(p);
-//		}
 	}
 
 	@Override
