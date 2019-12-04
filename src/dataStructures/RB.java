@@ -190,31 +190,12 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 //		fixAfterRemoval(deletedNode, x);
 		return removedValue;
 	}
-
-    static <K,V> RBNode<Entry<K, V>> successor(RBNode<Entry<K, V>> t) {
-        if (t == null)
-            return null;
-        else if (t.right != null) {
-        	RBNode<Entry<K, V>> p = (RBNode<Entry<K, V>>) t.right;
-            while (p.left != null)
-                p = (RBNode<Entry<K, V>>) p.left;
-            return p;
-        } else {
-        	RBNode<Entry<K, V>> p = (RBNode<Entry<K, V>>) t.parent;
-        	RBNode<Entry<K, V>> ch = t;
-            while (p != null && ch == p.right) {
-                ch = p;
-                p = (RBNode<Entry<K, V>>) p.parent;
-            }
-            return p;
-        }
-    }
 	
 	private void removeNode(RBNode<Entry<K, V>> p) {
         // If strictly internal, copy successor's element to p and then make p
         // point to successor.
         if (p.left != null && p.right != null) {
-            RBNode<Entry<K, V>> s = (RBNode<Entry<K, V>>) successor(p);
+            RBNode<Entry<K, V>> s = (RBNode<Entry<K, V>>) minNode(p.right);
             p.element = s.element;
             p = s;
         } // p has 2 children
