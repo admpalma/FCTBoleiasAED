@@ -183,7 +183,6 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 		}
 		V removedValue = v.element.getValue();
 		removeNode(v);
-		currentSize--;
 //		RBNode<Entry<K, V>> deletedNode = (RBNode<Entry<K, V>>) removeAux(v);
 //		v.setColour(deletedNode.isRed());
 //		RBNode<Entry<K, V>> x = getFromReplacementNode(deletedNode);
@@ -192,47 +191,35 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 	}
 	
 	private void removeNode(RBNode<Entry<K, V>> p) {
-        // If strictly internal, copy successor's element to p and then make p
-        // point to successor.
-        if (p.left != null && p.right != null) {
-            RBNode<Entry<K, V>> s = (RBNode<Entry<K, V>>) minNode(p.right);
-            p.element = s.element;
-            p = s;
-        } // p has 2 children
-
-        // Start fixup at replacement node, if it exists.
-        RBNode<Entry<K, V>> replacement = (p.left != null ? (RBNode<Entry<K, V>>) p.left : (RBNode<Entry<K, V>>) p.right);
-
-        if (replacement != null) {
-            // Link replacement to parent
-            replacement.parent = p.parent;
-            if (p.parent == null)
-                root = replacement;
-            else if (p == p.parent.left)
-                p.parent.left  = replacement;
-            else
-                p.parent.right = replacement;
-
-            // Null out links so they are OK to use by fixAfterDeletion.
-            p.left = p.right = p.parent = null;
-
-            // Fix replacement
-            if (p.isRed == BLACK)
-                fixAfterDeletion(replacement);
-        } else if (p.parent == null) { // return if we are the only node.
-            root = null;
-        } else { //  No children. Use self as phantom replacement and unlink.
-            if (p.isRed == BLACK)
-                fixAfterDeletion(p);
-
-            if (p.parent != null) {
-                if (p == p.parent.left)
-                    p.parent.left = null;
-                else if (p == p.parent.right)
-                    p.parent.right = null;
-                p.parent = null;
-            }
-        }
+		boolean removedNodeWasRightChild = false;
+		if (p.parent != null) {
+			removedNodeWasRightChild = p.equals(p.parent.getRight());
+		}
+		p = (RBNode<Entry<K, V>>) removeAux(p);
+		RBNode<Entry<K, V>> replacement = (p.right != null ? (RBNode<Entry<K, V>>) p.right : (RBNode<Entry<K, V>>) p.left);
+		if (replacement != null) {
+			// Break connections to let fixAfterRemoval work
+			p.parent = p.right = p.left = null;
+			if (p.isRed == BLACK) {
+				fixAfterRemoval(replacement);
+			}
+		} else if (p.parent != null) { 
+			// Relink connection broken by removeAux for fixAfterRemoval to work
+			if (removedNodeWasRightChild) {
+				p.parent.right = p;
+			} else {
+				p.parent.left = p;
+			}
+			if (p.isRed == BLACK) {
+				fixAfterRemoval(p);
+			}
+			// Break connection only meant to let fixAfterRemoval work
+			if (removedNodeWasRightChild) {
+				p.parent.right = null;
+			} else {
+				p.parent.left = null;
+			}
+		}
 	}
 	
     private static <K,V> boolean colourOf(RBNode<Entry<K, V>> p) {
@@ -256,7 +243,7 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
         return (p == null) ? null: (RBNode<Entry<K, V>>) p.right;
     }
     
-    private void fixAfterDeletion(RBNode<Entry<K, V>> x) {
+    private void fixAfterRemoval(RBNode<Entry<K, V>> x) {
         while (x != root && colourOf(x) == BLACK) {
             if (x == leftOf(parentOf(x))) {
             	RBNode<Entry<K, V>> sib = rightOf(parentOf(x));
