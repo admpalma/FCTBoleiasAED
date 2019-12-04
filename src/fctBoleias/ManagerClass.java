@@ -10,6 +10,7 @@ import dataStructures.LinearProbingHashTable;
 import dataStructures.Map;
 import dataStructures.NestedMapValuesIterator;
 import dataStructures.NoElementException;
+import dataStructures.RB;
 import dataStructures.SortedMap;
 import fctBoleias.trip.CantRideSelfException;
 import fctBoleias.trip.InvalidTripDataException;
@@ -53,8 +54,8 @@ public class ManagerClass implements Manager {
 	}
 
 	@Override
-	public void addTrip(String origin, String destination, String date, String hourMinute, int duration, int numberSeats)
-			throws NotLoggedInException, InvalidTripDataException, DateOccupiedException {
+	public void addTrip(String origin, String destination, String date, String hourMinute, int duration,
+			int numberSeats) throws NotLoggedInException, InvalidTripDataException, DateOccupiedException {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		} else if (!(duration > 0)) {
@@ -63,12 +64,18 @@ public class ManagerClass implements Manager {
 		try {
 			BasicDateTime dateTime = new BasicDateTimeClass(date, hourMinute);
 			Trip newTrip = new TripClass(origin, destination, dateTime, numberSeats, duration, currentUser);
+
 			currentUser.addTrip(newTrip);
+
+			assert (currentUser.hasTripOnDate(dateTime));
+
 			SortedMap<String, Trip> tripsInDay = tripsByDate.get(dateTime);
+
 			if (tripsInDay == null) {
-				tripsInDay = new AVL<String, Trip>();
+				tripsInDay = new RB<String, Trip>();
 				tripsByDate.insert(dateTime, tripsInDay);
 			}
+
 			tripsInDay.insert(currentUser.getEmail(), newTrip);
 		} catch (InvalidDateException e) {
 			throw new InvalidTripDataException(e);
@@ -101,7 +108,7 @@ public class ManagerClass implements Manager {
 
 		currentUser.removeTrip(newDate);
 
-		assert(!currentUser.hasTripOnDate(newDate));
+		assert (!currentUser.hasTripOnDate(newDate));
 		tripsByDate.get(newDate).remove(currentUser.getEmail());
 
 	}
@@ -259,7 +266,8 @@ public class ManagerClass implements Manager {
 		if (currentUser == null) {
 			throw new NotLoggedInException();
 		}
-		return new IteratorWrappable<TripWrapper, Trip>(new NestedMapValuesIterator<Trip, SortedMap<String, Trip>>(tripsByDate));
+		return new IteratorWrappable<TripWrapper, Trip>(
+				new NestedMapValuesIterator<Trip, SortedMap<String, Trip>>(tripsByDate));
 	}
 
 }

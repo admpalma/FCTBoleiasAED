@@ -12,10 +12,10 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	static class BSTNode<E> implements Serializable {
 
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
-		
+
 		protected BSTNode<E> parent;
 		protected BSTNode<E> left;
 		protected BSTNode<E> right;
@@ -35,11 +35,14 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		E getElement() {
 			return element;
 		}
-		
+
 		/**
-		 * Returns the {@link BSTNode uncle} of this {@link BSTNode BSTNode's} given grandchild
+		 * Returns the {@link BSTNode uncle} of this {@link BSTNode BSTNode's} given
+		 * grandchild
+		 * 
 		 * @param grandchild one of this {@link BSTNode BSTNode's} grandchildren
-		 * @return {@link BSTNode uncle} of this {@link BSTNode BSTNode's} given grandchild, <code>null</code> if the grandchild doesn't have an uncle
+		 * @return {@link BSTNode uncle} of this {@link BSTNode BSTNode's} given
+		 *         grandchild, <code>null</code> if the grandchild doesn't have an uncle
 		 */
 		protected BSTNode<E> getUncleOf(BSTNode<E> grandchild) {
 			if (grandchild.parent == right) {
@@ -49,16 +52,17 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 			}
 			throw new AssertionError("Given node is not a grandchild of this node!");
 		}
-		
+
 		/**
-		 * Returns the {@link BSTNode sibling} of this {@link BSTNode BSTNode's} given child
+		 * Returns the {@link BSTNode sibling} of this {@link BSTNode BSTNode's} given
+		 * child
+		 * 
 		 * @param child one of this {@link BSTNode BSTNode's} children
-		 * @return {@link BSTNode sibling} of this {@link BSTNode BSTNode's} given child, <code>null</code> if the child doesn't have a sibling
+		 * @return {@link BSTNode sibling} of this {@link BSTNode BSTNode's} given
+		 *         child, <code>null</code> if the child doesn't have a sibling
 		 */
 		protected BSTNode<E> getSiblingOf(BSTNode<E> child) {
-			BSTNode<E> sibling = child.equals(child.parent.left)
-					? child.parent.right
-					: child.parent.left;
+			BSTNode<E> sibling = child.equals(child.parent.left) ? child.parent.right : child.parent.left;
 			return sibling;
 		}
 
@@ -86,7 +90,7 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 
 	// Number of elements
 	protected int currentSize;
-	
+
 	public BST() {
 		root = null;
 		currentSize = 0;
@@ -102,14 +106,21 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 
 	@Override
 	public Iterator<K> keys() throws NoElementException {
-		return new IteratorKeys<K, Entry<K,V>>(this.iterator());
+		return new IteratorKeys<K, Entry<K, V>>(this.iterator());
 	}
 
 	@Override
 	public Iterator<V> values() throws NoElementException {
-		return new IteratorValues<V, Entry<K,V>>(this.iterator());
+		return new IteratorValues<V, Entry<K, V>>(this.iterator());
 	}
 
+	/**
+	 * Auxiliary method to find a node by key, starting at a given node
+	 * 
+	 * @param n   node to search from
+	 * @param key key to search for
+	 * @return {@link BSTNode found node} or <code>null</code>
+	 */
 	protected BSTNode<Entry<K, V>> findNode(BSTNode<Entry<K, V>> n, K key) {
 		BSTNode<Entry<K, V>> res = null;
 		if (n != null) {
@@ -146,26 +157,30 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * Factory method to create new {@link BSTNode BSTNodes}.<br>
 	 * May be overridden by subclasses that require more specialized nodes.
+	 * 
 	 * @param element new {@link BSTNode BSTNode's} {@link BSTNode#element}
-	 * @param parent new {@link BSTNode BSTNode's} {@link BSTNode#parent}
-	 * @param left new {@link BSTNode BSTNode's} {@link BSTNode#left}
-	 * @param right new {@link BSTNode BSTNode's} {@link BSTNode#right}
+	 * @param parent  new {@link BSTNode BSTNode's} {@link BSTNode#parent}
+	 * @param left    new {@link BSTNode BSTNode's} {@link BSTNode#left}
+	 * @param right   new {@link BSTNode BSTNode's} {@link BSTNode#right}
 	 * @return new {@link BSTNode} initialized with the given parameters
 	 */
-	protected BSTNode<Entry<K, V>> nodeOf(Entry<K, V> element, BSTNode<Entry<K, V>> parent, BSTNode<Entry<K, V>> left, BSTNode<Entry<K, V>> right) {
+	protected BSTNode<Entry<K, V>> nodeOf(Entry<K, V> element, BSTNode<Entry<K, V>> parent, BSTNode<Entry<K, V>> left,
+			BSTNode<Entry<K, V>> right) {
 		return new BSTNode<Entry<K, V>>(element, parent, left, right);
 	}
-	
+
 	/**
+	 * Auxiliary method to insert a node and return inserted node
 	 * 
-	 * @param key
-	 * @param value
-	 * @param closestNode
-	 * @return
+	 * @param key         key of the new node's element
+	 * @param value       value of the new node's element
+	 * @param closestNode new node's parent or node which will be substituted by new
+	 *                    node
+	 * @return {@link BSTNode inserted node}
 	 */
 	protected BSTNode<Entry<K, V>> insertAux(K key, V value, BSTNode<Entry<K, V>> closestNode) {
 		BSTNode<Entry<K, V>> insertedNode;
@@ -174,7 +189,7 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 			root = insertedNode;
 			currentSize++;
 		} else {
-			assert(closestNode != null);
+			assert (closestNode != null);
 			int num = key.compareTo(closestNode.element.getKey());
 			if (num == 0) { // If key already existed
 				closestNode.element = new EntryClass<K, V>(key, value);
@@ -187,8 +202,9 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 					closestNode.right = insertedNode;
 				}
 				currentSize++;
-			}	
+			}
 		}
+
 		return insertedNode;
 	}
 
@@ -198,13 +214,15 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	 * @param key key to find
 	 * @return <code>null</code> if this {@link BST} is empty, otherwise:<br>
 	 * 
-	 * {@link BSTNode} of this {@link BST}
-	 * that has an {@link Entry} with an equal <code>key</code> to the given one as it's {@link BSTNode#element element} 
-	 * if there is such a {@link BSTNode};<br>
+	 *         {@link BSTNode} of this {@link BST} that has an {@link Entry} with an
+	 *         equal <code>key</code> to the given one as it's
+	 *         {@link BSTNode#element element} if there is such a
+	 *         {@link BSTNode};<br>
 	 * 
-	 * {@link BSTNode} of this {@link BST} fit to be the parent of another {@link BSTNode} 
-	 * that has an {@link Entry} with the given <code>key</code> as it's {@link BSTNode#element element}
-	 * if there is no {@link BSTNode} matching the previous situation.
+	 *         {@link BSTNode} of this {@link BST} fit to be the parent of another
+	 *         {@link BSTNode} that has an {@link Entry} with the given
+	 *         <code>key</code> as it's {@link BSTNode#element element} if there is
+	 *         no {@link BSTNode} matching the previous situation.
 	 */
 	protected BSTNode<Entry<K, V>> findClosest(K key) {
 		if (this.isEmpty()) {
@@ -260,14 +278,16 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 			isRightChild = foundNode.equals(parent.getRight());
 		}
 		int children = 0;
-		if (foundNode.getRight() != null)
+		if (foundNode.getRight() != null) {
 			children += 1;
-		if (foundNode.getLeft() != null)
+		}
+		if (foundNode.getLeft() != null) {
 			children += 2;
+		}
 
 		switch (children) {
 		case 0: // No children
-			removeInternal(parent, isRightChild);
+			removeExternal(parent, isRightChild);
 			break;
 		case 1: // Has right child
 			removeWithOneChild(isRightChild, parent, foundNode.getRight());
@@ -278,18 +298,23 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		default: // Has both children
 			foundNode = removeWithBothChildren(foundNode);
 			break;
-
 		}
 		currentSize--;
 		return foundNode;
 	}
 
-
+	/**
+	 * Auxiliary method to remove a node with two children (changes element value)
+	 * 
+	 * @param nodeToUpdate node which will be theoretically removed
+	 * @return foundNode
+	 */
 	private BSTNode<Entry<K, V>> removeWithBothChildren(BSTNode<Entry<K, V>> nodeToUpdate) {
 
+		// Finds the min value node of the right subtree
 		BSTNode<Entry<K, V>> minValueNode = minNode(nodeToUpdate.getRight());
-		assert(minValueNode.left == null);
-		
+		assert (minValueNode.left == null);
+
 		boolean isRightChild = false;
 
 		// If the node we wish to remove is the parent's right node
@@ -300,11 +325,19 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		if (minValueNode.right != null) {
 			removeWithOneChild(isRightChild, minValueNode.parent, minValueNode.right);
 		} else {
-			removeInternal(minValueNode.parent, isRightChild);
+			removeExternal(minValueNode.parent, isRightChild);
 		}
 		return minValueNode;
 	}
 
+	/**
+	 * Auxiliary method to remove a node with only one child and update new child
+	 * 
+	 * @param amRightChild true if the node to be removed is right child of its
+	 *                     parent
+	 * @param parent       parent of the node to be removed
+	 * @param child        new parents child
+	 */
 	private void removeWithOneChild(boolean amRightChild, BSTNode<Entry<K, V>> parent, BSTNode<Entry<K, V>> child) {
 		if (parent == null) {
 			root = child;
@@ -316,7 +349,13 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		child.parent = parent;
 	}
 
-	private void removeInternal(BSTNode<Entry<K, V>> parent, boolean amRightChild) {
+	/**
+	 * Auxiliary method to remove a leaf node
+	 * 
+	 * @param parent       parent of the node to be removed
+	 * @param amRightChild true if node to be removed is right child of its parent
+	 */
+	private void removeExternal(BSTNode<Entry<K, V>> parent, boolean amRightChild) {
 		if (parent == null) {
 			root = null;
 		} else if (amRightChild) {

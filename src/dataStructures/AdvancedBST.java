@@ -20,7 +20,7 @@ public abstract class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> 
 	 * Performs a single left rotation rooted at Y node. Node X was a right child of
 	 * Y before the rotation, then Y becomes the left child of X after the rotation.
 	 * 
-	 * @param Y - root of the rotation
+	 * @param Y root of the rotation
 	 * @pre: Y has a right child
 	 */
 	protected void rotateLeft(BSTNode<Entry<K, V>> Y) {

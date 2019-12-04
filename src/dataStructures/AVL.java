@@ -12,7 +12,7 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 		 * 
 		 */
 		private static final long serialVersionUID = 1L;
-		
+
 		// Height of the node
 		protected int height;
 
@@ -40,7 +40,7 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 			int dif = getBalance();
 			return dif == 0 || dif == -1 || dif == 1;
 		}
-		
+
 		public int getBalance() {
 			return getHeight((AVLNode<E>) left) - getHeight((AVLNode<E>) right);
 		}
@@ -60,7 +60,8 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 	}
 
 	/**
-	 * Return a child of p with greater height, <code>right</code> if both children have the same height
+	 * Return a child of p with greater height, <code>right</code> if both children
+	 * have the same height
 	 */
 	protected AVLNode<Entry<K, V>> tallerChild(AVLNode<Entry<K, V>> p) {
 		AVLNode<Entry<K, V>> left = (AVLNode<Entry<K, V>>) p.left;
@@ -86,9 +87,9 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 
 	/**
 	 * Rebalance method called by insert and remove. Traverses the path from zPos to
-	 * the root. For each node encountered, we recompute its height and perform a
-	 * trinode restructuring if it's unbalanced. the rebalance is completed with
-	 * O(log n) running time
+	 * the root while it finds unbalanced nodes. For each unbalanced node
+	 * encountered, we perform a trinode restructuring and recompute its height. The
+	 * rebalance is completed within (<=) O(log n) running time
 	 */
 	protected void rebalance(AVLNode<Entry<K, V>> z) {
 
@@ -99,20 +100,24 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 				z = (AVLNode<Entry<K, V>>) restructure(tallerChild(tallerChild(z)));
 				((AVLNode<Entry<K, V>>) z.getLeft()).setHeight();
 				((AVLNode<Entry<K, V>>) z.getRight()).setHeight();
+				z.setHeight();
 
 				if (z.parent == null) {
+					// Might need to change root
 					root = z;
 				}
 			} else {
-				// If we find a balanced node we stop
+				// If we find a balanced node we stop, we know no other node will be unbalanced
 				break;
 			}
 		}
 	}
 
 	@Override
-	protected BSTNode<Entry<K, V>> nodeOf(Entry<K, V> element, BSTNode<Entry<K, V>> parent, BSTNode<Entry<K, V>> left, BSTNode<Entry<K, V>> right) {
-		return new AVLNode<Entry<K, V>>(element, (AVLNode<Entry<K, V>>) parent, (AVLNode<Entry<K, V>>) left, (AVLNode<Entry<K, V>>) right);
+	protected BSTNode<Entry<K, V>> nodeOf(Entry<K, V> element, BSTNode<Entry<K, V>> parent, BSTNode<Entry<K, V>> left,
+			BSTNode<Entry<K, V>> right) {
+		return new AVLNode<Entry<K, V>>(element, (AVLNode<Entry<K, V>>) parent, (AVLNode<Entry<K, V>>) left,
+				(AVLNode<Entry<K, V>>) right);
 	}
 
 	@Override
@@ -120,7 +125,8 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 		if (isEmpty())
 			return null;
 		AVLNode<Entry<K, V>> foundNode = (AVLNode<Entry<K, V>>) findNode(root, key);
-		if (foundNode == null) return null;
+		if (foundNode == null)
+			return null;
 		V removedValue = foundNode.element.getValue();
 		AVLNode<Entry<K, V>> removedNode = (AVLNode<Entry<K, V>>) removeAux(foundNode);
 		rebalance(removedNode); // rebalance up from the node
