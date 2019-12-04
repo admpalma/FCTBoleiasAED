@@ -343,7 +343,7 @@ class RBTest extends AbstractAdvancedBSTTest {
 
 	@Test
 	void testRemedyDoubleBlack() {
-		fail("Not yet implemented"); // TODO
+		// TODO fail("Not yet implemented");
 	}
 
 }

@@ -178,153 +178,200 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 		if (isEmpty())
 			return null;
 		RBNode<Entry<K, V>> v = (RBNode<Entry<K, V>>) findNode(root, key);
+		if (v == null) {
+			return null;
+		}
 		V removedValue = v.element.getValue();
-		RBNode<Entry<K, V>> deletedNode = (RBNode<Entry<K, V>>) removeAux(v);
-		v.setColour(deletedNode.isRed());
-		RBNode<Entry<K, V>> x = getFromReplacementNode(deletedNode);
-		fixAfterRemoval(deletedNode, x);
+		removeNode(v);
+		currentSize--;
+//		RBNode<Entry<K, V>> deletedNode = (RBNode<Entry<K, V>>) removeAux(v);
+//		v.setColour(deletedNode.isRed());
+//		RBNode<Entry<K, V>> x = getFromReplacementNode(deletedNode);
+//		fixAfterRemoval(deletedNode, x);
 		return removedValue;
 	}
 
-	/**
-	 * Initial steps: part 1
-	 * @param deletedNode
-	 * @return
-	 */
-	private RBNode<Entry<K, V>> getFromReplacementNode(RBNode<Entry<K, V>> deletedNode) {
-		// TODO Auto-generated method stub
-		if (deletedNode.right != null) {
-			return (RBNode<Entry<K, V>>) deletedNode.right;
-		} else if (deletedNode.left != null) {
-			return (RBNode<Entry<K, V>>) deletedNode.left;
-		} else {
-			return null;
-		}
-	}
+    static <K,V> RBNode<Entry<K, V>> successor(RBNode<Entry<K, V>> t) {
+        if (t == null)
+            return null;
+        else if (t.right != null) {
+        	RBNode<Entry<K, V>> p = (RBNode<Entry<K, V>>) t.right;
+            while (p.left != null)
+                p = (RBNode<Entry<K, V>>) p.left;
+            return p;
+        } else {
+        	RBNode<Entry<K, V>> p = (RBNode<Entry<K, V>>) t.parent;
+        	RBNode<Entry<K, V>> ch = t;
+            while (p != null && ch == p.right) {
+                ch = p;
+                p = (RBNode<Entry<K, V>>) p.parent;
+            }
+            return p;
+        }
+    }
+	
+	private void removeNode(RBNode<Entry<K, V>> p) {
+        // If strictly internal, copy successor's element to p and then make p
+        // point to successor.
+        if (p.left != null && p.right != null) {
+            RBNode<Entry<K, V>> s = (RBNode<Entry<K, V>>) successor(p);
+            p.element = s.element;
+            p = s;
+        } // p has 2 children
 
-	private enum RemovalFixes {
-		x_isRed, x_isBlackAndSibling_isRed, x_isBlackAndSibling_isBlackAndBothChildren_areBlack,
-		third_A, third_B, fourth_A, fourth_B;
+        // Start fixup at replacement node, if it exists.
+        RBNode<Entry<K, V>> replacement = (p.left != null ? (RBNode<Entry<K, V>>) p.left : (RBNode<Entry<K, V>>) p.right);
 
-		public static RemovalFixes identifyFix(RBNode<?> x, RBNode<?> w, RBNode<?> deletedNode) {
-			// TODO Auto-generated method stub
-			if (RBNode.isRed(x)) {
-				return x_isRed;
-			} else {
-				if (RBNode.isRed(w)) {
-					return x_isBlackAndSibling_isRed;
-				} else {
-					if (!RBNode.isRed((RBNode<?>) w.right) && !RBNode.isRed((RBNode<?>) w.left)) {
-						return x_isBlackAndSibling_isBlackAndBothChildren_areBlack;
-					} else if (x == deletedNode.left) {
-						if (RBNode.isRed((RBNode<?>) w.right)) {
-							return fourth_A;
-						} else if (RBNode.isRed((RBNode<?>) w.left) && !RBNode.isRed((RBNode<?>) w.right)) {
-							return third_A;
-						}
-					} else if (x == deletedNode.right) {
-						if (RBNode.isRed((RBNode<?>) w.left)) {
-							return fourth_A;
-						} else if (RBNode.isRed((RBNode<?>) w.right) && !RBNode.isRed((RBNode<?>) w.left)) {
-							return third_A;
-						}
-					}
-				}
-			}
-			return null;
-		}
-		
+        if (replacement != null) {
+            // Link replacement to parent
+            replacement.parent = p.parent;
+            if (p.parent == null)
+                root = replacement;
+            else if (p == p.parent.left)
+                p.parent.left  = replacement;
+            else
+                p.parent.right = replacement;
+
+            // Null out links so they are OK to use by fixAfterDeletion.
+            p.left = p.right = p.parent = null;
+
+            // Fix replacement
+            if (p.isRed == BLACK)
+                fixAfterDeletion(replacement);
+        } else if (p.parent == null) { // return if we are the only node.
+            root = null;
+        } else { //  No children. Use self as phantom replacement and unlink.
+            if (p.isRed == BLACK)
+                fixAfterDeletion(p);
+
+            if (p.parent != null) {
+                if (p == p.parent.left)
+                    p.parent.left = null;
+                else if (p == p.parent.right)
+                    p.parent.right = null;
+                p.parent = null;
+            }
+        }
 	}
 	
-	/**
-	 * @param u
-	 * @param v 
-	 */
-	private void fixAfterRemoval(RBNode<Entry<K, V>> deletedNode, RBNode<Entry<K, V>> x) {
-		if (deletedNode.isRed() && (RBNode.isRed(x) || x == null)) {
-			//done
-		} else if (!deletedNode.isRed() && (!RBNode.isRed(x) || x == null)) {
-			RBNode<Entry<K, V>> sibling = (RBNode<Entry<K, V>>) deletedNode.parent.getSiblingOf(x);
-			RemovalFixes fix = RemovalFixes.identifyFix(x, sibling, deletedNode);
-			remedyDoubleBlack(x, sibling, deletedNode, fix);
-		} else if (deletedNode.isRed() && !x.isRed()) {
-			x.setColour(RED);
-			RBNode<Entry<K, V>> sibling = (RBNode<Entry<K, V>>) deletedNode.getSiblingOf(x);
-			RemovalFixes fix = RemovalFixes.identifyFix(x, sibling, deletedNode);
-			remedyDoubleBlack(x, sibling, deletedNode, fix);
-		} else if (!deletedNode.isRed() && x.isRed()) {
-			x.setColour(BLACK);
-			//done
-		}
-	}
+    private static <K,V> boolean colourOf(RBNode<Entry<K, V>> p) {
+        return (p == null ? BLACK : p.isRed);
+    }
 
-	/** Remedies a double black violation at a given node caused by removal. 
-	 * @param v 
-	 * @param deletedNode 
-	 * @param fix */
-	protected void remedyDoubleBlack(RBNode<Entry<K, V>> x, RBNode<Entry<K, V>> w, RBNode<Entry<K, V>> deletedNode, RemovalFixes fix) {
-		switch (fix) {
-		case fourth_A:
-			w.setColour(((RBNode<?>) w.parent).isRed());
-			((RBNode<?>) w.parent).setColour(BLACK);
-			if (w.right != null) {
-				((RBNode<?>) w.right).setColour(BLACK);
-			}
-			rotateLeft(w.parent);
-			break;
-		case fourth_B:
-			w.setColour(((RBNode<?>) x.parent).isRed());
-			((RBNode<?>) x.parent).setColour(BLACK);
-			((RBNode<?>) w.left).setColour(BLACK);
-			rotateRight(x.parent);
-			break;
-		case third_A:
-			((RBNode<?>) w.left).setColour(BLACK);
-			w.setColour(RED);
-			rotateRight(w);
-			w = (RBNode<Entry<K, V>>) w.parent.right;
-			remedyDoubleBlack(x, w, deletedNode, RemovalFixes.fourth_A);
-			break;
-		case third_B:
-			((RBNode<?>) w.right).setColour(BLACK);
-			w.setColour(RED);
-			rotateLeft(w);
-			w = (RBNode<Entry<K, V>>) x.parent.left;
-			remedyDoubleBlack(x, w, deletedNode, RemovalFixes.fourth_B);
-			break;
-		case x_isBlackAndSibling_isBlackAndBothChildren_areBlack:
-			w.setColour(RED);
-			x = (RBNode<Entry<K, V>>) w.parent;
-			if (x.isRed()) {
-				x.setColour(RED);
-			} else {
-				RBNode<Entry<K, V>> sibling = (RBNode<Entry<K, V>>) w.parent.getSiblingOf(x);
-				RemovalFixes refix = RemovalFixes.identifyFix(x, sibling, (RBNode<?>) x.parent);
-				remedyDoubleBlack(x, sibling, (RBNode<Entry<K, V>>) x.parent, refix);
-			}
-			break;
-		case x_isBlackAndSibling_isRed:
-			w.setColour(BLACK);
-			((RBNode<?>) w.parent).setColour(BLACK);
-			if (x == w.parent.left) {
-				rotateLeft(w.parent);
-				w = (RBNode<Entry<K, V>>) w.parent.right;
-			} else if (x == w.parent.right) {
-				rotateRight(w.parent);
-				w = (RBNode<Entry<K, V>>) w.parent.left;
-			} else {
-				throw new AssertionError();
-			}
-			RemovalFixes refix = RemovalFixes.identifyFix(x, w, deletedNode);
-			remedyDoubleBlack(x, w, deletedNode, refix);
-			break;
-		case x_isRed:
-			x.setColour(BLACK);
-			break;
-		default:
-			break;
-		}
-	}
+    private static <K,V> RBNode<Entry<K, V>> parentOf(RBNode<Entry<K, V>> p) {
+        return (p == null ? null: (RBNode<Entry<K, V>>) p.parent);
+    }
+
+    private static <K,V> void setColour(RBNode<Entry<K, V>> p, boolean c) {
+        if (p != null)
+            p.isRed = c;
+    }
+
+    private static <K,V> RBNode<Entry<K, V>> leftOf(RBNode<Entry<K, V>> p) {
+        return (p == null) ? null: (RBNode<Entry<K, V>>) p.left;
+    }
+
+    private static <K,V> RBNode<Entry<K, V>> rightOf(RBNode<Entry<K, V>> p) {
+        return (p == null) ? null: (RBNode<Entry<K, V>>) p.right;
+    }
+	
+    /** From CLR */
+    private void rotateLeft(RBNode<Entry<K, V>> p) {
+        if (p != null) {
+        	RBNode<Entry<K, V>> r = (RBNode<Entry<K, V>>) p.right;
+            p.right = r.left;
+            if (r.left != null)
+                r.left.parent = p;
+            r.parent = p.parent;
+            if (p.parent == null)
+                root = r;
+            else if (p.parent.left == p)
+                p.parent.left = r;
+            else
+                p.parent.right = r;
+            r.left = p;
+            p.parent = r;
+        }
+    }
+
+    /** From CLR */
+    private void rotateRight(RBNode<Entry<K, V>> p) {
+        if (p != null) {
+        	RBNode<Entry<K, V>> l = (RBNode<Entry<K, V>>) p.left;
+            p.left = l.right;
+            if (l.right != null) l.right.parent = p;
+            l.parent = p.parent;
+            if (p.parent == null)
+                root = l;
+            else if (p.parent.right == p)
+                p.parent.right = l;
+            else p.parent.left = l;
+            l.right = p;
+            p.parent = l;
+        }
+    }
+    
+    private void fixAfterDeletion(RBNode<Entry<K, V>> x) {
+        while (x != root && colourOf(x) == BLACK) {
+            if (x == leftOf(parentOf(x))) {
+            	RBNode<Entry<K, V>> sib = rightOf(parentOf(x));
+
+                if (colourOf(sib) == RED) {
+                    setColour(sib, BLACK);
+                    setColour(parentOf(x), RED);
+                    rotateLeft(parentOf(x));
+                    sib = rightOf(parentOf(x));
+                }
+
+                if (colourOf(leftOf(sib))  == BLACK &&
+                    colourOf(rightOf(sib)) == BLACK) {
+                    setColour(sib, RED);
+                    x = parentOf(x);
+                } else {
+                    if (colourOf(rightOf(sib)) == BLACK) {
+                        setColour(leftOf(sib), BLACK);
+                        setColour(sib, RED);
+                        rotateRight(sib);
+                        sib = rightOf(parentOf(x));
+                    }
+                    setColour(sib, colourOf(parentOf(x)));
+                    setColour(parentOf(x), BLACK);
+                    setColour(rightOf(sib), BLACK);
+                    rotateLeft(parentOf(x));
+                    x = (RBNode<Entry<K, V>>) root;
+                }
+            } else { // symmetric
+            	RBNode<Entry<K, V>> sib = leftOf(parentOf(x));
+
+                if (colourOf(sib) == RED) {
+                    setColour(sib, BLACK);
+                    setColour(parentOf(x), RED);
+                    rotateRight(parentOf(x));
+                    sib = leftOf(parentOf(x));
+                }
+
+                if (colourOf(rightOf(sib)) == BLACK &&
+                    colourOf(leftOf(sib)) == BLACK) {
+                    setColour(sib, RED);
+                    x = parentOf(x);
+                } else {
+                    if (colourOf(leftOf(sib)) == BLACK) {
+                        setColour(rightOf(sib), BLACK);
+                        setColour(sib, RED);
+                        rotateLeft(sib);
+                        sib = leftOf(parentOf(x));
+                    }
+                    setColour(sib, colourOf(parentOf(x)));
+                    setColour(parentOf(x), BLACK);
+                    setColour(leftOf(sib), BLACK);
+                    rotateRight(parentOf(x));
+                    x = (RBNode<Entry<K, V>>) root;
+                }
+            }
+        }
+
+        setColour(x, BLACK);
+    }
 
 	@Override
 	protected BSTNode<Entry<K, V>> nodeOf(Entry<K, V> element, BSTNode<Entry<K, V>> parent, BSTNode<Entry<K, V>> left,
