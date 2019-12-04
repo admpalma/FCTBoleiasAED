@@ -1,7 +1,5 @@
 package basicDateTime;
 
-import java.util.Arrays;
-
 /**
  * An implementation of {@link BasicDateTime} using a <code>short[]</code>
  */
@@ -200,14 +198,56 @@ public class BasicDateTimeClass implements BasicDateTime {
 		}
 		return compareResult;
 	}
+	
+    /**
+     * Returns a hash code based on the contents of the given array
+     *
+     * @param a the array whose hash value to compute
+     * @return hash code of <code>a</code>
+     */
+    private int vectorHashCode(short a[]) {
+        if (a == null)
+            return 0;
+
+        int result = 1;
+        for (short element : a)
+            result = 31 * result + element;
+
+        return result;
+    }
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Arrays.hashCode(getDateOnlyVector());
+		result = prime * result + vectorHashCode(getDateOnlyVector());
 		return result;
 	}
+	
+    /**
+     * Returns <code>true</code> if the two given arrays of shorts are
+     * <code>equal</code> to each other, <code>false</code> otherwise
+     *
+     * @param a one array to be tested for equality
+     * @param a2 the other array to be tested for equality
+     * @return <code>true</code> if the two arrays are equal
+     */
+    private boolean vectorEquals(short[] a, short a2[]) {
+        if (a==a2)
+            return true;
+        if (a==null || a2==null)
+            return false;
+
+        int length = a.length;
+        if (a2.length != length)
+            return false;
+
+        for (int i=0; i<length; i++)
+            if (a[i] != a2[i])
+                return false;
+
+        return true;
+    }
 
 	@Override
 	public boolean equals(Object obj) {
@@ -218,7 +258,7 @@ public class BasicDateTimeClass implements BasicDateTime {
 		if (getClass() != obj.getClass())
 			return false;
 		BasicDateTimeClass other = (BasicDateTimeClass) obj;
-		if (!Arrays.equals(this.getDateOnlyVector(), other.getDateOnlyVector()))
+		if (!vectorEquals(this.getDateOnlyVector(), other.getDateOnlyVector()))
 			return false;
 		return true;
 	}

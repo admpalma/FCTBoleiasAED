@@ -3,8 +3,6 @@
  */
 package dataStructures;
 
-import java.util.Comparator;
-
 /**
  * @author AED_19_20
  *
@@ -157,10 +155,6 @@ public class Array<E> implements List<E> {
 
 	public boolean isFull() {
 		return counter == array.length;
-	}
-
-	public static <E> void xSort(E[] vec, int vecSize, Comparator<E> c) {
-		// TODO
 	}
 
 	public int capacity() {
