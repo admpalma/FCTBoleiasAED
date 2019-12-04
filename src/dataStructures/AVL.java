@@ -91,34 +91,23 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 	 * O(log n) running time
 	 */
 	protected void rebalance(AVLNode<Entry<K, V>> z) {
-		if (z.isInternal()) {
-			z.setHeight();
-		}
-		while (z.isBalance() && z.parent != null) {
-			z = (AVLNode<Entry<K, V>>) z.getParent();
-			z.setHeight();
+
+		// Loop while z != root
+		while (z.parent != null) {
+			z = (AVLNode<Entry<K, V>>) z.parent;
 			if (!z.isBalance()) {
-				z = rebalanceSubtree(z);
+				z = (AVLNode<Entry<K, V>>) restructure(tallerChild(tallerChild(z)));
+				((AVLNode<Entry<K, V>>) z.getLeft()).setHeight();
+				((AVLNode<Entry<K, V>>) z.getRight()).setHeight();
+
+				if (z.parent == null) {
+					root = z;
+				}
+			} else {
+				// If we find a balanced node we stop
+				break;
 			}
 		}
-		if (z.parent == null) {
-			root = z;
-		} 
-	}
-	
-	/**
-	 * Rebalances a subtree rooted at z
-	 * @param z root of the subtree to rebalance
-	 * @return root of the balanced subtree
-	 */
-	private AVLNode<Entry<K, V>> rebalanceSubtree(AVLNode<Entry<K, V>> z) {
-		assert(tallerChild(z) != null);
-		assert(tallerChild(tallerChild(z)) != null);
-		z = (AVLNode<Entry<K, V>>) restructure(tallerChild(tallerChild(z)));
-		((AVLNode<Entry<K, V>>) z.getLeft()).setHeight();
-	    ((AVLNode<Entry<K, V>>) z.getRight()).setHeight();
-		z.setHeight();
-		return z;
 	}
 
 	@Override

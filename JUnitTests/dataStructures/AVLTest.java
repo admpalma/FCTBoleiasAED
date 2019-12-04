@@ -61,13 +61,13 @@ class AVLTest extends AbstractAdvancedBSTTest {
 			verifyAVLProperties();
 			assertTrue(((AVLNode<Entry<Integer, Integer>>) avl.root).isBalance());
 		}
-		for (int i = 19; i >= 10; i--) {
+		for (int i = 9999; i >= 10; i--) {
 			avl.insert(i, i);
 			verifyAVLProperties();
 			assertTrue(((AVLNode<Entry<Integer, Integer>>) avl.root).isBalance());
 		}
 	}
-	
+
 	@Override
 	protected BST<Integer, Integer> newTree() {
 		return new AVL<Integer, Integer>();
@@ -82,7 +82,7 @@ class AVLTest extends AbstractAdvancedBSTTest {
 			verifyAVLProperties();
 			assertTrue(((AVLNode<Entry<Integer, Integer>>) avl.root).isBalance());
 		}
-		for (int i = 10; i < 20; i++) {
+		for (int i = 10000; i < 20; i++) {
 			avl.remove(i);
 			if (avl.root != null) {
 				verifyAVLProperties();
