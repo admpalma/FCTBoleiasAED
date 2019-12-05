@@ -3,9 +3,9 @@ package dataStructures;
 import basicDateTime.BasicDateTime;
 
 /**
- * TODO
- * @param <K>
- * @param <V>
+ * Indexed Map by {@link BasicDateTime}
+ * @param <K> keys of this Map, has to extend {@link BasicDateTime} 
+ * @param <V> values of this Map
  */
 public class BasicDateSortedMap<K extends BasicDateTime, V> implements DateIndexedMap<K, V> {
 
@@ -26,15 +26,21 @@ public class BasicDateSortedMap<K extends BasicDateTime, V> implements DateIndex
 	private V[][][] values;
 
 	/**
-	 * TODO
+	 * Constructs a new {@link BasicDateSortedMap} with {@link BasicDateSortedMap#INITIAL_YEARS default capacity}<p>
+	 * Best case: O(1)<p>
+	 * Average case: O(1)<p>
+	 * Worst case: O(1)<p>
 	 */
 	public BasicDateSortedMap() {
 		this(INITIAL_YEARS);
 	}
 	
 	/**
-	 * TODO
-	 * @param yearCapacity
+	 * Constructs a new {@link BasicDateSortedMap} with the given <code>yearCapacity</code><p>
+	 * Best case: O(1)<p>
+	 * Average case: O(1)<p>
+	 * Worst case: O(1)<p>
+	 * @param yearCapacity number of years expected to store
 	 */
 	@SuppressWarnings("unchecked")
 	public BasicDateSortedMap(int yearCapacity) {
@@ -42,25 +48,41 @@ public class BasicDateSortedMap<K extends BasicDateTime, V> implements DateIndex
 		currentSize = 0;
 	}
 	
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(1)<p>
+	 * Worst case: O(1)<p>
+	 */
 	@Override
 	public boolean isEmpty() {
 		return currentSize == 0;
 	}
 
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(1)<p>
+	 * Worst case: O(1)<p>
+	 */
 	@Override
 	public int size() {
 		return currentSize;
 	}
 	
 	/**
-	 * TODO
-	 * @param key
-	 * @return
+	 * Checks if a given <code>key</code> fits in this map<p>
+	 * O(1)
+	 * @param key given key to check if fits
+	 * @return <code>true</code> if the given key fits in this map, <code>false</code> otherwise
 	 */
 	private boolean fits(K key) {
 		return key.getYear() - BASE_YEAR < values.length;
 	}
 
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(1)<p>
+	 * Worst case: O(1)<p>
+	 */
 	@Override
 	public V get(K key) {
 		if (fits(key)) {
@@ -70,6 +92,11 @@ public class BasicDateSortedMap<K extends BasicDateTime, V> implements DateIndex
 		}
 	}
 
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(1)<p>
+	 * Worst case: O(n) if we resize<p>
+	 */
 	@Override
 	public V insert(K key, V value) {
 		V overriddenValue = get(key);
@@ -84,8 +111,12 @@ public class BasicDateSortedMap<K extends BasicDateTime, V> implements DateIndex
 	}
 
 	/**
-	 * TODO
-	 * @param key
+	 * Resizes this map to fit the given key<p>
+	 *
+	 * Best case: O(n)<p>
+	 * Average case: O(n)<p>
+	 * Worst case: O(n)<p>
+	 * @param key given key
 	 */
 	@SuppressWarnings("unchecked")
 	private void resizeToFit(K key) {
@@ -97,6 +128,11 @@ public class BasicDateSortedMap<K extends BasicDateTime, V> implements DateIndex
 		values = temp;
 	}
 
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(1)<p>
+	 * Worst case: O(1)<p>
+	 */
 	@Override
 	public V remove(K key) {
 		V deletedValue = get(key);
@@ -110,6 +146,11 @@ public class BasicDateSortedMap<K extends BasicDateTime, V> implements DateIndex
 		
 	}
 
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(1)<p>
+	 * Worst case: O(1)<p>
+	 */
 	@Override
 	public Iterator<V> values() throws NoElementException {
 		if (this.isEmpty()) {
