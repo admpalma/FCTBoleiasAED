@@ -1,7 +1,7 @@
 package dataStructures;
 
 /**
- * TODO
+ * Iterator of sparce three dimensional arrays
  * @param <E>
  */
 public class SparseThreeDimensionalArrayIterator<E> implements Iterator<E> {
@@ -14,7 +14,7 @@ public class SparseThreeDimensionalArrayIterator<E> implements Iterator<E> {
 	private int k;
 	
 	/**
-	 * 
+	 * Constructs a new iterator for the given <code>elements</code> array with <code>size</code> number of elements
 	 * @param elements
 	 * @param size
 	 */
@@ -24,31 +24,31 @@ public class SparseThreeDimensionalArrayIterator<E> implements Iterator<E> {
 		rewind();
 	}
 	
-	@Override
 	/**
 	 * O(1) all cases
-	 **/
+	 */
+	@Override
 	public boolean hasNext() {
 		return remaining > 0;
 	}
 
-	@Override
 	/**
 	 * Best case: O(1)
 	 * Average case: O(1+y), y is fullness factor
 	 * Worst case: O(n), n = Sum(length of each of the three arrays)
 	 */
+	@Override
 	public E next() throws NoSuchElementException {
 		if (!hasNext()) {
 			throw new NoSuchElementException();
 		}
 		E next = null;
 		while (next == null) {
-			if (!(k < elements[i][j].length)) {
+			if (elements[i][j] == null || !(k < elements[i][j].length)) {
 				k = 0;
 				j++;
 			}
-			if (!(j < elements[i].length)) {
+			if (elements[i] == null || !(j < elements[i].length)) {
 				j = 0;
 				i++;
 			}
@@ -59,10 +59,10 @@ public class SparseThreeDimensionalArrayIterator<E> implements Iterator<E> {
 		return next;
 	}
 
-	@Override
 	/**
 	 * O(1) all cases
 	 */
+	@Override
 	public void rewind() {
 		remaining = size;
 		i = j = k = 0;
