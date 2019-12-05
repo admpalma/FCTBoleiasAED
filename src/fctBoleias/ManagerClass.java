@@ -54,6 +54,11 @@ public class ManagerClass implements Manager {
 		return currentUser != null;
 	}
 
+	/**
+	 * Best case: O(1) if insert on first node
+	 * Average case: O(2*log n)
+	 * Worst case: O(2 * log n)
+	 */
 	@Override
 	public void addTrip(String origin, String destination, String date, String hourMinute, int duration,
 			int numberSeats) throws NotLoggedInException, InvalidTripDataException, DateOccupiedException {
@@ -66,15 +71,15 @@ public class ManagerClass implements Manager {
 			BasicDateTime dateTime = new BasicDateTimeClass(date, hourMinute);
 			Trip newTrip = new TripClass(origin, destination, dateTime, numberSeats, duration, currentUser);
 
-			currentUser.addTrip(newTrip);
+			currentUser.addTrip(newTrip); // log n
 
 			assert (currentUser.hasTripOnDate(dateTime));
 
-			SortedMap<String, Trip> tripsInDay = tripsByDate.get(dateTime);
+			SortedMap<String, Trip> tripsInDay = tripsByDate.get(dateTime); // O(1)
 
 			if (tripsInDay == null) {
 				tripsInDay = new RB<String, Trip>();
-				tripsByDate.insert(dateTime, tripsInDay);
+				tripsByDate.insert(dateTime, tripsInDay); //log n
 			}
 
 			tripsInDay.insert(currentUser.getEmail(), newTrip);
@@ -84,10 +89,10 @@ public class ManagerClass implements Manager {
 
 	}
 
-	@Override
 	/**
 	 * O(1) in all cases
 	 */
+	@Override
 	public String getCurrentUserName() {
 		try {
 			return currentUser.getName();
@@ -96,10 +101,12 @@ public class ManagerClass implements Manager {
 		}
 	}
 
-	@Override
-	/*
-	 * O()
+	/**
+	 * Best case: O(1) 
+	 * Average case: O(3 * log n)
+	 * Worst case: O(3 * log n)
 	 */
+	@Override
 	public void remove(String date)
 			throws NotLoggedInException, NoTripOnDayException, TripHasRidesException, InvalidDateException {
 		if (currentUser == null) {
@@ -114,6 +121,11 @@ public class ManagerClass implements Manager {
 
 	}
 
+	/**
+	 * Best case: O(1)
+	 * Average case: O(3log n)
+	 * Worst case: O(4*log n) === O(log n)
+	 */
 	@Override
 	public void addNewRide(String email, String date)
 			throws NotLoggedInException, CantRideSelfException, DateOccupiedException, NonExistentUserException,
@@ -128,22 +140,30 @@ public class ManagerClass implements Manager {
 		} else {
 			newDate = new BasicDateTimeClass(date);
 		}
-		if (!tripDriver.hasTripOnDate(newDate)) {
+		if (!tripDriver.hasTripOnDate(newDate)) { // log n
 			throw new NonExistentTripException();
 		} else if (email.equals(currentUser.getEmail())) {
 			throw new CantRideSelfException(tripDriver);
-		} else if (currentUser.hasRideOnDate(newDate) || currentUser.hasTripOnDate(newDate)) {
+		} else if (currentUser.hasRideOnDate(newDate) || currentUser.hasTripOnDate(newDate)) { // 2*log n
 			throw new DateOccupiedException(currentUser);
 		}
-		Trip ride = tripDriver.addUserToTrip(currentUser, newDate);
-		currentUser.addRide(ride);
+		Trip ride = tripDriver.addUserToTrip(currentUser, newDate); // log n
+		currentUser.addRide(ride); // 2log n
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public boolean isUserRegistered(String email) {
 		return usersByEmail.get(email) != null;
 	}
 
+	/**
+	 * Best case: O(1)
+	 * Average case: O(1) 
+	 * Worst case: O(n) if table deteriorates
+	 */
 	@Override
 	public int registerUser(String email, String name, String password)
 			throws InvalidPasswordFormatException, UserAlreadyRegisteredException {
@@ -156,6 +176,9 @@ public class ManagerClass implements Manager {
 		return usersByEmail.size();
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public String logoutCurrentUser() throws NotLoggedInException {
 		String currentUserName = getCurrentUserName();
@@ -163,6 +186,9 @@ public class ManagerClass implements Manager {
 		return currentUserName;
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public String getCurrentUserEmail() {
 		try {
@@ -172,6 +198,11 @@ public class ManagerClass implements Manager {
 		}
 	}
 
+	/**
+	 * Best case: O(1)
+	 * Average case: O(1) 
+	 * Worst case: O(n) if table deteriorates
+	 */
 	@Override
 	public int userLogin(String email, String password) throws NonExistentUserException, IncorrectPasswordException {
 		if (isLoggedIn()) {
@@ -189,6 +220,9 @@ public class ManagerClass implements Manager {
 		return user.getNumberLogins();
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public int getCurrentUserTripNumber() {
 		try {
@@ -198,6 +232,11 @@ public class ManagerClass implements Manager {
 		}
 	}
 
+	/**
+	 * Best case: O(1)
+	 * Average case: O(log n)
+	 * Worst case: O(log n)
+	 */
 	@Override
 	public TripWrapper consult(String email, String date)
 			throws NotLoggedInException, NonExistentTripException, NonExistentUserException, InvalidDateException {
@@ -214,6 +253,11 @@ public class ManagerClass implements Manager {
 		return tripDriver.getTrip(newDate).wrap();
 	}
 
+	/**
+	 * Best case: O(1)
+	 * Average case: O(n+2*log n)
+	 * Worst case: O(n+2*log n)
+	 */
 	@Override
 	public void cancelCurrentUserRide(String date)
 			throws NotLoggedInException, InvalidDateException, NoRideOnDayException {
@@ -225,6 +269,12 @@ public class ManagerClass implements Manager {
 		removedRide.removeUserRide(currentUser);
 	}
 
+
+	/**
+	 * Best case: O(1)
+	 * Average case: O(1) 
+	 * Worst case: O(n) if table deteriorates
+	 */
 	@Override
 	public Iterator<TripWrapper> getUserTrips(String email)
 			throws NotLoggedInException, NoRegisteredTripsException, NonExistentUserException {
@@ -239,6 +289,9 @@ public class ManagerClass implements Manager {
 		}
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public Iterator<TripWrapper> getCurrentUserRides() throws NotLoggedInException, NoRegisteredTripsException {
 		if (currentUser == null) {
@@ -247,6 +300,9 @@ public class ManagerClass implements Manager {
 		return new IteratorWrappable<TripWrapper, Trip>(currentUser.getRidesIterator());
 	}
 
+	/**
+	 * O(1), get is O(1) on this structure
+	 */
 	@Override
 	public Iterator<TripWrapper> getTripsOnDate(String date) throws NotLoggedInException, InvalidDateException {
 		if (currentUser == null) {
@@ -262,6 +318,9 @@ public class ManagerClass implements Manager {
 		}
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public Iterator<TripWrapper> getAllTrips() throws NotLoggedInException {
 		if (currentUser == null) {
