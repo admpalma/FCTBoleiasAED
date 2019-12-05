@@ -90,7 +90,7 @@ public class LinearProbingHashTable<K, V> extends MapWithHashTable<K, V> {
 	// or (c) -1 the map is full and there is not element with this key
 	/**
 	 * Best case: O(1)
-	 * Average case: O(1)
+	 * Average case: O(1+y), y occupation factor
 	 * Worst case: O(n)
 	 */
 	private int findPos(K key) {
@@ -116,7 +116,7 @@ public class LinearProbingHashTable<K, V> extends MapWithHashTable<K, V> {
 
 	/**
 	 * Best case: O(1) 
-	 * Average case: O(1)
+	 * Average case: O(1+y), y occupation factor
 	 * Worst case: O(n)
 	 */
 	@Override

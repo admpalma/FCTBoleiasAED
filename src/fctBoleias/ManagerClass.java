@@ -161,7 +161,7 @@ public class ManagerClass implements Manager {
 
 	/**
 	 * Best case: O(1)
-	 * Average case: O(1) 
+	 * Average case: O(1+y), y occupation factor
 	 * Worst case: O(n) if table deteriorates
 	 */
 	@Override
@@ -200,7 +200,7 @@ public class ManagerClass implements Manager {
 
 	/**
 	 * Best case: O(1)
-	 * Average case: O(1) 
+	 * Average case: O(1+y), y occupation factor
 	 * Worst case: O(n) if table deteriorates
 	 */
 	@Override
@@ -272,7 +272,7 @@ public class ManagerClass implements Manager {
 
 	/**
 	 * Best case: O(1)
-	 * Average case: O(1) 
+	 * Average case: O(1+y), y occupation factor
 	 * Worst case: O(n) if table deteriorates
 	 */
 	@Override
