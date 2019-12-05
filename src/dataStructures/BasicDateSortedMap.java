@@ -16,8 +16,8 @@ public class BasicDateSortedMap<K extends BasicDateTime, V> implements DateIndex
 	
 	private static final int DAYS_IN_MONTH = 31;
 	private static final int MONTHS = 12;
-	private static final int INITIAL_YEARS = 8;
-	private static final int BASE_YEAR = 2015;
+	private static final int INITIAL_YEARS = 2;
+	private static final int BASE_YEAR = 2017;
 	
 	private int currentSize;
 	private V[][][] values;
@@ -86,7 +86,7 @@ public class BasicDateSortedMap<K extends BasicDateTime, V> implements DateIndex
 	 */
 	@SuppressWarnings("unchecked")
 	private void resizeToFit(K key) {
-		V[][][] temp = (V[][][]) new Object[key.getYear() - BASE_YEAR][MONTHS][DAYS_IN_MONTH];
+		V[][][] temp = (V[][][]) new Object[key.getYear() - BASE_YEAR + 1][MONTHS][DAYS_IN_MONTH];
 		int i = 0;
 		for (V[][] v : values) {
 			temp[i++] = v;
