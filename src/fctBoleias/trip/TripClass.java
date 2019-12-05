@@ -46,50 +46,50 @@ public class TripClass implements Trip {
 		this.capacity = capacity;
 	}
 
-	@Override
 	/**
 	 * O(1)
 	 */
+	@Override
 	public BasicDateTime getBasicDateTime() {
 		return date;
 	}
 
-	@Override
 	/**
 	 * O(1)
 	 */
+	@Override
 	public String getOrigin() {
 		return origin;
 	}
 
-	@Override
 	/**
 	 * O(1)
 	 */
+	@Override
 	public String getDestination() {
 		return destination;
 	}
 
-	@Override
 	/**
 	 * O(1)
 	 */
+	@Override
 	public int getDuration() {
 		return duration;
 	}
 
-	@Override
 	/**
 	 * O(1)
 	 */
+	@Override
 	public boolean hasRides() {
 		return usersInRide.size() > 0;
 	}
 
-	@Override
 	/**
 	 * O(1) all cases
 	 */
+	@Override
 	public void addUserAsRide(User user) throws TripIsFullException {
 		if (usersInRide.size() == capacity) {
 			usersWaitingRide.enqueue(user);
@@ -99,12 +99,12 @@ public class TripClass implements Trip {
 		}
 	}
 
-	@Override
 	/**
 	 * Best case: O(1)
 	 * Average case: O(n), n = size of usersWaitingRide
 	 * Worst case: O(n), n = size of usersWaitingRide
 	 */
+	@Override
 	public String toString() {
 		String simpleStr = this.toSimpleString();
 		String usersInRideStr = getUsersInRideList();
@@ -118,7 +118,7 @@ public class TripClass implements Trip {
 	}
 
 	/**
-	 * O(n)
+	 * O(n), n = number of users in usersWaitingRide
 	 * Reads the {@link User users} from usersInRide and concatenates their email in
 	 * a {@link String} with the desired format
 	 * 
@@ -143,15 +143,18 @@ public class TripClass implements Trip {
 		}
 	}
 
-	@Override
 	/**
 	 * O(1) all cases
 	 */
+	@Override
 	public String getDriverEmail() {
 		return driver.getEmail();
 	}
 
 	/**
+	 * Best case: O(1) if found in root
+	 * Average case: O(log n)
+	 * Worst case: O( 2 * log n) if we check both conditions
 	 * Checks if there are free slots on this {@link Trip} and fills them with
 	 * {@link User Users} in queue, if there are any
 	 */
@@ -170,45 +173,45 @@ public class TripClass implements Trip {
 		}
 	}
 
-	@Override
 	/**
-	 * Best case: O(1)
-	 * Average case: O(n)
-	 * Worst case: O(n)
+	 * Best case: O(1) if found on first position
+	 * Average case: O(n+log n)
+	 * Worst case: O(n+log n)
 	 */
+	@Override
 	public void removeUserRide(User user) {
 		usersInRide.remove(usersInRide.find(user));
 		updateQueue();
 	}
 
-	@Override
 	/**
 	 * O(1) all cases
 	 */
+	@Override
 	public boolean hasFreeSlots() {
 		return freeSlots() > 0;
 	}
 
-	@Override
 	/**
 	 * O(1) all cases
 	 */
+	@Override
 	public int freeSlots() {
 		return capacity - usersInRide.size();
 	}
 
-	@Override
 	/**
 	 * O(1) all cases
 	 */
+	@Override
 	public TripWrapper wrap() {
 		return new TripWrapperClass(this);
 	}
 
-	@Override
 	/**
 	 * O(1) all cases
 	 */
+	@Override
 	public String toMediumDetailString() {
 		return this.toSimpleString();
 	}
@@ -232,10 +235,10 @@ public class TripClass implements Trip {
 		return sb.toString();
 	}
 
-	@Override
 	/**
 	 * O(1) all cases
 	 */
+	@Override
 	public String toDateAndDriverString() {
 		StringBuilder sb = new StringBuilder(40);
 		String newLine = System.lineSeparator();
