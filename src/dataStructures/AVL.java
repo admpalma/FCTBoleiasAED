@@ -96,6 +96,11 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 		if (z.isInternal()) {
 			z.setHeight();
 		}
+
+		while (z.parent != null && z.isBalance()) {
+			z = (AVLNode<Entry<K, V>>) z.parent;
+		}
+
 		// Loop while z != root
 		while (z.parent != null) {
 			z = (AVLNode<Entry<K, V>>) z.parent;
@@ -112,7 +117,7 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 				}
 			} else {
 				// If we find a balanced node we stop, we know no other node will be unbalanced
-				//break;
+				break;
 			}
 		}
 	}
