@@ -31,12 +31,17 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		BSTNode(E elem) {
 			this(elem, null, null, null);
 		}
-
+		
+		/**
+		 * O(1)
+		 * @return element
+		 */
 		E getElement() {
 			return element;
 		}
 
 		/**
+		 * O(1)
 		 * Returns the {@link BSTNode uncle} of this {@link BSTNode BSTNode's} given
 		 * grandchild
 		 * 
@@ -54,6 +59,7 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		}
 
 		/**
+		 * O(1)
 		 * Returns the {@link BSTNode sibling} of this {@link BSTNode BSTNode's} given
 		 * child
 		 * 
@@ -66,23 +72,37 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 			return sibling;
 		}
 
-		// ...
+		/**
+		 * O(1)
+		 * @return left
+		 */
 		BSTNode<E> getLeft() {
 			return left;
 		}
 
+		/**
+		 * O(1)
+		 * @return right
+		 */
 		BSTNode<E> getRight() {
 			return right;
 		}
 
+		/**
+		 * O(1)
+		 * @return parent
+		 */
 		BSTNode<E> getParent() {
 			return parent;
 		}
 
+		/**
+		 * O(1)
+		 * @return true if node has children
+		 */
 		boolean isInternal() {
 			return (left != null || right != null);
 		}
-
 	}
 
 	// The root
@@ -96,6 +116,9 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		currentSize = 0;
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public Iterator<Entry<K, V>> iterator() throws NoElementException {
 		if (root == null) {
@@ -104,17 +127,27 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		return new BSTOrderIterator<K, V>(root);
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public Iterator<K> keys() throws NoElementException {
 		return new IteratorKeys<K, Entry<K, V>>(this.iterator());
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public Iterator<V> values() throws NoElementException {
 		return new IteratorValues<V, Entry<K, V>>(this.iterator());
 	}
 
 	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(h)<p>
+	 * Worst case: O(h)<p>
+	 *
 	 * Auxiliary method to find a node by key, starting at a given node
 	 * 
 	 * @param n   node to search from
@@ -135,6 +168,11 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		return res;
 	}
 
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(h)<p>
+	 * Worst case: O(h)<p>
+	 */ 
 	@Override
 	public V get(K key) {
 		BSTNode<Entry<K, V>> res = findNode(root, key);
@@ -143,6 +181,11 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		return res.getElement().getValue();
 	}
 
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(h)<p>
+	 * Worst case: O(h)<p>
+	 */
 	@Override
 	public V insert(K key, V value) {
 		BSTNode<Entry<K, V>> closestNode = findClosest(key);
@@ -159,6 +202,8 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	}
 
 	/**
+	 * O(1)
+	 *
 	 * Factory method to create new {@link BSTNode BSTNodes}.<br>
 	 * May be overridden by subclasses that require more specialized nodes.
 	 * 
@@ -174,6 +219,10 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	}
 
 	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(h)<p>
+	 * Worst case: O(h)<p>
+	 *
 	 * Auxiliary method to insert a node and return inserted node
 	 * 
 	 * @param key         key of the new node's element
@@ -209,6 +258,10 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	}
 
 	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(h)<p>
+	 * Worst case: O(h)<p>
+	 *
 	 * Finds the closest node to insert or the node with the same key
 	 * 
 	 * @param key key to find
@@ -250,6 +303,11 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		return current;
 	}
 
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(h)<p>
+	 * Worst case: O(h)<p>
+	 */
 	@Override
 	public V remove(K key) {
 		if (isEmpty())
@@ -264,7 +322,10 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	}
 
 	/**
-	 * 
+	 * Best case: O(1)<p>
+	 * Average case: O(h)<p>
+	 * Worst case: O(h)<p>
+	 *
 	 * @param foundNode
 	 * @return the effectively removed {@link BSTNode}
 	 * @throws NoSuchElementException
@@ -307,6 +368,10 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	}
 
 	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(h) due to minNode<p>
+	 * Worst case: O(h) due to minNode<p>
+	 *
 	 * Auxiliary method to remove a node with two children (changes element value)
 	 * 
 	 * @param nodeToUpdate node which will be theoretically removed
@@ -334,6 +399,7 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	}
 
 	/**
+	 * O(1)
 	 * Auxiliary method to remove a node with only one child and update new child
 	 * 
 	 * @param amRightChild true if the node to be removed is right child of its
@@ -353,6 +419,7 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	}
 
 	/**
+	 * O(1)
 	 * Auxiliary method to remove a leaf node
 	 * 
 	 * @param parent       parent of the node to be removed
@@ -368,6 +435,11 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 		}
 	}
 
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(h)<p>
+	 * Worst case: O(h)<p>
+	 */
 	@Override
 	public Entry<K, V> minEntry() throws NoElementException {
 		if (this.isEmpty())
@@ -376,12 +448,22 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	}
 
 	// Precondition: node != null.
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(h)<p>
+	 * Worst case: O(h)<p>
+	 */
 	protected BSTNode<Entry<K, V>> minNode(BSTNode<Entry<K, V>> node) {
 		if (node.getLeft() == null)
 			return node;
 		return this.minNode(node.getLeft());
 	}
 
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(h)<p>
+	 * Worst case: O(h)<p>
+	 */
 	@Override
 	public Entry<K, V> maxEntry() throws NoElementException {
 		if (this.isEmpty())
@@ -390,17 +472,28 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	}
 
 	// Precondition: node != null.
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(h)<p>
+	 * Worst case: O(h)<p>
+	 */
 	protected BSTNode<Entry<K, V>> maxNode(BSTNode<Entry<K, V>> node) {
 		if (node.getRight() == null)
 			return node;
 		return this.maxNode(node.getRight());
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public boolean isEmpty() {
 		return currentSize == 0;
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public int size() {
 		return currentSize;

@@ -17,6 +17,7 @@ public abstract class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> 
 	// de reduzir a sua altura
 
 	/**
+	 * O(1)
 	 * Performs a single left rotation rooted at Y node. Node X was a right child of
 	 * Y before the rotation, then Y becomes the left child of X after the rotation.
 	 * 
@@ -33,7 +34,7 @@ public abstract class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> 
 		if (rootParent != null) {
 			wasRightChild = rootParent.right == Y;
 		}
-		// TODO readability refactor
+
 		Y.parent = pivot;
 		pivot.parent = rootParent;
 		if (rootParent != null) {
@@ -52,6 +53,7 @@ public abstract class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> 
 	}
 
 	/**
+	 * O(1)
 	 * Performs a single right rotation rooted at Y node. Node X was a left child of
 	 * Y before the rotation, then Y becomes the right child of X after the
 	 * rotation.
@@ -69,7 +71,7 @@ public abstract class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> 
 		if (rootParent != null) {
 			wasRightChild = rootParent.right == Y;
 		}
-		// TODO readability refactor
+
 		if (pivot.right != null) {
 			pivot.right.parent = Y;
 		}
@@ -88,6 +90,7 @@ public abstract class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> 
 	}
 
 	/**
+	 * O(1)
 	 * Performs a tri-node restructuring (a single or double rotation rooted at X
 	 * node). Assumes the nodes are in one of following configurations:
 	 *
@@ -162,6 +165,7 @@ public abstract class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> 
 	}
 
 	/**
+	 * O(1)
 	 * Generates a String representing a two bit number based on parent
 	 * relationships between the nodes
 	 * 

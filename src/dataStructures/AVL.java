@@ -25,26 +25,41 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 			super(element, parent, left, right);
 			height = 1 + Math.max(getHeight(left), getHeight(right));
 		}
-
+		
+		/**
+		 * O(1)
+		 */
 		protected int getHeight(AVLNode<E> no) {
 			if (no == null)
 				return 0;
 			return no.getHeight();
 		}
 
+		/**
+		 * O(1)
+		 */
 		public int getHeight() {
 			return height;
 		}
 
+		/**
+		 * O(1)
+		 */
 		public boolean isBalance() {
 			int dif = getBalance();
 			return dif == 0 || dif == -1 || dif == 1;
 		}
 
+		/**
+		 * O(1)
+		 */
 		public int getBalance() {
 			return getHeight((AVLNode<E>) left) - getHeight((AVLNode<E>) right);
 		}
 
+		/**
+		 * O(1)
+		 */
 		public int setHeight() {
 			height = 1 + Math.max(getHeight((AVLNode<E>) left), getHeight((AVLNode<E>) right));
 			return height;
@@ -60,6 +75,7 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 	}
 
 	/**
+	 * O(1)
 	 * Return a child of p with greater height, <code>right</code> if both children
 	 * have the same height
 	 */
@@ -69,6 +85,11 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 		return p.getHeight(left) > p.getHeight(right) ? left : right;
 	}
 
+	/**
+	 * Best case: O(1)
+	 * Average case: O(log n)
+	 * Worst case: O(log n)
+	 */
 	@Override
 	public V insert(K key, V value) {
 		AVLNode<Entry<K, V>> closestNode = (AVLNode<Entry<K, V>>) findClosest(key);
@@ -86,6 +107,7 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 	}
 
 	/**
+	 * O(log n)
 	 * Rebalance method called by insert and remove. Traverses the path from zPos to
 	 * the root while it finds unbalanced nodes. For each unbalanced node
 	 * encountered, we perform a trinode restructuring and recompute its height. The
@@ -122,6 +144,9 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 		}
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	protected BSTNode<Entry<K, V>> nodeOf(Entry<K, V> element, BSTNode<Entry<K, V>> parent, BSTNode<Entry<K, V>> left,
 			BSTNode<Entry<K, V>> right) {
@@ -129,6 +154,11 @@ public class AVL<K extends Comparable<K>, V> extends AdvancedBST<K, V> implement
 				(AVLNode<Entry<K, V>>) right);
 	}
 
+	/**
+	 * Best case: O(1)
+	 * Average case: O(log n)
+	 * Worst case: O(log n)
+	 */
 	@Override
 	public V remove(K key) {
 		if (isEmpty())
