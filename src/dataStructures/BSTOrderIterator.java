@@ -16,7 +16,14 @@ public class BSTOrderIterator<K, V> implements Iterator<Entry<K, V>> {
 			rewind();
 		}
 	}
-
+	
+	/**
+	 * Best case: O(1) if node is null
+	 * Average case: O(h), h is height
+	 * Worst case: O(h), h is height
+	 * Pushes to the stack every node from given node following their lefts
+	 * @param node node from which to push the left subtree to the stack
+	 */
 	private void pushLeftSubtree(BSTNode<Entry<K, V>> node) {
 		while (node != null) {
 			stack.push(node);
@@ -25,11 +32,19 @@ public class BSTOrderIterator<K, V> implements Iterator<Entry<K, V>> {
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public boolean hasNext() {
 		return !stack.isEmpty();
 	}
 
 	@Override
+	/**
+	 * Best case: O(1)
+	 * Average case: O(h), h is height
+	 * Worst case: O(h), h is height
+	 */
 	public Entry<K, V> next() throws NoSuchElementException {
 
 		if (!hasNext()) {
@@ -48,6 +63,11 @@ public class BSTOrderIterator<K, V> implements Iterator<Entry<K, V>> {
 	}
 
 	@Override
+	/**
+	 * Best case: O(1) if node is null
+	 * Average case: O(h)
+	 * Worst case: O(h), h is height
+	 */
 	public void rewind() {
 		stack = new StackInList<BSTNode<Entry<K, V>>>();
 		pushLeftSubtree(root);

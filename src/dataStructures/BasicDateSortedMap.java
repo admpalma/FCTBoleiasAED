@@ -14,6 +14,9 @@ public class BasicDateSortedMap<K extends BasicDateTime, V> implements DateIndex
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * Constants
+	 */
 	private static final int DAYS_IN_MONTH = 31;
 	private static final int MONTHS = 12;
 	private static final int INITIAL_YEARS = 2;

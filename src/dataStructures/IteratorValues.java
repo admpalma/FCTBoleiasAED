@@ -7,6 +7,9 @@ public class IteratorValues<V, T extends Entry<?, V>> extends AbstractIteratorWr
 	}
 
 	@Override
+	/**
+	 * O(1)
+	 */
 	public V next() throws NoSuchElementException {
 		return wrappedIterator.next().getValue();
 	}

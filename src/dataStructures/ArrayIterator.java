@@ -20,11 +20,17 @@ public class ArrayIterator<E> implements Iterator<E> {
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public boolean hasNext() {
 		return current < counter;
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public E next() throws NoSuchElementException {
 		if (!hasNext())
 			throw new NoSuchElementException("No more elements.");
@@ -32,6 +38,9 @@ public class ArrayIterator<E> implements Iterator<E> {
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public void rewind() {
 		current = 0;
 	}

@@ -8,6 +8,7 @@ package dataStructures;
  *
  */
 public class EntryClass<K, V> implements Entry<K, V> {
+
 	/**
 	 * 
 	 */
@@ -21,11 +22,17 @@ public class EntryClass<K, V> implements Entry<K, V> {
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public K getKey() {
 		return key;
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public V getValue() {
 		return value;
 	}

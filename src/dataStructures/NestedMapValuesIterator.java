@@ -22,6 +22,7 @@ public class NestedMapValuesIterator<V, T extends AbstractMap<?, V>> implements 
 	}
 
 	/**
+	 * O(1)
 	 * Constructs an {@link NestedMapValuesIterator}
 	 * 
 	 * @param outerMap outer nested {@link Map}
@@ -31,6 +32,9 @@ public class NestedMapValuesIterator<V, T extends AbstractMap<?, V>> implements 
 	}
 
 	@Override
+	/**
+	 * O(1)
+	 */
 	public boolean hasNext() {
 		boolean hasNext = lastIterator.hasNext();
 		if (!hasNext) {
@@ -40,6 +44,9 @@ public class NestedMapValuesIterator<V, T extends AbstractMap<?, V>> implements 
 	}
 
 	@Override
+	/**
+	 * O(1)
+	 */
 	public V next() throws NoSuchElementException {
 		if (lastIterator.hasNext()) {
 			return lastIterator.next();
@@ -50,6 +57,9 @@ public class NestedMapValuesIterator<V, T extends AbstractMap<?, V>> implements 
 	}
 
 	@Override
+	/**
+	 * O(1)
+	 */
 	public void rewind() {
 		nestedMapIterator.rewind();
 		lastIterator = nestedMapIterator.next().values();

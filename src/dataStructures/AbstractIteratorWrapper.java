@@ -17,6 +17,9 @@ public abstract class AbstractIteratorWrapper<E, T> implements Iterator<E>, Wrap
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public boolean hasNext() {
 		return wrappedIterator.hasNext();
 	}
@@ -25,6 +28,9 @@ public abstract class AbstractIteratorWrapper<E, T> implements Iterator<E>, Wrap
 	public abstract E next() throws NoSuchElementException;
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public void rewind() {
 		wrappedIterator.rewind();
 	}

@@ -20,6 +20,9 @@ public abstract class MapWithHashTable<K, V> implements Map<K, V> {
 
 	// Returns the hash code of the specified key,
 	// which is an integer in the range 0, ..., b-1.
+	/**
+	 * O(i), i is length of key, all cases
+	 */
 	public static int hash(String key) {
 		int a = 127;
 		// a is a prime number.
@@ -33,6 +36,11 @@ public abstract class MapWithHashTable<K, V> implements Map<K, V> {
 
 	// Returns a prime number that is not less than the specified number;
 	// or zero if all such primes are greater than Integer.MAX VALUE.
+	/**
+	 * Best case: O(1), n size of PRIMES
+	 * Average case: O(n)
+	 * Worst case: O(n)
+	 */
 	protected static int nextPrime(int number) {
 		for (int i = 0; i < PRIMES.length; i++)
 			if (PRIMES[i] >= number)
@@ -46,11 +54,17 @@ public abstract class MapWithHashTable<K, V> implements Map<K, V> {
 			188530777, 282796177, 424194271, 636291413, 954437161, 1431655751, 2147483647 };
 
 	@Override
+	/**
+	 * O(1)
+	 */
 	public boolean isEmpty() {
 		return currentSize == 0;
 	}
 
 	@Override
+	/**
+	 * O(1)
+	 */
 	public int size() {
 		return currentSize;
 	}
@@ -76,6 +90,9 @@ public abstract class MapWithHashTable<K, V> implements Map<K, V> {
 	// Protected Instance Methods
 
 	// Returns true iff the hash table cannot contain more entries.
+	/**
+	 * O(1)
+	 */
 	protected boolean isFull() {
 		return currentSize == maxSize;
 	}
