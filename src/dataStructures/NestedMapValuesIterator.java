@@ -6,7 +6,7 @@ package dataStructures;
  * @param <V> inner of the two nested {@link Map Maps'} values
  * @param <T> inner nested {@link Map}
  */
-public class NestedMapValuesIterator<V, T extends Map<?, V>> implements Iterator<V> {
+public class NestedMapValuesIterator<V, T extends AbstractMap<?, V>> implements Iterator<V> {
 
 	private Iterator<T> nestedMapIterator;
 	private Iterator<V> lastIterator;
@@ -26,7 +26,7 @@ public class NestedMapValuesIterator<V, T extends Map<?, V>> implements Iterator
 	 * 
 	 * @param outerMap outer nested {@link Map}
 	 */
-	public NestedMapValuesIterator(Map<?, T> outerMap) {
+	public NestedMapValuesIterator(AbstractMap<?, T> outerMap) {
 		this(outerMap.values());
 	}
 

@@ -3,7 +3,8 @@ package fctBoleias;
 import basicDateTime.BasicDateTime;
 import basicDateTime.BasicDateTimeClass;
 import basicDateTime.InvalidDateException;
-import dataStructures.AVL;
+import dataStructures.BasicDateSortedMap;
+import dataStructures.DateIndexedMap;
 import dataStructures.Iterator;
 import dataStructures.IteratorWrappable;
 import dataStructures.LinearProbingHashTable;
@@ -37,12 +38,12 @@ public class ManagerClass implements Manager {
 
 	private User currentUser;
 	private Map<String, User> usersByEmail; // Key: user email
-	private SortedMap<BasicDateTime, SortedMap<String, Trip>> tripsByDate; // Rides by date
+	private DateIndexedMap<BasicDateTime, SortedMap<String, Trip>> tripsByDate; // Rides by date
 
 	public ManagerClass() {
 		this.currentUser = null;
 		usersByEmail = new LinearProbingHashTable<String, User>(200);
-		tripsByDate = new AVL<BasicDateTime, SortedMap<String, Trip>>();
+		tripsByDate = new BasicDateSortedMap<BasicDateTime, SortedMap<String, Trip>>();
 	}
 
 	@Override
