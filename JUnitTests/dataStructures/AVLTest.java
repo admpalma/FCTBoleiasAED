@@ -36,20 +36,20 @@ class AVLTest extends AbstractAdvancedBSTTest {
 		List<Integer> heightInEachPath = new SinglyLinkedList<Integer>();
 		while (it.hasNext()) {
 			AVLNode<?> stackTop = (AVLNode<?>) it.stack.top();
+			assertTrue(1 >= Math.abs(height((AVLNode<?>) stackTop.right) - height((AVLNode<?>) stackTop.left)));
 			if (stackTop.left == null && stackTop.right == null) {
-				int height = 1;
-				while (stackTop.parent != null) {
-					height++;
-					stackTop = (AVLNode<?>) stackTop.parent;
-				}
-				heightInEachPath.addLast(height);
+				
+				heightInEachPath.addLast(height(stackTop));
 			}
 			it.next();
 		}
-		for (int i = 0; i < heightInEachPath.size(); i++) {
-			for (int j = 0; j < heightInEachPath.size() && i != j; j++) {
-				assertTrue(1 >= Math.abs(heightInEachPath.get(i) - heightInEachPath.get(j)));
-			}
+	}
+	
+	private int height(AVLNode<?> node) {
+		if (node == null) {
+			return 1;
+		} else {
+			return Math.max(height((AVLNode<?>) node.left), height((AVLNode<?>) node.right));
 		}
 	}
 
