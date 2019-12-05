@@ -133,7 +133,7 @@ public class LinearProbingHashTable<K, V> extends MapWithHashTable<K, V> {
 	@Override
 	public V remove(K key) {
 		// NOT USED
-		return null;
+		throw new UnsupportedOperationException("Not implemented!");
 	}
 
 }
