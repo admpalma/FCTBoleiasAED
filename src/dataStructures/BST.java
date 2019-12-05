@@ -358,7 +358,7 @@ public class BST<K extends Comparable<K>, V> implements SortedMap<K, V> {
 	 * @param parent       parent of the node to be removed
 	 * @param amRightChild true if node to be removed is right child of its parent
 	 */
-	private void removeExternal(BSTNode<Entry<K, V>> parent, boolean amRightChild) {
+	protected void removeExternal(BSTNode<Entry<K, V>> parent, boolean amRightChild) {
 		if (parent == null) {
 			root = null;
 		} else if (amRightChild) {

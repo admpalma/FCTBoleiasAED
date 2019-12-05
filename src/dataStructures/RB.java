@@ -208,13 +208,13 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 	}
 
 	private void removeNode(RBNode<Entry<K, V>> removedNode) {
+		// TODO refactor removeAux "reversion"
 		boolean removedNodeWasRightChild = false;
-		if (removedNode.parent != null) {
-			removedNodeWasRightChild = removedNode.equals(removedNode.parent.getRight());
-		}
 		removedNode = (RBNode<Entry<K, V>>) removeAux(removedNode);
-		RBNode<Entry<K, V>> replacement = (removedNode.right != null ? (RBNode<Entry<K, V>>) removedNode.right
-				: (RBNode<Entry<K, V>>) removedNode.left);
+		if (removedNode.parent != null) {
+			removedNodeWasRightChild = 0 < removedNode.element.getKey().compareTo(removedNode.parent.element.getKey());
+		}
+		RBNode<Entry<K, V>> replacement = (removedNode.right != null ? (RBNode<Entry<K, V>>) removedNode.right : (RBNode<Entry<K, V>>) removedNode.left);
 		if (replacement != null) {
 			// Break connections to let remedyDoubleBlack work
 			removedNode.parent = removedNode.right = removedNode.left = null;
@@ -232,11 +232,7 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 				remedyDoubleBlack(removedNode);
 			}
 			// Break connection only meant to let remedyDoubleBlack work
-			if (removedNodeWasRightChild) {
-				removedNode.parent.right = null;
-			} else {
-				removedNode.parent.left = null;
-			}
+			removeExternal(removedNode.parent, removedNodeWasRightChild);
 		}
 	}
 
