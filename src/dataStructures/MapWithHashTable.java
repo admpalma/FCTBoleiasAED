@@ -21,7 +21,7 @@ public abstract class MapWithHashTable<K, V> implements Map<K, V> {
 	// Returns the hash code of the specified key,
 	// which is an integer in the range 0, ..., b-1.
 	/**
-	 * O(i), i is length of key, all cases
+	 * O(1)
 	 */
 	public static int hash(String key) {
 		int a = 127;

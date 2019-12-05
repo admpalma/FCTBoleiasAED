@@ -25,11 +25,19 @@ public class SparseThreeDimensionalArrayIterator<E> implements Iterator<E> {
 	}
 	
 	@Override
+	/**
+	 * O(1) all cases
+	 **/
 	public boolean hasNext() {
 		return remaining > 0;
 	}
 
 	@Override
+	/**
+	 * Best case: O(1)
+	 * Average case: O(1+y), y is fullness factor
+	 * Worst case: O(n), n = Sum(length of each of the three arrays)
+	 */
 	public E next() throws NoSuchElementException {
 		if (!hasNext()) {
 			throw new NoSuchElementException();
@@ -52,6 +60,9 @@ public class SparseThreeDimensionalArrayIterator<E> implements Iterator<E> {
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public void rewind() {
 		remaining = size;
 		i = j = k = 0;
