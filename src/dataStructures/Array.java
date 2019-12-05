@@ -39,6 +39,11 @@ public class Array<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * Best case: O(1)
+	 * Average case: O(1)
+	 * Worst case: O(n) if we resize
+	 */
 	public void addLast(E elem) {
 		if (isFull())
 			resize();
@@ -46,6 +51,11 @@ public class Array<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * Best case: O(n) shift all to the right
+	 * Average case: O(n) shift left elements to the right
+	 * Worst case: O(n) resize and shift
+	 */
 	public void add(int pos, E elem) throws InvalidPositionException {
 		if (pos < 0 || pos > counter)
 			throw new InvalidPositionException("Invalid Position.");
@@ -58,6 +68,9 @@ public class Array<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * O(n) all cases
+	 */
 	public void addFirst(E elem) {
 		if (isFull())
 			resize();
@@ -66,7 +79,9 @@ public class Array<E> implements List<E> {
 
 	/** Metodo auxiliar para duplicar o tamanho do vector. */
 	@SuppressWarnings("unchecked")
-
+	/**
+	 * O(n) all cases
+	 */
 	private void resize() {
 		E[] tmp = (E[]) new Object[counter * 2];
 		for (int i = 0; i < counter; i++)
@@ -75,6 +90,9 @@ public class Array<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public E removeLast() throws NoElementException {
 		if (counter == 0)
 			throw new NoElementException("No such element.");
@@ -82,6 +100,11 @@ public class Array<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * Best case: O(1) remove last
+	 * Average case: O(n) shift to the left
+	 * Worst case: O(n) shift to the left
+	 */
 	public E remove(int pos) throws InvalidPositionException {
 		if (pos < 0 || pos >= counter)
 			throw new InvalidPositionException("Invalid position.");
@@ -93,6 +116,11 @@ public class Array<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * Best case: O(1) if counter == 1
+	 * Average case: O(n)
+	 * Worst case: O(n)
+	 */
 	public E removeFirst() throws NoElementException {
 		if (counter == 0)
 			throw new NoElementException("No such element.");
@@ -100,11 +128,17 @@ public class Array<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public int size() {
 		return counter;
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public E get(int pos) throws InvalidPositionException {
 		if (pos < 0 || pos >= counter)
 			throw new InvalidPositionException("Invalid position.");
@@ -113,6 +147,9 @@ public class Array<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public Iterator<E> iterator() throws NoElementException {
 		if (counter == 0)
 			throw new NoElementException("Array is empty.");
@@ -120,6 +157,9 @@ public class Array<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public E getFirst() throws NoElementException {
 		if (counter == 0)
 			throw new NoElementException("No such element.");
@@ -127,6 +167,9 @@ public class Array<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public E getLast() throws NoElementException {
 		if (counter == 0)
 			throw new NoElementException("No such element.");
@@ -134,6 +177,11 @@ public class Array<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * Best case: O(1)
+	 * Average case: O(n)
+	 * Worst case: O(n)
+	 */
 	public int find(E elem) {
 		boolean found = false;
 		int i = 0;
@@ -149,14 +197,23 @@ public class Array<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public boolean isEmpty() {
 		return counter == 0;
 	}
 
+	/**
+	 * O(1) all cases
+	 */
 	public boolean isFull() {
 		return counter == array.length;
 	}
 
+	/**
+	 * O(1) all cases
+	 */
 	public int capacity() {
 		return array.length;
 	}

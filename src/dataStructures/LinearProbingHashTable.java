@@ -26,6 +26,9 @@ public class LinearProbingHashTable<K, V> extends MapWithHashTable<K, V> {
 	}
 
 	@Override
+	/**
+	 * O(1)
+	 */
 	public Iterator<K> keys() throws NoElementException {
 		if (table.length == 0) {
 			throw new NoElementException("Map is empty.");
@@ -35,6 +38,9 @@ public class LinearProbingHashTable<K, V> extends MapWithHashTable<K, V> {
 	}
 
 	@Override
+	/**
+	 * O(1)
+	 */
 	public Iterator<V> values() throws NoElementException {
 		if (table.length == 0) {
 			throw new NoElementException("Map is empty.");
@@ -44,6 +50,9 @@ public class LinearProbingHashTable<K, V> extends MapWithHashTable<K, V> {
 	}
 
 	@Override
+	/**
+	 * O(1)
+	 */
 	public Iterator<Entry<K, V>> iterator() throws NoElementException {
 		if (table.length == 0) {
 			throw new NoElementException("Map is empty.");
@@ -53,13 +62,21 @@ public class LinearProbingHashTable<K, V> extends MapWithHashTable<K, V> {
 	}
 
 	// Returns the hash value of the specified key.
+	/**
+	 * Hashes the key
+	 * O(1)
+	 * @param key key to hash
+	 * @return int hash code of key
+	 */
 	protected int hash(K key) {
 		return Math.abs(key.hashCode()) % table.length;
 	}
 
 	@Override
 	/**
-	 * Best case: O(1) Average case: O() Worst case: O(n)
+	 * Best case: O(1) 
+	 * Average case: O(n) 
+	 * Worst case: O(n)
 	 */
 	public V get(K key) {
 		int pos = findPos(key);
@@ -71,6 +88,11 @@ public class LinearProbingHashTable<K, V> extends MapWithHashTable<K, V> {
 	// returns the position (a) where is the element with this key
 	// or (b) of an empty position
 	// or (c) -1 the map is full and there is not element with this key
+	/**
+	 * Best case: O(1)
+	 * Average case: O(n)
+	 * Worst case: O(n)
+	 */
 	private int findPos(K key) {
 		int pos = this.hash(key);
 		int hashKey = pos;
@@ -85,6 +107,9 @@ public class LinearProbingHashTable<K, V> extends MapWithHashTable<K, V> {
 	}
 
 	// without remove
+	/**
+	 * O(1) all cases
+	 */
 	private boolean isEmpty(int pos) {
 		return table[pos] == null;
 	}
@@ -92,7 +117,9 @@ public class LinearProbingHashTable<K, V> extends MapWithHashTable<K, V> {
 	@Override
 	// without remove
 	/**
-	 * Best case: O(1) Average case: O() Worst case: O(n)
+	 * Best case: O(1) 
+	 * Average case: O(n)
+	 * Worst case: O(n)
 	 */
 	public V insert(K key, V value) {
 		if (this.isFull())
@@ -110,6 +137,9 @@ public class LinearProbingHashTable<K, V> extends MapWithHashTable<K, V> {
 	}
 
 	@SuppressWarnings("unchecked")
+	/**
+	 * O(n) all cases
+	 */
 	private void rehash() {
 		Entry<K, V>[] auxTable = table;
 

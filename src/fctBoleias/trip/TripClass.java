@@ -47,31 +47,49 @@ public class TripClass implements Trip {
 	}
 
 	@Override
+	/**
+	 * O(1)
+	 */
 	public BasicDateTime getBasicDateTime() {
 		return date;
 	}
 
 	@Override
+	/**
+	 * O(1)
+	 */
 	public String getOrigin() {
 		return origin;
 	}
 
 	@Override
+	/**
+	 * O(1)
+	 */
 	public String getDestination() {
 		return destination;
 	}
 
 	@Override
+	/**
+	 * O(1)
+	 */
 	public int getDuration() {
 		return duration;
 	}
 
 	@Override
+	/**
+	 * O(1)
+	 */
 	public boolean hasRides() {
 		return usersInRide.size() > 0;
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public void addUserAsRide(User user) throws TripIsFullException {
 		if (usersInRide.size() == capacity) {
 			usersWaitingRide.enqueue(user);
@@ -82,6 +100,11 @@ public class TripClass implements Trip {
 	}
 
 	@Override
+	/**
+	 * Best case: O(1)
+	 * Average case: O(n), n = size of usersWaitingRide
+	 * Worst case: O(n), n = size of usersWaitingRide
+	 */
 	public String toString() {
 		String simpleStr = this.toSimpleString();
 		String usersInRideStr = getUsersInRideList();
@@ -95,6 +118,7 @@ public class TripClass implements Trip {
 	}
 
 	/**
+	 * O(n)
 	 * Reads the {@link User users} from usersInRide and concatenates their email in
 	 * a {@link String} with the desired format
 	 * 
@@ -120,6 +144,9 @@ public class TripClass implements Trip {
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public String getDriverEmail() {
 		return driver.getEmail();
 	}
@@ -144,32 +171,50 @@ public class TripClass implements Trip {
 	}
 
 	@Override
+	/**
+	 * Best case: O(1)
+	 * Average case: O(n)
+	 * Worst case: O(n)
+	 */
 	public void removeUserRide(User user) {
 		usersInRide.remove(usersInRide.find(user));
 		updateQueue();
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public boolean hasFreeSlots() {
 		return freeSlots() > 0;
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public int freeSlots() {
 		return capacity - usersInRide.size();
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public TripWrapper wrap() {
 		return new TripWrapperClass(this);
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public String toMediumDetailString() {
 		return this.toSimpleString();
 	}
 
 	/**
+	 * O(1) all cases
 	 * Returns a {@link String} with the following format:
 	 * <p>
 	 * {@link #getDriverEmail() driver email}<br>
@@ -188,6 +233,9 @@ public class TripClass implements Trip {
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public String toDateAndDriverString() {
 		StringBuilder sb = new StringBuilder(40);
 		String newLine = System.lineSeparator();
