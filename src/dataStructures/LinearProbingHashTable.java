@@ -117,6 +117,10 @@ public class LinearProbingHashTable<K, V> extends MapWithHashTable<K, V> {
 		int arraySize = MapWithHashTable.nextPrime(2 * maxSize * 2);
 		// Compiler gives a warning.
 		table = new Entry[arraySize];
+		
+		for (int i = 0; i < arraySize; i++)
+			table[i] = null;
+		
 		currentSize = 0;
 		for (int i = 0; i < auxTable.length; i++) {
 			Entry<K, V> entry = auxTable[i];
