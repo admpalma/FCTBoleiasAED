@@ -31,20 +31,20 @@ public class BSTOrderIterator<K, V> implements Iterator<Entry<K, V>> {
 		}
 	}
 
-	@Override
 	/**
 	 * O(1) all cases
 	 */
+	@Override
 	public boolean hasNext() {
 		return !stack.isEmpty();
 	}
 
-	@Override
 	/**
 	 * Best case: O(1)
 	 * Average case: O(h), h is height
 	 * Worst case: O(h), h is height
 	 */
+	@Override
 	public Entry<K, V> next() throws NoSuchElementException {
 
 		if (!hasNext()) {
@@ -62,12 +62,12 @@ public class BSTOrderIterator<K, V> implements Iterator<Entry<K, V>> {
 		return next;
 	}
 
-	@Override
 	/**
 	 * Best case: O(1) if node is null
 	 * Average case: O(h)
 	 * Worst case: O(h), h is height
 	 */
+	@Override
 	public void rewind() {
 		stack = new StackInList<BSTNode<Entry<K, V>>>();
 		pushLeftSubtree(root);

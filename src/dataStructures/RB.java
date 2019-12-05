@@ -39,31 +39,64 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 			return isRed;
 		}
 
-		protected static <K, V> boolean colourOf(RBNode<Entry<K, V>> p) {
-			return p == null ? BLACK : p.isRed;
+		/**
+		 * Best case: O(1)<p>
+		 * Average case: O(1)<p>
+		 * Worst case: O(1)<p>
+		 * @param node given {@link RBNode}
+		 * @return <code>false</code> if node == <code>null</code> or node is {@link RB#BLACK}, <code>true</code> if node is {@link RB#RED}
+		 */
+		protected static <K, V> boolean colourOf(RBNode<Entry<K, V>> node) {
+			return node == null ? BLACK : node.isRed;
 		}
 
+		/**
+		 * Best case: O(1)<p>
+		 * Average case: O(1)<p>
+		 * Worst case: O(1)<p>
+		 * @param parent parent of the child we wish to get
+		 * @param right child selector (<code>true</code> if right, <code>false</code> if left)
+		 * @return child of the given <code>parent</code>, <code>null</code> it the parent is <code>null</code>
+		 */
 		protected static <K, V> RBNode<Entry<K, V>> childOf(RBNode<Entry<K, V>> parent, boolean right) {
 			if (parent != null)
 				return right ? (RBNode<Entry<K, V>>) parent.right : (RBNode<Entry<K, V>>) parent.left;
 			else return null; 
 		}
 
-		protected static <K, V> void setColour(RBNode<Entry<K, V>> p, boolean c) {
-			if (p != null) {
-				p.isRed = c;
+		/**
+		 * Best case: O(1)<p>
+		 * Average case: O(1)<p>
+		 * Worst case: O(1)<p>
+		 * Changes the colour of the given {@link RBNode node} to the given <code>colour</code>
+		 * @param node given {@link RBNode node}
+		 * @param colour given colour
+		 */
+		protected static <K, V> void setColour(RBNode<Entry<K, V>> node, boolean colour) {
+			if (node != null) {
+				node.isRed = colour;
 			}
 		}
 
+		/**
+		 * Best case: O(1)<p>
+		 * Average case: O(1)<p>
+		 * Worst case: O(1)<p>
+		 * @param node {@link RBNode} to check if is red
+		 * @return <code>true</code> if the given node is red, <code>false</code> otherwise
+		 */
 		protected static <E> boolean isRed(RBNode<E> node) {
 			return node == null ? false : node.isRed;
 		}
 
 		/**
+		 * Best case: O(1)<p>
+		 * Average case: O(1)<p>
+		 * Worst case: O(1)<p>
 		 * @return <code>true</code> if one of {@link RBNode this RBNode's} adjacent
 		 *         {@link RBNode RBNodes} is red, <code>false</code> otherwise
 		 */
-		public boolean hasAdjacentRed() {
+		protected boolean hasAdjacentRed() {
 			if (parent != null && ((RBNode<E>) parent).isRed()) {
 				return true;
 			} else if (right != null && ((RBNode<E>) right).isRed()) {
@@ -74,7 +107,13 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 			return false;
 		}
 
-		public boolean hasRedChild() {
+		/**
+		 * Best case: O(1)<p>
+		 * Average case: O(1)<p>
+		 * Worst case: O(1)<p>
+		 * @return <code>true</code> if this {@link RBNode} has a red child, <code>false</code> otherwise
+		 */
+		protected boolean hasRedChild() {
 			if (right != null && ((RBNode<E>) right).isRed()) {
 				return true;
 			} else if (left != null && ((RBNode<E>) left).isRed()) {
@@ -84,7 +123,10 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 		}
 
 		/**
-		 * TODO supports <code>null</code> as valid child
+		 * Best case: O(1)<p>
+		 * Average case: O(1)<p>
+		 * Worst case: O(1)<p>
+		 * Supports <code>null</code> as a valid child
 		 */
 		@Override
 		protected BSTNode<E> getSiblingOf(BSTNode<E> child) {
@@ -92,6 +134,12 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 			return sibling;
 		}
 
+		/**
+		 * Best case: O(1)<p>
+		 * Average case: O(1)<p>
+		 * Worst case: O(1)<p>
+		 * @return {@link RB#RED} child of this {@link RBNode}, <code>null</code> if this node has no children
+		 */
 		protected RBNode<E> getRedChild() {
 			if (isRed((RBNode<E>) right)) {
 				return (RBNode<E>) right;
@@ -104,14 +152,32 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 
 	}
 
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(1)<p>
+	 * Worst case: O(1)<p>
+	 * Constructs a new {@link RB} with n as {@link BST#root}
+	 * @param n new root
+	 */
 	protected RB(RBNode<Entry<K, V>> n) {
 		root = n;
 	}
 
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(1)<p>
+	 * Worst case: O(1)<p>
+	 * Constructs a new {@link RB} a <code>null</code> {@link BST#root}
+	 */
 	public RB() {
 		this(null);
 	}
 
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(log n)<p>
+	 * Worst case: O(log n)<p>
+	 */
 	@Override
 	public V insert(K key, V value) {
 		RBNode<Entry<K, V>> closestNode = (RBNode<Entry<K, V>>) findClosest(key);
@@ -129,6 +195,10 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 	}
 
 	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(1)<p>
+	 * Worst case: O(1)<p>
+	 *
 	 * Performs the needed operations to keep the RB properties of this {@link RB}
 	 * after an insertion
 	 * 
@@ -144,6 +214,10 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 	}
 
 	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(1)<p>
+	 * Worst case: O(1)<p>
+	 *
 	 * Remedies a double red situation
 	 * 
 	 * @param redNode {@link RBNode} that disrupted this {@link RB RB's} properties
@@ -165,8 +239,10 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 	}
 
 	/**
-	 * TODO
-	 * 
+	 * Best case: O(1)<p>
+	 * Average case: O(1)<p>
+	 * Worst case: O(1)<p>
+	 *
 	 * @param redNode
 	 */
 	private void fixBlackUncleCaseAfterInsertion(RBNode<Entry<K, V>> redNode) {
@@ -180,7 +256,10 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 	}
 
 	/**
-	 * TODO
+	 * Best case: O(1)<p>
+	 * Average case: O(1)<p>
+	 * Worst case: O(1)<p>
+	 *
 	 * 
 	 * @param parent
 	 * @param grandparent
@@ -194,6 +273,11 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 		fixAfterInsertion(grandparent);
 	}
 
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(log n)<p>
+	 * Worst case: O(2 log n)<p>
+	 */
 	@Override
 	public V remove(K key) {
 		if (isEmpty())
@@ -207,6 +291,12 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 		return removedValue;
 	}
 
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(log n)<p>
+	 * Worst case: O(log n)<p>
+	 * Removes the given node element from the tree
+	 */
 	private void removeNode(RBNode<Entry<K, V>> removedNode) {
 		// TODO refactor removeAux "reversion"
 		boolean removedNodeWasRightChild = false;
@@ -236,10 +326,27 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 		}
 	}
 
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(1)<p>
+	 * Worst case: O(1)<p>
+	 * Performs a rotation rooted at Y based on <code>right</code>, {@link AdvancedBST#rotateRight(BSTNode)} if <code>right</code> 
+	 * @param Y root of the chosen rotation
+	 * @param right 
+	 * @return
+	 */
 	private RBNode<Entry<K, V>> rotate(RBNode<Entry<K, V>> Y, boolean right) {
 		return right ? (RBNode<Entry<K, V>>) rotateRight(Y) : (RBNode<Entry<K, V>>) rotateLeft(Y);
 	}
 
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(h/2)<p>
+	 * Worst case: O(h), h as height of this tree<p>
+	 *
+	 * Remedies a double black violation at <code>doubleBlack</code>
+	 * @param doubleBlack
+	 */
 	protected void remedyDoubleBlack(RBNode<Entry<K, V>> doubleBlack) {
 		while (doubleBlack != root && RBNode.colourOf(doubleBlack) == BLACK) {
 			boolean right = doubleBlack == RBNode.childOf((RBNode<Entry<K, V>>) doubleBlack.parent, true);
@@ -276,6 +383,11 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 		RBNode.setColour(doubleBlack, BLACK);
 	}
 
+	/**
+	 * Best case: O(1)<p>
+	 * Average case: O(1)<p>
+	 * Worst case: O(1)<p>
+	 */
 	@Override
 	protected BSTNode<Entry<K, V>> nodeOf(Entry<K, V> element, BSTNode<Entry<K, V>> parent, BSTNode<Entry<K, V>> left,
 			BSTNode<Entry<K, V>> right) {
