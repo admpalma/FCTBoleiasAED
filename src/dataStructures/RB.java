@@ -44,7 +44,9 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 		}
 
 		protected static <K, V> RBNode<Entry<K, V>> childOf(RBNode<Entry<K, V>> parent, boolean right) {
-			return right ? (RBNode<Entry<K, V>>) parent.right : (RBNode<Entry<K, V>>) parent.left;
+			if (parent != null)
+				return right ? (RBNode<Entry<K, V>>) parent.right : (RBNode<Entry<K, V>>) parent.left;
+			else return null; 
 		}
 
 		protected static <K, V> void setColour(RBNode<Entry<K, V>> p, boolean c) {
