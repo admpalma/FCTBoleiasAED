@@ -86,14 +86,12 @@ public class BasicDateSortedMap<K extends BasicDateTime, V> implements DateIndex
 	 */
 	@SuppressWarnings("unchecked")
 	private void resizeToFit(K key) {
-		if (key.getYear() - BASE_YEAR < 2 * values.length) {
-			V[][][] temp = (V[][][]) new Object[2 * values.length][MONTHS][DAYS_IN_MONTH];
-			int i = 0;
-			for (V[][] v : values) {
-				temp[i++] = v;
-			}
-			values = temp;
+		V[][][] temp = (V[][][]) new Object[key.getYear() - BASE_YEAR][MONTHS][DAYS_IN_MONTH];
+		int i = 0;
+		for (V[][] v : values) {
+			temp[i++] = v;
 		}
+		values = temp;
 	}
 
 	@Override
