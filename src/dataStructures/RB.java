@@ -216,13 +216,13 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 		RBNode<Entry<K, V>> replacement = (removedNode.right != null ? (RBNode<Entry<K, V>>) removedNode.right
 				: (RBNode<Entry<K, V>>) removedNode.left);
 		if (replacement != null) {
-			// Break connections to let fixAfterRemoval work
+			// Break connections to let remedyDoubleBlack work
 			removedNode.parent = removedNode.right = removedNode.left = null;
 			if (removedNode.isRed == BLACK) {
 				remedyDoubleBlack(replacement);
 			}
 		} else if (removedNode.parent != null) {
-			// Relink connection broken by removeAux for fixAfterRemoval to work
+			// Relink connection broken by removeAux for remedyDoubleBlack to work
 			if (removedNodeWasRightChild) {
 				removedNode.parent.right = removedNode;
 			} else {
@@ -231,7 +231,7 @@ public class RB<K extends Comparable<K>, V> extends AdvancedBST<K, V> implements
 			if (removedNode.isRed == BLACK) {
 				remedyDoubleBlack(removedNode);
 			}
-			// Break connection only meant to let fixAfterRemoval work
+			// Break connection only meant to let remedyDoubleBlack work
 			if (removedNodeWasRightChild) {
 				removedNode.parent.right = null;
 			} else {
