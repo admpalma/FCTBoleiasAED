@@ -123,8 +123,8 @@ public class ManagerClass implements Manager {
 
 	/**
 	 * Best case: O(1)
-	 * Average case: O(5log n)
-	 * Worst case: O(5*log n) === O(log n)
+	 * Average case: O(4log n)
+	 * Worst case: O(4*log n) === O(log n)
 	 */
 	@Override
 	public void addNewRide(String email, String date)
@@ -149,7 +149,7 @@ public class ManagerClass implements Manager {
 			throw new DateOccupiedException(currentUser);
 		}
         tempRide.addUserAsRide(currentUser); // O(1)
-        currentUser.addRide(tempRide); // 2log n
+        currentUser.addRide(tempRide); // log n
 	}
 
 	/**

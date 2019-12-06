@@ -103,13 +103,11 @@ public interface User extends Serializable {
 
 	/**
 	 * Adds a {@link Trip} to the set of {@link Trip Trips} this {@link User} is
-	 * taking ride on
+	 * taking ride on assuming the {@link User} isn't already busy
 	 * 
 	 * @param ride {@link Trip} this {@link User} is going to take ride on
-	 * @throws DateOccupiedException if this {@link User} already has a trip or ride
-	 *                               on the given {@link Trip Trip's} date
 	 */
-	void addRide(Trip ride) throws DateOccupiedException;
+	void addRide(Trip ride);
 
 	/**
 	 * Gets the {@link Trip} from this {@link User} at the given

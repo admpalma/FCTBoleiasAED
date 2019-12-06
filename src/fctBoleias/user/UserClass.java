@@ -149,15 +149,13 @@ public class UserClass implements User {
 
 	/**
 	 * Best case: O(1) if it's in the root
-	 * Average case: O(2 * log n)
-	 * Worst case: O(2 * log n)
+	 * Average case: O(3 * log n)
+	 * Worst case: O(3 * log n)
 	 */
 	@Override
-	public void addRide(Trip ride) throws DateOccupiedException {
+	public void addRide(Trip ride) {
 		BasicDateTime rideDate = ride.getBasicDateTime();
-		if (rides.get(rideDate) != null) {
-			throw new DateOccupiedException(this);
-		}
+		assert (!hasTripOnDate(rideDate) && !hasRideOnDate(rideDate));
 		rides.insert(rideDate, ride);
 	}
 
