@@ -139,16 +139,17 @@ public class ManagerClass implements Manager {
 			throw new NonExistentUserException();
 		} else {
 			newDate = new BasicDateTimeClass(date);
-		}//TODO
-		if (!tripDriver.hasTripOnDate(newDate)) { // log n
-			throw new NonExistentTripException();
+		} 
+		Trip tempRide = tripDriver.getTrip(newDate); // O(log n)
+        if (tempRide == null) {
+            throw new NonExistentTripException();
 		} else if (email.equals(currentUser.getEmail())) {
 			throw new CantRideSelfException(tripDriver);
 		} else if (currentUser.hasTripOnDate(newDate) || currentUser.hasRideOnDate(newDate)) { // 2*log n
 			throw new DateOccupiedException(currentUser);
 		}
-		Trip ride = tripDriver.addUserToTrip(currentUser, newDate); // log n
-		currentUser.addRide(ride); // 2log n
+        tempRide.addUserAsRide(currentUser); // O(1)
+        currentUser.addRide(tempRide); // 2log n
 	}
 
 	/**
