@@ -147,8 +147,7 @@ public class Main {
 	 * {@link User} logged in and its corresponding help messages.
 	 */
 	private enum LoggedOutCommands {
-		AJUDA("ajuda - Mostra os comandos existentes"), 
-		TERMINA("termina - Termina a execucao do programa"),
+		AJUDA("ajuda - Mostra os comandos existentes"), TERMINA("termina - Termina a execucao do programa"),
 		REGISTA("regista - Regista um novo utilizador no programa"),
 		ENTRADA("entrada - Permite a entrada (\"login\") dum utilizador no programa");
 
@@ -188,13 +187,10 @@ public class Main {
 	 * {@link User} logged in and its corresponding help messages.
 	 */
 	private enum LoggedInCommands {
-		AJUDA("ajuda - Mostra os comandos existentes"), 
-		SAI("sai - Termina a sessao deste utilizador no programa"),
-		NOVA("nova - Regista uma nova deslocacao"), 
-		LISTA("lista - Lista todas ou algumas deslocacoes registadas"),
+		AJUDA("ajuda - Mostra os comandos existentes"), SAI("sai - Termina a sessao deste utilizador no programa"),
+		NOVA("nova - Regista uma nova deslocacao"), LISTA("lista - Lista todas ou algumas deslocacoes registadas"),
 		BOLEIA("boleia - Regista uma boleia para uma dada deslocacao"),
-		CONSULTA("consulta - Lista a informacao de uma dada deslocacao"), 
-		RETIRA("retira - Retira uma dada boleia"),
+		CONSULTA("consulta - Lista a informacao de uma dada deslocacao"), RETIRA("retira - Retira uma dada boleia"),
 		REMOVE("remove - Elimina uma dada deslocacao");
 
 		/**
@@ -722,7 +718,7 @@ public class Main {
 				listAllTrips(manager);
 				break;
 			default:
-				
+
 				if (listingMode.matches(DATE_ALLOWED_PATTERN)) {
 					listDateTrips(manager, listingMode);
 				} else {
@@ -754,8 +750,8 @@ public class Main {
 	}
 
 	/**
-	 * Auxiliary method to list all {@link Trip trips} (via {@link TripWrapper}) on the given date |FORMAT:
-	 * <code>
+	 * Auxiliary method to list all {@link Trip trips} (via {@link TripWrapper}) on
+	 * the given date |FORMAT: <code>
 	 * userEmail%n
 	 * </code>|
 	 * 
@@ -785,7 +781,8 @@ public class Main {
 	}
 
 	/**
-	 * Auxiliary method to list all {@link Trip trips} given in the {@link Iterator}<p>
+	 * Auxiliary method to list all {@link Trip trips} given in the {@link Iterator}
+	 * <p>
 	 * Format:<br>
 	 * {@link #getDriverEmail() driver email}<br>
 	 * {@link #getOrigin() origin}-{@link #getDestination() destination}<br>

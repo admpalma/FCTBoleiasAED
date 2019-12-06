@@ -27,7 +27,7 @@ public class UserClass implements User {
 	private String password;
 	private int nLogins;
 	private SortedMap<BasicDateTime, Trip> rides; // Rides in which he takes part but isn't the driver
-	private SortedMap<BasicDateTime, Trip> trips; // User's trips (this User is the driver)
+	private SortedMap<BasicDateTime, Trip> trips; // User's trips (this User is the 'driver')
 
 	/**
 	 * {@link User} object constructor. Creates an object holding details and
@@ -45,37 +45,60 @@ public class UserClass implements User {
 		trips = new AVL<BasicDateTime, Trip>();
 		rides = new AVL<BasicDateTime, Trip>();
 	}
-
+	
+	/**
+	 * O(1)
+	 */
 	@Override
 	public String getEmail() {
 		return email;
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public String getPassword() {
 		return password;
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public int getNumberLogins() {
 		return nLogins;
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public boolean checkPassword(String password) {
 		return this.password.matches(password);
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public void addLogin() {
 		nLogins++;
 	}
 
+	/**
+	 * Best case: O(1) if it's in the root
+	 * Average case: O(log n)
+	 * Worst case: O(log n)
+	 */
 	@Override
 	public void addTrip(Trip newTrip) throws DateOccupiedException {
 		BasicDateTime date = newTrip.getBasicDateTime();
@@ -85,11 +108,19 @@ public class UserClass implements User {
 		trips.insert(date, newTrip);
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public int getNumberTrips() {
 		return trips.size();
 	}
 
+	/**
+	 * Best case: O(1) if it's in the root
+	 * Average case: O(2*log n)
+	 * Worst case: O(2 * log n)
+	 */
 	@Override
 	public void removeTrip(BasicDateTime date) throws NoTripOnDayException, TripHasRidesException {
 		Trip trip = trips.get(date);
@@ -101,6 +132,11 @@ public class UserClass implements User {
 		trips.remove(date);
 	}
 
+	/**
+	 * Best case: O(1) if it's in the root
+	 * Average case: O(log n)
+	 * Worst case: O(log n)
+	 */
 	@Override
 	public Trip addUserToTrip(User user, BasicDateTime date) throws NonExistentTripException, TripIsFullException {
 		Trip trip = trips.get(date);
@@ -111,15 +147,23 @@ public class UserClass implements User {
 		return trip;
 	}
 
+	/**
+	 * Best case: O(1) if it's in the root
+	 * Average case: O(3 * log n)
+	 * Worst case: O(3 * log n)
+	 */
 	@Override
-	public void addRide(Trip ride) throws DateOccupiedException {
+	public void addRide(Trip ride) {
 		BasicDateTime rideDate = ride.getBasicDateTime();
-		if (rides.get(rideDate) != null) {
-			throw new DateOccupiedException(this);
-		}
+		assert (!hasTripOnDate(rideDate) && !hasRideOnDate(rideDate));
 		rides.insert(rideDate, ride);
 	}
 
+	/**
+	 * Best case: O(1) if it's in the root
+	 * Average case: O(log n)
+	 * Worst case: O(log n)
+	 */
 	@Override
 	public Trip getTrip(BasicDateTime date) throws NonExistentTripException {
 		Trip trip = trips.get(date);
@@ -129,11 +173,19 @@ public class UserClass implements User {
 		return trip;
 	}
 
+	/**
+	 * Best case: O(1) if it's in the root
+	 * Average case: O(log n)
+	 * Worst case: O(log n)
+	 */
 	@Override
 	public boolean hasTripOnDate(BasicDateTime date) {
 		return trips.get(date) != null;
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public Iterator<Trip> getTripsIterator() throws NoRegisteredTripsException {
 		try {
@@ -143,6 +195,9 @@ public class UserClass implements User {
 		}
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public Iterator<Trip> getRidesIterator() throws NoRegisteredTripsException {
 		try {
@@ -152,6 +207,11 @@ public class UserClass implements User {
 		}
 	}
 
+	/**
+	 * Best case: O(1) if it's in the root
+	 * Average case: O(log n)
+	 * Worst case: O(log n)
+	 */
 	@Override
 	public Trip cancelRide(BasicDateTime processedDate) throws NoRideOnDayException {
 		if (!hasRideOnDate(processedDate)) {
@@ -160,6 +220,11 @@ public class UserClass implements User {
 		return rides.remove(processedDate);
 	}
 
+	/**
+	 * Best case: O(1) if it's in the root
+	 * Average case: O(log n)
+	 * Worst case: O(log n)
+	 */
 	@Override
 	public boolean hasRideOnDate(BasicDateTime date) {
 		return rides.get(date) != null;

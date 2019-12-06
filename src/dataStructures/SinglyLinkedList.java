@@ -22,16 +22,25 @@ public class SinglyLinkedList<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public boolean isEmpty() {
 		return currentSize == 0;
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public int size() {
 		return currentSize;
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public Iterator<E> iterator() throws NoElementException {
 		if (isEmpty()) {
 			throw new NoElementException();
@@ -40,6 +49,11 @@ public class SinglyLinkedList<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * Best case: O(1)
+	 * Average case: O(n)
+	 * Worst case: O(n)
+	 */
 	public int find(E element) {
 
 		int pos = 0;
@@ -57,6 +71,9 @@ public class SinglyLinkedList<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public E getFirst() throws NoElementException {
 		if (isEmpty())
 			throw new NoElementException();
@@ -64,6 +81,9 @@ public class SinglyLinkedList<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public E getLast() throws NoElementException {
 		if (isEmpty())
 			throw new NoElementException();
@@ -71,12 +91,23 @@ public class SinglyLinkedList<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * Best case: O(1)
+	 * Average case: O(n)
+	 * Worst case: O(n)
+	 */
 	public E get(int position) throws InvalidPositionException {
 		if (position < 0 || position >= currentSize)
 			throw new InvalidPositionException("Invalid position.");
 		return getNode(position).getElement();
 	}
 
+	/**
+	 * Best case: O(1)
+	 * Average case: O(n)
+	 * Worst case: O(n)
+	 * Auxiliary method to get the node in said position
+	 */
 	private SListNode<E> getNode(int position) {
 		SListNode<E> aux = head;
 		for (int i = 1; i <= position; i++)
@@ -85,8 +116,10 @@ public class SinglyLinkedList<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public void addFirst(E element) {
-
 		if (currentSize == 0) {
 			SListNode<E> newNode = new SListNode<E>(element, null);
 			head = newNode;
@@ -100,6 +133,9 @@ public class SinglyLinkedList<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public void addLast(E element) {
 		if (currentSize == 0) {
 			addFirst(element);
@@ -112,6 +148,11 @@ public class SinglyLinkedList<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * Best case: O(1) if add first or add last
+	 * Average case: O(n)
+	 * Worst case: O(n)
+	 */
 	public void add(int position, E element) throws InvalidPositionException {
 		if (position < 0 || position > currentSize)
 			throw new InvalidPositionException("Invalid Position.");
@@ -131,10 +172,12 @@ public class SinglyLinkedList<E> implements List<E> {
 			currentSize++;
 
 		}
-
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public E removeFirst() throws NoElementException {
 		if (currentSize == 0)
 			throw new NoElementException("No such element.");
@@ -155,6 +198,9 @@ public class SinglyLinkedList<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * O(n) all cases
+	 */
 	public E removeLast() throws NoElementException {
 		if (currentSize == 0)
 			throw new NoElementException("No such element.");
@@ -176,6 +222,11 @@ public class SinglyLinkedList<E> implements List<E> {
 	}
 
 	@Override
+	/**
+	 * Best case: O(1) if remove first
+	 * Average case: O(n)
+	 * Worst case: O(n)
+	 */
 	public E remove(int position) throws InvalidPositionException {
 		if (position < 0 || position >= currentSize)
 			throw new InvalidPositionException("Invalid position.");

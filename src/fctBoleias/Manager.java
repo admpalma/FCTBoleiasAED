@@ -28,7 +28,7 @@ public interface Manager extends Serializable {
 	 * there's a {@link User} logged in
 	 * 
 	 * @param origin      the new {@link Trip Trip's} origin
-	 * @param destination     the new {@link Trip Trip's} destination
+	 * @param destination the new {@link Trip Trip's} destination
 	 * @param date        the new {@link Trip Trip's} date
 	 * @param hourMinute  the new {@link Trip Trip's} hour and minutes
 	 * @param duration    the new {@link Trip Trip's} duration
@@ -185,34 +185,38 @@ public interface Manager extends Serializable {
 	 * Gives an {@link Iterator} with the {@link User} with the given email's
 	 * {@link TripWrapper trips}
 	 * 
-	 * @param email {@link String email} of the {@link User} whose {@link TripWrapper
-	 *              trips} we want
+	 * @param email {@link String email} of the {@link User} whose
+	 *              {@link TripWrapper trips} we want
 	 * 
 	 * @return {@link Iterator} <{@link TripWrapper}>
 	 * @throws NonExistentUserException   if the {@link User} with the given
 	 *                                    {@link String email} doesn't exist
 	 * @throws NotLoggedInException       if no {@link User} is logged in
-	 * @throws NoRegisteredTripsException if there are no registered {@link TripWrapper
-	 *                                    trips} on the current {@link User}
+	 * @throws NoRegisteredTripsException if there are no registered
+	 *                                    {@link TripWrapper trips} on the current
+	 *                                    {@link User}
 	 */
 	Iterator<TripWrapper> getUserTrips(String email)
 			throws NotLoggedInException, NoRegisteredTripsException, NonExistentUserException;
 
 	/**
-	 * Gives an {@link Iterator} with the current {@link User}'s {@link TripWrapper rides}
+	 * Gives an {@link Iterator} with the current {@link User}'s {@link TripWrapper
+	 * rides}
 	 * 
 	 * @return {@link Iterator} <{@link TripWrapper}>
 	 * @throws NotLoggedInException       if no {@link User} is logged in
-	 * @throws NoRegisteredTripsException if there are no registered {@link TripWrapper
-	 *                                    rides} on the {@link User} with the given
-	 *                                    email
+	 * @throws NoRegisteredTripsException if there are no registered
+	 *                                    {@link TripWrapper rides} on the
+	 *                                    {@link User} with the given email
 	 */
 	Iterator<TripWrapper> getCurrentUserRides() throws NotLoggedInException, NoRegisteredTripsException;
 
 	/**
-	 * Gives an {@link Iterator} with the {@link TripWrapper trips} on the given date
+	 * Gives an {@link Iterator} with the {@link TripWrapper trips} on the given
+	 * date
 	 * 
-	 * @param date {@link String date} of the {@link TripWrapper trips} we want to list
+	 * @param date {@link String date} of the {@link TripWrapper trips} we want to
+	 *             list
 	 * @return {@link Iterator} <{@link TripWrapper}>
 	 * @throws NotLoggedInException if no {@link User} is logged in
 	 * @throws InvalidDateException if the given date is invalid
@@ -220,8 +224,8 @@ public interface Manager extends Serializable {
 	Iterator<TripWrapper> getTripsOnDate(String date) throws NotLoggedInException, InvalidDateException;
 
 	/**
-	 * Gives an {@link Iterator} with all the sorted maps of trips (all {@link TripWrapper
-	 * trips} in the system)
+	 * Gives an {@link Iterator} with all the sorted maps of trips (all
+	 * {@link TripWrapper trips} in the system)
 	 * 
 	 * @return {@link Iterator} of {@link TripWrapper trips}
 	 * @throws NotLoggedInException if no {@link User} is logged in

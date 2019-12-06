@@ -1,7 +1,5 @@
 package basicDateTime;
 
-import java.util.Arrays;
-
 /**
  * An implementation of {@link BasicDateTime} using a <code>short[]</code>
  */
@@ -67,6 +65,7 @@ public class BasicDateTimeClass implements BasicDateTime {
 	}
 
 	/**
+	 * O(1)
 	 * @return: boolean true if the date is valid, false otherwise doesn't use
 	 *          getMonth() or getDay() since they have isValid() as @pre
 	 */
@@ -81,32 +80,48 @@ public class BasicDateTimeClass implements BasicDateTime {
 				&& hour < 24 && minutes >= 0 && minutes < 60;
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public int getYear() {
 		return rawDate[0];
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public int getMonth() {
 		return rawDate[1];
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public int getDay() {
 		return rawDate[2];
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public int getHour() {
 		return rawDate[3];
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public int getMinutes() {
 		return rawDate[4];
 	}
 
 	/**
+	 * O(1)
 	 * Checks if a year is a leap year (366 days)
 	 * 
 	 * @return boolean true if the year is a leap year and false otherwise
@@ -117,6 +132,7 @@ public class BasicDateTimeClass implements BasicDateTime {
 	}
 
 	/**
+	 * O(1)
 	 * Returns the number of days in a given month
 	 * 
 	 * @param month - month to check
@@ -140,6 +156,7 @@ public class BasicDateTimeClass implements BasicDateTime {
 	}
 
 	/**
+	 * O(1)
 	 * @return this {@link BasicDateTimeClass} {@link BasicDateTimeClass#rawDate
 	 *         rawDate}
 	 */
@@ -149,6 +166,7 @@ public class BasicDateTimeClass implements BasicDateTime {
 	}
 
 	/**
+	 * O(1)
 	 * @return <code>short[]</code> containing the date only fields in a raw state
 	 */
 	public short[] getDateOnlyVector() {
@@ -158,7 +176,10 @@ public class BasicDateTimeClass implements BasicDateTime {
 		}
 		return dateOnlyVector;
 	}
-
+	
+	/**
+	 * O(1)
+	 */
 	@Override
 	public int compareTo(BasicDateTime date) {
 		if (date instanceof BasicDateTimeClass) {
@@ -175,6 +196,9 @@ public class BasicDateTimeClass implements BasicDateTime {
 		}
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public String toString() {
 		assert (isValid());
@@ -184,6 +208,7 @@ public class BasicDateTimeClass implements BasicDateTime {
 	}
 
 	/**
+	 * O(1)
 	 * Generic version of {@link BasicDateTimeClass#compareTo(BasicDateTime)
 	 * compareTo(BasicDateTime)}
 	 * 
@@ -200,15 +225,66 @@ public class BasicDateTimeClass implements BasicDateTime {
 		}
 		return compareResult;
 	}
+	
+    /**
+	 * O(1)
+	 *
+     * Returns a hash code based on the contents of the given array
+     *
+     * @param a the array whose hash value to compute
+     * @return hash code of <code>a</code>
+     */
+    private int vectorHashCode(short a[]) {
+        if (a == null)
+            return 0;
 
+        int result = 1;
+        for (short element : a)
+            result = 31 * result + element;
+
+        return result;
+    }
+
+    /**
+	 * O(1)
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Arrays.hashCode(getDateOnlyVector());
+		result = prime * result + vectorHashCode(getDateOnlyVector());
 		return result;
 	}
+	
+    /**
+     * O(1)
+     * Returns <code>true</code> if the two given arrays of shorts are
+     * <code>equal</code> to each other, <code>false</code> otherwise
+     *
+     * @param a one array to be tested for equality
+     * @param a2 the other array to be tested for equality
+     * @return <code>true</code> if the two arrays are equal
+     */
+    private boolean vectorEquals(short[] a, short a2[]) {
+        if (a==a2)
+            return true;
+        if (a==null || a2==null)
+            return false;
 
+        int length = a.length;
+        if (a2.length != length)
+            return false;
+
+        for (int i=0; i<length; i++)
+            if (a[i] != a2[i])
+                return false;
+
+        return true;
+    }
+
+    /**
+	 * O(1)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -218,11 +294,14 @@ public class BasicDateTimeClass implements BasicDateTime {
 		if (getClass() != obj.getClass())
 			return false;
 		BasicDateTimeClass other = (BasicDateTimeClass) obj;
-		if (!Arrays.equals(this.getDateOnlyVector(), other.getDateOnlyVector()))
+		if (!vectorEquals(this.getDateOnlyVector(), other.getDateOnlyVector()))
 			return false;
 		return true;
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public String toDateString() {
 		assert (isValid());

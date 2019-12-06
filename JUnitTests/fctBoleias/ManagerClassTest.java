@@ -9,13 +9,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import fctBoleias.InvalidPasswordFormatException;
-import fctBoleias.LoggedInException;
-import fctBoleias.Manager;
-import fctBoleias.ManagerClass;
-import fctBoleias.NonExistentUserException;
-import fctBoleias.NotLoggedInException;
-import fctBoleias.UserAlreadyRegisteredException;
 import fctBoleias.user.IncorrectPasswordException;
 
 class ManagerClassTest {

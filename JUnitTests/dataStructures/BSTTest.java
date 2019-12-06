@@ -1,13 +1,12 @@
 package dataStructures;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import dataStructures.BST;
-import dataStructures.Entry;
-import dataStructures.Iterator;
 
 class BSTTest {
 
@@ -72,19 +71,39 @@ class BSTTest {
 		int j = 0;
 		for (int i = 5; i < 10; i++) {
 			assertEquals(j++, bst.size());
-			bst.insert(i, i);
+			assertEquals(null, bst.insert(i, i));
 		}
 		for (int i = 0; i < 5; i++) {
 			assertEquals(j++, bst.size());
-			bst.insert(i, i);
+			assertEquals(null, bst.insert(i, i));
 		}
 		for (int i = 19; i >= 15; i--) {
 			assertEquals(j++, bst.size());
-			bst.insert(i, i);
+			assertEquals(null, bst.insert(i, i));
 		}
 		for (int i = 10; i < 15; i++) {
 			assertEquals(j++, bst.size());
-			bst.insert(i, i);
+			assertEquals(null, bst.insert(i, i));
+		}
+		for (int i = 0; i < 20; i++) {
+			assertEquals(i, bst.get(i));
+		}
+		j = 20;
+		for (int i = 5; i < 10; i++) {
+			assertEquals(j, bst.size());
+			assertEquals(i, bst.insert(i, i));
+		}
+		for (int i = 0; i < 5; i++) {
+			assertEquals(j, bst.size());
+			assertEquals(i, bst.insert(i, i));
+		}
+		for (int i = 19; i >= 15; i--) {
+			assertEquals(j, bst.size());
+			assertEquals(i, bst.insert(i, i));
+		}
+		for (int i = 10; i < 15; i++) {
+			assertEquals(j, bst.size());
+			assertEquals(i, bst.insert(i, i));
 		}
 		for (int i = 0; i < 20; i++) {
 			assertEquals(i, bst.get(i));
@@ -96,7 +115,7 @@ class BSTTest {
 	void testRemove() {
 		testInsert();
 		for (int i = 9; i >= 0; i--) {
-			bst.remove(i);
+			assertEquals(i, bst.remove(i));
 			for (int j = 9; j >= i; j--) {
 				assertEquals(null, bst.get(j));
 			}
@@ -109,7 +128,7 @@ class BSTTest {
 			assertEquals(i, bst.size() - 10);
 		}
 		for (int i = 10; i < 20; i++) {
-			bst.remove(i);
+			assertEquals(i, bst.remove(i));
 			for (int j = 10; j < i; j++) {
 				assertEquals(null, bst.get(j));
 			}

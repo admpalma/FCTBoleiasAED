@@ -28,12 +28,12 @@ public class TripClass implements Trip {
 	 * Ride object constructor. Creates an object holding details and information
 	 * about a ride
 	 * 
-	 * @param origin   origin of the ride
-	 * @param destination  destiny of the ride
-	 * @param date     {@link BasicDateTime date} of the ride
-	 * @param capacity initial number of seats available for other users
-	 * @param duration duration of ride
-	 * @param driver   {@link User} who gives the ride
+	 * @param origin      origin of the ride
+	 * @param destination destiny of the ride
+	 * @param date        {@link BasicDateTime date} of the ride
+	 * @param capacity    initial number of seats available for other users
+	 * @param duration    duration of ride
+	 * @param driver      {@link User} who gives the ride
 	 */
 	public TripClass(String origin, String destination, BasicDateTime date, int capacity, int duration, User driver) {
 		this.origin = origin;
@@ -46,31 +46,49 @@ public class TripClass implements Trip {
 		this.capacity = capacity;
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public BasicDateTime getBasicDateTime() {
 		return date;
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public String getOrigin() {
 		return origin;
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public String getDestination() {
 		return destination;
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public int getDuration() {
 		return duration;
 	}
 
+	/**
+	 * O(1)
+	 */
 	@Override
 	public boolean hasRides() {
 		return usersInRide.size() > 0;
 	}
 
+	/**
+	 * O(1) all cases
+	 */
 	@Override
 	public void addUserAsRide(User user) throws TripIsFullException {
 		if (usersInRide.size() == capacity) {
@@ -81,6 +99,11 @@ public class TripClass implements Trip {
 		}
 	}
 
+	/**
+	 * Best case: O(1)
+	 * Average case: O(n), n = size of usersWaitingRide
+	 * Worst case: O(n), n = size of usersWaitingRide
+	 */
 	@Override
 	public String toString() {
 		String simpleStr = this.toSimpleString();
@@ -95,6 +118,7 @@ public class TripClass implements Trip {
 	}
 
 	/**
+	 * O(n), n = number of users in usersWaitingRide
 	 * Reads the {@link User users} from usersInRide and concatenates their email in
 	 * a {@link String} with the desired format
 	 * 
@@ -119,12 +143,18 @@ public class TripClass implements Trip {
 		}
 	}
 
+	/**
+	 * O(1) all cases
+	 */
 	@Override
 	public String getDriverEmail() {
 		return driver.getEmail();
 	}
 
 	/**
+	 * Best case: O(1) if found in root
+	 * Average case: O(log n)
+	 * Worst case: O( 2 * log n) if we check both conditions
 	 * Checks if there are free slots on this {@link Trip} and fills them with
 	 * {@link User Users} in queue, if there are any
 	 */
@@ -143,37 +173,57 @@ public class TripClass implements Trip {
 		}
 	}
 
+	/**
+	 * Best case: O(1) if found on first position
+	 * Average case: O(n+log n)
+	 * Worst case: O(n+log n)
+	 */
 	@Override
 	public void removeUserRide(User user) {
 		usersInRide.remove(usersInRide.find(user));
 		updateQueue();
 	}
 
+	/**
+	 * O(1) all cases
+	 */
 	@Override
 	public boolean hasFreeSlots() {
 		return freeSlots() > 0;
 	}
 
+	/**
+	 * O(1) all cases
+	 */
 	@Override
 	public int freeSlots() {
 		return capacity - usersInRide.size();
 	}
 
+	/**
+	 * O(1) all cases
+	 */
 	@Override
 	public TripWrapper wrap() {
 		return new TripWrapperClass(this);
 	}
 
+	/**
+	 * O(1) all cases
+	 */
 	@Override
 	public String toMediumDetailString() {
 		return this.toSimpleString();
 	}
-	
+
 	/**
-	 * Returns a {@link String} with the following format:<p>
+	 * O(1) all cases
+	 * Returns a {@link String} with the following format:
+	 * <p>
 	 * {@link #getDriverEmail() driver email}<br>
 	 * {@link #getOrigin() origin}-{@link #getDestination() destination}<br>
 	 * {@link BasicDateTime#toString() dateTime} {@link #getDuration() duration}<br>
+	 * 
 	 * @return {@link String} with a simple description of this {@link Trip}
 	 */
 	private String toSimpleString() {
@@ -185,6 +235,9 @@ public class TripClass implements Trip {
 		return sb.toString();
 	}
 
+	/**
+	 * O(1) all cases
+	 */
 	@Override
 	public String toDateAndDriverString() {
 		StringBuilder sb = new StringBuilder(40);

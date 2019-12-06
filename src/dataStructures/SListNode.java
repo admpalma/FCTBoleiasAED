@@ -26,18 +26,30 @@ class SListNode<E> implements Serializable {
 		this(theElement, null);
 	}
 
+	/**
+	 * O(1)
+	 * */
 	public E getElement() {
 		return element;
 	}
-
+	
+	/**
+	 * O(1)
+	 * */
 	public SListNode<E> getNext() {
 		return next;
 	}
 
+	/**
+	 * O(1)
+	 * */
 	public void setElement(E newElement) {
 		element = newElement;
 	}
 
+	/**
+	 * O(1)
+	 * */
 	public void setNext(SListNode<E> newNext) {
 		next = newNext;
 	}

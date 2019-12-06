@@ -1,6 +1,6 @@
 package dataStructures;
 
-public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
+public abstract class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 
 	/**
 	 * 
@@ -17,22 +17,28 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 	// de reduzir a sua altura
 
 	/**
+	 * O(1)
 	 * Performs a single left rotation rooted at Y node. Node X was a right child of
 	 * Y before the rotation, then Y becomes the left child of X after the rotation.
 	 * 
-	 * @param Y - root of the rotation
+	 * @param Y root of the rotation
 	 * @pre: Y has a right child
+	 * @return pivot
 	 */
-	protected void rotateLeft(BSTNode<Entry<K, V>> Y) {
+	protected BSTNode<Entry<K, V>> rotateLeft(BSTNode<Entry<K, V>> Y) {
 		// a single rotation modifies a constant number of parent-child relationships,
 		// it can be implemented in O(1)time
 		BSTNode<Entry<K, V>> pivot = Y.right;
 		BSTNode<Entry<K, V>> rootParent = Y.parent;
-		//TODO readability refactor
+		boolean wasRightChild = false;
+		if (rootParent != null) {
+			wasRightChild = rootParent.right == Y;
+		}
+
 		Y.parent = pivot;
 		pivot.parent = rootParent;
 		if (rootParent != null) {
-			if (rootParent.element.getKey().compareTo(pivot.element.getKey()) < 0) {
+			if (wasRightChild) {
 				rootParent.right = pivot;
 			} else {
 				rootParent.left = pivot;
@@ -43,24 +49,29 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 			pivot.left.parent = Y;
 		}
 		pivot.left = Y;
-		
-		
+		return pivot;
 	}
 
 	/**
+	 * O(1)
 	 * Performs a single right rotation rooted at Y node. Node X was a left child of
 	 * Y before the rotation, then Y becomes the right child of X after the
 	 * rotation.
 	 * 
 	 * @param Y - root of the rotation
 	 * @pre: Y has a left child
+	 * @return pivot
 	 */
-	protected void rotateRight(BSTNode<Entry<K, V>> Y) {
+	protected BSTNode<Entry<K, V>> rotateRight(BSTNode<Entry<K, V>> Y) {
 		// a single rotation modifies a constant number of parent-child relationships,
 		// it can be implemented in O(1)time
 		BSTNode<Entry<K, V>> pivot = Y.left;
 		BSTNode<Entry<K, V>> rootParent = Y.parent;
-		//TODO readability refactor
+		boolean wasRightChild = false;
+		if (rootParent != null) {
+			wasRightChild = rootParent.right == Y;
+		}
+
 		if (pivot.right != null) {
 			pivot.right.parent = Y;
 		}
@@ -69,31 +80,17 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 		Y.parent = pivot;
 		pivot.parent = rootParent;
 		if (rootParent != null) {
-			if (rootParent.element.getKey().compareTo(pivot.element.getKey()) < 0) {
+			if (wasRightChild) {
 				rootParent.right = pivot;
 			} else {
 				rootParent.left = pivot;
 			}
 		}
-	}
-	
-	/**
-	 * This method does the mutual part of the rotation for both rotateLeft and rotateRight
-	 * Checks if our root of rotation is the tree's root
-	 * @param Y - root of rotation
-	 */
-	private void rotateAux(BSTNode<Entry<K, V>> Y) {
-		//TODO O comentado simula que Y e root, mas tbh isto devia ser abstrato e verificar a root torna-se nonsense
-		if (Y == root || Y.parent == null) {
-			root = Y.left;
-		} else if (Y.parent.left == Y) {
-			Y.parent.left = Y.left;
-		} else {
-			Y.parent.right = Y.left;
-		}
+		return pivot;
 	}
 
 	/**
+	 * O(1)
 	 * Performs a tri-node restructuring (a single or double rotation rooted at X
 	 * node). Assumes the nodes are in one of following configurations:
 	 *
@@ -120,12 +117,12 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 		// and is first rotated above its parent Y, and then above what was originally
 		// its grandparent Z.
 		// In any of the cases, the trinode restructuring is completed with O(1)running
-		// time							
-		
+		// time
+
 		/*
-		 * a) y is left child of z and x is left child of y (Left Left Case) return y
-		 * b) y is left child of z and x is right child of y (Left Right Case) return x
-		 * c) y is right child of z and x is right child of y (Right Right Case) return y
+		 * a) y is left child of z and x is left child of y (Left Left Case) return y b)
+		 * y is left child of z and x is right child of y (Left Right Case) return x c)
+		 * y is right child of z and x is right child of y (Right Right Case) return y
 		 * d) y is right child of z and x is left child of y (Right Left Case) return x
 		 */
 
@@ -168,6 +165,7 @@ public class AdvancedBST<K extends Comparable<K>, V> extends BST<K, V> {
 	}
 
 	/**
+	 * O(1)
 	 * Generates a String representing a two bit number based on parent
 	 * relationships between the nodes
 	 * 

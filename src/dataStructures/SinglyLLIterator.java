@@ -11,11 +11,17 @@ public class SinglyLLIterator<E> implements Iterator<E> {
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public boolean hasNext() {
 		return nextToReturn != null;
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public E next() throws NoSuchElementException {
 		if (!this.hasNext()) {
 			throw new NoSuchElementException("No more elements.");
@@ -28,6 +34,9 @@ public class SinglyLLIterator<E> implements Iterator<E> {
 	}
 
 	@Override
+	/**
+	 * O(1) all cases
+	 */
 	public void rewind() {
 		nextToReturn = firstNode;
 	}
