@@ -123,8 +123,8 @@ public class ManagerClass implements Manager {
 
 	/**
 	 * Best case: O(1)
-	 * Average case: O(3log n)
-	 * Worst case: O(4*log n) === O(log n)
+	 * Average case: O(5log n)
+	 * Worst case: O(5*log n) === O(log n)
 	 */
 	@Override
 	public void addNewRide(String email, String date)
@@ -139,12 +139,12 @@ public class ManagerClass implements Manager {
 			throw new NonExistentUserException();
 		} else {
 			newDate = new BasicDateTimeClass(date);
-		}
+		}//TODO
 		if (!tripDriver.hasTripOnDate(newDate)) { // log n
 			throw new NonExistentTripException();
 		} else if (email.equals(currentUser.getEmail())) {
 			throw new CantRideSelfException(tripDriver);
-		} else if (currentUser.hasRideOnDate(newDate) || currentUser.hasTripOnDate(newDate)) { // 2*log n
+		} else if (currentUser.hasTripOnDate(newDate) || currentUser.hasRideOnDate(newDate)) { // 2*log n
 			throw new DateOccupiedException(currentUser);
 		}
 		Trip ride = tripDriver.addUserToTrip(currentUser, newDate); // log n
@@ -235,7 +235,7 @@ public class ManagerClass implements Manager {
 	/**
 	 * Best case: O(1)
 	 * Average case: O(log n)
-	 * Worst case: O(log n)
+	 * Worst case: O(n + log n)
 	 */
 	@Override
 	public TripWrapper consult(String email, String date)
